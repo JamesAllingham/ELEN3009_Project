@@ -1,11 +1,16 @@
+CFLAGS=-c -Wall -std=c++14
+LFLAGS=-Wall
+LPATH=-L..\sfml\lib -lsfml-graphics -lsfml-window -lsfml-system -lsfml-graphics -lsfml-audio
+IPATH=-I..\sfml\include
+CC=g++
 all: defender.exe
 defender.exe: main.o
-	g++ main.o defender.o ship.o -o defender.exe -L..\sfml\lib -lsfml-graphics -lsfml-window -lsfml-system -lsfml-graphics -lsfml-audio -Wall
+	$(CC) main.o defender.o ship.o $(LFLAGS) $(LPATH) -o defender.exe 
 main.o: main.cpp defender.o
-	g++ -c .\main.cpp -I..\sfml\include
+	$(CC) $(CFLAGS) main.cpp $(IPATH) -o main.o 
 defender.o: defender.cpp ship.o
-	g++ -c .\Defender.h .\Defender.cpp .\Ship.h -I..\sfml\include -std=c++11 -std=c++14
+	$(CC) $(CFLAGS) Defender.cpp $(IPATH) -o defender.o
 ship.o: Ship.cpp
-	g++ -c .\Ship.cpp .\Ship.h -std=c++11 -std=c++14 -Wall -I..\sfml\include
+	$(CC) $(CFLAGS) Ship.cpp $(IPATH) -o ship.o
 clean:
-	rm test.o test.exe
+	del *.o *.exe
