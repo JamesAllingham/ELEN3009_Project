@@ -1,6 +1,8 @@
 #ifndef DEFENDER
 #define DEFENDER
 
+#include "Ship.h"
+
 #include <SFML/Window.hpp>
 #include <SFML/System.hpp>
 #include <SFML/Graphics.hpp>
@@ -27,7 +29,7 @@ class Defender {
 	void render();
 	
 	RenderWindow _Window;
-	CircleShape mPlayer;
+	Ship _Kestrel;
 
 };
 

@@ -1,11 +1,16 @@
 #include "Defender.h"
 
-Defender::Defender () : _Window(VideoMode(640, 480), "Defender")
-, mPlayer() {
-	mPlayer.setRadius(40.f);
-	mPlayer.setPosition(100.f, 100.f);
-	mPlayer.setFillColor(sf::Color::Cyan);
+Defender::Defender () : _Window(VideoMode(640, 480), "Defender"), _Kestrel() {
+	
+	//Ship Kestrel;
+	
+	//test
+	//_Player.setRadius(40.f);
+	//_Player.setPosition(100.f, 100.f);
+	//_Player.setFillColor(sf::Color::Cyan);
+	//end test
 }
+
 
 void Defender::run() {
 	while (_Window.isOpen()) {
@@ -38,7 +43,7 @@ void Defender::render() {
 	//add functionality
 	
 	//test
-	_Window.draw(mPlayer);
+	_Window.draw(_Kestrel.get_character());
 	//end test
 	
 	_Window.display();
