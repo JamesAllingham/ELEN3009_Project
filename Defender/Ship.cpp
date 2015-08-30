@@ -15,7 +15,7 @@ void Ship::handle_Ship_Movement(Keyboard::Key key, bool is_pressed) {
 	else if (key == Keyboard::D) _is_moving_right = is_pressed;
 }
 
-void Ship::move_The_Ship () {
+void Ship::move_The_Ship (Time deltaTime) {
 	
 	Vector2f movement (0.f, 0.f);
 	
@@ -24,5 +24,5 @@ void Ship::move_The_Ship () {
 	if (_is_moving_left) movement.x -= 1.f;
 	if (_is_moving_right) movement.x += 1.f;
 	
-	_player.move(movement);
+	_player.move(movement * deltaTime.asSeconds() * _pixels_per_second); //move 30 pixels per second
 }

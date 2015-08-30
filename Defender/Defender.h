@@ -17,6 +17,8 @@ using sf::Event;
 using sf::VideoMode;
 using sf::Sprite;
 using sf::Keyboard;
+using sf::Clock;
+using sf::Time;
 
 using std::runtime_error;
 using std::cerr;
@@ -47,12 +49,12 @@ class Defender { //Perhaps we should rename this to Attacker or something since 
 	//Handle all user input
 	void process_events();
 	//Update the game logic
-	void update();
+	void update( Time );
 	//Render the game to the screen
 	void render();
 	
 	RenderWindow _window;
-	unsigned int _fps_limit = 30;
+	float _fps_limit = 120;
 	Ship _kestrel; //a nice FTL reference :)
 	Sprite _testSprite;
 	

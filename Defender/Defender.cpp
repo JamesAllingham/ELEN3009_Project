@@ -19,14 +19,24 @@ Defender::Defender () : _window(VideoMode(640, 480), "Defender"), _kestrel(), _t
 void Defender::run() {
 
 	//sf::RenderWindow::setVerticalSyncEnabled(true);
-	_window.setFramerateLimit(_fps_limit);
+	//_window.setFramerateLimit(_fps_limit);
+	Clock clock;
+	Time time_since_last_update = Time::Zero;
+	Time time_per_frame = sf::seconds (1.0f / _fps_limit); //time per frame in seconds
 	
 	while (_window.isOpen()) {
-		
-		process_events();
-		update();
-		render();
 	
+		time_since_last_update += clock.restart();
+		
+		while (time_since_last_update > time_per_frame ) {
+		
+			process_events();
+			update(time_per_frame);
+		
+			time_since_last_update -= time_per_frame;
+			
+		}
+		render();
 	}
 }
 
@@ -56,9 +66,9 @@ void Defender::process_events() {
 	}
 }
 
-void Defender::update() {
+void Defender::update(Time deltaTime) {
 
-	_kestrel.move_The_Ship();
+	_kestrel.move_The_Ship(deltaTime);
 
 }
 
