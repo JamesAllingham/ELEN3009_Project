@@ -35,7 +35,7 @@ Resource& ResourceHolder<Resource, Identifier>::get(Identifier id)
 
 template <typename Resource, typename Identifier>
 const Resource& ResourceHolder<Resource, Identifier>::get(Identifier id) const
-{
+{	
 	auto found_ptr = _resources.find(id);	
 	assert(found_ptr != _resources.end());
 	
@@ -44,7 +44,7 @@ const Resource& ResourceHolder<Resource, Identifier>::get(Identifier id) const
 
 template <typename Resource, typename Identifier>
 void ResourceHolder<Resource, Identifier>::addResource(Identifier id, unique_ptr<Resource>& resource_ptr)
-{	
+{		
 	auto inserted = _resources.insert(make_pair(id, move(resource_ptr)));
 	// An assertion is used for debugging purposes only it will be removed by using #define NDEBUG. This should always pass and any causes for this not passing must be found during development
 	assert(inserted.second);
