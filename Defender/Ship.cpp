@@ -2,7 +2,7 @@
 
 Ship::Ship () : _player() {
 	
-	_player.setRadius(4.f);
+	_player.setRadius(40.f);
 	_player.setPosition(320.f, 240.f);
 	_player.setFillColor(Color::Cyan);
 }
