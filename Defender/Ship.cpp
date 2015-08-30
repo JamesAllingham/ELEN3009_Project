@@ -1,8 +1,8 @@
 #include "Ship.h"
 
-Ship::Ship () : _Player() {
+Ship::Ship () : _player() {
 	
-	_Player.setRadius(40.f);
-	_Player.setPosition(100.f, 100.f);
-	_Player.setFillColor(sf::Color::Cyan);
+	_player.setRadius(4.f);
+	_player.setPosition(100.f, 100.f);
+	_player.setFillColor(sf::Color::Cyan);
 }
