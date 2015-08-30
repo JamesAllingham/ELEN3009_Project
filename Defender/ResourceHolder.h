@@ -6,6 +6,8 @@
 #define RESOURCE_HOLDER
 
 #include <assert.h>
+// For testing purposes
+#include <iostream>
 
 using std::map;
 using std::string;
@@ -14,6 +16,8 @@ using std::make_pair;
 using std::move;
 using std::unique_ptr;
 using std::make_unique;
+
+using sf::IntRect;
 
 template <typename Resource, typename Identifier>
 class ResourceHolder
@@ -26,7 +30,7 @@ class ResourceHolder
 		void load(Identifier id, const string& file_path_and_name, const Parameter& second_parameter);
 		
 		
-		Resource& get(Identifier id); //maybe add const here but then the function calls might look the same?
+		Resource& get(Identifier id); 
 		const Resource& get(Identifier id) const;
 		
 	private:		

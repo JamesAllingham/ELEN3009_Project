@@ -1,12 +1,12 @@
 #ifndef DEFENDER
 #define DEFENDER
 
-#include "Ship.h"
 #include <SFML/Window.hpp>
 #include <SFML/System.hpp>
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
 #include "ResourceHolder.h"
+#include "Ship.h"
 
 // for debugging purposes
 #include <iostream> 
@@ -37,7 +37,8 @@ class Defender { //Perhaps we should rename this to Attacker or something since 
 		Misile,
 		Laser,
 		HeatSeakingLaser,
-		SmartBomb
+		SmartBomb,
+		Landscape
 	};
 
  private:
