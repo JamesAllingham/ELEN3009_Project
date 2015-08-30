@@ -11,11 +11,11 @@ class Ship {
 public:
 
 	Ship ();
-	sf::CircleShape get_character() {return _Player;};
+	sf::CircleShape get_character() {return _player;};
 	
 private:
 
-	sf::CircleShape _Player;
+	sf::CircleShape _player;
 
 };	
 #endif
