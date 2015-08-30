@@ -17,6 +17,10 @@ Defender::Defender () : _window(VideoMode(640, 480), "Defender"), _kestrel(), _t
 
 
 void Defender::run() {
+
+	//sf::RenderWindow::setVerticalSyncEnabled(true);
+	_window.setFramerateLimit(_fps_limit);
+	
 	while (_window.isOpen()) {
 		
 		process_events();
@@ -31,13 +35,30 @@ void Defender::process_events() {
 	Event event;
 	while (_window.pollEvent(event)) {
 		
-		//Check if close command has been given
-		if (event.type == Event::Closed) _window.close();
-		
+		//poll all event types
+		switch (event.type) {
+			case Event::KeyPressed:
+				if (event.key.code == Keyboard::W || event.key.code == Keyboard::A || event.key.code == Keyboard::S || event.key.code == Keyboard::D) {
+					_kestrel.handle_Ship_Movement(event.key.code, true);
+				}
+				break;
+			case Event::KeyReleased:
+				if (event.key.code == Keyboard::W || event.key.code == Keyboard::A || event.key.code == Keyboard::S || event.key.code == Keyboard::D) {
+					_kestrel.handle_Ship_Movement(event.key.code, false);
+				}
+				break;
+			case Event::Closed:
+				_window.close();
+				break;
+			default:
+				break;
+		}
 	}
 }
 
 void Defender::update() {
+
+	_kestrel.move_The_Ship();
 
 }
 
@@ -46,10 +67,8 @@ void Defender::render() {
 	_window.clear();
 	//add functionality
 	
-	//test
-	_window.draw(_kestrel.get_character());
+	_window.draw(_kestrel.get_Character());
 	_window.draw(_testSprite);
-	//end test
 	
 	_window.display();
 

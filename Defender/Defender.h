@@ -16,6 +16,7 @@ using sf::Texture;
 using sf::Event;
 using sf::VideoMode;
 using sf::Sprite;
+using sf::Keyboard;
 
 using std::runtime_error;
 using std::cerr;
@@ -50,7 +51,8 @@ class Defender { //Perhaps we should rename this to Attacker or something since 
 	void render();
 	
 	RenderWindow _window;
-	Ship _kestrel;
+	unsigned int _fps_limit = 30;
+	Ship _kestrel; //a nice FTL reference :)
 	Sprite _testSprite;
 	
 	ResourceHolder<Texture,TextureID> _textures;

@@ -6,16 +6,28 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
 
+using sf::Keyboard;
+using sf::CircleShape;
+using sf::Color;
+using sf::Vector2f;
+
 class Ship {
 
 public:
 
 	Ship ();
-	sf::CircleShape get_character() {return _player;};
+	CircleShape get_Character() {return _player;};
+	void handle_Ship_Movement (Keyboard::Key, bool);
+	void move_The_Ship ();
 	
 private:
 
-	sf::CircleShape _player;
-
+	CircleShape _player;
+	
+	bool _is_moving_up= false; // = false;
+	bool _is_moving_down= false;
+	bool _is_moving_left= false;
+	bool _is_moving_right= false;
+	
 };	
 #endif
