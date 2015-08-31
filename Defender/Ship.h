@@ -17,7 +17,7 @@ class Ship {
 public:
 
 	Ship ();
-	CircleShape get_Character() {return _player;};
+	CircleShape get_Character() {return _player;}; //we need to get on top of these naming conventions - this is like a mix of camel case and underscores
 	void handle_Ship_Movement (Keyboard::Key, bool);
 	void move_The_Ship (Time);
 	
@@ -29,7 +29,7 @@ private:
 	bool _is_moving_down= false;
 	bool _is_moving_left= false;
 	bool _is_moving_right= false;
-	float _pixels_per_second = 30.0f; //ship movement speed
+	float _pixels_per_second = 60.0f; //ship movement speed
 	
 };	
 #endif

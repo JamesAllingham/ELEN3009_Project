@@ -19,6 +19,9 @@ using sf::Sprite;
 using sf::Keyboard;
 using sf::Clock;
 using sf::Time;
+using sf::View;
+using sf::FloatRect;
+using sf::IntRect;
 
 using std::runtime_error;
 using std::cerr;
@@ -54,11 +57,11 @@ class Defender { //Perhaps we should rename this to Attacker or something since 
 	void render();
 	
 	RenderWindow _window;
-	float _fps_limit = 120;
+	static constexpr const float _FPS_LIMIT = 120; //this should be a constant I think, we never want it to change. should also be static since it is common to all instances of the game. the constexpr is a c++11 keyword used to allow us to have this static const
 	Ship _kestrel; //a nice FTL reference :)
-	Sprite _testSprite;
-	
 	ResourceHolder<Texture,TextureID> _textures;
+	View _camera;
+	Sprite _background;
 };
 
 #endif

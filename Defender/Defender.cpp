@@ -1,18 +1,24 @@
 #include "Defender.h"
 
-Defender::Defender () : _window(VideoMode(640, 480), "Defender"), _kestrel(), _testSprite(), _textures() {
+Defender::Defender () : _window(VideoMode(800, 600), "Defender"), _kestrel(), _textures(), _camera(), _background() {
 	
 	try 
 	{
-		_textures.load(TextureID::Ship,"resources/test.jpg");	
+		_textures.load(TextureID::Landscape,"resources/space_backdrop.png");
 	}
 	catch (const runtime_error& error)
 	{
 		cerr << error.what();
 		// maybe quit the application
-	}
+	}	
 	
-	_testSprite.setTexture(_textures.get(TextureID::Ship));	
+	// The camera object will allow the implementation of scrolling
+	_camera.reset(FloatRect(0.f,0.f,800.f,600.f)); //the camera is a 800x600 rectangle located at (0,0)
+	_window.setView(_camera);
+	_textures.get(TextureID::Landscape).setRepeated(true);
+	_background.setTexture(_textures.get(TextureID::Landscape));
+	_background.setTextureRect(IntRect(0,0,4800,600));
+	
 }
 
 
@@ -22,7 +28,7 @@ void Defender::run() {
 	//_window.setFramerateLimit(_fps_limit);
 	Clock clock;
 	Time time_since_last_update = Time::Zero;
-	Time time_per_frame = sf::seconds (1.0f / _fps_limit); //time per frame in seconds
+	Time time_per_frame = sf::seconds (1.0f / _FPS_LIMIT); //time per frame in seconds
 	
 	while (_window.isOpen()) {
 	
@@ -68,17 +74,21 @@ void Defender::process_events() {
 
 void Defender::update(Time deltaTime) {
 
+	auto oldX = _kestrel.get_Character().getPosition().x;
 	_kestrel.move_The_Ship(deltaTime);
-
+	
+	auto deltaX = _kestrel.get_Character().getPosition().x - oldX;
+	// re-center the view on the ship in the x-direction
+	_camera.move(deltaX,0.f);
+	_window.setView(_camera);
 }
 
 void Defender::render() {
 
 	_window.clear();
-	//add functionality
 	
+	_window.draw(_background);
 	_window.draw(_kestrel.get_Character());
-	_window.draw(_testSprite);
 	
 	_window.display();
 
