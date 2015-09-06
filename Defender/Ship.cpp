@@ -2,8 +2,8 @@
 
 Ship::Ship () : _player() {
 	
-	_player.setRadius(40.f);
-	_player.setPosition(320.f, 240.f);
+	_player.setRadius(20.f);
+	_player.setPosition(380, 280);
 	_player.setFillColor(Color::Cyan);
 }
 
@@ -24,5 +24,5 @@ void Ship::move_The_Ship (Time deltaTime) {
 	if (_is_moving_left) movement.x -= 1.f;
 	if (_is_moving_right) movement.x += 1.f;
 	
-	_player.move(movement * deltaTime.asSeconds() * _pixels_per_second); //move 30 pixels per second
+	_player.move(movement * deltaTime.asSeconds() * _pixels_per_second); //move 60 pixels per second
 }
