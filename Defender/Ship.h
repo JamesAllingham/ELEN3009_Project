@@ -29,7 +29,7 @@ private:
 	bool _is_moving_down= false;
 	bool _is_moving_left= false;
 	bool _is_moving_right= false;
-	float _pixels_per_second = 60.0f; //ship movement speed
+	float _pixels_per_second = 120.0f; //ship movement speed
 	
 };	
 #endif
