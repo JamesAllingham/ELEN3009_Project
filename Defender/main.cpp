@@ -1,7 +1,7 @@
-#include "Defender.h"
+#include "GameLogic.h"
 
 int main()
 {
-	Defender game;
-	game.run();
+	GameLogic attacker;
+	return 0;
 }

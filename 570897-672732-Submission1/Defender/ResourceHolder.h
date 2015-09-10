@@ -17,6 +17,8 @@ using std::move;
 using std::unique_ptr;
 using std::make_unique;
 
+using sf::IntRect;
+
 template <typename Resource, typename Identifier>
 class ResourceHolder
 {

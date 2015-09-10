@@ -1,28 +1,43 @@
 #include "Ship.h"
 
-Ship::Ship () : _player() {
+void Ship::controlMovement(Events event) {
 	
-	_player.setRadius(20.f);
-	_player.setPosition(380, 280);
-	_player.setFillColor(Color::Cyan);
+	switch (event){
+		case Events::W_Pressed:
+			_moving_up = true;
+			break;
+		case Events::W_Released:
+			_moving_up = false;
+			break;
+		case Events::S_Pressed:
+			_moving_down = true;
+			break;
+		case Events::S_Released:
+			_moving_down = false;
+			break;
+		case Events::A_Pressed:
+			_moving_left = true;
+			break;
+		case Events::A_Released:
+			_moving_left = false;
+			break;
+		case Events::D_Pressed:
+			_moving_right = true;
+			break;
+		case Events::D_Released:
+			_moving_right = false;
+			break;
+		default:
+			break;
+	}
 }
 
-void Ship::handle_Ship_Movement(Keyboard::Key key, bool is_pressed) {
+void Ship::move(float delta_time) {
 	
-	if (key == Keyboard::W) _is_moving_up = is_pressed;
-	else if (key == Keyboard::S) _is_moving_down = is_pressed;
-	else if (key == Keyboard::A) _is_moving_left = is_pressed;
-	else if (key == Keyboard::D) _is_moving_right = is_pressed;
-}
-
-void Ship::move_The_Ship (Time deltaTime) {
+	auto distance = delta_time * _pixels_per_second;
+	if (_moving_up) _player.y -= distance;
+	if (_moving_down) _player.y += distance;
+	if (_moving_left) _player.x -= distance;
+	if (_moving_right) _player.x += distance;
 	
-	Vector2f movement (0.f, 0.f);
-	
-	if (_is_moving_up) movement.y -= 1.f;
-	if (_is_moving_down) movement.y += 1.f;
-	if (_is_moving_left) movement.x -= 1.f;
-	if (_is_moving_right) movement.x += 1.f;
-	
-	_player.move(movement * deltaTime.asSeconds() * _pixels_per_second); //move 60 pixels per second
 }

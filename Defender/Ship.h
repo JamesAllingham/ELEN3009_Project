@@ -1,35 +1,28 @@
 #ifndef SHIP
 #define SHIP
 
-#include <SFML/Window.hpp>
-#include <SFML/System.hpp>
-#include <SFML/Graphics.hpp>
-#include <SFML/Audio.hpp>
-
-using sf::Keyboard;
-using sf::CircleShape;
-using sf::Color;
-using sf::Vector2f;
-using sf::Time;
+#include "Events.h"
+#include "Character.h"
 
 class Ship {
 
 public:
 
-	Ship ();
-	CircleShape get_Character() {return _player;}; //we need to get on top of these naming conventions - this is like a mix of camel case and underscores
-	void handle_Ship_Movement (Keyboard::Key, bool);
-	void move_The_Ship (Time);
+	//Set the position and texture of the ship
+	Ship () : _player{TextureID::Ship, 380.f, 280.f} {};
+	Character getCharacter() {return _player;};
+	void controlMovement (Events event);
+	void move (float delta_time);
 	
 private:
 
-	CircleShape _player;
+	Character _player;
 	
-	bool _is_moving_up= false; // = false;
-	bool _is_moving_down= false;
-	bool _is_moving_left= false;
-	bool _is_moving_right= false;
-	float _pixels_per_second = 120.0f; //ship movement speed
+	bool _moving_up= false;
+	bool _moving_down= false;
+	bool _moving_left= false;
+	bool _moving_right= false;
+	float _pixels_per_second = 150.0f; //ship movement speed
 	
 };	
 #endif
