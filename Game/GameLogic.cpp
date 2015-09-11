@@ -1,7 +1,8 @@
 #include "GameLogic.h"
 
-GameLogic::GameLogic () : _user_interface(), _player() 
+GameLogic::GameLogic () : _user_interface(), _player_ptr(new Ship), _entites() 
 {
+	_entites.addEntity(_player_ptr);
 	runGame();
 }
 
@@ -21,7 +22,7 @@ void GameLogic::runGame() {
 			update(time_per_frame);
 			time_since_last_update -= time_per_frame;
 		}
-		list<Character> characters = {_player.getCharacter()};
+		list<Character> characters = _entites.characters();
 		_user_interface.render(characters);
 	}
 }
@@ -40,7 +41,7 @@ void GameLogic::update(float delta_time) {
 			case Events::A_Released:
 			case Events::D_Pressed:
 			case Events::D_Released:
-				_player.controlMovement(event_iter);
+				_player_ptr->controlMovement(event_iter);
 				break;
 			case Events::Window_Close:
 				_user_interface.closeWindow();
@@ -52,10 +53,13 @@ void GameLogic::update(float delta_time) {
 	}
 	
 	//ugly logic, needs to be rewritten, shouldn't be calculating dt
-	auto old_x = _player.getCharacter().x;
-	_player.move(delta_time);
+	auto old_x = _player_ptr->character().x;
 	
-	auto delta_x = _player.getCharacter().x - old_x;
+	for (auto entity_ptr: _entites){
+		entity_ptr->move(delta_time);
+	}	
+	
+	auto delta_x = _player_ptr->character().x - old_x;
 	// re-center the view on the ship in the x-direction
 	_user_interface.moveWindow(delta_x);
 }

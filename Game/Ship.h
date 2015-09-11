@@ -3,26 +3,21 @@
 
 #include "Events.h"
 #include "Character.h"
+#include "Entity.h"
 
-class Ship {
+class Ship : public Entity {
 
 public:
-
 	//Set the position and texture of the ship
-	Ship () : _player{TextureID::Ship, 380.f, 280.f} {};
-	Character getCharacter() {return _player;};
-	void controlMovement (Events event);
-	void move (float delta_time);
+	Ship(TextureID id = TextureID::Ship, float start_x = 380.f, float start_y = 280.f, float velocity = 150.f) : Entity{id, start_x, start_y, velocity} {};
+	void controlMovement(Events event);
+	virtual void move(float delta_time);
 	
-private:
-
-	Character _player;
-	
-	bool _moving_up= false;
-	bool _moving_down= false;
-	bool _moving_left= false;
-	bool _moving_right= false;
-	float _pixels_per_second = 150.0f; //ship movement speed
+private:	
+	bool _moving_up = false;
+	bool _moving_down = false;
+	bool _moving_left = false;
+	bool _moving_right = false;
 	
 };	
 #endif
