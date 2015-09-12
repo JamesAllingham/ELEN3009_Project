@@ -2,6 +2,7 @@
 
 GameLogic::GameLogic () : _user_interface(), _player() 
 {
+	Flyer::createFlyers();
 	runGame();
 }
 

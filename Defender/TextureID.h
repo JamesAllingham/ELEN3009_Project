@@ -4,7 +4,7 @@
 enum class TextureID
 {
 	Ship,
-	Lander,
+	Flyer,
 	Missile,
 	Laser,
 	Heat_Seaking_Missile,

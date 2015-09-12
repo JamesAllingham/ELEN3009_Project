@@ -6,6 +6,7 @@ using std::list;
 
 #include "UserInterface.h"
 #include "Ship.h"
+#inlcude "Flyer.h"
 #include "Events.h"
 #include "TextureID.h"
 #include "StopWatch.h"
@@ -21,6 +22,7 @@ private:
 	
 	UserInterface _user_interface;
 	Ship _player;
+	Flyers _flyers;
 	bool _game_running = true;
 	
 	static constexpr const auto _FPS_LIMIT = 120.f; //this should be a constant I think, we never want it to change. should also be static since it is common to all instances of the game. the constexpr is a c++11 keyword used to allow us to have this static const

@@ -4,8 +4,8 @@
 #include "Events.h"
 #include "Character.h"
 
-class Ship {
-
+class Ship : public Character 
+{
 public:
 
 	//Set the position and texture of the ship
