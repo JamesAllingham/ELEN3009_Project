@@ -1,9 +1,10 @@
 #include "GameLogic.h"
 
-GameLogic::GameLogic () : _user_interface(), _entities() 
+GameLogic::GameLogic () : _user_interface(), _entities(), 
+	_player_ptr(new Ship)
 {
 	Entity::setMapLimits(_MAX_X,_MAX_Y);
-	_player_ptr(new Ship);
+	//_player_ptr(new Ship);
 	_entities.addEntity(_player_ptr);
 	runGame();
 }
@@ -71,7 +72,7 @@ void GameLogic::update(float delta_time) {
 void GameLogic::createEntities () {
 
 	while (Flyer::numberOfFlyers() < 15) {
-		_entities.addEntity(Flyer::createFlyer());
-		
+		shared_ptr<Flyer> flyer_ptr = make_shared<Flyer>();
+		_entities.addEntity(flyer_ptr);
 	}
 }

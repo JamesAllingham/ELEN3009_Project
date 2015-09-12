@@ -22,5 +22,3 @@ private:
 	
 };	
 #endif
-
-TextureID id = TextureID::Ship, float start_x = 380.f, float start_y = 280.f, float velocity = 150.f

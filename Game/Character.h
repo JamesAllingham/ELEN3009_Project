@@ -6,14 +6,11 @@
 class Character
 {
 public:
-	Character (TextureID type, float x, float y) : _texture_ID(type), _x(x), _y(y) {};
-	Character getCharacter() {return _entity};
-
-private:
-	TextureID _texture_ID;
-    float _x;
-	float _y;
-	float _character_speed;
+	Character (TextureID type, float x, float y) : texture_ID(type), x(x), y(y) {};
+	
+	TextureID texture_ID;
+    float x;
+	float y;
 };
 
 #endif
