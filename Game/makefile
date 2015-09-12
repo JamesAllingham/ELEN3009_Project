@@ -3,7 +3,7 @@ LFLAGS= -Wall -std=c++14
 LPATH=-L..\sfml\lib -lsfml-graphics -lsfml-window -lsfml-system -lsfml-graphics -lsfml-audio
 IPATH=-I..\sfml\include
 CC=g++
-OBJS= main.o GameLogic.o UserInterface.o Ship.o Flyer.o StopWatch.o EntityHolder.o
+OBJS= main.o GameLogic.o UserInterface.o Ship.o Flyer.o StopWatch.o EntityHolder.o Entity.o
 all: attacker.exe
 attacker.exe: $(OBJS)
 	$(CC) $(OBJS) $(LFLAGS) $(LPATH) -o attacker.exe
@@ -21,5 +21,7 @@ StopWatch.o: StopWatch.h
 	$(CC) $(CFLAGS) -o StopWatch.o StopWatch.cpp
 EntityHolder.o: EntityHolder.h Entity.h Character.h
 	$(CC) $(CFLAGS) -o EntityHolder.o EntityHolder.cpp
+Entity.o: Entity.h Character.h
+	$(CC) $(CFLAGS) -o Entity.o Entity.cpp
 clean:
 	del *.o *.exe

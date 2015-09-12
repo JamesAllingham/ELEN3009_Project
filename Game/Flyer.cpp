@@ -22,7 +22,8 @@ void Flyer::move(float delta_time) {
 	
 }
 
-float RandomPosition (float max_positon) {
+//This needed to have Flyer::
+float Flyer::RandomPosition (float max_positon) {
 	
 	int rand_num;
 	srand(time(0));
@@ -30,3 +31,6 @@ float RandomPosition (float max_positon) {
 	rand_num = rand()%tmp;
 	return static_cast<float>(rand_num);
 }
+
+//Need to initialise this in the .cpp file
+int Flyer::_number_of_flyers = 0;

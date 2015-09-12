@@ -1,15 +1,19 @@
 #include "GameLogic.h"
+#include <iostream>
 
 GameLogic::GameLogic () : _user_interface(), _entities(), 
 	_player_ptr(new Ship)
 {
+	std::cout << "constructor" << std::endl;
 	Entity::setMapLimits(_MAX_X,_MAX_Y);
+	std::cout << "setMapLimits" << std::endl;
 	//_player_ptr(new Ship);
 	_entities.addEntity(_player_ptr);
 	runGame();
 }
 
 void GameLogic::runGame() {
+	std::cout << "runGame" << std::endl;
 	//UserInterface.drawCharacters(vector<characters>);
 	StopWatch clock;
 	clock.start();
@@ -17,7 +21,7 @@ void GameLogic::runGame() {
 	auto time_per_frame = 1.0f/_FPS_LIMIT;
 	
 	while (_game_running) {
-		
+		std::cout << "game running" << std::endl;
 		time_since_last_update += clock.stop();
 		clock.restart();
 		
