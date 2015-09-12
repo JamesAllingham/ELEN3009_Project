@@ -11,7 +11,7 @@ Flyer::Flyer()  : _enemy{TextureID::Flyer, 380.f, 280.f} {
 void Flyer::createFlyers() {
 	
 	while (num_of_flyers < 15) {
-		Flyer Flyer;
+		_entities.push_back(
 		num_of_flyers ++;
 	}		
 }

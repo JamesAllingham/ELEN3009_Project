@@ -2,7 +2,6 @@
 
 GameLogic::GameLogic () : _user_interface(), _player_ptr(new Ship), _entites() 
 {
-	Flyer::createFlyers();
 	_entites.addEntity(_player_ptr);
 	runGame();
 }
@@ -53,6 +52,8 @@ void GameLogic::update(float delta_time) {
 		}
 	}
 	
+	createEntities();
+	
 	//ugly logic, needs to be rewritten, shouldn't be calculating dt
 	auto old_x = _player_ptr->character().x;
 	
@@ -63,4 +64,12 @@ void GameLogic::update(float delta_time) {
 	auto delta_x = _player_ptr->character().x - old_x;
 	// re-center the view on the ship in the x-direction
 	_user_interface.moveWindow(delta_x);
+}
+
+void GameLogic::createEntities () {
+
+	while (Flyer::numberOfFlyers() < 15) {
+		_entities.addEntity(Flyer::createFlyer());
+		
+	}
 }
