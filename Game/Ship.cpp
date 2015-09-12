@@ -34,10 +34,10 @@ void Ship::controlMovement(Events event) {
 
 void Ship::move(float delta_time) {
 	
-	auto distance = delta_time * _pixels_per_second;
-	if (_moving_up) _player.y -= distance;
-	if (_moving_down) _player.y += distance;
-	if (_moving_left) _player.x -= distance;
-	if (_moving_right) _player.x += distance;
+	auto distance = delta_time * _velocity;
+	if (_moving_up) _character.y -= distance;
+	if (_moving_down) _character.y += distance;
+	if (_moving_left) _character.x -= distance;
+	if (_moving_right) _character.x += distance;
 	
 }
