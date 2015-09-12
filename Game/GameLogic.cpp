@@ -1,8 +1,10 @@
 #include "GameLogic.h"
 
-GameLogic::GameLogic () : _user_interface(), _player_ptr(new Ship), _entites() 
+GameLogic::GameLogic () : _user_interface(), _entities() 
 {
-	_entites.addEntity(_player_ptr);
+	Entity::setMapLimits(_MAX_X,_MAX_Y);
+	_player_ptr(new Ship);
+	_entities.addEntity(_player_ptr);
 	runGame();
 }
 
@@ -22,7 +24,7 @@ void GameLogic::runGame() {
 			update(time_per_frame);
 			time_since_last_update -= time_per_frame;
 		}
-		list<Character> characters = _entites.characters();
+		list<Character> characters = _entities.characters();
 		_user_interface.render(characters);
 	}
 }
@@ -57,7 +59,7 @@ void GameLogic::update(float delta_time) {
 	//ugly logic, needs to be rewritten, shouldn't be calculating dt
 	auto old_x = _player_ptr->character().x;
 	
-	for (auto entity_ptr: _entites){
+	for (auto entity_ptr: _entities){
 		entity_ptr->move(delta_time);
 	}	
 	

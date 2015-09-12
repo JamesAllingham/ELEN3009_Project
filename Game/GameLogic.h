@@ -26,8 +26,8 @@ private:
 	void createEntities ();
 	
 	UserInterface _user_interface;
+	EntityHolder _entities;
 	shared_ptr<Ship> _player_ptr;
-	EntityHolder _entites;
 	bool _game_running = true;
 	int _number_of_flyers_killed = 0;
 	static constexpr const int _NUMBER_OF_FLYERS_TO_KILL = 20;

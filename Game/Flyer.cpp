@@ -2,7 +2,7 @@
 
 Flyer::Flyer()  : _enemy{TextureID::Flyer, 380.f, 280.f} {
 	
-	float rand_pos;
+	float rand_pos = 0;
 	srand(time(0));
 	
 	Character flyer(TextureID::Flyer, rand_x, rand_y);
@@ -11,9 +11,8 @@ Flyer::Flyer()  : _enemy{TextureID::Flyer, 380.f, 280.f} {
 void Flyer::createFlyers() {
 	
 	while (num_of_flyers < 15) {
-		_entities.push_back(
 		num_of_flyers ++;
-	}		
+	}
 }
 
 void Flyer::controlMovement(Events event) {
