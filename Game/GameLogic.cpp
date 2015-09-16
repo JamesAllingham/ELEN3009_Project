@@ -1,13 +1,12 @@
 #include "GameLogic.h"
 #include <iostream>
 
-GameLogic::GameLogic () : _user_interface(), _entities(), 
-	_player_ptr(new Ship)
+GameLogic::GameLogic () : _user_interface(), _entities()//, //_player_ptr(new Ship)
 {
-	std::cout << "constructor" << std::endl;
+	//std::cout << "constructor" << std::endl;
 	Entity::setMapLimits(_MAX_X,_MAX_Y);
-	std::cout << "setMapLimits" << std::endl;
-	//_player_ptr(new Ship);
+	//std::cout << "setMapLimits" << std::endl;
+	_player_ptr = make_shared<Ship>();
 	_entities.addEntity(_player_ptr);
 	runGame();
 }
@@ -21,11 +20,12 @@ void GameLogic::runGame() {
 	auto time_per_frame = 1.0f/_FPS_LIMIT;
 	
 	while (_game_running) {
-		std::cout << "game running" << std::endl;
+		//std::cout << "game running" << std::endl;
 		time_since_last_update += clock.stop();
 		clock.restart();
 		
 		while (time_since_last_update > time_per_frame) {
+			//std::cout << "updating logic" << std::endl;
 			update(time_per_frame);
 			time_since_last_update -= time_per_frame;
 		}
@@ -76,7 +76,10 @@ void GameLogic::update(float delta_time) {
 void GameLogic::createEntities () {
 
 	while (Flyer::numberOfFlyers() < 15) {
-		shared_ptr<Flyer> flyer_ptr = make_shared<Flyer>();
-		_entities.addEntity(flyer_ptr);
+		//std::cout << "creating flyers" << std::endl;
+		//shared_ptr<Flyer> flyer_ptr = make_shared<Flyer>();
+		//std::cout << "adding to vector" << std::endl;
+		_entities.addEntity(shared_ptr<Flyer> (new Flyer));
+		std::cout << "number of entities = " << _entities.numberOfEntities() << std::endl;
 	}
 }

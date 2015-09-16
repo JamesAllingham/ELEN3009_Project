@@ -5,6 +5,7 @@
 #include <memory>
 using std::shared_ptr;
 using std::make_shared;
+#include <iostream>
 
 #include "Character.h"
 #include "Entity.h"
@@ -25,6 +26,7 @@ private:
 	float RandomPosition (float max_position);
 
 	static int _number_of_flyers;
+	static bool _srand_called;
 	//Character _enemy;
 	bool _moving_up= false;
 	bool _moving_down= false;

@@ -6,6 +6,7 @@ UserInterface::UserInterface() : _game_window(VideoMode(800, 600), "Attacker"), 
 	{
 		_textures.load(TextureID::Landscape,"resources/space_backdrop.png");
 		_textures.load(TextureID::Ship,"resources/player_ship.png");
+		_textures.load(TextureID::Flyer,"resources/flyer_ship.png");
 	}
 	catch (const runtime_error& error)
 	{
@@ -93,11 +94,18 @@ void UserInterface::render(list<Character>& characters) {
 }
 
 void UserInterface::processTextures(list<Character>& characters) {
-	Sprite _character;
+	
 	for (auto character_iter : characters){
+		Sprite _character;
 		_character.setTexture(_textures.get(character_iter.texture_ID));
 		_character.setPosition(character_iter.x,character_iter.y);
+		
+		//if (static_cast<int> (character_iter.texture_ID) == 3) {
+		//	std::cout << "going to draw" << std::endl;
+		//	_game_window.draw(_character);
+		//}
 		_game_window.draw(_character);
+		//std::cout << "drawn" << std::endl;
 	}
 	
 }

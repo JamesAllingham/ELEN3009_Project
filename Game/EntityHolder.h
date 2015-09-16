@@ -18,6 +18,7 @@ public:
 	EntityholderIterator end() {return _entities.end();};
 	list<Character> characters();
 	void addEntity(shared_ptr<Entity> entity_ptr) {_entities.push_back(entity_ptr);};
+	int numberOfEntities () {return _entities.size();};
 	
 private:	
 	list<shared_ptr<Entity>> _entities;
