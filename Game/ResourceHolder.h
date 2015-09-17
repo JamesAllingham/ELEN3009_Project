@@ -9,11 +9,15 @@
 // For testing purposes
 #include <iostream>
 
+#include<map>
 using std::map;
+using std::make_pair;
+
 using std::string;
 using std::runtime_error;
-using std::make_pair;
 using std::move;
+
+#include <memory>
 using std::unique_ptr;
 using std::make_unique;
 

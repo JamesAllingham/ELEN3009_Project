@@ -1,6 +1,10 @@
-#include "defender.h"
+
 #include "ResourceHolder.h"
 #include "gtest/gtest.h"
+
+#include <SFML/Graphics.hpp>
+using sf::Texture;
+using sf::IntRect;
 
 // Tests for ResourceHolder
 // Just like regular use of classes a test should only use the public interface of the class 
