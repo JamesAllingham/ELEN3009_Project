@@ -10,7 +10,7 @@ class Ship : public Entity {
 public:
 	//Set the position and texture of the ship
 	// I don't think that the issue is caused by this constructor or the static variables
-	Ship() : Entity{TextureID::Ship, _max_x/2, _max_y/2, 150.f} {};
+	Ship();
 	void controlMovement(Events event);
 	virtual void move(float delta_time);
 	

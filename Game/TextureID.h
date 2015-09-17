@@ -6,7 +6,7 @@ enum class TextureID
 	Heat_Seaking_Missile,
 	Smart_Bomb,
 	Missile,
-	Ship,
+	Ship,		
 	Flyer,
 	Laser,
 	Landscape

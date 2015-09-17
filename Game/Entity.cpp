@@ -1,5 +1,7 @@
 #include "Entity.h"
 
+Entity::Entity(TextureID id, float start_x, float start_y, float velocity): _character{id, start_x, start_y}, _velocity(velocity) {};
+
 void Entity::setMapLimits (float max_x, float max_y)
 {
 	_max_x = max_x; 

@@ -1,5 +1,7 @@
 #include "Ship.h"
 
+Ship::Ship() : Entity{TextureID::Ship, _max_x/2, _max_y/2, 150.f} {};
+
 void Ship::controlMovement(Events event) {
 	
 	switch (event){

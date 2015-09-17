@@ -5,8 +5,9 @@ UserInterface::UserInterface() : _game_window(VideoMode(800, 600), "Attacker"), 
 	try 
 	{
 		_textures.load(TextureID::Landscape,"resources/space_backdrop.png");
-		_textures.load(TextureID::Ship,"resources/player_ship.png");
-		_textures.load(TextureID::Flyer,"resources/flyer_ship.png");
+		_textures.load(TextureID::Ship,"resources/ship.png");
+		_textures.load(TextureID::Flyer,"resources/flyer.png");				
+		_textures.load(TextureID::Laser,"resources/laser.png");
 	}
 	catch (const runtime_error& error)
 	{
@@ -15,7 +16,7 @@ UserInterface::UserInterface() : _game_window(VideoMode(800, 600), "Attacker"), 
 	}	
 	
 	// The camera object will allow the implementation of scrolling
-	_camera.reset(FloatRect(0.f,0.f,800.f,600.f)); //the camera is a 800x600 rectangle located at (0,0)
+	_camera.reset(FloatRect(2000.f,0.f,800.f,600.f)); //the camera is a 800x600 rectangle located at (0,0)
 	_game_window.setView(_camera);
 	_textures.get(TextureID::Landscape).setRepeated(true);
 	_background.setTexture(_textures.get(TextureID::Landscape));
@@ -95,15 +96,16 @@ void UserInterface::render(list<Character>& characters) {
 
 void UserInterface::processTextures(list<Character>& characters) {
 	
-	for (auto character_iter : characters){
+	for (auto character : characters){
 		Sprite _character;
-		_character.setTexture(_textures.get(character_iter.texture_ID));
-		_character.setPosition(character_iter.x,character_iter.y);
+		_character.setTexture(_textures.get(character.texture_ID));
+		_character.setPosition(character.x,character.y);
 		
-		//if (static_cast<int> (character_iter.texture_ID) == 3) {
+		//if (static_cast<int> (character.texture_ID) == 3) {
 		//	std::cout << "going to draw" << std::endl;
 		//	_game_window.draw(_character);
 		//}
+		//if (character.texture_ID == TextureID::Ship) std::cout << "Ship" << std::endl;
 		_game_window.draw(_character);
 		//std::cout << "drawn" << std::endl;
 	}

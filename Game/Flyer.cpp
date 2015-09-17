@@ -1,6 +1,6 @@
 #include "Flyer.h"
 
-Flyer::Flyer() : Entity{TextureID::Ship, RandomPosition(_max_x), RandomPosition(_max_y), 75.f} {
+Flyer::Flyer() : Entity{TextureID::Flyer, RandomPosition(_max_x), RandomPosition(_max_y), 75.f} {
 	
 	//std::cout << "entering flyer constructor" <<std::endl;
 	//_number_of_flyers = 0;
@@ -8,10 +8,10 @@ Flyer::Flyer() : Entity{TextureID::Ship, RandomPosition(_max_x), RandomPosition(
 	_number_of_flyers++;
 }
 
-shared_ptr<Flyer> Flyer::createFlyer() {
-	shared_ptr<Flyer> flyer_ptr = make_shared<Flyer>();
-	return flyer_ptr;
-}
+// shared_ptr<Flyer> Flyer::createFlyer() {
+	// shared_ptr<Flyer> flyer_ptr = make_shared<Flyer>();
+	// return flyer_ptr;
+// }
 
 void Flyer::move(float delta_time) {
 	

@@ -1,12 +1,12 @@
 #include "GameLogic.h"
 #include <iostream>
 
-GameLogic::GameLogic () : _user_interface(), _entities()//, //_player_ptr(new Ship)
+GameLogic::GameLogic () : _user_interface(), _entities(), _player_ptr(new Ship)
 {
 	//std::cout << "constructor" << std::endl;
 	Entity::setMapLimits(_MAX_X,_MAX_Y);
 	//std::cout << "setMapLimits" << std::endl;
-	_player_ptr = make_shared<Ship>();
+	//_player_ptr = shared_ptr<Ship> (new Ship);
 	_entities.addEntity(_player_ptr);
 	runGame();
 }

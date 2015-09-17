@@ -17,7 +17,7 @@ public:
 	//Set the position and texture of the Flyer
 	Flyer ();
 	//Character getFlyer() {return _flyer;};
-	shared_ptr<Flyer> createFlyer();
+	//shared_ptr<Flyer> createFlyer();
 	virtual void move (float delta_time);
 	static int numberOfFlyers() { return _number_of_flyers;};
 	
