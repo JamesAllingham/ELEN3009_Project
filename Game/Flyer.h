@@ -18,7 +18,7 @@ public:
 	Flyer ();
 	//Character getFlyer() {return _flyer;};
 	//shared_ptr<Flyer> createFlyer();
-	virtual void move (float delta_time);
+	virtual void move (float delta_time)  override;
 	static int numberOfFlyers() { return _number_of_flyers;};
 	
 private:

@@ -1,6 +1,6 @@
 #include "Flyer.h"
 
-Flyer::Flyer() : Entity{TextureID::Flyer, RandomPosition(_max_x), RandomPosition(_max_y), 75.f} {
+Flyer::Flyer() : Entity{TextureID::Flyer, RandomPosition(maximumX()), RandomPosition(maximumY()), 75.f} {
 	
 	//std::cout << "entering flyer constructor" <<std::endl;
 	//_number_of_flyers = 0;
@@ -13,7 +13,7 @@ Flyer::Flyer() : Entity{TextureID::Flyer, RandomPosition(_max_x), RandomPosition
 	// return flyer_ptr;
 // }
 
-void Flyer::move(float delta_time) {
+void Flyer::move(float delta_time){
 	
 	//auto distance = delta_time * _velocity;
 	//if (_moving_up) _player.y -= distance;

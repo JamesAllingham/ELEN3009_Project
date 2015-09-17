@@ -1,6 +1,6 @@
 #include "Ship.h"
 
-Ship::Ship() : Entity{TextureID::Ship, _max_x/2, _max_y/2, 150.f} {};
+Ship::Ship() : Entity{TextureID::Ship, maximumX()/2, maximumY()/2, 150.f} {};
 
 void Ship::controlMovement(Events event) {
 	
@@ -36,10 +36,10 @@ void Ship::controlMovement(Events event) {
 
 void Ship::move(float delta_time) {
 	
-	auto distance = delta_time * _velocity;
-	if (_moving_up) _character.y -= distance;
-	if (_moving_down) _character.y += distance;
-	if (_moving_left) _character.x -= distance;
-	if (_moving_right) _character.x += distance;
+	auto distance = delta_time * velocity();
+	if (_moving_up) moveCharacter(0, - distance);
+	if (_moving_down) moveCharacter(0,  + distance);
+	if (_moving_left) moveCharacter(- distance,0);
+	if (_moving_right) moveCharacter(+ distance,0);
 	
 }

@@ -12,7 +12,7 @@ public:
 	// I don't think that the issue is caused by this constructor or the static variables
 	Ship();
 	void controlMovement(Events event);
-	virtual void move(float delta_time);
+	virtual void move(float delta_time) override;
 	
 private:	
 	bool _moving_up = false;
