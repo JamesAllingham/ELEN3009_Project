@@ -1,4 +1,3 @@
-
 #include "ResourceHolder.h"
 #include "gtest/gtest.h"
 

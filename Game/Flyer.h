@@ -5,7 +5,8 @@
 #include <memory>
 using std::shared_ptr;
 using std::make_shared;
-#include <iostream>
+
+#include <iostream> // For testing purposes
 
 #include "Character.h"
 #include "Entity.h"
@@ -19,10 +20,13 @@ public:
 
 	//Set the position and texture of the Flyer
 	Flyer ();
+	~Flyer();
 	//Character getFlyer() {return _flyer;};
 	//shared_ptr<Flyer> createFlyer();
-	virtual void move (float delta_time)  override;
 	static int numberOfFlyers() { return _number_of_flyers;};
+	
+	virtual void move (float delta_time)  override;
+	virtual list<Vector2f> hitboxPoints() override;	
 	
 private:
 
@@ -30,6 +34,10 @@ private:
 
 	static int _number_of_flyers;
 	static bool _srand_called;
+	
+	float _width = 50;
+	float _height = 25;
+	
 	//Character _enemy;
 	bool _moving_up= false;
 	bool _moving_down= false;

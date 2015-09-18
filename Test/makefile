@@ -5,15 +5,23 @@ IPATH=-I..\gtest\include -I..\Game -I..\sfml\include
 CC=g++
 ATTACKERPATH:=..\Game
 MAKE=mingw32-make
-OBJS=main.o unit_tests.o 
+OBJS=main.o ResourceHolder_unit_tests.o Collisions_unit_tests.o $(ATTACKERPATH)\Flyer.o $(ATTACKERPATH)\Collisions.o $(ATTACKERPATH)\Ship.o $(ATTACKERPATH)\Entity.o
 all: test.exe
 test.exe: $(OBJS) 
 	$(CC) $(OBJS) $(LFLAGS) $(LPATH) -o test.exe
 main.o: main.cpp
 	$(CC) $(CFLAGS) $(IPATH) main.cpp -o main.o
-unit_tests.o: ResourceHolder_unit_tests.cpp 
-	$(CC) $(CFLAGS) $(IPATH) ResourceHolder_unit_tests.cpp -o unit_tests.o
-$(ATTACKERPATH)\GameLogic.o:
+ResourceHolder_unit_tests.o: ResourceHolder_unit_tests.cpp $(ATTACKERPATH)\ResourceHolder.h
+	$(CC) $(CFLAGS) $(IPATH) ResourceHolder_unit_tests.cpp -o ResourceHolder_unit_tests.o
+Collisions_unit_tests.o: Collisions_unit_tests.cpp $(ATTACKERPATH)\Collisions.h $(ATTACKERPATH)\Ship.h $(ATTACKERPATH)\Flyer.h
+	$(CC) $(CFLAGS) $(IPATH) Collisions_unit_tests.cpp -o Collisions_unit_tests.o
+$(ATTACKERPATH)\Flyer.o:
+	$(MAKE) -C $(ATTACKERPATH) 
+$(ATTACKERPATH)\Ship.o:
+	$(MAKE) -C $(ATTACKERPATH) 
+$(ATTACKERPATH)\Collisions.o:
+	$(MAKE) -C $(ATTACKERPATH) 
+$(ATTACKERPATH)\Entity.o:
 	$(MAKE) -C $(ATTACKERPATH) 
 clean:
 	del *.o *.exe

@@ -3,9 +3,14 @@
 
 #include <list>
 using std::list;
+using std::begin;
+using std::end;
+using std::next;
 #include <memory>
 using std::shared_ptr;
 using std::make_shared;
+
+#include <iostream> // For testing purposes
 
 #include "UserInterface.h"
 #include "Ship.h"
@@ -14,6 +19,7 @@ using std::make_shared;
 #include "TextureID.h"
 #include "StopWatch.h"
 #include "EntityHolder.h"
+#include "Collisions.h"
 
 #include <SFML/System.hpp> // This is only temporary, using SFMLs Vector2f, but later will write a lightweight vector class to use instead
 using sf::Vector2f;
@@ -27,6 +33,7 @@ private:
 	void runGame();
 	void update(float delta_time);
 	void createEntities ();
+	void manageCollisions ();
 	
 	UserInterface _user_interface;
 	EntityHolder _entities;

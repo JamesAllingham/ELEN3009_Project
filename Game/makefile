@@ -3,13 +3,13 @@ LFLAGS= -Wall -std=c++14
 LPATH=-L..\sfml\lib -lsfml-graphics -lsfml-window -lsfml-system -lsfml-graphics -lsfml-audio
 IPATH=-I..\sfml\include
 CC=g++
-OBJS= main.o GameLogic.o UserInterface.o Ship.o Flyer.o StopWatch.o EntityHolder.o Entity.o
+OBJS= main.o GameLogic.o UserInterface.o Ship.o Flyer.o StopWatch.o EntityHolder.o Entity.o Collisions.o
 all: attacker.exe
 attacker.exe: $(OBJS)
 	$(CC) $(OBJS) $(LFLAGS) $(LPATH) -o attacker.exe
 main.o: main.cpp GameLogic.h
 	$(CC) $(CFLAGS) $(IPATH) -o main.o main.cpp
-GameLogic.o: GameLogic.cpp GameLogic.h UserInterface.h Ship.h Events.h TextureID.h StopWatch.h
+GameLogic.o: GameLogic.cpp GameLogic.h UserInterface.h Ship.h Events.h TextureID.h StopWatch.h Collisions.h
 	$(CC) $(CFLAGS) $(IPATH) -o GameLogic.o GameLogic.cpp
 UserInterface.o: UserInterface.cpp UserInterface.h Events.h Character.h TextureID.h ResourceHolder.h
 	$(CC) $(CFLAGS) $(IPATH) -o UserInterface.o UserInterface.cpp
@@ -23,5 +23,7 @@ EntityHolder.o: EntityHolder.h Entity.h Character.h
 	$(CC) $(CFLAGS) $(IPATH) -o EntityHolder.o EntityHolder.cpp
 Entity.o: Entity.h Character.h
 	$(CC) $(CFLAGS) $(IPATH) -o Entity.o Entity.cpp
+Collisions.o: Collisions.h Entity.h
+	$(CC) $(CFLAGS) $(IPATH) -o Collisions.o Collisions.cpp
 clean:
 	del *.o *.exe

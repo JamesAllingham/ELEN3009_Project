@@ -9,7 +9,8 @@ enum class TextureID
 	Ship,		
 	Flyer,
 	Laser,
-	Landscape
+	Landscape,
+	Power_Up
 };
 
 #endif

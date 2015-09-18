@@ -2,7 +2,7 @@
 
 Ship::Ship() : Entity{TextureID::Ship, Vector2f(mapLimits().x/2, mapLimits().y/2), Vector2f(150.f,150.f)}, _delta_position(0,0) 
 {
-	
+	std::cout << "Create ship" << std::endl;
 };
 
 void Ship::controlMovement(Events event) {
@@ -46,6 +46,19 @@ void Ship::move(float delta_time)
 	if (_moving_left) moveCharacter(-distance.x,0);
 	if (_moving_right) moveCharacter(distance.x,0);
 	_delta_position =  position() - old_position;
+}
+
+// The reason that I have made this a vitual function is that in future we might want to make the flyer and ship have differently shaped hit boxes
+list<Vector2f> Ship::hitboxPoints()
+{
+	list<Vector2f> hitbox_points;
+	Vector2f top_left_point = character().position;
+	// Add the points in a clockwise direction
+	hitbox_points.push_back(Vector2f(top_left_point.x, top_left_point.y));
+	hitbox_points.push_back(Vector2f(top_left_point.x + _width, top_left_point.y));
+	hitbox_points.push_back(Vector2f(top_left_point.x + _width, top_left_point.y - _height));
+	hitbox_points.push_back(Vector2f(top_left_point.x, top_left_point.y - _height));
+	return hitbox_points;
 }
 
 Vector2f Ship::changeInPosition() 

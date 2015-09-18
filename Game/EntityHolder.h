@@ -6,6 +6,8 @@ using std::list;
 #include <memory>
 using std::shared_ptr;
 
+#include <iostream> // For testing purposes
+
 #include "Entity.h"
 #include "Character.h"
 
@@ -17,7 +19,8 @@ public:
 	EntityholderIterator begin() {return _entities.begin();};
 	EntityholderIterator end() {return _entities.end();};
 	list<Character> characters();
-	void addEntity(shared_ptr<Entity> entity_ptr) {_entities.push_back(entity_ptr);};
+	void addEntity(shared_ptr<Entity> entity_ptr);
+	void eraseEntity(EntityholderIterator entity_itr);
 	int numberOfEntities () {return _entities.size();};
 	
 private:	
