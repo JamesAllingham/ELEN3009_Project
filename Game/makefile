@@ -14,14 +14,14 @@ GameLogic.o: GameLogic.cpp GameLogic.h UserInterface.h Ship.h Events.h TextureID
 UserInterface.o: UserInterface.cpp UserInterface.h Events.h Character.h TextureID.h ResourceHolder.h
 	$(CC) $(CFLAGS) $(IPATH) -o UserInterface.o UserInterface.cpp
 Ship.o: Ship.cpp Ship.h Events.h Character.h Entity.h
-	$(CC) $(CFLAGS) -o Ship.o Ship.cpp
+	$(CC) $(CFLAGS) $(IPATH) -o Ship.o Ship.cpp
 Flyer.o: Flyer.cpp Flyer.h Character.h Entity.h
-	$(CC) $(CFLAGS) -o Flyer.o Flyer.cpp
+	$(CC) $(CFLAGS) $(IPATH) -o Flyer.o Flyer.cpp
 StopWatch.o: StopWatch.h
-	$(CC) $(CFLAGS) -o StopWatch.o StopWatch.cpp
+	$(CC) $(CFLAGS) $(IPATH) -o StopWatch.o StopWatch.cpp
 EntityHolder.o: EntityHolder.h Entity.h Character.h
-	$(CC) $(CFLAGS) -o EntityHolder.o EntityHolder.cpp
+	$(CC) $(CFLAGS) $(IPATH) -o EntityHolder.o EntityHolder.cpp
 Entity.o: Entity.h Character.h
-	$(CC) $(CFLAGS) -o Entity.o Entity.cpp
+	$(CC) $(CFLAGS) $(IPATH) -o Entity.o Entity.cpp
 clean:
 	del *.o *.exe

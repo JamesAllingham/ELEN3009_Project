@@ -5,13 +5,18 @@
 #include "Character.h"
 #include "Entity.h"
 
+#include <SFML/System.hpp> // This is only temporary, using SFMLs Vector2f, but later will write a lightweight vector class to use instead
+using sf::Vector2f;
+
+#include <iostream> // For debugging
+
 class Ship : public Entity {
 
 public:
-	//Set the position and texture of the ship
-	// I don't think that the issue is caused by this constructor or the static variables
 	Ship();
 	void controlMovement(Events event);
+	Vector2f changeInPosition();
+	
 	virtual void move(float delta_time) override;
 	
 private:	
@@ -19,6 +24,8 @@ private:
 	bool _moving_down = false;
 	bool _moving_left = false;
 	bool _moving_right = false;
+	
+	Vector2f _delta_position;
 	
 	
 };	

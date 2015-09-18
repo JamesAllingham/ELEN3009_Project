@@ -1,6 +1,6 @@
 #include "Flyer.h"
 
-Flyer::Flyer() : Entity{TextureID::Flyer, RandomPosition(maximumX()), RandomPosition(maximumY()), 75.f} {
+Flyer::Flyer() : Entity{TextureID::Flyer, Vector2f(RandomPosition(mapLimits().x), RandomPosition(mapLimits().y)), Vector2f(75.f,75.f)} {
 	
 	//std::cout << "entering flyer constructor" <<std::endl;
 	//_number_of_flyers = 0;

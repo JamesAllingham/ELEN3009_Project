@@ -4,7 +4,7 @@
 GameLogic::GameLogic () : _user_interface(), _entities(), _player_ptr(new Ship)
 {
 	//std::cout << "constructor" << std::endl;
-	Entity::setMapLimits(_MAX_X,_MAX_Y);
+	Entity::setMapLimits(Vector2f(_MAX_X,_MAX_Y));
 	//std::cout << "setMapLimits" << std::endl;
 	//_player_ptr = shared_ptr<Ship> (new Ship);
 	_entities.addEntity(_player_ptr);
@@ -61,16 +61,12 @@ void GameLogic::update(float delta_time) {
 	
 	createEntities();
 	
-	//ugly logic, needs to be rewritten, shouldn't be calculating dt
-	auto old_x = _player_ptr->character().x;
-	
 	for (auto entity_ptr: _entities){
 		entity_ptr->move(delta_time);
 	}	
 	
-	auto delta_x = _player_ptr->character().x - old_x;
 	// re-center the view on the ship in the x-direction
-	_user_interface.moveWindow(delta_x);
+	_user_interface.moveWindow(_player_ptr->changeInPosition().x);
 }
 
 void GameLogic::createEntities () {

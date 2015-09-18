@@ -10,6 +10,9 @@ using std::make_shared;
 #include "Character.h"
 #include "Entity.h"
 
+#include <SFML/System.hpp> // This is only temporary, using SFMLs Vector2f, but later will write a lightweight vector class to use instead
+using sf::Vector2f;
+
 class Flyer : public Entity
 {
 public:

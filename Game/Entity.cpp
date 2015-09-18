@@ -1,18 +1,28 @@
 #include "Entity.h"
 
-Entity::Entity(TextureID id, float start_x, float start_y, float velocity): _character{id, start_x, start_y}, _velocity(velocity) {};
+Entity::Entity(TextureID id, Vector2f start_position, Vector2f velocity): _character{id, start_position}, _velocity(velocity) {};
 
-void Entity::setMapLimits (float max_x, float max_y)
+// void Entity::setMapLimits(float max_x, float max_y)
+// {
+	// _max_position.x = max_x; 
+	// _max_position.y = max_y;
+// }
+
+void Entity::setMapLimits(const Vector2f& max_position)
 {
-	_max_x = max_x; 
-	_max_y = max_y;
+	_max_position = max_position;
+	
 }
 
 void Entity::moveCharacter(float x, float y)
 {
-	_character.x += x;
-	_character.y += y;
+	Vector2f temporary_position_change(x,y);
+	_character.position += temporary_position_change;
 }
 
-float Entity::_max_x = 4800;
-float Entity::_max_y = 600;
+void Entity::moveCharacter(Vector2f position)
+{
+	_character.position += position;
+}	
+
+Vector2f Entity::_max_position = Vector2f(4800,600);

@@ -99,7 +99,7 @@ void UserInterface::processTextures(list<Character>& characters) {
 	for (auto character : characters){
 		Sprite _character;
 		_character.setTexture(_textures.get(character.texture_ID));
-		_character.setPosition(character.x,character.y);
+		_character.setPosition(character.position);
 		
 		//if (static_cast<int> (character.texture_ID) == 3) {
 		//	std::cout << "going to draw" << std::endl;

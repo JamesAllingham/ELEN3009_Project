@@ -1,6 +1,9 @@
 #include "Ship.h"
 
-Ship::Ship() : Entity{TextureID::Ship, maximumX()/2, maximumY()/2, 150.f} {};
+Ship::Ship() : Entity{TextureID::Ship, Vector2f(mapLimits().x/2, mapLimits().y/2), Vector2f(150.f,150.f)}, _delta_position(0,0) 
+{
+	
+};
 
 void Ship::controlMovement(Events event) {
 	
@@ -34,12 +37,21 @@ void Ship::controlMovement(Events event) {
 	}
 }
 
-void Ship::move(float delta_time) {
-	
+void Ship::move(float delta_time) 
+{
+	Vector2f old_position = position();
 	auto distance = delta_time * velocity();
-	if (_moving_up) moveCharacter(0, - distance);
-	if (_moving_down) moveCharacter(0,  + distance);
-	if (_moving_left) moveCharacter(- distance,0);
-	if (_moving_right) moveCharacter(+ distance,0);
+	if (_moving_up) moveCharacter(0, -distance.y);
+	if (_moving_down) moveCharacter(0, distance.y);
+	if (_moving_left) moveCharacter(-distance.x,0);
+	if (_moving_right) moveCharacter(distance.x,0);
+	_delta_position =  position() - old_position;
+}
+
+Vector2f Ship::changeInPosition() 
+{
+	Vector2f delta_position = _delta_position;
+	_delta_position = Vector2f(0,0);
 	
+	return delta_position;	
 }
