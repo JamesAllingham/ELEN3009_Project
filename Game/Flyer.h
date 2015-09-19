@@ -35,8 +35,8 @@ private:
 	static int _number_of_flyers;
 	static bool _srand_called;
 	
-	float _width = 50;
-	float _height = 25;
+	float _width = 75;
+	float _height = 37;
 	
 	//Character _enemy;
 	bool _moving_up= false;

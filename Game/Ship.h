@@ -30,7 +30,7 @@ private:
 	bool _moving_left = false;
 	bool _moving_right = false;
 	
-	float _width = 40;
+	float _width = 75;
 	float _height = 25;
 	
 	int _number_of_homing_missiles = 0;
