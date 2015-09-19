@@ -34,6 +34,8 @@ private:
 	void update(float delta_time);
 	void createEntities ();
 	void manageCollisions ();
+	void handleUserInput();
+	void followPlayer();
 	
 	UserInterface _user_interface;
 	EntityHolder _entities;

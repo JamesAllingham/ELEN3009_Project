@@ -8,6 +8,9 @@ UserInterface::UserInterface() : _game_window(VideoMode(800, 600), "Attacker"), 
 		_textures.load(TextureID::Ship,"resources/ship.png");
 		_textures.load(TextureID::Flyer,"resources/flyer.png");				
 		_textures.load(TextureID::Laser,"resources/laser.png");
+		_textures.load(TextureID::Power_Up,"resources/power_up.png");
+		_textures.load(TextureID::Missile,"resources/missile.png");
+		_textures.load(TextureID::Homing_Missile,"resources/homing_missile.png");
 	}
 	catch (const runtime_error& error)
 	{
@@ -47,6 +50,12 @@ void UserInterface::processEvents() {
 					case Keyboard::D:
 						_events.push_back(Events::D_Pressed);
 						break;
+					case Keyboard::E:
+						_events.push_back(Events::E_Pressed);
+						break;
+					case Keyboard::Space:
+						_events.push_back(Events::Space_Pressed);
+						break;
 					default:
 						break;
 				}
@@ -64,6 +73,12 @@ void UserInterface::processEvents() {
 						break;
 					case Keyboard::D:
 						_events.push_back(Events::D_Released);
+						break;
+					case Keyboard::E:
+						_events.push_back(Events::D_Released);
+						break;
+					case Keyboard::Space:
+						_events.push_back(Events::Space_Released);
 						break;
 					default:
 						break;

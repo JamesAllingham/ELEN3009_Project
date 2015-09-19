@@ -3,7 +3,7 @@
 
 enum class TextureID
 {
-	Heat_Seaking_Missile,
+	Homing_Missile,
 	Smart_Bomb,
 	Missile,
 	Ship,		

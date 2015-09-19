@@ -44,7 +44,7 @@ list<Vector2f> Flyer::hitboxPoints()
 }
 
 float Flyer::RandomPosition (float max_positon) {
-
+	// This function needs to take into account the size of the flyer so that they dont spawn half off of the screen
 	int rand_num;
 	if (!_srand_called) {
 		srand(time(0));

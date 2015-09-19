@@ -1,3 +1,6 @@
+#ifndef COLLISIONS
+#define COLLISIONS
+
 #include "Entity.h"
 
 #include <SFML/System.hpp>
@@ -6,11 +9,10 @@ using sf::Vector2f;
 using std::shared_ptr;
 #include <list>
 using std::list;
-
 using std::begin;
 using std::end;
 using std::next;
-using std::pair;
+
 using std::numeric_limits;
 
 #include <cmath>
@@ -31,7 +33,7 @@ class Collision{
 	
 };
 
-// May need to add a vector class depending on Boost, for now will use sfml
+// May need to add a vector class depending on Boost, for now will use sfml - actually this should not be a part of Collisions but should have its own file instead
 // class Vector2f{
 	
 	// public:
@@ -48,3 +50,4 @@ class Collision{
 	// private:
 	
 // };
+#endif

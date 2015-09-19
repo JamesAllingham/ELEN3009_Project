@@ -22,6 +22,7 @@ public:
 	Vector2f velocity() {return _velocity;};
 	Vector2f position()  {return _character.position;};
 	
+	// For now move and shoot are part of entity but in future we should look into having two more derived classes in the heirarchy - ShootingEntity and MovingEntity
 	virtual void move(float delta_time) = 0;
 	//virtual void shoot() = 0;
 	virtual list<Vector2f> hitboxPoints() = 0;

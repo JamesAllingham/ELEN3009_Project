@@ -18,6 +18,8 @@ public:
 	Ship();
 	void controlMovement(Events event);
 	Vector2f changeInPosition();
+	void addHomingMissiles() {_number_of_homing_missiles+=3;};
+	int numberOfHomingMissiles() { return _number_of_homing_missiles;};
 	
 	virtual void move(float delta_time) override;
 	virtual list<Vector2f> hitboxPoints() override;
@@ -30,6 +32,8 @@ private:
 	
 	float _width = 40;
 	float _height = 25;
+	
+	int _number_of_homing_missiles = 0;
 	
 	Vector2f _delta_position;
 	
