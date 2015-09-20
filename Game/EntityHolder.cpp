@@ -26,5 +26,5 @@ EntityholderIterator EntityHolder::eraseEntity(EntityholderIterator entity_itr)
 {
 	
 	//std::cout << "number of entities = " << numberOfEntities() << std::endl;
-	return _entities.erase(entity_itr);
+	return _entities.erase(entity_itr);	
 }

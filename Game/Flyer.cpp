@@ -1,5 +1,5 @@
 #include "Flyer.h"
-#include "Ship.h"
+
 
 Flyer::Flyer() : Entity{TextureID::Flyer, Vector2f(randomPosition(mapLimits().x), randomPosition(mapLimits().y)), Vector2f(75.f,75.f)} {
 	
@@ -73,4 +73,4 @@ list<Vector2f> Flyer::hitboxPoints()
 
 //Need to initialise this in the .cpp file
 int Flyer::_number_of_flyers = 0;
-shared_ptr<Ship> Flyer::_target;
+shared_ptr<Entity> Flyer::_target;

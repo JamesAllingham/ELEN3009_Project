@@ -124,7 +124,7 @@ void GameLogic::manageCollisions()
 	{	
 		for (auto entity_itr2 = next(entity_itr1); entity_itr2 != end(_entities); entity_itr2++)
 		{
-			if ((*entity_itr1)->character().texture_ID == TextureID::Laser) std::cout << "checking homing missiles" << std::endl;
+			//if ((*entity_itr1)->character().texture_ID == TextureID::Laser) std::cout << "checking homing missiles" << std::endl;
 			
 			if (collision.collision(*entity_itr1,*entity_itr2))
 			{		

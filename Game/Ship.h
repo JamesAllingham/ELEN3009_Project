@@ -5,7 +5,6 @@
 #include "Character.h"
 #include "Entity.h"
 #include "Laser.h"
-//#include "Flyer.h"
 #include "HomingMissile.h"
 #include "EntityHolder.h"
 
@@ -20,7 +19,7 @@ using std::shared_ptr;
 
 using std::numeric_limits;
 
-class Flyer;
+//class Flyer;
 
 class Ship : public Entity {
 

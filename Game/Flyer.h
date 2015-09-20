@@ -17,7 +17,7 @@ using std::make_shared;
 #include <SFML/System.hpp> // This is only temporary, using SFMLs Vector2f, but later will write a lightweight vector class to use instead
 using sf::Vector2f;
 
-class Ship;
+//class Ship;
 
 class Flyer : public Entity
 {
@@ -29,7 +29,7 @@ public:
 	//Character getFlyer() {return _flyer;};
 	//shared_ptr<Flyer> createFlyer();
 	static int numberOfFlyers() { return _number_of_flyers;};
-	static void setTarget(const shared_ptr<Ship>& target) { _target = target;};
+	static void setTarget(const shared_ptr<Entity>& target) { _target = target;};
 	
 	virtual void move (float delta_time)  override;
 	virtual list<Vector2f> hitboxPoints() override;	
@@ -38,7 +38,7 @@ public:
 private:
 
 	static int _number_of_flyers;
-	static shared_ptr<Ship> _target;
+	static shared_ptr<Entity> _target;
 	
 	float _width = 75;
 	float _height = 37;

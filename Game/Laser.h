@@ -23,7 +23,7 @@ public:
 	virtual shared_ptr<Entity> shoot(float delta_time);
 	
 private:		
-	float _width = 25;
+	float _width = 35;
 	float _height = 25;	
 };	
 #endif

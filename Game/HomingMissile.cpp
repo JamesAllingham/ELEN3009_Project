@@ -27,7 +27,7 @@ void HomingMissile::move(float delta_time)
 	//std::cout << "HomingMissile Moving" << std::endl;
 	if(_nearest_target->destroyed())
 	{
-		std::cout << "target destroyed" << std::endl;
+		//std::cout << "target destroyed" << std::endl;
 		destroy();
 	}
 	else 

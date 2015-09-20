@@ -11,6 +11,8 @@ using std::shared_ptr;
 #include "Entity.h"
 #include "Character.h"
 
+using std::runtime_error;
+
 using EntityholderIterator = list<shared_ptr<Entity>>::iterator;
 
 class EntityHolder {

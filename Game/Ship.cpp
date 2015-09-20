@@ -1,5 +1,5 @@
 #include "Ship.h"
-#include "Flyer.h"
+
 
 Ship::Ship() : Entity{TextureID::Ship, Vector2f(mapLimits().x/2, mapLimits().y/2), Vector2f(250.f,250.f)}, _delta_position(0,0) 
 {

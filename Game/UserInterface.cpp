@@ -5,7 +5,7 @@ UserInterface::UserInterface() : _game_window(VideoMode(800, 600), "Attacker"), 
 	try 
 	{
 		_textures.load(TextureID::Landscape,"resources/space_backdrop.png");
-		_textures.load(TextureID::Ship,"resources/temp_ship.png");
+		_textures.load(TextureID::Ship,"resources/ship.png");
 		_textures.load(TextureID::Flyer,"resources/flyer.png");				
 		_textures.load(TextureID::Laser,"resources/laser.png");
 		_textures.load(TextureID::Powerup,"resources/power_up.png");
