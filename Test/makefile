@@ -5,7 +5,7 @@ IPATH=-I..\gtest\include -I..\Game -I..\sfml\include
 CC=g++
 ATTACKERPATH:=..\Game
 MAKE=mingw32-make
-OBJS=main.o ResourceHolder_unit_tests.o Collisions_unit_tests.o Flyer_unit_tests.o $(ATTACKERPATH)\Flyer.o $(ATTACKERPATH)\Collisions.o $(ATTACKERPATH)\Ship.o $(ATTACKERPATH)\Entity.o $(ATTACKERPATH)\Missile.o $(ATTACKERPATH)\Laser.o $(ATTACKERPATH)\HomingMissile.o
+OBJS=main.o ResourceHolder_unit_tests.o Collisions_unit_tests.o Flyer_unit_tests.o EntityHolder_unit_tests.o $(ATTACKERPATH)\Flyer.o $(ATTACKERPATH)\Collisions.o $(ATTACKERPATH)\Ship.o $(ATTACKERPATH)\Entity.o $(ATTACKERPATH)\Missile.o $(ATTACKERPATH)\Laser.o $(ATTACKERPATH)\HomingMissile.o $(ATTACKERPATH)\EntityHolder.o
 all: test.exe
 test.exe: $(OBJS) 
 	$(CC) $(OBJS) $(LFLAGS) $(LPATH) -o test.exe
@@ -17,6 +17,8 @@ Collisions_unit_tests.o: Collisions_unit_tests.cpp $(ATTACKERPATH)\Collisions.h 
 	$(CC) $(CFLAGS) $(IPATH) Collisions_unit_tests.cpp -o Collisions_unit_tests.o
 Flyer_unit_tests.o: Flyer_unit_tests.cpp $(ATTACKERPATH)\Character.h $(ATTACKERPATH)\Entity.h $(ATTACKERPATH)\Missile.h
 	$(CC) $(CFLAGS) $(IPATH) Flyer_unit_tests.cpp -o Flyer_unit_tests.o
+EntityHolder_unit_tests.o: EntityHolder_unit_tests.cpp $(ATTACKERPATH)\EntityHolder.h $(ATTACKERPATH)\Flyer.h $(ATTACKERPATH)\Ship.h
+	$(CC) $(CFLAGS) $(IPATH) EntityHolder_unit_tests.cpp -o EntityHolder_unit_tests.o
 $(ATTACKERPATH)\Flyer.o:
 	$(MAKE) -C $(ATTACKERPATH)
 $(ATTACKERPATH)\Ship.o:
@@ -30,6 +32,8 @@ $(ATTACKERPATH)\Missile.o:
 $(ATTACKERPATH)\Laser.o:
 	$(MAKE) -C $(ATTACKERPATH)
 $(ATTACKERPATH)\HomingMissile.o:
+	$(MAKE) -C $(ATTACKERPATH)
+$(ATTACKERPATH)\EntityHolder.o:
 	$(MAKE) -C $(ATTACKERPATH)
 clean:
 	del *.o *.exe
