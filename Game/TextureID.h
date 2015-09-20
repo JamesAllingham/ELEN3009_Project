@@ -10,7 +10,7 @@ enum class TextureID
 	Flyer,
 	Laser,
 	Landscape,
-	Power_Up
+	Powerup
 };
 
 #endif

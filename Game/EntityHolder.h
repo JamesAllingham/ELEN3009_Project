@@ -11,16 +11,18 @@ using std::shared_ptr;
 #include "Entity.h"
 #include "Character.h"
 
+using EntityholderIterator = list<shared_ptr<Entity>>::iterator;
+
 class EntityHolder {
 
 public:	
-	using EntityholderIterator = list<shared_ptr<Entity>>::iterator;
+	
 
 	EntityholderIterator begin() {return _entities.begin();};
 	EntityholderIterator end() {return _entities.end();};
 	list<Character> characters();
 	void addEntity(shared_ptr<Entity> entity_ptr);
-	void eraseEntity(EntityholderIterator entity_itr);
+	EntityholderIterator eraseEntity(EntityholderIterator entity_itr);
 	int numberOfEntities () {return _entities.size();};
 	
 private:	

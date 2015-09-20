@@ -14,6 +14,7 @@ public:
 	
 	TextureID texture_ID;
     Vector2f position;
+	bool facing_right = true;
 };
 
 #endif

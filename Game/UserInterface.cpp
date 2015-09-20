@@ -5,10 +5,10 @@ UserInterface::UserInterface() : _game_window(VideoMode(800, 600), "Attacker"), 
 	try 
 	{
 		_textures.load(TextureID::Landscape,"resources/space_backdrop.png");
-		_textures.load(TextureID::Ship,"resources/ship.png");
+		_textures.load(TextureID::Ship,"resources/temp_ship.png");
 		_textures.load(TextureID::Flyer,"resources/flyer.png");				
 		_textures.load(TextureID::Laser,"resources/laser.png");
-		_textures.load(TextureID::Power_Up,"resources/power_up.png");
+		_textures.load(TextureID::Powerup,"resources/power_up.png");
 		_textures.load(TextureID::Missile,"resources/missile.png");
 		_textures.load(TextureID::Homing_Missile,"resources/homing_missile.png");
 	}
@@ -24,6 +24,8 @@ UserInterface::UserInterface() : _game_window(VideoMode(800, 600), "Attacker"), 
 	_textures.get(TextureID::Landscape).setRepeated(true);
 	_background.setTexture(_textures.get(TextureID::Landscape));
 	_background.setTextureRect(IntRect(0,0,4800,600));
+	
+	_game_window.setKeyRepeatEnabled(false);
 	
 }
 
@@ -112,16 +114,17 @@ void UserInterface::render(list<Character>& characters) {
 void UserInterface::processTextures(list<Character>& characters) {
 	
 	for (auto character : characters){
-		Sprite _character;
-		_character.setTexture(_textures.get(character.texture_ID));
-		_character.setPosition(character.position);
+		Sprite character_sprite;
+		character_sprite.setTexture(_textures.get(character.texture_ID));
+		character_sprite.setPosition(character.position);
+		//if (!character.facing_right) character_sprite.scale(-1.f,1.f);
 		
 		//if (static_cast<int> (character.texture_ID) == 3) {
 		//	std::cout << "going to draw" << std::endl;
-		//	_game_window.draw(_character);
+		//	_game_window.draw(character_sprite);
 		//}
 		//if (character.texture_ID == TextureID::Ship) std::cout << "Ship" << std::endl;
-		_game_window.draw(_character);
+		_game_window.draw(character_sprite);
 		//std::cout << "drawn" << std::endl;
 	}
 	

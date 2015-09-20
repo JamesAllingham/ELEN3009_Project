@@ -14,12 +14,17 @@ list<Character> EntityHolder::characters()
 
 void EntityHolder::addEntity(shared_ptr<Entity> entity_ptr)
 {
-	 _entities.push_back(entity_ptr);
-	 std::cout << "number of entities = " << numberOfEntities() << std::endl;
+	if (entity_ptr)
+	{
+		_entities.push_back(entity_ptr);
+		//std::cout << "number of entities = " << numberOfEntities() << std::endl;
+	}
+	 
 }
 	
-void EntityHolder::eraseEntity(EntityholderIterator entity_itr)
+EntityholderIterator EntityHolder::eraseEntity(EntityholderIterator entity_itr)
 {
-	_entities.erase(entity_itr);
-	std::cout << "number of entities = " << numberOfEntities() << std::endl;
+	
+	//std::cout << "number of entities = " << numberOfEntities() << std::endl;
+	return _entities.erase(entity_itr);
 }

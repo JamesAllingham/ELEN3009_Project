@@ -1,11 +1,61 @@
 #include "Ship.h"
+#include "Flyer.h"
 
-Ship::Ship() : Entity{TextureID::Ship, Vector2f(mapLimits().x/2, mapLimits().y/2), Vector2f(150.f,150.f)}, _delta_position(0,0) 
+Ship::Ship() : Entity{TextureID::Ship, Vector2f(mapLimits().x/2, mapLimits().y/2), Vector2f(250.f,250.f)}, _delta_position(0,0) 
 {
-	std::cout << "Create ship" << std::endl;
+	//std::cout << "Create ship" << std::endl;
 };
 
-void Ship::controlMovement(Events event) {
+shared_ptr<Entity> Ship::shoot(float delta_time)
+{
+	if (_shooting) 
+	{
+		_shooting = false;
+		Vector2f velocity_unit;
+		if (facingRight()) 
+		{
+			velocity_unit = Vector2f(1,0);
+			return shared_ptr<Entity> (new Laser(character().position + Vector2f(75.f, (37.f - 7.f)/2), velocity_unit));
+		}
+		else 
+		{
+			velocity_unit = Vector2f(-1,0);
+			return shared_ptr<Entity> (new Laser(character().position + Vector2f(-25.f, (37.f - 7.f)/2), velocity_unit));
+		}
+	}
+	
+	if (_shoot_homing_missile)
+	{
+		
+		_shoot_homing_missile = false;
+		if (_number_of_homing_missiles > 0)
+		{
+			--_number_of_homing_missiles;
+			return shared_ptr<Entity> (new HomingMissile(character().position + Vector2f(75.f, (37.f - 23.f)/2), _nearest_target));
+		}
+		
+		
+	}
+
+	return shared_ptr<Entity> (nullptr);
+	
+}
+
+void Ship::controlShooting(Events event)
+{
+	switch (event){
+		case Events::Space_Pressed:
+			_shooting = true;
+			break;
+		case Events::E_Pressed:
+			_shoot_homing_missile = true;
+		default:
+			break;
+	}
+}
+
+void Ship::controlMovement(Events event)
+{
 	
 	switch (event){
 		case Events::W_Pressed:
@@ -46,6 +96,13 @@ void Ship::move(float delta_time)
 	if (_moving_left) moveCharacter(-distance.x,0);
 	if (_moving_right) moveCharacter(distance.x,0);
 	_delta_position =  position() - old_position;
+	
+	if ( (_moving_left && !_moving_right && facingRight()) || (!_moving_left && _moving_right && !facingRight()) )
+	{
+		//if (facingRight()) moveCharacter(_width,0);
+		//else moveCharacter(-_width,0);
+		switchDirection();
+	}
 }
 
 // The reason that I have made this a vitual function is that in future we might want to make the flyer and ship have differently shaped hit boxes
@@ -67,4 +124,24 @@ Vector2f Ship::changeInPosition()
 	_delta_position = Vector2f(0,0);
 	
 	return delta_position;	
+}
+
+void Ship::setNearestTarget(EntityHolder& targets) 
+{
+	auto minimum = numeric_limits<float>::max();
+	for ( auto target : targets)
+	{
+		if (target->character().texture_ID == TextureID::Flyer)
+		{
+			auto diff_in_x = target->character().position.x - character().position.x;
+			auto diff_in_y = target->character().position.y - character().position.y;
+			auto distance = sqrtf(diff_in_x*diff_in_x + diff_in_y*diff_in_y);
+			if ( distance < minimum)
+			{
+				_nearest_target = target;
+				minimum = distance;
+			}
+			
+		}
+	}
 }

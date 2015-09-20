@@ -1,11 +1,12 @@
 #include "Flyer.h"
+#include "Ship.h"
 
-Flyer::Flyer() : Entity{TextureID::Flyer, Vector2f(RandomPosition(mapLimits().x), RandomPosition(mapLimits().y)), Vector2f(75.f,75.f)} {
+Flyer::Flyer() : Entity{TextureID::Flyer, Vector2f(randomPosition(mapLimits().x), randomPosition(mapLimits().y)), Vector2f(75.f,75.f)} {
 	
 	//std::cout << "entering flyer constructor" <<std::endl;
 	//_number_of_flyers = 0;
 	//Entity{TextureID::Flyer, static_cast<float>(_rand_x), static_cast<float>(_rand_y), 75.f};
-	std::cout << "Create flyer" << std::endl;
+	//std::cout << "Create flyer" << std::endl;
 	_number_of_flyers++;
 }
 
@@ -15,6 +16,23 @@ Flyer::~Flyer()
 	//std::cout << "Number of Flyers: " << _number_of_flyers << std::endl;
 }
 
+shared_ptr<Entity> Flyer::shoot(float delta_time)
+{	
+	_time_since_last_shot += delta_time;
+	if (_time_since_last_shot > 10.f) 
+	{
+		if (abs(character().position.x - _target->character().position.x) <= 400.f) 
+		{
+			Vector2f velocity_unit(_target->character().position - character().position);
+			velocity_unit /= sqrtf(velocity_unit.x*velocity_unit.x + velocity_unit.y*velocity_unit.y); // should check for 0's
+			_time_since_last_shot = 0.f;
+			return shared_ptr<Entity> (new Missile(character().position, velocity_unit));
+		}
+	}
+	
+	return shared_ptr<Entity> (nullptr);
+}
+
 // shared_ptr<Flyer> Flyer::createFlyer() {
 	// shared_ptr<Flyer> flyer_ptr = make_shared<Flyer>();
 	// return flyer_ptr;
@@ -22,6 +40,16 @@ Flyer::~Flyer()
 
 void Flyer::move(float delta_time){
 	
+	_time_since_last_movement += delta_time;
+	//Vector2f unit_current_velocity(0,0);
+	if (_time_since_last_movement >= 1.0f) 
+	{
+		_unit_current_velocity = Vector2f(randomPosition(mapLimits().x) - character().position.x, randomPosition(mapLimits().y) - character().position.y);
+		_unit_current_velocity /= sqrtf(_unit_current_velocity.x*_unit_current_velocity.x + _unit_current_velocity.y*_unit_current_velocity.y);
+		_time_since_last_movement =0;
+	}
+	//else std::cout << "x velocity "<< _unit_current_velocity.x << std::endl;
+	moveCharacter(velocity().x*delta_time*_unit_current_velocity.x, velocity().y*delta_time*_unit_current_velocity.y);
 	//auto distance = delta_time * _velocity;
 	//if (_moving_up) _player.y -= distance;
 	//if (_moving_down) _player.y += distance;
@@ -43,18 +71,6 @@ list<Vector2f> Flyer::hitboxPoints()
 	return hitbox_points;
 }
 
-float Flyer::RandomPosition (float max_positon) {
-	// This function needs to take into account the size of the flyer so that they dont spawn half off of the screen
-	int rand_num;
-	if (!_srand_called) {
-		srand(time(0));
-		_srand_called = true;
-	}
-	int tmp = static_cast<int>(max_positon);
-	rand_num = rand()%tmp;
-	return static_cast<float>(rand_num);
-}
-
 //Need to initialise this in the .cpp file
 int Flyer::_number_of_flyers = 0;
-bool Flyer::_srand_called = false;
+shared_ptr<Ship> Flyer::_target;
