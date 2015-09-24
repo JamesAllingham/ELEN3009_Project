@@ -2,7 +2,7 @@
 
 GameLogic::GameLogic () : _user_interface(), _entities(), _player_ptr(new Ship)
 {
-	//std::cout << "constructor" << std::endl;
+	//std::cout << "Game Logic constructor" << std::endl;
 	Entity::setMapLimits(Vector2f(_MAX_X,_MAX_Y));
 	Flyer::setTarget(_player_ptr);
 	_entities.addEntity(_player_ptr);
@@ -32,6 +32,7 @@ void GameLogic::runGame() {
 }
 
 void GameLogic::update(float delta_time) {
+	//std::cout << "update" << std::endl;
 	// Event management
 	handleUserInput();
 	
@@ -39,18 +40,9 @@ void GameLogic::update(float delta_time) {
 	createEntities();
 	
 	// Move all entites based on their rules
-	//std::cout << "moving entities" << std::endl;
-	for (auto entity_itr = begin(_entities); entity_itr != end(_entities); entity_itr++){
-		(*entity_itr)->move(delta_time);
-		if ( (*entity_itr)->character().texture_ID == TextureID::Missile || (*entity_itr)->character().texture_ID == TextureID::Laser)
-		{
-			//if ((*entity_itr)->character().texture_ID == TextureID::Laser) std::cout << "Laser movement called" << std::endl;
-			if (abs((*entity_itr)->position().x - _player_ptr->position().x) > 400) 
-			{
-				_entities.eraseEntity(entity_itr);
-				//std::cout << "erasing missile "<< std::endl;
-			}
-		}
+	for (auto entity_ptr: _entities)
+	{
+		entity_ptr->move(delta_time);		
 	}	
 	
 	if (!Powerup::PowerupOnTheMap() ) _entities.addEntity(make_shared<Powerup> ());
@@ -124,7 +116,6 @@ void GameLogic::manageCollisions()
 	{	
 		for (auto entity_itr2 = next(entity_itr1); entity_itr2 != end(_entities); entity_itr2++)
 		{
-			//if ((*entity_itr1)->character().texture_ID == TextureID::Laser) std::cout << "checking homing missiles" << std::endl;
 			
 			if (collision.collision(*entity_itr1,*entity_itr2))
 			{		
@@ -142,11 +133,9 @@ void GameLogic::manageCollisions()
 				{
 					_number_of_flyers_killed++;
 					std::cout << _NUMBER_OF_FLYERS_TO_KILL - _number_of_flyers_killed << " Flyers left to kill" << std::endl;
-					//std::cout << "number of entities = " << _entities.numberOfEntities() << std::endl;
 					(*entity_itr2)->destroy();
 					(*entity_itr1)->destroy();
 				}
-				//else entity_itr2++;
 				else if ((*entity_itr1)->character().texture_ID == TextureID::Ship && (*entity_itr2)->character().texture_ID == TextureID::Missile)
 				{
 					endGame();
@@ -176,19 +165,7 @@ void GameLogic::manageCollisions()
 					(*entity_itr2)->destroy();
 					(*entity_itr1)->destroy();
 					
-				}
-				// Actual logic will be something like:
-				// Only need to check each interaction once
-				// The following interactions are potentiall important
-				// Flyer--Ship If the player crashes into a flyer then the game should end
-				// Flyer--Laser If a Flyer is hit with a misile it should be distroyed and the number of flyers destroyed should be incremented, the laser should also be destroyed
-				// Flyer--Homing Missile as above
-				// Flyer--Flyer Maybe this should do something, but more likely we will allow flyers to pass through each other
-				// Missile--Ship If the player is hit by a missile the game should end
-				// Missile--Missile If two missiles collide they should be destroyed
-				// Missile--Laser If the player hits a missile with their laser, they should be destroyed
-				// Power Up--Ship If the player lands on a power up they should get a number of heat seeking missiles
-				// Homing Missile--Missile If the players homin missile comes into contact with a missile maybe it should also be destoryed
+				}				
 			}
 		}			
 	}
@@ -209,10 +186,7 @@ void GameLogic::manageCollisions()
 
 void GameLogic::createEntities () {
 
-	while (Flyer::numberOfFlyers() + _number_of_flyers_killed < _NUMBER_OF_FLYERS_TO_KILL) {
-		//std::cout << "creating flyers" << std::endl;
-		//shared_ptr<Flyer> flyer_ptr = make_shared<Flyer>();
-		//std::cout << "adding to vector" << std::endl;
+	while (Flyer::numberOfFlyers() + _number_of_flyers_killed < _NUMBER_OF_FLYERS_TO_KILL) {		
 		_entities.addEntity(shared_ptr<Flyer> (new Flyer));
 	}
 }

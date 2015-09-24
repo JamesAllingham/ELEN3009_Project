@@ -23,23 +23,17 @@ list<Vector2f> HomingMissile::hitboxPoints()
 }
 
 void HomingMissile::move(float delta_time) 
-{
-	//std::cout << "HomingMissile Moving" << std::endl;
+{	
 	if(_nearest_target->destroyed())
-	{
-		//std::cout << "target destroyed" << std::endl;
-		destroy();
+	{		
+		this->destroy();
 	}
 	else 
 	{
-		//std::cout << "Homing in on target" << std::endl;
 		Vector2f velocity_unit(_nearest_target->character().position - character().position);
 		velocity_unit /= sqrtf(velocity_unit.x*velocity_unit.x + velocity_unit.y*velocity_unit.y);
 		moveCharacter(velocity().x*delta_time*velocity_unit.x, velocity().y*delta_time*velocity_unit.y);
-		//std::cout << "Homed on target" << std::endl;
 	}
-	//std::cout << sqrtf(character().position.x*character().position.x + character().position.y*character().position.y) << std::endl;
-	//std::cout << "Position x " << character().position.x << " y " << character().position.y << std::endl;
 }
 
 shared_ptr<Entity> HomingMissile::shoot(float delta_time) 

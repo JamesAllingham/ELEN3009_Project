@@ -2,11 +2,6 @@
 
 
 Flyer::Flyer() : Entity{TextureID::Flyer, Vector2f(randomPosition(mapLimits().x), randomPosition(mapLimits().y)), Vector2f(75.f,75.f)} {
-	
-	//std::cout << "entering flyer constructor" <<std::endl;
-	//_number_of_flyers = 0;
-	//Entity{TextureID::Flyer, static_cast<float>(_rand_x), static_cast<float>(_rand_y), 75.f};
-	//std::cout << "Create flyer" << std::endl;
 	_number_of_flyers++;
 }
 
@@ -49,12 +44,7 @@ void Flyer::move(float delta_time){
 		_time_since_last_movement =0;
 	}
 	//else std::cout << "x velocity "<< _unit_current_velocity.x << std::endl;
-	moveCharacter(velocity().x*delta_time*_unit_current_velocity.x, velocity().y*delta_time*_unit_current_velocity.y);
-	//auto distance = delta_time * _velocity;
-	//if (_moving_up) _player.y -= distance;
-	//if (_moving_down) _player.y += distance;
-	//if (_moving_left) _player.x -= distance;
-	//if (_moving_right) _player.x += distance;
+	moveCharacter(velocity().x*delta_time*_unit_current_velocity.x, velocity().y*delta_time*_unit_current_velocity.y);	
 	
 }
 

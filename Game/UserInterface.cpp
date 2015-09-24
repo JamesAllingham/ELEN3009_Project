@@ -1,6 +1,8 @@
 #include "UserInterface.h"
 
-UserInterface::UserInterface() : _game_window(VideoMode(800, 600), "Attacker"), _camera(), _textures(), _background() {
+UserInterface::UserInterface() : _game_window(VideoMode(800, 720), "Attacker"), _camera(), _mini_map(), _textures(), _background(), _focusWindow(Vector2f(800, 600)) 
+{
+	//std::cout << "User interface constructor" << std::endl;
 	
 	try 
 	{
@@ -19,17 +21,26 @@ UserInterface::UserInterface() : _game_window(VideoMode(800, 600), "Attacker"), 
 	}	
 	
 	// The camera object will allow the implementation of scrolling
-	_camera.reset(FloatRect(2000.f,0.f,800.f,600.f)); //the camera is a 800x600 rectangle located at (0,0)
-	_game_window.setView(_camera);
+	_game_window.setView(_camera);	
+	_camera.reset(FloatRect(2000.f,0.f,800.f,600.f)); 	
+	_camera.setViewport(FloatRect(0.f,0.2f,1.f,0.833f));
+	_mini_map.reset(FloatRect(0.f,0.f,4800.f,600.f));
+	_mini_map.setViewport(FloatRect(0.1f,0.0f,0.8f,0.167f));
 	_textures.get(TextureID::Landscape).setRepeated(true);
 	_background.setTexture(_textures.get(TextureID::Landscape));
 	_background.setTextureRect(IntRect(0,0,4800,600));
+	
+	_focusWindow.setFillColor(Color(255, 255, 255, 0));
+	_focusWindow.setOutlineThickness(-25);
+	_focusWindow.setOutlineColor(Color(250, 150, 100));
+	_focusWindow.setPosition(2000.f,0.f);
 	
 	_game_window.setKeyRepeatEnabled(false);
 	
 }
 
-void UserInterface::processEvents() {
+void UserInterface::processEvents() 
+{
 
 	_events.clear();
 	Event event;
@@ -95,42 +106,52 @@ void UserInterface::processEvents() {
 	}
 }
 
-void UserInterface::closeWindow() {
+void UserInterface::closeWindow() 
+{
 	_game_window.close();
 }
 
-void UserInterface::render(list<Character>& characters) {
+void UserInterface::render(list<Character>& characters) 
+{
 
-	_game_window.clear();
+	_game_window.clear();	
 	
-	//draw background before characters so that it appears behind them
+	_game_window.setView(_camera);
+	_background.setColor(sf::Color(255, 255, 255, 255));
 	_game_window.draw(_background);
+	_game_window.setView(_mini_map);
+	_background.setColor(sf::Color(255, 255, 255, 50));
+	_game_window.draw(_background);
+	_game_window.draw(_focusWindow);
 	processTextures(characters);
 	
 	_game_window.display();
 
 }
 
-void UserInterface::processTextures(list<Character>& characters) {
+void UserInterface::processTextures(list<Character>& characters) 
+{
 	
 	for (auto character : characters){
 		Sprite character_sprite;
 		character_sprite.setTexture(_textures.get(character.texture_ID));
-		character_sprite.setPosition(character.position);
-		//if (!character.facing_right) character_sprite.scale(-1.f,1.f);
-		
-		//if (static_cast<int> (character.texture_ID) == 3) {
-		//	std::cout << "going to draw" << std::endl;
-		//	_game_window.draw(character_sprite);
-		//}
-		//if (character.texture_ID == TextureID::Ship) std::cout << "Ship" << std::endl;
-		_game_window.draw(character_sprite);
-		//std::cout << "drawn" << std::endl;
+		character_sprite.setPosition(character.position);				
+		drawSprite(character_sprite);
 	}
 	
 }
 
-void UserInterface::moveWindow(float delta_x){
+void UserInterface::moveWindow(float delta_x)
+{
 	_camera.move(delta_x,0.f);
+	_focusWindow.move(delta_x,0.f);
 	_game_window.setView(_camera);
+}
+
+void UserInterface::drawSprite(const Sprite& texture)
+{
+	_game_window.setView(_mini_map);
+	_game_window.draw(texture);
+	_game_window.setView(_camera);
+	_game_window.draw(texture);
 }

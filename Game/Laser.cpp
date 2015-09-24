@@ -24,10 +24,12 @@ list<Vector2f> Laser::hitboxPoints()
 }
 
 void Laser::move(float delta_time) 
-{
-	//std::cout << "Laser Moving" << std::endl;
+{	
 	moveCharacter(velocity().x*delta_time, velocity().y*delta_time);
-	//std::cout << "Position x " << character().position.x << " y " << character().position.y << std::endl;
+	if (position().x == mapLimits().x || position().x == 0.f || position().y == mapLimits().y || position().y == 0.f)
+	{
+		this->destroy();
+	}
 }
 
 shared_ptr<Entity> Laser::shoot(float delta_time) 

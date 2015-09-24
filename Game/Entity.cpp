@@ -21,14 +21,36 @@ void Entity::moveCharacter(float x, float y)
 	//_character.position += temporary_position_change;
 }
 
-void Entity::moveCharacter(Vector2f position)
+void Entity::moveCharacter(Vector2f position) // Needs to consider width and height
 {
 	//Needs to check when in the corner (calling both x and y maxes)
 	if (_character.position.x + position.x > _max_position.x || _character.position.x + position.x < 0.f || _character.position.y + position.y > _max_position.y || _character.position.y + position.y < 0.f) 
-	{
-		//std::cout << "end of range" << std::endl;
-		if (_character.position.x + position.x > _max_position.x || _character.position.x + position.x < 0.f) _character.position.y += position.y;
-		if (_character.position.y + position.y > _max_position.y || _character.position.y + position.y < 0.f) _character.position.x += position.x;
+	{		
+		if (_character.position.x + position.x > _max_position.x || _character.position.x + position.x < 0.f)
+		{
+			_character.position.y += position.y;
+			if (_character.position.x + position.x >= _max_position.x) 
+			{					
+				_character.position.x += _max_position.x - _character.position.x;
+			}
+			else 
+			{
+				_character.position.x += 0.f - _character.position.x;
+			}
+		}
+		if (_character.position.y + position.y > _max_position.y || _character.position.y + position.y < 0.f)
+		{
+			_character.position.x += position.x;
+			if (_character.position.y + position.y >= _max_position.y) 
+			{					
+				_character.position.y += _max_position.y - _character.position.y;
+			}
+			else 
+			{
+				_character.position.y += 0.f - _character.position.y;
+			}
+		}		
+		
 	}
 	else _character.position += position;
 }

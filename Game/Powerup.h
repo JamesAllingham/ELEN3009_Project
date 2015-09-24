@@ -24,8 +24,8 @@ public:
 	static bool PowerupOnTheMap ();
 	
 private:		
-	float _width = 23;
-	float _height = 25;
+	float _width = 42;
+	float _height = 48;
 	static bool _powerup_on_the_map;
 };	
 #endif

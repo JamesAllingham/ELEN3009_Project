@@ -45,9 +45,10 @@ private:
 	shared_ptr<Ship> _player_ptr;
 	bool _game_running = true;
 	int _number_of_flyers_killed = 0;
-	static constexpr const int _NUMBER_OF_FLYERS_TO_KILL = 5;
-	static constexpr const float _MAX_X = 4800.f;
-	static constexpr const float _MAX_Y = 600.f;	
-	static constexpr const auto _FPS_LIMIT = 120.f; //this should be a constant I think, we never want it to change. should also be static since it is common to all instances of the game. the constexpr is a c++11 keyword used to allow us to have this static const
+	static constexpr const auto _NUMBER_OF_FLYERS_TO_KILL = 15;
+	static constexpr const auto _MAX_X = 4800.f;
+	static constexpr const auto _MAX_Y = 600.f;	
+	static constexpr const auto _MAX_ON_SCREEN_DISTANCE_FROM_PLAYER = 400.f;
+	static constexpr const auto _FPS_LIMIT = 120.f; 
 };
 #endif
