@@ -9,9 +9,21 @@ Flyer::~Flyer()
 {
 	_number_of_flyers--;
 	_number_of_flyers_killed++;
-	std::cout << "Number of Flyers killed: " << _number_of_flyers_killed << std::endl;
-	std::cout << "Number of Flyers : " << _number_of_flyers << std::endl;
 }
+
+void Flyer::collide(shared_ptr<Entity> collider) 
+{
+	switch (collider->id())
+	{
+		case EntityID::Ship:
+		case EntityID::Laser:
+		case EntityID::Homing_Missile:		
+			destroy();
+			break;
+		default:
+			break;
+	}
+}	
 
 shared_ptr<Entity> Flyer::shoot(float delta_time)
 {	

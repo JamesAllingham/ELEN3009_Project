@@ -10,6 +10,19 @@ Laser::~Laser()
 	
 }
 
+void Laser::collide(shared_ptr<Entity> collider) 
+{
+	switch (collider->id())
+	{		
+		case EntityID::Flyer:
+		case EntityID::Missile:			
+			destroy();
+			break;
+		default:
+			break;
+	}	
+}	
+
 list<Vector2f> Laser::hitboxPoints()
 {
 	list<Vector2f> hitbox_points;

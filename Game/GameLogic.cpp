@@ -66,6 +66,9 @@ void GameLogic::update(float delta_time) {
 	
 	// re-center the view on the ship in the x-direction
 	followPlayer();
+	
+	// End the game if the player has been distoryed
+	if (_player_ptr->destroyed()) endGame();
 }
 
 void GameLogic::followPlayer()
@@ -116,56 +119,10 @@ void GameLogic::manageCollisions()
 	{	
 		for (auto entity_itr2 = next(entity_itr1); entity_itr2 != end(_entities); entity_itr2++)
 		{
-			
-			if (collision.collision(*entity_itr1,*entity_itr2))
+			if (collision.collision(*entity_itr2,*entity_itr1))
 			{		
-				
-				if ((*entity_itr1)->id() == EntityID::Ship && (*entity_itr2)->id() == EntityID::Flyer)
-				{
-					endGame();
-					std::cout << "Flyer hit ship, game lost :(" << std::endl;	
-					(*entity_itr2)->destroy();
-					(*entity_itr1)->destroy();
-				}
-				
-				
-				else if ((*entity_itr1)->id() == EntityID::Flyer && (*entity_itr2)->id() == EntityID::Laser)
-				{
-					//_number_of_flyers_killed++;
-					//std::cout << _NUMBER_OF_FLYERS_TO_KILL - _number_of_flyers_killed << " Flyers left to kill" << std::endl;
-					(*entity_itr2)->destroy();
-					(*entity_itr1)->destroy();
-				}
-				else if ((*entity_itr1)->id() == EntityID::Ship && (*entity_itr2)->id() == EntityID::Missile)
-				{
-					endGame();
-					std::cout << "Missile hit ship, game lost :(" << std::endl;
-					(*entity_itr2)->destroy();
-					(*entity_itr1)->destroy();
-				}
-				
-				else if ((*entity_itr1)->id() == EntityID::Missile && (*entity_itr2)->id() == EntityID::Laser)
-				{
-					(*entity_itr2)->destroy();
-					(*entity_itr1)->destroy();
-					
-				}
-				
-				else if ((*entity_itr1)->id() == EntityID::Ship && (*entity_itr2)->id() == EntityID::Powerup)
-				{
-					std::cout << "Picked up a powerup!" << std::endl;
-					(*entity_itr2)->destroy();
-					_player_ptr->addHomingMissiles();
-				}
-				
-				else if ((*entity_itr1)->id() == EntityID::Flyer && (*entity_itr2)->id() == EntityID::Homing_Missile)
-				{
-					//_number_of_flyers_killed++;
-					//std::cout << _NUMBER_OF_FLYERS_TO_KILL - _number_of_flyers_killed << " Flyers left to kill" << std::endl;
-					(*entity_itr2)->destroy();
-					(*entity_itr1)->destroy();
-					
-				}				
+				(*entity_itr2)->collide(*entity_itr1);	
+				(*entity_itr1)->collide(*entity_itr2);
 			}
 		}			
 	}

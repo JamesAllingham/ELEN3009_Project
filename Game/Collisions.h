@@ -22,14 +22,14 @@ class Collision{
 	public:		
 		//Collision();
 		
-		bool collision(shared_ptr<Entity> entity1_ptr, shared_ptr<Entity> entity2_ptr);
+		bool collision(shared_ptr<Entity> entity1_ptr, shared_ptr<Entity> entity2_ptr) const;
 		
 	private:
 	
-		list<Vector2f> normals(const list<Vector2f>& polygon_points);
-		float maximumProjection(const list<Vector2f>& polygon_points, const Vector2f& polygon_normal);
-		float minimumProjection(const list<Vector2f>& polygon_points, const Vector2f& polygon_normal);
-		float dotProduct(const Vector2f& vector1, const Vector2f& vector2);
+		list<Vector2f> normals(const list<Vector2f>& polygon_points) const;
+		float maximumProjection(const list<Vector2f>& polygon_points, const Vector2f& polygon_normal) const;
+		float minimumProjection(const list<Vector2f>& polygon_points, const Vector2f& polygon_normal) const;
+		float dotProduct(const Vector2f& vector1, const Vector2f& vector2) const;
 	
 };
 

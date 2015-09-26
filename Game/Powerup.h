@@ -21,6 +21,8 @@ public:
 	virtual void move(float delta_time) override {};
 	virtual list<Vector2f> hitboxPoints() override;
 	virtual shared_ptr<Entity> shoot(float delta_time) {return shared_ptr<Entity> (nullptr);};
+	virtual void collide(shared_ptr<Entity> collider) override;	
+	
 	static bool PowerupOnTheMap ();
 	
 private:		

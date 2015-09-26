@@ -3,8 +3,25 @@
 
 Ship::Ship() : Entity{EntityID::Ship, Vector2f(mapLimits().x/2, mapLimits().y/2), Vector2f(250.f,250.f)}, _delta_position(0,0) 
 {
-	//std::cout << "Create ship" << std::endl;
+	
 };
+
+void Ship::collide(shared_ptr<Entity> collider) 
+{
+	switch (collider->id())
+	{
+		case EntityID::Power_Up:
+			std::cout << "Collide homing missiles" << std::endl;
+			addHomingMissiles();
+			break;
+		case EntityID::Flyer:
+		case EntityID::Missile:			
+			destroy();
+			break;
+		default:
+			break;
+	}	
+}	
 
 shared_ptr<Entity> Ship::shoot(float delta_time)
 {
@@ -109,9 +126,7 @@ void Ship::move(float delta_time)
 	_delta_position =  position() - old_position;
 	
 	if ( (_moving_left && !_moving_right && facingRight()) || (!_moving_left && _moving_right && !facingRight()) )
-	{
-		//if (facingRight()) movePosition(_width,0);
-		//else movePosition(-_width,0);
+	{		
 		switchDirection();
 	}
 }

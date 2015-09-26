@@ -10,7 +10,7 @@ UserInterface::UserInterface() : _game_window(VideoMode(800, 720), "Attacker"), 
 		_textures.load(EntityID::Ship,"resources/ship.png");
 		_textures.load(EntityID::Flyer,"resources/flyer.png");				
 		_textures.load(EntityID::Laser,"resources/laser.png");
-		_textures.load(EntityID::Powerup,"resources/power_up.png");
+		_textures.load(EntityID::Power_Up,"resources/power_up.png");
 		_textures.load(EntityID::Missile,"resources/missile.png");
 		_textures.load(EntityID::Homing_Missile,"resources/homing_missile.png");
 	}

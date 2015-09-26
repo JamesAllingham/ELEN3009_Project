@@ -22,7 +22,7 @@ public:
 	static void setMapLimits (const Vector2f& max_position);
 	static Vector2f mapLimits() {return _max_position;};
 	Vector2f velocity() {return _velocity;};
-	Vector2f position()  {return _position;};
+	Vector2f position() {return _position;};
 	EntityID id() {return _id;};
 	bool destroyed() {return _destroyed;};
 	void destroy() {_destroyed = true;};
@@ -34,6 +34,7 @@ public:
 	virtual void move(float delta_time) = 0;
 	virtual shared_ptr<Entity> shoot(float delta_time) = 0;
 	virtual list<Vector2f> hitboxPoints() = 0;
+	virtual void collide(shared_ptr<Entity> collider) = 0;
 
 protected:
     void movePosition(float x, float y);

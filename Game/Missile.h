@@ -21,6 +21,7 @@ public:
 	virtual void move(float delta_time) override;
 	virtual list<Vector2f> hitboxPoints() override;
 	virtual shared_ptr<Entity> shoot(float delta_time);
+	virtual void collide(shared_ptr<Entity> collider) override;	
 	
 private:		
 	float _width = 25;

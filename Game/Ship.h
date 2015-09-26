@@ -32,12 +32,14 @@ public:
 	int numberOfHomingMissiles() { return _number_of_homing_missiles;};
 	void switchDirection () {_facing_right = !_facing_right;};
 	bool facingRight () {return _facing_right;};
+	void setNearestTarget(EntityHolder& targets);
+	shared_ptr<Entity> nearestTarget() { return _nearest_target;};
 	
 	virtual void move(float delta_time) override;
 	virtual list<Vector2f> hitboxPoints() override;
-	virtual shared_ptr<Entity> shoot(float delta_time) override;
-	void setNearestTarget(EntityHolder& targets);
-	shared_ptr<Entity> nearestTarget() { return _nearest_target;};
+	virtual shared_ptr<Entity> shoot(float delta_time) override;	
+	virtual void collide(shared_ptr<Entity> collider) override;	
+	
 	
 private:	
 	bool _moving_up = false;

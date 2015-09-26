@@ -11,6 +11,19 @@ Missile::~Missile()
 	//std::cout << "Missile destructor" << std::endl;
 }
 
+void Missile::collide(shared_ptr<Entity> collider) 
+{
+	switch (collider->id())
+	{		
+		case EntityID::Ship:
+		case EntityID::Laser:			
+			destroy();
+			break;
+		default:
+			break;
+	}	
+}
+
 list<Vector2f> Missile::hitboxPoints()
 {
 	list<Vector2f> hitbox_points;

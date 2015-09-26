@@ -10,6 +10,18 @@ HomingMissile::~HomingMissile()
 	//std::cout << "HomingMissile destructor" << std::endl;
 }
 
+void HomingMissile::collide(shared_ptr<Entity> collider) 
+{
+	switch (collider->id())
+	{		
+		case EntityID::Flyer:		
+			destroy();
+			break;
+		default:
+			break;
+	}	
+}
+
 list<Vector2f> HomingMissile::hitboxPoints()
 {
 	list<Vector2f> hitbox_points;
@@ -26,6 +38,7 @@ void HomingMissile::move(float delta_time)
 {	
 	if(_nearest_target->destroyed())
 	{		
+		_nearest_target.reset();
 		this->destroy();
 	}
 	else 
