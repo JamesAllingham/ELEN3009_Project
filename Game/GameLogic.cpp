@@ -52,7 +52,7 @@ void GameLogic::update(float delta_time) {
 	// Collision detection
 	manageCollisions();
 	
-	if (_number_of_flyers_killed == _NUMBER_OF_FLYERS_TO_KILL) 
+	if (Flyer::numberOfFlyersKilled() == _NUMBER_OF_FLYERS_TO_KILL) 
 	{
 		endGame();
 		std::cout << "Won the Game :)" << std::endl;
@@ -120,7 +120,7 @@ void GameLogic::manageCollisions()
 			if (collision.collision(*entity_itr1,*entity_itr2))
 			{		
 				
-				if ((*entity_itr1)->character().texture_ID == TextureID::Ship && (*entity_itr2)->character().texture_ID == TextureID::Flyer)
+				if ((*entity_itr1)->id() == EntityID::Ship && (*entity_itr2)->id() == EntityID::Flyer)
 				{
 					endGame();
 					std::cout << "Flyer hit ship, game lost :(" << std::endl;	
@@ -129,14 +129,14 @@ void GameLogic::manageCollisions()
 				}
 				
 				
-				else if ((*entity_itr1)->character().texture_ID == TextureID::Flyer && (*entity_itr2)->character().texture_ID == TextureID::Laser)
+				else if ((*entity_itr1)->id() == EntityID::Flyer && (*entity_itr2)->id() == EntityID::Laser)
 				{
-					_number_of_flyers_killed++;
-					std::cout << _NUMBER_OF_FLYERS_TO_KILL - _number_of_flyers_killed << " Flyers left to kill" << std::endl;
+					//_number_of_flyers_killed++;
+					//std::cout << _NUMBER_OF_FLYERS_TO_KILL - _number_of_flyers_killed << " Flyers left to kill" << std::endl;
 					(*entity_itr2)->destroy();
 					(*entity_itr1)->destroy();
 				}
-				else if ((*entity_itr1)->character().texture_ID == TextureID::Ship && (*entity_itr2)->character().texture_ID == TextureID::Missile)
+				else if ((*entity_itr1)->id() == EntityID::Ship && (*entity_itr2)->id() == EntityID::Missile)
 				{
 					endGame();
 					std::cout << "Missile hit ship, game lost :(" << std::endl;
@@ -144,24 +144,24 @@ void GameLogic::manageCollisions()
 					(*entity_itr1)->destroy();
 				}
 				
-				else if ((*entity_itr1)->character().texture_ID == TextureID::Missile && (*entity_itr2)->character().texture_ID == TextureID::Laser)
+				else if ((*entity_itr1)->id() == EntityID::Missile && (*entity_itr2)->id() == EntityID::Laser)
 				{
 					(*entity_itr2)->destroy();
 					(*entity_itr1)->destroy();
 					
 				}
 				
-				else if ((*entity_itr1)->character().texture_ID == TextureID::Ship && (*entity_itr2)->character().texture_ID == TextureID::Powerup)
+				else if ((*entity_itr1)->id() == EntityID::Ship && (*entity_itr2)->id() == EntityID::Powerup)
 				{
 					std::cout << "Picked up a powerup!" << std::endl;
 					(*entity_itr2)->destroy();
 					_player_ptr->addHomingMissiles();
 				}
 				
-				else if ((*entity_itr1)->character().texture_ID == TextureID::Flyer && (*entity_itr2)->character().texture_ID == TextureID::Homing_Missile)
+				else if ((*entity_itr1)->id() == EntityID::Flyer && (*entity_itr2)->id() == EntityID::Homing_Missile)
 				{
-					_number_of_flyers_killed++;
-					std::cout << _NUMBER_OF_FLYERS_TO_KILL - _number_of_flyers_killed << " Flyers left to kill" << std::endl;
+					//_number_of_flyers_killed++;
+					//std::cout << _NUMBER_OF_FLYERS_TO_KILL - _number_of_flyers_killed << " Flyers left to kill" << std::endl;
 					(*entity_itr2)->destroy();
 					(*entity_itr1)->destroy();
 					
@@ -175,6 +175,7 @@ void GameLogic::manageCollisions()
 	{
 		if ((*entity_itr)->destroyed())
 		{
+			std::cout << static_cast<int>((*entity_itr)->id())<< " destroyed" << std::endl;
 			entity_itr = _entities.eraseEntity(entity_itr);
 		}
 		else 
@@ -186,7 +187,8 @@ void GameLogic::manageCollisions()
 
 void GameLogic::createEntities () {
 
-	while (Flyer::numberOfFlyers() + _number_of_flyers_killed < _NUMBER_OF_FLYERS_TO_KILL) {		
+	while (Flyer::numberOfFlyers() + Flyer::numberOfFlyersKilled() < _NUMBER_OF_FLYERS_TO_KILL) 
+	{		
 		_entities.addEntity(shared_ptr<Flyer> (new Flyer));
 	}
 }

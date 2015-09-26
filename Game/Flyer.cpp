@@ -1,14 +1,16 @@
 #include "Flyer.h"
 
 
-Flyer::Flyer() : Entity{TextureID::Flyer, Vector2f(randomPosition(mapLimits().x), randomPosition(mapLimits().y)), Vector2f(75.f,75.f)} {
+Flyer::Flyer() : Entity{EntityID::Flyer, Vector2f(randomPosition(mapLimits().x), randomPosition(mapLimits().y)), Vector2f(75.f,75.f)} {
 	_number_of_flyers++;
 }
 
 Flyer::~Flyer()
 {
 	_number_of_flyers--;
-	//std::cout << "Number of Flyers: " << _number_of_flyers << std::endl;
+	_number_of_flyers_killed++;
+	std::cout << "Number of Flyers killed: " << _number_of_flyers_killed << std::endl;
+	std::cout << "Number of Flyers : " << _number_of_flyers << std::endl;
 }
 
 shared_ptr<Entity> Flyer::shoot(float delta_time)
@@ -27,11 +29,6 @@ shared_ptr<Entity> Flyer::shoot(float delta_time)
 	
 	return shared_ptr<Entity> (nullptr);
 }
-
-// shared_ptr<Flyer> Flyer::createFlyer() {
-	// shared_ptr<Flyer> flyer_ptr = make_shared<Flyer>();
-	// return flyer_ptr;
-// }
 
 void Flyer::move(float delta_time){
 	
@@ -63,4 +60,5 @@ list<Vector2f> Flyer::hitboxPoints()
 
 //Need to initialise this in the .cpp file
 int Flyer::_number_of_flyers = 0;
+int Flyer::_number_of_flyers_killed = 0;
 shared_ptr<Entity> Flyer::_target;

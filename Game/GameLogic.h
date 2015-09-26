@@ -16,7 +16,7 @@ using std::make_shared;
 #include "Ship.h"
 #include "Flyer.h"
 #include "Events.h"
-#include "TextureID.h"
+#include "EntityID.h"
 #include "StopWatch.h"
 #include "EntityHolder.h"
 #include "Collisions.h"
@@ -44,8 +44,8 @@ private:
 	EntityHolder _entities;
 	shared_ptr<Ship> _player_ptr;
 	bool _game_running = true;
-	int _number_of_flyers_killed = 0;
-	static constexpr const auto _NUMBER_OF_FLYERS_TO_KILL = 15;
+	//int _number_of_flyers_killed = 0;
+	static constexpr const auto _NUMBER_OF_FLYERS_TO_KILL = 5;
 	static constexpr const auto _MAX_X = 4800.f;
 	static constexpr const auto _MAX_Y = 600.f;	
 	static constexpr const auto _MAX_ON_SCREEN_DISTANCE_FROM_PLAYER = 400.f;

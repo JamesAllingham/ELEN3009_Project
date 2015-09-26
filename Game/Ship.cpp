@@ -1,7 +1,7 @@
 #include "Ship.h"
 
 
-Ship::Ship() : Entity{TextureID::Ship, Vector2f(mapLimits().x/2, mapLimits().y/2), Vector2f(250.f,250.f)}, _delta_position(0,0) 
+Ship::Ship() : Entity{EntityID::Ship, Vector2f(mapLimits().x/2, mapLimits().y/2), Vector2f(250.f,250.f)}, _delta_position(0,0) 
 {
 	//std::cout << "Create ship" << std::endl;
 };
@@ -24,17 +24,28 @@ shared_ptr<Entity> Ship::shoot(float delta_time)
 		}
 	}
 	
+	if (_nearest_target.unique())
+	{
+		//std::cout << "Unique target" << std::endl;
+		_nearest_target.reset();
+		return shared_ptr<Entity> (nullptr);
+	}
+	
 	if (_shoot_homing_missile)
 	{
-		
+		// check that the missile has a valid target
+		if (_nearest_target.unique())
+		{
+			std::cout << "Unique target" << std::endl;
+			_nearest_target.reset();
+			return shared_ptr<Entity> (nullptr);
+		}
 		_shoot_homing_missile = false;
 		if (_number_of_homing_missiles > 0)
 		{
 			--_number_of_homing_missiles;
 			return shared_ptr<Entity> (new HomingMissile(character().position + Vector2f(75.f, (37.f - 23.f)/2), _nearest_target));
-		}
-		
-		
+		}		
 	}
 
 	return shared_ptr<Entity> (nullptr);
@@ -131,7 +142,7 @@ void Ship::setNearestTarget(EntityHolder& targets)
 	auto minimum = numeric_limits<float>::max();
 	for ( auto target : targets)
 	{
-		if (target->character().texture_ID == TextureID::Flyer)
+		if (target->character().Entity_ID == EntityID::Flyer)
 		{
 			auto diff_in_x = target->character().position.x - character().position.x;
 			auto diff_in_y = target->character().position.y - character().position.y;

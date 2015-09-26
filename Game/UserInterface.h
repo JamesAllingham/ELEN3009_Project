@@ -23,7 +23,7 @@ using std::list;
 #include "ResourceHolder.h"
 #include "Events.h"
 #include "Character.h"
-#include "TextureID.h"
+#include "EntityID.h"
 
 using std::runtime_error;
 using std::cerr;
@@ -52,7 +52,7 @@ private:
 	RenderWindow _game_window;
 	View _camera;
 	View _mini_map;
-	ResourceHolder<Texture,TextureID> _textures;
+	ResourceHolder<Texture,EntityID> _textures;
 	Sprite _background;
 	RectangleShape _focusWindow;
 };

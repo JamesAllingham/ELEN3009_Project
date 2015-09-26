@@ -1,7 +1,7 @@
-#ifndef TEXTUREID
-#define TEXTUREID
+#ifndef ENTITY_ID
+#define ENTITY_ID
 
-enum class TextureID
+enum class EntityID
 {
 	Homing_Missile,
 	Smart_Bomb,

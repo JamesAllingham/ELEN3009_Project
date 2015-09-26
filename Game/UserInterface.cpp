@@ -6,13 +6,13 @@ UserInterface::UserInterface() : _game_window(VideoMode(800, 720), "Attacker"), 
 	
 	try 
 	{
-		_textures.load(TextureID::Landscape,"resources/space_backdrop.png");
-		_textures.load(TextureID::Ship,"resources/ship.png");
-		_textures.load(TextureID::Flyer,"resources/flyer.png");				
-		_textures.load(TextureID::Laser,"resources/laser.png");
-		_textures.load(TextureID::Powerup,"resources/power_up.png");
-		_textures.load(TextureID::Missile,"resources/missile.png");
-		_textures.load(TextureID::Homing_Missile,"resources/homing_missile.png");
+		_textures.load(EntityID::Landscape,"resources/space_backdrop.png");
+		_textures.load(EntityID::Ship,"resources/ship.png");
+		_textures.load(EntityID::Flyer,"resources/flyer.png");				
+		_textures.load(EntityID::Laser,"resources/laser.png");
+		_textures.load(EntityID::Powerup,"resources/power_up.png");
+		_textures.load(EntityID::Missile,"resources/missile.png");
+		_textures.load(EntityID::Homing_Missile,"resources/homing_missile.png");
 	}
 	catch (const runtime_error& error)
 	{
@@ -26,8 +26,8 @@ UserInterface::UserInterface() : _game_window(VideoMode(800, 720), "Attacker"), 
 	_camera.setViewport(FloatRect(0.f,0.2f,1.f,0.833f));
 	_mini_map.reset(FloatRect(0.f,0.f,4800.f,600.f));
 	_mini_map.setViewport(FloatRect(0.1f,0.0f,0.8f,0.167f));
-	_textures.get(TextureID::Landscape).setRepeated(true);
-	_background.setTexture(_textures.get(TextureID::Landscape));
+	_textures.get(EntityID::Landscape).setRepeated(true);
+	_background.setTexture(_textures.get(EntityID::Landscape));
 	_background.setTextureRect(IntRect(0,0,4800,600));
 	
 	_focusWindow.setFillColor(Color(255, 255, 255, 0));
@@ -134,7 +134,7 @@ void UserInterface::processTextures(list<Character>& characters)
 	
 	for (auto character : characters){
 		Sprite character_sprite;
-		character_sprite.setTexture(_textures.get(character.texture_ID));
+		character_sprite.setTexture(_textures.get(character.Entity_ID));
 		character_sprite.setPosition(character.position);				
 		drawSprite(character_sprite);
 	}

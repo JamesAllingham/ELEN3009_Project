@@ -1,6 +1,6 @@
 #include "Laser.h"
 
-Laser::Laser(const Vector2f& position, const Vector2f& velocity_unit) : Entity{TextureID::Laser, position, velocity_unit*300.f}
+Laser::Laser(const Vector2f& position, const Vector2f& velocity_unit) : Entity{EntityID::Laser, position, velocity_unit*300.f}
 {
 	
 };

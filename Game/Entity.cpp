@@ -1,6 +1,6 @@
 #include "Entity.h"
 
-Entity::Entity(TextureID id, Vector2f position, Vector2f velocity): _id(id), _position(position), _velocity(velocity) {};
+Entity::Entity(EntityID id, Vector2f position, Vector2f velocity): _id(id), _position(position), _velocity(velocity) {};
 
 void Entity::setMapLimits(const Vector2f& max_position)
 {

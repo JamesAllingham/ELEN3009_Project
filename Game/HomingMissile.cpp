@@ -1,6 +1,6 @@
 #include "HomingMissile.h"
 
-HomingMissile::HomingMissile(const Vector2f& position, const shared_ptr<Entity>& nearest_target) : Entity{TextureID::Homing_Missile, position, Vector2f(400.f,400.f)}, _nearest_target(nearest_target)
+HomingMissile::HomingMissile(const Vector2f& position, const shared_ptr<Entity>& nearest_target) : Entity{EntityID::Homing_Missile, position, Vector2f(400.f,400.f)}, _nearest_target(nearest_target)
 {
 	std::cout << "created Homing Missile" << std::endl;
 };

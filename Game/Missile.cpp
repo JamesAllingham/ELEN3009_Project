@@ -1,6 +1,6 @@
 #include "Missile.h"
 
-Missile::Missile(const Vector2f& position, const Vector2f& velocity_unit) : Entity{TextureID::Missile, position, velocity_unit*90.f}
+Missile::Missile(const Vector2f& position, const Vector2f& velocity_unit) : Entity{EntityID::Missile, position, velocity_unit*90.f}
 {
 	//std::cout << "Create Missile" << std::endl;
 	//std::cout << "Velocity x " << velocity_unit.x << " y " << velocity_unit.y  << std::endl;

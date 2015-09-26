@@ -1,6 +1,6 @@
 #include "Powerup.h"
 
-Powerup::Powerup() : Entity{TextureID::Powerup, Vector2f(Entity::randomPosition(mapLimits().x), Entity::randomPosition(mapLimits().y)), Vector2f(0.f,0.f)}
+Powerup::Powerup() : Entity{EntityID::Powerup, Vector2f(Entity::randomPosition(mapLimits().x), Entity::randomPosition(mapLimits().y)), Vector2f(0.f,0.f)}
 {
 	_powerup_on_the_map = true;
 	//std::cout << "Create Powerup" << std::endl;
