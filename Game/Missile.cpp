@@ -42,7 +42,7 @@ void Missile::move(float delta_time)
 
 	if (position().x == mapLimits().x || position().x == 0.f || position().y == mapLimits().y || position().y == 0.f)
 	{
-		this->destroy();
+		destroy();
 	}	
 }
 

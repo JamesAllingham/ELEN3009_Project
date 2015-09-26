@@ -20,7 +20,6 @@ using std::make_shared;
 #include "StopWatch.h"
 #include "EntityHolder.h"
 #include "Collisions.h"
-//#include "HomingMissile.h"
 #include "Powerup.h"
 
 #include <SFML/System.hpp> // This is only temporary, using SFMLs Vector2f, but later will write a lightweight vector class to use instead
@@ -35,7 +34,7 @@ private:
 	void runGame();
 	void update(float delta_time);
 	void createEntities ();
-	void manageCollisions ();
+	void handleCollisions ();
 	void handleUserInput();
 	void followPlayer();
 	void endGame();
@@ -44,7 +43,6 @@ private:
 	EntityHolder _entities;
 	shared_ptr<Ship> _player_ptr;
 	bool _game_running = true;
-	//int _number_of_flyers_killed = 0;
 	static constexpr const auto _NUMBER_OF_FLYERS_TO_KILL = 5;
 	static constexpr const auto _MAX_X = 4800.f;
 	static constexpr const auto _MAX_Y = 600.f;	

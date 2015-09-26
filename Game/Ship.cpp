@@ -11,7 +11,7 @@ void Ship::collide(shared_ptr<Entity> collider)
 	switch (collider->id())
 	{
 		case EntityID::Power_Up:
-			std::cout << "Collide homing missiles" << std::endl;
+			//std::cout << "Collide homing missiles" << std::endl;
 			addHomingMissiles();
 			break;
 		case EntityID::Flyer:

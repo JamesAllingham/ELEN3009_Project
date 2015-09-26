@@ -72,3 +72,20 @@ float Collision::dotProduct(const Vector2f& vector1, const Vector2f& vector2) co
 	return vector1.x*vector2.x + vector1.y*vector2.y;
 }
 
+void Collision::manageCollisions()
+{
+	// set entites to be delted
+	for (auto entity_itr1 = _begin_entity_itr; entity_itr1 != prev(_end_entity_itr); entity_itr1++)
+	{	
+		for (auto entity_itr2 = next(entity_itr1); entity_itr2 != _end_entity_itr; entity_itr2++)
+		{
+			if (collision(*entity_itr2,*entity_itr1))
+			{		
+				(*entity_itr2)->collide(*entity_itr1);	
+				(*entity_itr1)->collide(*entity_itr2);
+			}
+		}			
+	}	
+	
+}
+

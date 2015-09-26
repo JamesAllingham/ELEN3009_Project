@@ -17,8 +17,9 @@ using EntityholderIterator = list<shared_ptr<Entity>>::iterator;
 
 class EntityHolder {
 
-public:	
-	
+public:		
+	// EntityHolder();
+	// EntityHolder(const EntityHolder& rhs);
 
 	EntityholderIterator begin() {return _entities.begin();};
 	EntityholderIterator end() {return _entities.end();};

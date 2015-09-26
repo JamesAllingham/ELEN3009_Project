@@ -50,7 +50,7 @@ void GameLogic::update(float delta_time) {
 	_player_ptr->setNearestTarget(_entities);
 	
 	// Collision detection
-	manageCollisions();
+	handleCollisions();
 	
 	if (Flyer::numberOfFlyersKilled() == _NUMBER_OF_FLYERS_TO_KILL) 
 	{
@@ -94,12 +94,9 @@ void GameLogic::handleUserInput()
 				_player_ptr->controlMovement(event);
 				break;
 			case Events::E_Pressed:
-			case Events::E_Released:
-				_player_ptr->controlShooting(event);
-				break;
+			case Events::E_Released:			
 			case Events::Space_Pressed:
 			case Events::Space_Released:
-				// Handle player shooting laser - should probably fire in a straight like in the direction of movement of the ship on the x-axis (can be found using Ship's changeInPosition() function)
 				_player_ptr->controlShooting(event);
 				break;
 			case Events::Window_Close:
@@ -111,28 +108,18 @@ void GameLogic::handleUserInput()
 	}
 }
 
-void GameLogic::manageCollisions()
+void GameLogic::handleCollisions()
 {
-	Collision collision;
-	// set entites to be delted
-	for (auto entity_itr1 = begin(_entities); entity_itr1 != prev(end(_entities)); entity_itr1++)
-	{	
-		for (auto entity_itr2 = next(entity_itr1); entity_itr2 != end(_entities); entity_itr2++)
-		{
-			if (collision.collision(*entity_itr2,*entity_itr1))
-			{		
-				(*entity_itr2)->collide(*entity_itr1);	
-				(*entity_itr1)->collide(*entity_itr2);
-			}
-		}			
-	}
+	Collision collision(_entities.begin(),_entities.end());
+	
+	collision.manageCollisions();
 	
 	// Delete entites
 	for (auto entity_itr = begin(_entities); entity_itr != end(_entities); )
 	{
 		if ((*entity_itr)->destroyed())
 		{
-			std::cout << static_cast<int>((*entity_itr)->id())<< " destroyed" << std::endl;
+			//std::cout << static_cast<int>((*entity_itr)->id())<< " destroyed" << std::endl;
 			entity_itr = _entities.eraseEntity(entity_itr);
 		}
 		else 

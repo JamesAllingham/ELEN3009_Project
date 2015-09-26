@@ -2,6 +2,7 @@
 #define COLLISIONS
 
 #include "Entity.h"
+#include "EntityHolder.h"
 
 #include <SFML/System.hpp>
 using sf::Vector2f;
@@ -20,27 +21,21 @@ using std::numeric_limits;
 class Collision{
 	
 	public:		
-		//Collision();
-		
-		bool collision(shared_ptr<Entity> entity1_ptr, shared_ptr<Entity> entity2_ptr) const;
+		Collision(const	EntityholderIterator& begin_entity_itr, const EntityholderIterator& end_entity_itr): _begin_entity_itr(begin_entity_itr), _end_entity_itr(end_entity_itr) {};	
+
+		void manageCollisions();		
 		
 	private:
-	
+		bool collision(shared_ptr<Entity> entity1_ptr, shared_ptr<Entity> entity2_ptr) const;
 		list<Vector2f> normals(const list<Vector2f>& polygon_points) const;
 		float maximumProjection(const list<Vector2f>& polygon_points, const Vector2f& polygon_normal) const;
 		float minimumProjection(const list<Vector2f>& polygon_points, const Vector2f& polygon_normal) const;
 		float dotProduct(const Vector2f& vector1, const Vector2f& vector2) const;
+		
+		EntityholderIterator _begin_entity_itr;
+		EntityholderIterator _end_entity_itr;
 	
 };
-
-// May need to add a vector class depending on Boost, for now will use sfml - actually this should not be a part of Collisions but should have its own file instead
-// class Vector2f{
-	
-	// public:
-	
-	// private:
-	
-// };
 
 // Will add this when there is time, will make the collisions more efficient
 // class QuadTree {

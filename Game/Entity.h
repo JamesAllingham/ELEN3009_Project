@@ -27,9 +27,6 @@ public:
 	bool destroyed() {return _destroyed;};
 	void destroy() {_destroyed = true;};
 	
-	//void switchDirection () {_character.facing_right = !_character.facing_right;};
-	//bool facingRight () {return _character.facing_right;};
-	
 	// For now move and shoot are part of entity but in future we should look into having two more derived classes in the hierarchy - ShootingEntity and MovingEntity
 	virtual void move(float delta_time) = 0;
 	virtual shared_ptr<Entity> shoot(float delta_time) = 0;
