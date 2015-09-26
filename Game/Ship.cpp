@@ -91,16 +91,16 @@ void Ship::move(float delta_time)
 {
 	Vector2f old_position = position();
 	auto distance = delta_time * velocity();
-	if (_moving_up) moveCharacter(0, -distance.y);
-	if (_moving_down) moveCharacter(0, distance.y);
-	if (_moving_left) moveCharacter(-distance.x,0);
-	if (_moving_right) moveCharacter(distance.x,0);
+	if (_moving_up) movePosition(0, -distance.y);
+	if (_moving_down) movePosition(0, distance.y);
+	if (_moving_left) movePosition(-distance.x,0);
+	if (_moving_right) movePosition(distance.x,0);
 	_delta_position =  position() - old_position;
 	
 	if ( (_moving_left && !_moving_right && facingRight()) || (!_moving_left && _moving_right && !facingRight()) )
 	{
-		//if (facingRight()) moveCharacter(_width,0);
-		//else moveCharacter(-_width,0);
+		//if (facingRight()) movePosition(_width,0);
+		//else movePosition(-_width,0);
 		switchDirection();
 	}
 }

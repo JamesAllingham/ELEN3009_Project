@@ -32,7 +32,7 @@ void HomingMissile::move(float delta_time)
 	{
 		Vector2f velocity_unit(_nearest_target->character().position - character().position);
 		velocity_unit /= sqrtf(velocity_unit.x*velocity_unit.x + velocity_unit.y*velocity_unit.y);
-		moveCharacter(velocity().x*delta_time*velocity_unit.x, velocity().y*delta_time*velocity_unit.y);
+		movePosition(velocity().x*delta_time*velocity_unit.x, velocity().y*delta_time*velocity_unit.y);
 	}
 }
 

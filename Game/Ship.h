@@ -30,6 +30,8 @@ public:
 	Vector2f changeInPosition();
 	void addHomingMissiles() {_number_of_homing_missiles+=3;};
 	int numberOfHomingMissiles() { return _number_of_homing_missiles;};
+	void switchDirection () {_facing_right = !_facing_right;};
+	bool facingRight () {return _facing_right;};
 	
 	virtual void move(float delta_time) override;
 	virtual list<Vector2f> hitboxPoints() override;
@@ -42,7 +44,7 @@ private:
 	bool _moving_down = false;
 	bool _moving_left = false;
 	bool _moving_right = false;
-	//bool _facing_right = true;
+	bool _facing_right = true;
 	
 	bool _shooting = false;
 	bool _shoot_homing_missile = false;

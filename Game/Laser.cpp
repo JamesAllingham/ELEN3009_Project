@@ -2,13 +2,12 @@
 
 Laser::Laser(const Vector2f& position, const Vector2f& velocity_unit) : Entity{TextureID::Laser, position, velocity_unit*300.f}
 {
-	//std::cout << "Create Laser" << std::endl;
-	//std::cout << "Velocity x " << velocity_unit.x << " y " << velocity_unit.y  << std::endl;
+	
 };
 
 Laser::~Laser()
 {
-	//std::cout << "Laser destructor" << std::endl;
+	
 }
 
 list<Vector2f> Laser::hitboxPoints()
@@ -25,7 +24,7 @@ list<Vector2f> Laser::hitboxPoints()
 
 void Laser::move(float delta_time) 
 {	
-	moveCharacter(velocity().x*delta_time, velocity().y*delta_time);
+	movePosition(velocity().x*delta_time, velocity().y*delta_time);
 	if (position().x == mapLimits().x || position().x == 0.f || position().y == mapLimits().y || position().y == 0.f)
 	{
 		this->destroy();

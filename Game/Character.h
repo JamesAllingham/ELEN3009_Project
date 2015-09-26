@@ -13,8 +13,7 @@ public:
 	Character (TextureID type, const Vector2f& position) : texture_ID(type), position(position) {};
 	
 	TextureID texture_ID;
-    Vector2f position;
-	bool facing_right = true;
+    Vector2f position;	
 };
 
 #endif

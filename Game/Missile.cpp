@@ -25,7 +25,7 @@ list<Vector2f> Missile::hitboxPoints()
 
 void Missile::move(float delta_time) 
 {	
-	moveCharacter(velocity().x*delta_time, velocity().y*delta_time);
+	movePosition(velocity().x*delta_time, velocity().y*delta_time);
 
 	if (position().x == mapLimits().x || position().x == 0.f || position().y == mapLimits().y || position().y == 0.f)
 	{

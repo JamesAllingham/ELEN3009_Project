@@ -44,7 +44,7 @@ void Flyer::move(float delta_time){
 		_time_since_last_movement =0;
 	}
 	//else std::cout << "x velocity "<< _unit_current_velocity.x << std::endl;
-	moveCharacter(velocity().x*delta_time*_unit_current_velocity.x, velocity().y*delta_time*_unit_current_velocity.y);	
+	movePosition(velocity().x*delta_time*_unit_current_velocity.x, velocity().y*delta_time*_unit_current_velocity.y);	
 	
 }
 
