@@ -37,6 +37,9 @@ public:
 	void setNearestTarget(EntityHolder& targets);
 	shared_ptr<Entity> nearestTarget() { return _nearest_target;};
 	
+	void loseALife () {std::cout << "Losing a life" << std::endl; _number_of_lives --; resetPosition();};
+	int numberOfLivesRemaining () {return _number_of_lives;};
+	
 private:	
 	bool _moving_up = false;
 	bool _moving_down = false;
@@ -52,8 +55,11 @@ private:
 	
 	shared_ptr<Entity> _nearest_target;
 	int _number_of_homing_missiles = 0;
+	static int _number_of_lives;
 	
 	Vector2f _delta_position;
+	
+	void resetPosition ();
 	
 	
 };	

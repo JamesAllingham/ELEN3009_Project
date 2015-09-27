@@ -1,5 +1,5 @@
-#ifndef MISSILE
-#define MISSILE
+#ifndef SMART_BOMB
+#define SMART_BOMB
 
 #include "Character.h"
 #include "Entity.h"
@@ -12,18 +12,19 @@ using sf::Vector2f;
 #include <memory>
 using std::shared_ptr;
 
-class Missile : public Entity {
+class SmartBomb : public Entity {
 
 public:
-	Missile(const Vector2f& position, const Vector2f& velocity_unit);	
-	~Missile();
+	SmartBomb(const Vector2f& position, const shared_ptr<Entity>& nearest_target);
+	~SmartBomb();
 	
-	virtual void move(float delta_time) override;
+	virtual void move(float delta_time) override {};
 	virtual list<Vector2f> hitboxPoints() override;
 	virtual shared_ptr<Entity> shoot(float delta_time);
 	
 private:		
-	float _width = 25;
-	float _height = 25;	
+	float _width = 23;
+	float _height = 25;
+	const list<shared_ptr<Entity>> targets;
 };	
 #endif

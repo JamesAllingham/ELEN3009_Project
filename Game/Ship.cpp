@@ -145,3 +145,13 @@ void Ship::setNearestTarget(EntityHolder& targets)
 		}
 	}
 }
+
+void Ship::resetPosition ()
+{
+	std::cout << "reseting Position" << std::endl;
+	Vector2f velocity (Vector2f(mapLimits().x/2, mapLimits().y/2) - character().position);
+	moveCharacter( velocity );
+	std::cout << character().position.x << std::endl << character().position.y << std::endl;
+}
+
+int Ship::_number_of_lives = 3;
