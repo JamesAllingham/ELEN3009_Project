@@ -1,37 +1,41 @@
 #include "Missile.h"
 
-Missile::Missile(const Vector2f& position, const Vector2f& velocity_unit) : Entity{TextureID::Missile, position, velocity_unit*90.f}
+Missile::Missile(const Vector2f& position, const Vector2f& velocity_unit) : MovingEntity{EntityID::Missile, position, velocity_unit*_MISSILE_SPEED}
 {
-	//std::cout << "Create Missile" << std::endl;
-	//std::cout << "Velocity x " << velocity_unit.x << " y " << velocity_unit.y  << std::endl;
+
 };
 
-Missile::~Missile()
+void Missile::collide(shared_ptr<Entity> collider) 
 {
-	//std::cout << "Missile destructor" << std::endl;
+	switch (collider->id())
+	{		
+		case EntityID::Ship:
+		case EntityID::Laser:			
+			destroy();
+			break;
+		default:
+			break;
+	}	
 }
 
 list<Vector2f> Missile::hitboxPoints()
 {
 	list<Vector2f> hitbox_points;
-	Vector2f top_left_point = character().position;
+	Vector2f top_left_point = position();
 	// Add the points in a clockwise direction
 	hitbox_points.push_back(Vector2f(top_left_point.x, top_left_point.y));
-	hitbox_points.push_back(Vector2f(top_left_point.x + _width, top_left_point.y));
-	hitbox_points.push_back(Vector2f(top_left_point.x + _width, top_left_point.y - _height));
-	hitbox_points.push_back(Vector2f(top_left_point.x, top_left_point.y - _height));
+	hitbox_points.push_back(Vector2f(top_left_point.x + _MISSILE_WIDTH, top_left_point.y));
+	hitbox_points.push_back(Vector2f(top_left_point.x + _MISSILE_WIDTH, top_left_point.y - _MISSILE_HEIGHT));
+	hitbox_points.push_back(Vector2f(top_left_point.x, top_left_point.y - _MISSILE_HEIGHT));
 	return hitbox_points;
 }
 
 void Missile::move(float delta_time) 
-{
-	//std::cout << "Missile Moving" << std::endl;
-	moveCharacter(velocity().x*delta_time, velocity().y*delta_time);
-	//std::cout << sqrtf(character().position.x*character().position.x + character().position.y*character().position.y) << std::endl;
-	//std::cout << "Position x " << character().position.x << " y " << character().position.y << std::endl;
-}
+{	
+	movePosition(velocity().x*delta_time, velocity().y*delta_time);
 
-shared_ptr<Entity> Missile::shoot(float delta_time) 
-{
-	return shared_ptr<Entity> (nullptr);
+	if (position().x == mapLimits().x || position().x == 0.f || position().y == mapLimits().y || position().y == 0.f)
+	{
+		destroy();
+	}	
 }

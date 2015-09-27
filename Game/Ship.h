@@ -1,9 +1,9 @@
 #ifndef SHIP
 #define SHIP
 
+#include "ShootingMovingEntity.h"
 #include "Events.h"
 #include "Character.h"
-#include "Entity.h"
 #include "Laser.h"
 #include "HomingMissile.h"
 #include "EntityHolder.h"
@@ -19,9 +19,8 @@ using std::shared_ptr;
 
 using std::numeric_limits;
 
-//class Flyer;
-
-class Ship : public Entity {
+class Ship : public ShootingMovingEntity
+{
 
 public:
 	Ship();
@@ -30,14 +29,15 @@ public:
 	Vector2f changeInPosition();
 	void addHomingMissiles() {_number_of_homing_missiles+=3;};
 	int numberOfHomingMissiles() { return _number_of_homing_missiles;};
-	
-	virtual void move(float delta_time) override;
-	virtual list<Vector2f> hitboxPoints() override;
-	virtual shared_ptr<Entity> shoot(float delta_time) override;
+	void switchDirection () {_facing_right = !_facing_right;};
+	bool facingRight () {return _facing_right;};
 	void setNearestTarget(EntityHolder& targets);
 	shared_ptr<Entity> nearestTarget() { return _nearest_target;};
 	
-	void loseALife () {std::cout << "Losing a life" << std::endl; _number_of_lives --; resetPosition();};
+	virtual void move(float delta_time) override;
+	virtual list<Vector2f> hitboxPoints() override;
+	virtual shared_ptr<MovingEntity> shoot(float delta_time) override;	
+	virtual void collide(shared_ptr<Entity> collider) override;
 	int numberOfLivesRemaining () {return _number_of_lives;};
 	
 private:	
@@ -45,7 +45,7 @@ private:
 	bool _moving_down = false;
 	bool _moving_left = false;
 	bool _moving_right = false;
-	//bool _facing_right = true;
+	bool _facing_right = true;
 	
 	bool _shooting = false;
 	bool _shoot_homing_missile = false;
@@ -58,8 +58,6 @@ private:
 	static int _number_of_lives;
 	
 	Vector2f _delta_position;
-	
-	void resetPosition ();
 	
 	
 };	

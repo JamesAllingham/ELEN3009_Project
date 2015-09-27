@@ -1,16 +1,27 @@
 #include "Powerup.h"
 
-Powerup::Powerup() : Entity{TextureID::Powerup, Vector2f(Entity::randomPosition(mapLimits().x), Entity::randomPosition(mapLimits().y)), Vector2f(0.f,0.f)}
+Powerup::Powerup() : Entity{EntityID::Power_Up, Vector2f(Entity::randomPosition(mapLimits().x), Entity::randomPosition(mapLimits().y)), Vector2f(0.f,0.f)}
 {
 	_powerup_on_the_map = true;
-	//std::cout << "Create Powerup" << std::endl;
-	//std::cout << "Velocity x " << velocity_unit.x << " y " << velocity_unit.y  << std::endl;
 };
 
 Powerup::~Powerup()
 {
 	_powerup_on_the_map = false;
-	//std::cout << "Powerup destructor" << std::endl;
+}
+
+void Powerup::collide(shared_ptr<Entity> collider) 
+{
+	//std::cout << "Collide powerup" << std::endl;	
+	switch (collider->id())
+	{		
+		case EntityID::Ship:
+			//std::cout << "Powerup destroy" << std::endl;	
+			destroy();
+			break;
+		default:
+			break;
+	}	
 }
 
 list<Vector2f> Powerup::hitboxPoints()
@@ -25,7 +36,7 @@ list<Vector2f> Powerup::hitboxPoints()
 	return hitbox_points;
 }
 
-bool Powerup::PowerupOnTheMap ()
+bool Powerup::PowerupOnTheMap()
 {
 	return _powerup_on_the_map;
 }

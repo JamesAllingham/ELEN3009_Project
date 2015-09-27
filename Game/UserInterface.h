@@ -13,6 +13,8 @@ using sf::View;
 using sf::Texture;
 using sf::FloatRect;
 using sf::IntRect;
+using sf::RectangleShape;
+using sf::Color;
 #include <SFML/Audio.hpp>
 
 #include <list>
@@ -21,7 +23,7 @@ using std::list;
 #include "ResourceHolder.h"
 #include "Events.h"
 #include "Character.h"
-#include "TextureID.h"
+#include "EntityID.h"
 
 using std::runtime_error;
 using std::cerr;
@@ -44,11 +46,14 @@ public:
 private:
 	
 	void processTextures(list<Character>& characters);
+	void drawSprite(const Sprite& texture);
 	
 	list<Events> _events;
 	RenderWindow _game_window;
 	View _camera;
-	ResourceHolder<Texture,TextureID> _textures;
+	View _mini_map;
+	ResourceHolder<Texture,EntityID> _textures;
 	Sprite _background;
+	RectangleShape _focusWindow;
 };
 #endif

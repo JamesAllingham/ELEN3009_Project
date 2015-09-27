@@ -16,11 +16,10 @@ using std::make_shared;
 #include "Ship.h"
 #include "Flyer.h"
 #include "Events.h"
-#include "TextureID.h"
+#include "EntityID.h"
 #include "StopWatch.h"
 #include "EntityHolder.h"
 #include "Collisions.h"
-//#include "HomingMissile.h"
 #include "Powerup.h"
 
 #include <SFML/System.hpp> // This is only temporary, using SFMLs Vector2f, but later will write a lightweight vector class to use instead
@@ -35,19 +34,21 @@ private:
 	void runGame();
 	void update(float delta_time);
 	void createEntities ();
-	void manageCollisions ();
+	void handleCollisions ();
 	void handleUserInput();
 	void followPlayer();
 	void endGame();
 	
 	UserInterface _user_interface;
 	EntityHolder _entities;
+	list<shared_ptr<MovingEntity>> _moving_entities;
+	list<shared_ptr<ShootingMovingEntity>> _shooting_entities;
 	shared_ptr<Ship> _player_ptr;
 	bool _game_running = true;
-	int _number_of_flyers_killed = 0;
-	static constexpr const int _NUMBER_OF_FLYERS_TO_KILL = 5;
-	static constexpr const float _MAX_X = 4800.f;
-	static constexpr const float _MAX_Y = 600.f;	
-	static constexpr const auto _FPS_LIMIT = 120.f; //this should be a constant I think, we never want it to change. should also be static since it is common to all instances of the game. the constexpr is a c++11 keyword used to allow us to have this static const
+	static constexpr const auto _NUMBER_OF_FLYERS_TO_KILL = 5;
+	static constexpr const auto _MAX_X = 4800.f;
+	static constexpr const auto _MAX_Y = 600.f;	
+	static constexpr const auto _MAX_ON_SCREEN_DISTANCE_FROM_PLAYER = 400.f;
+	static constexpr const auto _FPS_LIMIT = 120.f; 
 };
 #endif

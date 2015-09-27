@@ -1,12 +1,32 @@
 #include "Ship.h"
 
 
-Ship::Ship() : Entity{TextureID::Ship, Vector2f(mapLimits().x/2, mapLimits().y/2), Vector2f(250.f,250.f)}, _delta_position(0,0) 
+Ship::Ship() : ShootingMovingEntity{EntityID::Ship, Vector2f(mapLimits().x/2, mapLimits().y/2), Vector2f(250.f,250.f)}, _delta_position(0,0) 
 {
-	//std::cout << "Create ship" << std::endl;
+	
 };
 
-shared_ptr<Entity> Ship::shoot(float delta_time)
+void Ship::collide(shared_ptr<Entity> collider) 
+{
+	switch (collider->id())
+	{
+		case EntityID::Power_Up:
+			addHomingMissiles();
+			break;
+		case EntityID::Flyer:
+		case EntityID::Missile:		
+			_number_of_lives --;
+			if (_number_of_lives == 0)
+			{
+				destroy();
+			}
+			break;
+		default:
+			break;
+	}	
+}	
+
+shared_ptr<MovingEntity> Ship::shoot(float delta_time)
 {
 	if (_shooting) 
 	{
@@ -15,29 +35,38 @@ shared_ptr<Entity> Ship::shoot(float delta_time)
 		if (facingRight()) 
 		{
 			velocity_unit = Vector2f(1,0);
-			return shared_ptr<Entity> (new Laser(character().position + Vector2f(75.f, (37.f - 7.f)/2), velocity_unit));
+			return shared_ptr<MovingEntity> (new Laser(character().position + Vector2f(75.f, (37.f - 7.f)/2), velocity_unit));
 		}
 		else 
 		{
 			velocity_unit = Vector2f(-1,0);
-			return shared_ptr<Entity> (new Laser(character().position + Vector2f(-25.f, (37.f - 7.f)/2), velocity_unit));
+			return shared_ptr<MovingEntity> (new Laser(character().position + Vector2f(-25.f, (37.f - 7.f)/2), velocity_unit));
 		}
+	}
+	
+	if (_nearest_target.unique())
+	{
+		_nearest_target.reset();
+		return shared_ptr<MovingEntity> (nullptr);
 	}
 	
 	if (_shoot_homing_missile)
 	{
-		
+		// check that the missile has a valid target
+		if (_nearest_target.unique())
+		{
+			_nearest_target.reset();
+			return shared_ptr<MovingEntity> (nullptr);
+		}
 		_shoot_homing_missile = false;
 		if (_number_of_homing_missiles > 0)
 		{
 			--_number_of_homing_missiles;
-			return shared_ptr<Entity> (new HomingMissile(character().position + Vector2f(75.f, (37.f - 23.f)/2), _nearest_target));
-		}
-		
-		
+			return shared_ptr<MovingEntity> (new HomingMissile(character().position + Vector2f(75.f, (37.f - 23.f)/2), _nearest_target));
+		}		
 	}
 
-	return shared_ptr<Entity> (nullptr);
+	return shared_ptr<MovingEntity> (nullptr);
 	
 }
 
@@ -91,16 +120,14 @@ void Ship::move(float delta_time)
 {
 	Vector2f old_position = position();
 	auto distance = delta_time * velocity();
-	if (_moving_up) moveCharacter(0, -distance.y);
-	if (_moving_down) moveCharacter(0, distance.y);
-	if (_moving_left) moveCharacter(-distance.x,0);
-	if (_moving_right) moveCharacter(distance.x,0);
+	if (_moving_up) movePosition(0, -distance.y);
+	if (_moving_down) movePosition(0, distance.y);
+	if (_moving_left) movePosition(-distance.x,0);
+	if (_moving_right) movePosition(distance.x,0);
 	_delta_position =  position() - old_position;
 	
 	if ( (_moving_left && !_moving_right && facingRight()) || (!_moving_left && _moving_right && !facingRight()) )
-	{
-		//if (facingRight()) moveCharacter(_width,0);
-		//else moveCharacter(-_width,0);
+	{		
 		switchDirection();
 	}
 }
@@ -131,7 +158,7 @@ void Ship::setNearestTarget(EntityHolder& targets)
 	auto minimum = numeric_limits<float>::max();
 	for ( auto target : targets)
 	{
-		if (target->character().texture_ID == TextureID::Flyer)
+		if (target->character().Entity_ID == EntityID::Flyer)
 		{
 			auto diff_in_x = target->character().position.x - character().position.x;
 			auto diff_in_y = target->character().position.y - character().position.y;
@@ -144,14 +171,6 @@ void Ship::setNearestTarget(EntityHolder& targets)
 			
 		}
 	}
-}
-
-void Ship::resetPosition ()
-{
-	std::cout << "reseting Position" << std::endl;
-	Vector2f velocity (Vector2f(mapLimits().x/2, mapLimits().y/2) - character().position);
-	moveCharacter( velocity );
-	std::cout << character().position.x << std::endl << character().position.y << std::endl;
 }
 
 int Ship::_number_of_lives = 3;

@@ -1,6 +1,6 @@
 #include "Collisions.h"
 
-bool Collision::collision(shared_ptr<Entity> entity1_ptr, shared_ptr<Entity> entity2_ptr)
+bool Collision::collision(shared_ptr<Entity> entity1_ptr, shared_ptr<Entity> entity2_ptr) const
 {
 	list<Vector2f> polygon1_points = entity1_ptr->hitboxPoints();
 	list<Vector2f> polygon2_points = entity2_ptr->hitboxPoints();
@@ -25,7 +25,7 @@ bool Collision::collision(shared_ptr<Entity> entity1_ptr, shared_ptr<Entity> ent
 } 
 
 // Calculate the normal vectors for each vector linking the polygon (in the clockwise direction)
-list<Vector2f> Collision::normals(const list<Vector2f>& polygon_points)
+list<Vector2f> Collision::normals(const list<Vector2f>& polygon_points) const
 {
 	list<Vector2f> normals;
 	for (auto iter = begin(polygon_points); iter != end(polygon_points); iter++)
@@ -43,7 +43,7 @@ list<Vector2f> Collision::normals(const list<Vector2f>& polygon_points)
 }
 
 // Calculate the maximum projection of any of the vectors to the points of the polygon onto the given normal vector
-float Collision::maximumProjection(const list<Vector2f>& polygon_points, const Vector2f& polygon_normal)
+float Collision::maximumProjection(const list<Vector2f>& polygon_points, const Vector2f& polygon_normal) const
 {
 	auto maximum = 0.f;
 	for (const auto& point : polygon_points)
@@ -55,7 +55,7 @@ float Collision::maximumProjection(const list<Vector2f>& polygon_points, const V
 }
 
 // Calculate the minimum projection of any of the vectors to the points of the polygon onto the given normal vector
-float Collision::minimumProjection(const list<Vector2f>& polygon_points, const Vector2f& polygon_normal)
+float Collision::minimumProjection(const list<Vector2f>& polygon_points, const Vector2f& polygon_normal) const
 {
 	auto minimum = numeric_limits<float>::max();
 	for (const auto& point : polygon_points)
@@ -67,8 +67,25 @@ float Collision::minimumProjection(const list<Vector2f>& polygon_points, const V
 }
 
 // Return the dotProduct of two vectors - will probably get removed or moved to vector class
-float Collision::dotProduct(const Vector2f& vector1, const Vector2f& vector2)
+float Collision::dotProduct(const Vector2f& vector1, const Vector2f& vector2) const
 {
 	return vector1.x*vector2.x + vector1.y*vector2.y;
+}
+
+void Collision::manageCollisions()
+{
+	// set entites to be delted
+	for (auto entity_itr1 = _begin_entity_itr; entity_itr1 != prev(_end_entity_itr); entity_itr1++)
+	{	
+		for (auto entity_itr2 = next(entity_itr1); entity_itr2 != _end_entity_itr; entity_itr2++)
+		{
+			if (collision(*entity_itr2,*entity_itr1))
+			{		
+				(*entity_itr2)->collide(*entity_itr1);	
+				(*entity_itr1)->collide(*entity_itr2);
+			}
+		}			
+	}	
+	
 }
 
