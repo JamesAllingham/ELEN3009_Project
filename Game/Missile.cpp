@@ -1,15 +1,9 @@
 #include "Missile.h"
 
-Missile::Missile(const Vector2f& position, const Vector2f& velocity_unit) : MovingEntity{EntityID::Missile, position, velocity_unit*90.f}
+Missile::Missile(const Vector2f& position, const Vector2f& velocity_unit) : MovingEntity{EntityID::Missile, position, velocity_unit*_MISSILE_SPEED}
 {
-	//std::cout << "Create Missile" << std::endl;
-	//std::cout << "Velocity x " << velocity_unit.x << " y " << velocity_unit.y  << std::endl;
-};
 
-Missile::~Missile()
-{
-	//std::cout << "Missile destructor" << std::endl;
-}
+};
 
 void Missile::collide(shared_ptr<Entity> collider) 
 {
@@ -27,12 +21,12 @@ void Missile::collide(shared_ptr<Entity> collider)
 list<Vector2f> Missile::hitboxPoints()
 {
 	list<Vector2f> hitbox_points;
-	Vector2f top_left_point = character().position;
+	Vector2f top_left_point = position();
 	// Add the points in a clockwise direction
 	hitbox_points.push_back(Vector2f(top_left_point.x, top_left_point.y));
-	hitbox_points.push_back(Vector2f(top_left_point.x + _width, top_left_point.y));
-	hitbox_points.push_back(Vector2f(top_left_point.x + _width, top_left_point.y - _height));
-	hitbox_points.push_back(Vector2f(top_left_point.x, top_left_point.y - _height));
+	hitbox_points.push_back(Vector2f(top_left_point.x + _MISSILE_WIDTH, top_left_point.y));
+	hitbox_points.push_back(Vector2f(top_left_point.x + _MISSILE_WIDTH, top_left_point.y - _MISSILE_HEIGHT));
+	hitbox_points.push_back(Vector2f(top_left_point.x, top_left_point.y - _MISSILE_HEIGHT));
 	return hitbox_points;
 }
 
@@ -45,8 +39,3 @@ void Missile::move(float delta_time)
 		destroy();
 	}	
 }
-
-// shared_ptr<Entity> Missile::shoot(float delta_time) 
-// {
-	// return shared_ptr<Entity> (nullptr);
-// }

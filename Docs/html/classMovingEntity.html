@@ -150,7 +150,9 @@ Additional Inherited Members</h2></td></tr>
 <tr class="memitem:a3120c7057bffce2c4eafb3f8abb47198 inherit pro_methods_classEntity"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEntity.html#a3120c7057bffce2c4eafb3f8abb47198">randomPosition</a> (float max_position)</td></tr>
 <tr class="separator:a3120c7057bffce2c4eafb3f8abb47198 inherit pro_methods_classEntity"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p><a class="el" href="classMovingEntity.html">MovingEntity</a> class. This class is an extension of the <a class="el" href="classEntity.html">Entity</a> class which adds the <a class="el" href="classMovingEntity.html#ad8b7b854ad023311e9622039472e2695">move()</a> function. This facilitates a new role - the moving entity which has the following functionality: <a class="el" href="classMovingEntity.html#ad8b7b854ad023311e9622039472e2695">move()</a>, hitBoxPoints() and <a class="el" href="classMovingEntity.html#a690931bbd3572739d2309f297332013f">collide()</a>. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="a7b0140130d6ed5be55304dd2e3bdc846"></a>
 <div class="memitem">
 <div class="memproto">
@@ -188,6 +190,14 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Constructor. Calls the <a class="el" href="classEntity.html">Entity</a> constructor explicitly and the <a class="el" href="classIMover.html">IMover</a> constructor implicitly. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">entity_ID</td><td>is a EntityID containing the type of <a class="el" href="classEntity.html">Entity</a> being created. </td></tr>
+    <tr><td class="paramname">position</td><td>is a vector of floats containing the initial position of the <a class="el" href="classMovingEntity.html">MovingEntity</a>. </td></tr>
+    <tr><td class="paramname">velocity</td><td>is a vector of floats containing the velocity of the <a class="el" href="classMovingEntity.html">MovingEntity</a>. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -213,10 +223,16 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p><a class="el" href="classMovingEntity.html#a690931bbd3572739d2309f297332013f">collide()</a> function inherited from <a class="el" href="classEntity.html">Entity</a>. The <a class="el" href="classMovingEntity.html">MovingEntity</a> will be destroyed if it collides with Entities described by the derived class. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">collider</td><td>is a pointer to the <a class="el" href="classEntity.html">Entity</a> which the <a class="el" href="classMovingEntity.html">MovingEntity</a> is colliding with. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 <p>Implements <a class="el" href="classEntity.html#aa91e7dcc675916389cade2ecf11191a5">Entity</a>.</p>
 
-<p>Implemented in <a class="el" href="classLaser.html#a74b25d710aebfcac37e8bfd3eb99b7b2">Laser</a>, <a class="el" href="classShip.html#acdb685a7172d8640721b52b5851d7073">Ship</a>, <a class="el" href="classFlyer.html#adae5051f664596a0a8a77321095a695b">Flyer</a>, <a class="el" href="classHomingMissile.html#acd24359204f640a31f2cd7117ff3ff53">HomingMissile</a>, <a class="el" href="classMissile.html#abc98cc90990f5d8ac07c9445bcfe59c9">Missile</a>, and <a class="el" href="classShootingMovingEntity.html#a7aaf9cefa45a4b169da1b714257746f6">ShootingMovingEntity</a>.</p>
+<p>Implemented in <a class="el" href="classLaser.html#a74b25d710aebfcac37e8bfd3eb99b7b2">Laser</a>, <a class="el" href="classMissile.html#abc98cc90990f5d8ac07c9445bcfe59c9">Missile</a>, <a class="el" href="classShootingMovingEntity.html#a7aaf9cefa45a4b169da1b714257746f6">ShootingMovingEntity</a>, <a class="el" href="classHomingMissile.html#acd24359204f640a31f2cd7117ff3ff53">HomingMissile</a>, <a class="el" href="classShip.html#acdb685a7172d8640721b52b5851d7073">Ship</a>, and <a class="el" href="classFlyer.html#adae5051f664596a0a8a77321095a695b">Flyer</a>.</p>
 
 </div>
 </div>
@@ -240,10 +256,11 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p><a class="el" href="classMovingEntity.html#abb19ae2dec3e6a30e75d5d7a44cbc4e9">hitboxPoints()</a> function inherited from <a class="el" href="classEntity.html">Entity</a>. The hit box points describe hit box of the <a class="el" href="classMovingEntity.html">MovingEntity</a>. </p><dl class="section return"><dt>Returns</dt><dd>the list of co-ordinates for the hit box of the <a class="el" href="classMovingEntity.html">MovingEntity</a> as described by the derived class. </dd></dl>
 
 <p>Implements <a class="el" href="classEntity.html#a81f2c6a640e820201ffdb5e40fe3f06a">Entity</a>.</p>
 
-<p>Implemented in <a class="el" href="classLaser.html#a83a28c14c558e2cb2b71014966d9f9cf">Laser</a>, <a class="el" href="classShip.html#a89a79a37e71ab9e1878a4de3eb211b7d">Ship</a>, <a class="el" href="classFlyer.html#a6cbbbe8c8596dfb8ee09b9b290882d7b">Flyer</a>, <a class="el" href="classHomingMissile.html#adac577a6a23c2642d8fb87e9d0197f16">HomingMissile</a>, <a class="el" href="classMissile.html#a47433f969ab815bee3f7dd58b0c14739">Missile</a>, and <a class="el" href="classShootingMovingEntity.html#abf2f740fa858f08f23ed417ede3ca1d8">ShootingMovingEntity</a>.</p>
+<p>Implemented in <a class="el" href="classLaser.html#a83a28c14c558e2cb2b71014966d9f9cf">Laser</a>, <a class="el" href="classMissile.html#a47433f969ab815bee3f7dd58b0c14739">Missile</a>, <a class="el" href="classShootingMovingEntity.html#abf2f740fa858f08f23ed417ede3ca1d8">ShootingMovingEntity</a>, <a class="el" href="classShip.html#a89a79a37e71ab9e1878a4de3eb211b7d">Ship</a>, <a class="el" href="classHomingMissile.html#adac577a6a23c2642d8fb87e9d0197f16">HomingMissile</a>, and <a class="el" href="classFlyer.html#a6cbbbe8c8596dfb8ee09b9b290882d7b">Flyer</a>.</p>
 
 </div>
 </div>
@@ -268,10 +285,16 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p><a class="el" href="classMovingEntity.html#ad8b7b854ad023311e9622039472e2695">move()</a> function inherited from <a class="el" href="classIMover.html">IMover</a>. Moves the <a class="el" href="classMovingEntity.html">MovingEntity</a> as defined by the derived classes. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">delta_time</td><td>is a float containing the time since the last <a class="el" href="classMovingEntity.html#ad8b7b854ad023311e9622039472e2695">move()</a> was issued. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 <p>Implements <a class="el" href="classIMover.html#aaac23cb8f4ed5bf22342d854b2383f13">IMover</a>.</p>
 
-<p>Implemented in <a class="el" href="classLaser.html#adf3238de39f8538f90e193517d94353b">Laser</a>, <a class="el" href="classShip.html#acf829e42a8df879a2cfa705d3527cd1a">Ship</a>, <a class="el" href="classFlyer.html#a789e59d09800993cadaff15489780850">Flyer</a>, <a class="el" href="classHomingMissile.html#a57e02e9000ec8baf370e30423a3c930b">HomingMissile</a>, <a class="el" href="classMissile.html#ac5463127eba97dd0a171c1427b3f4b83">Missile</a>, and <a class="el" href="classShootingMovingEntity.html#a4fd2576d9c30a19420669cb56f3f4a3e">ShootingMovingEntity</a>.</p>
+<p>Implemented in <a class="el" href="classShip.html#acf829e42a8df879a2cfa705d3527cd1a">Ship</a>, <a class="el" href="classLaser.html#adf3238de39f8538f90e193517d94353b">Laser</a>, <a class="el" href="classMissile.html#ac5463127eba97dd0a171c1427b3f4b83">Missile</a>, <a class="el" href="classShootingMovingEntity.html#a4fd2576d9c30a19420669cb56f3f4a3e">ShootingMovingEntity</a>, <a class="el" href="classFlyer.html#a789e59d09800993cadaff15489780850">Flyer</a>, and <a class="el" href="classHomingMissile.html#a57e02e9000ec8baf370e30423a3c930b">HomingMissile</a>.</p>
 
 </div>
 </div>

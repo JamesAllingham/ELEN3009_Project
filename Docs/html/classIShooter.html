@@ -109,7 +109,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:aa53cb939567e5ec79ab03f0e54723304"><td class="memItemLeft" align="right" valign="top">virtual shared_ptr&lt; <a class="el" href="classMovingEntity.html">MovingEntity</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classIShooter.html#aa53cb939567e5ec79ab03f0e54723304">shoot</a> (float delta_time)=0</td></tr>
 <tr class="separator:aa53cb939567e5ec79ab03f0e54723304"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Member Function Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p><a class="el" href="classIShooter.html">IShooter</a> abstract class. This class is a pure interface used to create a contract that allows an entity to shoot. </p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
 <a class="anchor" id="aa53cb939567e5ec79ab03f0e54723304"></a>
 <div class="memitem">
 <div class="memproto">
@@ -131,6 +133,13 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p><a class="el" href="classIShooter.html#aa53cb939567e5ec79ab03f0e54723304">shoot()</a> function to be used by all Entities capable of shooting. No implementation, used for role modelling. Each class which inherits from <a class="el" href="classIShooter.html">IShooter</a> will implement this function. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">delta_time</td><td>is a float containing the time since the last <a class="el" href="classIShooter.html#aa53cb939567e5ec79ab03f0e54723304">shoot()</a> was issued. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>a shared pointer to the <a class="el" href="classMovingEntity.html">MovingEntity</a> which represents the projectile being shot. </dd></dl>
 
 <p>Implemented in <a class="el" href="classShip.html#abac6faf9de085233a06cffeaa56b5499">Ship</a>, <a class="el" href="classFlyer.html#a8064cd234959a40bad56932f3e5b9c00">Flyer</a>, and <a class="el" href="classShootingMovingEntity.html#aa818df0c3a0b1d24866f032fe374a864">ShootingMovingEntity</a>.</p>
 

@@ -149,7 +149,7 @@ Additional Inherited Members</h2></td></tr>
 <tr class="separator:a3120c7057bffce2c4eafb3f8abb47198 inherit pro_methods_classEntity"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p><a class="el" href="classLaser.html">Laser</a> class. This class represents the projectile fired by the player's ship. </p>
+<div class="textblock"><p><a class="el" href="classLaser.html">Laser</a> class. This class represents the projectile fired by the player's ship. Inherits from the <a class="el" href="classMovingEntity.html">MovingEntity</a> class. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="a840fb745b7623ea08292319a07c85466"></a>
 <div class="memitem">
@@ -177,7 +177,7 @@ Additional Inherited Members</h2></td></tr>
 <p>Constructor. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">position</td><td>is a vector of floats containing the initial position of the <a class="el" href="classLaser.html">Laser</a>. </td></tr>
-    <tr><td class="paramname">velocity</td><td>is a vector of floats containing the velocity of the <a class="el" href="classLaser.html">Laser</a>. </td></tr>
+    <tr><td class="paramname">velocity</td><td>is a vector of floats containing the velocity unit direction of the <a class="el" href="classLaser.html">Laser</a>. </td></tr>
   </table>
   </dd>
 </dl>
@@ -237,7 +237,7 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p><a class="el" href="classLaser.html#a83a28c14c558e2cb2b71014966d9f9cf">hitboxPoints()</a> function inherited from <a class="el" href="classMovingEntity.html">MovingEntity</a>. The hit box points describe square around the lLaser. </p><dl class="section return"><dt>Returns</dt><dd>the list of co-ordinates for the hit box of the <a class="el" href="classLaser.html">Laser</a>. </dd></dl>
+<p><a class="el" href="classLaser.html#a83a28c14c558e2cb2b71014966d9f9cf">hitboxPoints()</a> function inherited from <a class="el" href="classMovingEntity.html">MovingEntity</a>. The hit box points describe square around the <a class="el" href="classLaser.html">Laser</a>. </p><dl class="section return"><dt>Returns</dt><dd>the list of co-ordinates for the hit box of the <a class="el" href="classLaser.html">Laser</a>. </dd></dl>
 
 <p>Implements <a class="el" href="classMovingEntity.html#abb19ae2dec3e6a30e75d5d7a44cbc4e9">MovingEntity</a>.</p>
 
@@ -266,7 +266,7 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 <p><a class="el" href="classLaser.html#adf3238de39f8538f90e193517d94353b">move()</a> function inherited from <a class="el" href="classMovingEntity.html">MovingEntity</a>. Moves the <a class="el" href="classLaser.html">Laser</a> in a straight line starting at position with direction given by velocity_unit. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">delta_time</td><td>is a float containing the time since the last move was issued. </td></tr>
+    <tr><td class="paramname">delta_time</td><td>is a float containing the time since the last <a class="el" href="classLaser.html#adf3238de39f8538f90e193517d94353b">move()</a> was issued. </td></tr>
   </table>
   </dd>
 </dl>

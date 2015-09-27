@@ -108,8 +108,6 @@ Inheritance diagram for HomingMissile:</div>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a9de01bafcd6e523b2f8bfe1b689003b8"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHomingMissile.html#a9de01bafcd6e523b2f8bfe1b689003b8">HomingMissile</a> (const Vector2f &amp;<a class="el" href="classEntity.html#a46560a758a9dfda4d34ce09f67d41aad">position</a>, const shared_ptr&lt; <a class="el" href="classEntity.html">Entity</a> &gt; &amp;nearest_target)</td></tr>
 <tr class="separator:a9de01bafcd6e523b2f8bfe1b689003b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2a4b6e1b8af48bdc0c990a042815e8ba"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHomingMissile.html#a2a4b6e1b8af48bdc0c990a042815e8ba">~HomingMissile</a> ()</td></tr>
-<tr class="separator:a2a4b6e1b8af48bdc0c990a042815e8ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a57e02e9000ec8baf370e30423a3c930b"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHomingMissile.html#a57e02e9000ec8baf370e30423a3c930b">move</a> (float delta_time) override</td></tr>
 <tr class="separator:a57e02e9000ec8baf370e30423a3c930b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adac577a6a23c2642d8fb87e9d0197f16"><td class="memItemLeft" align="right" valign="top">virtual list&lt; Vector2f &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHomingMissile.html#adac577a6a23c2642d8fb87e9d0197f16">hitboxPoints</a> () override</td></tr>
@@ -174,21 +172,13 @@ Additional Inherited Members</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
-</div>
-</div>
-<a class="anchor" id="a2a4b6e1b8af48bdc0c990a042815e8ba"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">HomingMissile::~HomingMissile </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
+<p>Constructor. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">position</td><td>is a vector of floats containing the initial position of the <a class="el" href="classHomingMissile.html">HomingMissile</a>. </td></tr>
+    <tr><td class="paramname">nearest_target</td><td>is a shared pointer which is the nearest enemy to the <a class="el" href="classHomingMissile.html">HomingMissile</a>, which the <a class="el" href="classHomingMissile.html">HomingMissile</a> will lock onto. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -214,6 +204,12 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p><a class="el" href="classHomingMissile.html#acd24359204f640a31f2cd7117ff3ff53">collide()</a> function inherited from <a class="el" href="classMovingEntity.html">MovingEntity</a>. The <a class="el" href="classHomingMissile.html">HomingMissile</a> will be destroyed if it collides with a <a class="el" href="classFlyer.html">Flyer</a>. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">collider</td><td>is a pointer to the <a class="el" href="classEntity.html">Entity</a> which the <a class="el" href="classHomingMissile.html">HomingMissile</a> is colliding with. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 <p>Implements <a class="el" href="classMovingEntity.html#a690931bbd3572739d2309f297332013f">MovingEntity</a>.</p>
 
@@ -239,6 +235,7 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p><a class="el" href="classHomingMissile.html#adac577a6a23c2642d8fb87e9d0197f16">hitboxPoints()</a> function inherited from <a class="el" href="classMovingEntity.html">MovingEntity</a>. The hit box points describe square around the <a class="el" href="classHomingMissile.html">HomingMissile</a>. </p><dl class="section return"><dt>Returns</dt><dd>the list of co-ordinates for the hit box of the <a class="el" href="classHomingMissile.html">HomingMissile</a>. </dd></dl>
 
 <p>Implements <a class="el" href="classMovingEntity.html#abb19ae2dec3e6a30e75d5d7a44cbc4e9">MovingEntity</a>.</p>
 
@@ -265,6 +262,12 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p><a class="el" href="classHomingMissile.html#a57e02e9000ec8baf370e30423a3c930b">move()</a> function inherited from <a class="el" href="classMovingEntity.html">MovingEntity</a>. Moves the <a class="el" href="classHomingMissile.html">HomingMissile</a> in a trajectory starting at position with direction given calculated by taking the difference between the target's position and the <a class="el" href="classHomingMissile.html">HomingMissile</a>'s current position </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">delta_time</td><td>is a float containing the time since the last <a class="el" href="classHomingMissile.html#a57e02e9000ec8baf370e30423a3c930b">move()</a> was issued. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 <p>Implements <a class="el" href="classMovingEntity.html#ad8b7b854ad023311e9622039472e2695">MovingEntity</a>.</p>
 

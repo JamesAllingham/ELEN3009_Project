@@ -1,14 +1,9 @@
 #include "HomingMissile.h"
 
-HomingMissile::HomingMissile(const Vector2f& position, const shared_ptr<Entity>& nearest_target) : MovingEntity{EntityID::Homing_Missile, position, Vector2f(400.f,400.f)}, _nearest_target(nearest_target)
+HomingMissile::HomingMissile(const Vector2f& position, const shared_ptr<Entity>& nearest_target) : MovingEntity{EntityID::Homing_Missile, position, Vector2f(_MISSILE_SPEED,_MISSILE_SPEED)}, _nearest_target(nearest_target)
 {
-	//std::cout << "created Homing Missile" << std::endl;
+	
 };
-
-HomingMissile::~HomingMissile()
-{
-	//std::cout << "HomingMissile destructor" << std::endl;
-}
 
 void HomingMissile::collide(shared_ptr<Entity> collider) 
 {
@@ -28,9 +23,9 @@ list<Vector2f> HomingMissile::hitboxPoints()
 	Vector2f top_left_point = character().position;
 	// Add the points in a clockwise direction
 	hitbox_points.push_back(Vector2f(top_left_point.x, top_left_point.y));
-	hitbox_points.push_back(Vector2f(top_left_point.x + _width, top_left_point.y));
-	hitbox_points.push_back(Vector2f(top_left_point.x + _width, top_left_point.y - _height));
-	hitbox_points.push_back(Vector2f(top_left_point.x, top_left_point.y - _height));
+	hitbox_points.push_back(Vector2f(top_left_point.x + _MISSILE_WIDTH, top_left_point.y));
+	hitbox_points.push_back(Vector2f(top_left_point.x + _MISSILE_WIDTH, top_left_point.y - _MISSILE_HEIGHT));
+	hitbox_points.push_back(Vector2f(top_left_point.x, top_left_point.y - _MISSILE_HEIGHT));
 	return hitbox_points;
 }
 
@@ -48,8 +43,3 @@ void HomingMissile::move(float delta_time)
 		movePosition(velocity().x*delta_time*velocity_unit.x, velocity().y*delta_time*velocity_unit.y);
 	}
 }
-
-// shared_ptr<Entity> HomingMissile::shoot(float delta_time) 
-// {
-	// return shared_ptr<Entity> (nullptr);
-// }

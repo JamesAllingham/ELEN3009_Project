@@ -220,6 +220,12 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p><a class="el" href="classFlyer.html#adae5051f664596a0a8a77321095a695b">collide()</a> function inherited from <a class="el" href="classMovingEntity.html">MovingEntity</a>. The <a class="el" href="classShootingMovingEntity.html">ShootingMovingEntity</a> will be destroyed if it collides with Entities described by the derived class. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">collider</td><td>is a pointer to the <a class="el" href="classEntity.html">Entity</a> which the <a class="el" href="classShootingMovingEntity.html">ShootingMovingEntity</a> is colliding with. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 <p>Implements <a class="el" href="classShootingMovingEntity.html#a7aaf9cefa45a4b169da1b714257746f6">ShootingMovingEntity</a>.</p>
 
@@ -245,6 +251,7 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p><a class="el" href="classFlyer.html#a6cbbbe8c8596dfb8ee09b9b290882d7b">hitboxPoints()</a> function inherited from <a class="el" href="classMovingEntity.html">MovingEntity</a>. The hit box points describe hit box of the <a class="el" href="classShootingMovingEntity.html">ShootingMovingEntity</a>. </p><dl class="section return"><dt>Returns</dt><dd>the list of co-ordinates for the hit box of the <a class="el" href="classShootingMovingEntity.html">ShootingMovingEntity</a> as described by the derived class. </dd></dl>
 
 <p>Implements <a class="el" href="classShootingMovingEntity.html#abf2f740fa858f08f23ed417ede3ca1d8">ShootingMovingEntity</a>.</p>
 
@@ -271,6 +278,12 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p><a class="el" href="classFlyer.html#a789e59d09800993cadaff15489780850">move()</a> function inherited from <a class="el" href="classMovingEntity.html">MovingEntity</a> Moves the <a class="el" href="classShootingMovingEntity.html">ShootingMovingEntity</a> as defined by the derived classes. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">delta_time</td><td>is a float containing the time since the last <a class="el" href="classFlyer.html#a789e59d09800993cadaff15489780850">move()</a> was issued. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 <p>Implements <a class="el" href="classShootingMovingEntity.html#a4fd2576d9c30a19420669cb56f3f4a3e">ShootingMovingEntity</a>.</p>
 
@@ -367,6 +380,13 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p><a class="el" href="classFlyer.html#a8064cd234959a40bad56932f3e5b9c00">shoot()</a> function inherited from <a class="el" href="classIShooter.html">IShooter</a>. Shoots a <a class="el" href="classMovingEntity.html">MovingEntity</a> as defined by the derived class. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">delta_time</td><td>is a float containing the time since the last <a class="el" href="classFlyer.html#a8064cd234959a40bad56932f3e5b9c00">shoot()</a> was issued. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>a shared pointer to the <a class="el" href="classMovingEntity.html">MovingEntity</a> which represents the projectile being shot. </dd></dl>
 
 <p>Implements <a class="el" href="classShootingMovingEntity.html#aa818df0c3a0b1d24866f032fe374a864">ShootingMovingEntity</a>.</p>
 

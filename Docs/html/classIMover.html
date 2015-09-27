@@ -113,7 +113,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:aaac23cb8f4ed5bf22342d854b2383f13"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classIMover.html#aaac23cb8f4ed5bf22342d854b2383f13">move</a> (float delta_time)=0</td></tr>
 <tr class="separator:aaac23cb8f4ed5bf22342d854b2383f13"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Member Function Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p><a class="el" href="classIMover.html">IMover</a> abstract class. This class is a pure interface used to create a contract that allows an entity to move. </p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
 <a class="anchor" id="aaac23cb8f4ed5bf22342d854b2383f13"></a>
 <div class="memitem">
 <div class="memproto">
@@ -135,8 +137,14 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p><a class="el" href="classIMover.html#aaac23cb8f4ed5bf22342d854b2383f13">move()</a> function to be used by all Entities capable of movement. No implementation, used for role modelling. Each class which inherits from <a class="el" href="classIMover.html">IMover</a> will implement this function. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">delta_time</td><td>is a float containing the time since the last <a class="el" href="classIMover.html#aaac23cb8f4ed5bf22342d854b2383f13">move()</a> was issued. </td></tr>
+  </table>
+  </dd>
+</dl>
 
-<p>Implemented in <a class="el" href="classLaser.html#adf3238de39f8538f90e193517d94353b">Laser</a>, <a class="el" href="classShip.html#acf829e42a8df879a2cfa705d3527cd1a">Ship</a>, <a class="el" href="classFlyer.html#a789e59d09800993cadaff15489780850">Flyer</a>, <a class="el" href="classHomingMissile.html#a57e02e9000ec8baf370e30423a3c930b">HomingMissile</a>, <a class="el" href="classMissile.html#ac5463127eba97dd0a171c1427b3f4b83">Missile</a>, <a class="el" href="classMovingEntity.html#ad8b7b854ad023311e9622039472e2695">MovingEntity</a>, and <a class="el" href="classShootingMovingEntity.html#a4fd2576d9c30a19420669cb56f3f4a3e">ShootingMovingEntity</a>.</p>
+<p>Implemented in <a class="el" href="classShip.html#acf829e42a8df879a2cfa705d3527cd1a">Ship</a>, <a class="el" href="classLaser.html#adf3238de39f8538f90e193517d94353b">Laser</a>, <a class="el" href="classMissile.html#ac5463127eba97dd0a171c1427b3f4b83">Missile</a>, <a class="el" href="classShootingMovingEntity.html#a4fd2576d9c30a19420669cb56f3f4a3e">ShootingMovingEntity</a>, <a class="el" href="classFlyer.html#a789e59d09800993cadaff15489780850">Flyer</a>, <a class="el" href="classHomingMissile.html#a57e02e9000ec8baf370e30423a3c930b">HomingMissile</a>, and <a class="el" href="classMovingEntity.html#ad8b7b854ad023311e9622039472e2695">MovingEntity</a>.</p>
 
 </div>
 </div>

@@ -1,6 +1,6 @@
 #include "Laser.h"
 
-Laser::Laser(const Vector2f& position, const Vector2f& velocity_unit) : MovingEntity{EntityID::Laser, position, velocity_unit*300.f}
+Laser::Laser(const Vector2f& position, const Vector2f& velocity_unit) : MovingEntity{EntityID::Laser, position, velocity_unit*_LASER_SPEED}
 {
 	
 };
@@ -21,12 +21,12 @@ void Laser::collide(shared_ptr<Entity> collider)
 list<Vector2f> Laser::hitboxPoints()
 {
 	list<Vector2f> hitbox_points;
-	Vector2f top_left_point = character().position;
+	Vector2f top_left_point = position();
 	// Add the points in a clockwise direction
 	hitbox_points.push_back(Vector2f(top_left_point.x, top_left_point.y));
-	hitbox_points.push_back(Vector2f(top_left_point.x + _width, top_left_point.y));
-	hitbox_points.push_back(Vector2f(top_left_point.x + _width, top_left_point.y - _height));
-	hitbox_points.push_back(Vector2f(top_left_point.x, top_left_point.y - _height));
+	hitbox_points.push_back(Vector2f(top_left_point.x + _LASER_WIDTH, top_left_point.y));
+	hitbox_points.push_back(Vector2f(top_left_point.x + _LASER_WIDTH, top_left_point.y - _LASER_HEIGHT));
+	hitbox_points.push_back(Vector2f(top_left_point.x, top_left_point.y - _LASER_HEIGHT));
 	return hitbox_points;
 }
 
