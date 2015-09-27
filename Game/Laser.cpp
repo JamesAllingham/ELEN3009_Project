@@ -5,11 +5,6 @@ Laser::Laser(const Vector2f& position, const Vector2f& velocity_unit) : MovingEn
 	
 };
 
-Laser::~Laser()
-{
-	
-}
-
 void Laser::collide(shared_ptr<Entity> collider) 
 {
 	switch (collider->id())
@@ -43,8 +38,3 @@ void Laser::move(float delta_time)
 		destroy();
 	}
 }
-
-// shared_ptr<Entity> Laser::shoot(float delta_time) 
-// {
-	// return shared_ptr<Entity> (nullptr);
-// }
