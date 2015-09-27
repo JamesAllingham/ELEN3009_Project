@@ -9,18 +9,17 @@ using std::make_shared;
 
 #include <iostream> // For testing purposes
 
+#include "ShootingMovingEntity.h"
 #include "Character.h"
-#include "Entity.h"
 #include "Missile.h"
 #include "EntityId.h"
-//#include "Ship.h"
 
 #include <SFML/System.hpp> // This is only temporary, using SFMLs Vector2f, but later will write a lightweight vector class to use instead
 using sf::Vector2f;
 
 //class Ship;
 
-class Flyer : public Entity
+class Flyer : public ShootingMovingEntity
 {
 public:
 	Flyer ();
@@ -31,7 +30,7 @@ public:
 	
 	virtual void move (float delta_time)  override;
 	virtual list<Vector2f> hitboxPoints() override;	
-	virtual shared_ptr<Entity> shoot(float delta_time) override;
+	virtual shared_ptr<MovingEntity> shoot(float delta_time) override;
 	virtual void collide(shared_ptr<Entity> collider) override;	
 	
 private:

@@ -1,9 +1,9 @@
 #ifndef SHIP
 #define SHIP
 
+#include "ShootingMovingEntity.h"
 #include "Events.h"
 #include "Character.h"
-#include "Entity.h"
 #include "Laser.h"
 #include "HomingMissile.h"
 #include "EntityHolder.h"
@@ -19,9 +19,8 @@ using std::shared_ptr;
 
 using std::numeric_limits;
 
-//class Flyer;
-
-class Ship : public Entity {
+class Ship : public ShootingMovingEntity
+{
 
 public:
 	Ship();
@@ -37,7 +36,7 @@ public:
 	
 	virtual void move(float delta_time) override;
 	virtual list<Vector2f> hitboxPoints() override;
-	virtual shared_ptr<Entity> shoot(float delta_time) override;	
+	virtual shared_ptr<MovingEntity> shoot(float delta_time) override;	
 	virtual void collide(shared_ptr<Entity> collider) override;	
 	
 	

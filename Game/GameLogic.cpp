@@ -2,27 +2,30 @@
 
 GameLogic::GameLogic () : _user_interface(), _entities(), _player_ptr(new Ship)
 {
-	//std::cout << "Game Logic constructor" << std::endl;
 	Entity::setMapLimits(Vector2f(_MAX_X,_MAX_Y));
 	Flyer::setTarget(_player_ptr);
+	
 	_entities.addEntity(_player_ptr);
+	_shooting_entities.push_back(_player_ptr);
+	_moving_entities.push_back(_player_ptr);
+	
 	runGame();
 }
 
-void GameLogic::runGame() {
-	//std::cout << "runGame" << std::endl;
+void GameLogic::runGame() 
+{
 	StopWatch clock;
 	clock.start();
 	auto time_since_last_update = 0.f;
 	auto time_per_frame = 1.0f/_FPS_LIMIT;
 	
-	while (_game_running) {
-		//std::cout << "game running" << std::endl;
+	while (_game_running)
+	{
 		time_since_last_update += clock.stop();
 		clock.restart();
 		
-		while (time_since_last_update > time_per_frame) {
-			//std::cout << "updating logic" << std::endl;
+		while (time_since_last_update > time_per_frame) 
+		{
 			update(time_per_frame);
 			time_since_last_update -= time_per_frame;
 		}
@@ -31,8 +34,8 @@ void GameLogic::runGame() {
 	}
 }
 
-void GameLogic::update(float delta_time) {
-	//std::cout << "update" << std::endl;
+void GameLogic::update(float delta_time) 
+{	
 	// Event management
 	handleUserInput();
 	
@@ -40,9 +43,9 @@ void GameLogic::update(float delta_time) {
 	createEntities();
 	
 	// Move all entites based on their rules
-	for (auto entity_ptr: _entities)
+	for (auto moving_entity_ptr: _moving_entities)
 	{
-		entity_ptr->move(delta_time);		
+		moving_entity_ptr->move(delta_time);		
 	}	
 	
 	if (!Powerup::PowerupOnTheMap() ) _entities.addEntity(make_shared<Powerup> ());
@@ -59,15 +62,20 @@ void GameLogic::update(float delta_time) {
 	}
 	
 	// Shoot with all entities that can shooting
-	for (auto entity_ptr: _entities)
+	for (auto shooting_entity_ptr: _shooting_entities)
 	{
-		_entities.addEntity(entity_ptr->shoot(delta_time));
+		shared_ptr<MovingEntity> moving_entity_ptr = shooting_entity_ptr->shoot(delta_time);
+		if (moving_entity_ptr)
+		{
+			_entities.addEntity(moving_entity_ptr);
+			_moving_entities.push_back(moving_entity_ptr);
+		}		
 	}
 	
 	// re-center the view on the ship in the x-direction
 	followPlayer();
 	
-	// End the game if the player has been distoryed
+	// End the game if the player has been destroyed
 	if (_player_ptr->destroyed()) endGame();
 }
 
@@ -118,9 +126,32 @@ void GameLogic::handleCollisions()
 	for (auto entity_itr = begin(_entities); entity_itr != end(_entities); )
 	{
 		if ((*entity_itr)->destroyed())
-		{
-			//std::cout << static_cast<int>((*entity_itr)->id())<< " destroyed" << std::endl;
+		{			
 			entity_itr = _entities.eraseEntity(entity_itr);
+		}
+		else 
+		{
+			entity_itr++;
+		}
+	}
+	
+	for (auto entity_itr = begin(_moving_entities); entity_itr != end(_moving_entities); )
+	{
+		if ((*entity_itr)->destroyed())
+		{
+			entity_itr = _moving_entities.erase(entity_itr);
+		}
+		else 
+		{
+			entity_itr++;
+		}
+	}
+	
+	for (auto entity_itr = begin(_shooting_entities); entity_itr != end(_shooting_entities); )
+	{
+		if ((*entity_itr)->destroyed())
+		{
+			entity_itr = _shooting_entities.erase(entity_itr);
 		}
 		else 
 		{
@@ -129,11 +160,14 @@ void GameLogic::handleCollisions()
 	}
 }
 
-void GameLogic::createEntities () {
-
+void GameLogic::createEntities () 
+{
 	while (Flyer::numberOfFlyers() + Flyer::numberOfFlyersKilled() < _NUMBER_OF_FLYERS_TO_KILL) 
 	{		
-		_entities.addEntity(shared_ptr<Flyer> (new Flyer));
+		shared_ptr<Flyer> flyer_ptr = make_shared<Flyer> ();
+		_entities.addEntity(flyer_ptr);
+		_shooting_entities.push_back(flyer_ptr);
+		_moving_entities.push_back(flyer_ptr);
 	}
 }
 

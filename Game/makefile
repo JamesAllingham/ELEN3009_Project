@@ -1,5 +1,5 @@
 CFLAGS=-c -Wall -std=c++14
-LFLAGS= -Wall -std=c++14
+LFLAGS=-Wall -std=c++14
 LPATH=-L..\sfml\lib -lsfml-graphics -lsfml-window -lsfml-system -lsfml-graphics -lsfml-audio
 IPATH=-I..\sfml\include
 CC=g++

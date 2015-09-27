@@ -1,6 +1,6 @@
 #include "Missile.h"
 
-Missile::Missile(const Vector2f& position, const Vector2f& velocity_unit) : Entity{EntityID::Missile, position, velocity_unit*90.f}
+Missile::Missile(const Vector2f& position, const Vector2f& velocity_unit) : MovingEntity{EntityID::Missile, position, velocity_unit*90.f}
 {
 	//std::cout << "Create Missile" << std::endl;
 	//std::cout << "Velocity x " << velocity_unit.x << " y " << velocity_unit.y  << std::endl;
@@ -46,7 +46,7 @@ void Missile::move(float delta_time)
 	}	
 }
 
-shared_ptr<Entity> Missile::shoot(float delta_time) 
-{
-	return shared_ptr<Entity> (nullptr);
-}
+// shared_ptr<Entity> Missile::shoot(float delta_time) 
+// {
+	// return shared_ptr<Entity> (nullptr);
+// }

@@ -1,6 +1,6 @@
 #include "HomingMissile.h"
 
-HomingMissile::HomingMissile(const Vector2f& position, const shared_ptr<Entity>& nearest_target) : Entity{EntityID::Homing_Missile, position, Vector2f(400.f,400.f)}, _nearest_target(nearest_target)
+HomingMissile::HomingMissile(const Vector2f& position, const shared_ptr<Entity>& nearest_target) : MovingEntity{EntityID::Homing_Missile, position, Vector2f(400.f,400.f)}, _nearest_target(nearest_target)
 {
 	//std::cout << "created Homing Missile" << std::endl;
 };
@@ -49,7 +49,7 @@ void HomingMissile::move(float delta_time)
 	}
 }
 
-shared_ptr<Entity> HomingMissile::shoot(float delta_time) 
-{
-	return shared_ptr<Entity> (nullptr);
-}
+// shared_ptr<Entity> HomingMissile::shoot(float delta_time) 
+// {
+	// return shared_ptr<Entity> (nullptr);
+// }

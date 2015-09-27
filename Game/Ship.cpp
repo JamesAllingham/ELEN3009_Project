@@ -1,7 +1,7 @@
 #include "Ship.h"
 
 
-Ship::Ship() : Entity{EntityID::Ship, Vector2f(mapLimits().x/2, mapLimits().y/2), Vector2f(250.f,250.f)}, _delta_position(0,0) 
+Ship::Ship() : ShootingMovingEntity{EntityID::Ship, Vector2f(mapLimits().x/2, mapLimits().y/2), Vector2f(250.f,250.f)}, _delta_position(0,0) 
 {
 	
 };
@@ -11,7 +11,6 @@ void Ship::collide(shared_ptr<Entity> collider)
 	switch (collider->id())
 	{
 		case EntityID::Power_Up:
-			//std::cout << "Collide homing missiles" << std::endl;
 			addHomingMissiles();
 			break;
 		case EntityID::Flyer:
@@ -23,7 +22,7 @@ void Ship::collide(shared_ptr<Entity> collider)
 	}	
 }	
 
-shared_ptr<Entity> Ship::shoot(float delta_time)
+shared_ptr<MovingEntity> Ship::shoot(float delta_time)
 {
 	if (_shooting) 
 	{
@@ -32,20 +31,19 @@ shared_ptr<Entity> Ship::shoot(float delta_time)
 		if (facingRight()) 
 		{
 			velocity_unit = Vector2f(1,0);
-			return shared_ptr<Entity> (new Laser(character().position + Vector2f(75.f, (37.f - 7.f)/2), velocity_unit));
+			return shared_ptr<MovingEntity> (new Laser(character().position + Vector2f(75.f, (37.f - 7.f)/2), velocity_unit));
 		}
 		else 
 		{
 			velocity_unit = Vector2f(-1,0);
-			return shared_ptr<Entity> (new Laser(character().position + Vector2f(-25.f, (37.f - 7.f)/2), velocity_unit));
+			return shared_ptr<MovingEntity> (new Laser(character().position + Vector2f(-25.f, (37.f - 7.f)/2), velocity_unit));
 		}
 	}
 	
 	if (_nearest_target.unique())
 	{
-		//std::cout << "Unique target" << std::endl;
 		_nearest_target.reset();
-		return shared_ptr<Entity> (nullptr);
+		return shared_ptr<MovingEntity> (nullptr);
 	}
 	
 	if (_shoot_homing_missile)
@@ -53,19 +51,18 @@ shared_ptr<Entity> Ship::shoot(float delta_time)
 		// check that the missile has a valid target
 		if (_nearest_target.unique())
 		{
-			std::cout << "Unique target" << std::endl;
 			_nearest_target.reset();
-			return shared_ptr<Entity> (nullptr);
+			return shared_ptr<MovingEntity> (nullptr);
 		}
 		_shoot_homing_missile = false;
 		if (_number_of_homing_missiles > 0)
 		{
 			--_number_of_homing_missiles;
-			return shared_ptr<Entity> (new HomingMissile(character().position + Vector2f(75.f, (37.f - 23.f)/2), _nearest_target));
+			return shared_ptr<MovingEntity> (new HomingMissile(character().position + Vector2f(75.f, (37.f - 23.f)/2), _nearest_target));
 		}		
 	}
 
-	return shared_ptr<Entity> (nullptr);
+	return shared_ptr<MovingEntity> (nullptr);
 	
 }
 

@@ -12,15 +12,16 @@ using sf::Vector2f;
 #include <memory>
 using std::shared_ptr;
 
-class Powerup : public Entity {
+class Powerup : public Entity
+{
 
 public:
 	Powerup();
 	~Powerup();
 	
-	virtual void move(float delta_time) override {};
+	//virtual void move(float delta_time) override {};
 	virtual list<Vector2f> hitboxPoints() override;
-	virtual shared_ptr<Entity> shoot(float delta_time) {return shared_ptr<Entity> (nullptr);};
+	//virtual shared_ptr<Entity> shoot(float delta_time) {return shared_ptr<Entity> (nullptr);};
 	virtual void collide(shared_ptr<Entity> collider) override;	
 	
 	static bool PowerupOnTheMap ();

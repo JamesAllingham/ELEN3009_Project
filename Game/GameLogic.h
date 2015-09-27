@@ -41,6 +41,8 @@ private:
 	
 	UserInterface _user_interface;
 	EntityHolder _entities;
+	list<shared_ptr<MovingEntity>> _moving_entities;
+	list<shared_ptr<ShootingMovingEntity>> _shooting_entities;
 	shared_ptr<Ship> _player_ptr;
 	bool _game_running = true;
 	static constexpr const auto _NUMBER_OF_FLYERS_TO_KILL = 5;

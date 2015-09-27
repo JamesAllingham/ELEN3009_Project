@@ -16,9 +16,8 @@ class Entity {
 
 public:
 	//Set the position and texture of the ship
-	Entity(EntityID id, Vector2f position, Vector2f velocity);
-	Character character() {return Character(_id, _position);};	
-	//static void setMapLimits (float max_x, float max_y);
+	Entity(EntityID id, Vector2f position, Vector2f velocity): _id(id), _position(position), _velocity(velocity) {};
+	Character character() {return Character(_id, _position);};
 	static void setMapLimits (const Vector2f& max_position);
 	static Vector2f mapLimits() {return _max_position;};
 	Vector2f velocity() {return _velocity;};
@@ -27,9 +26,6 @@ public:
 	bool destroyed() {return _destroyed;};
 	void destroy() {_destroyed = true;};
 	
-	// For now move and shoot are part of entity but in future we should look into having two more derived classes in the hierarchy - ShootingEntity and MovingEntity
-	virtual void move(float delta_time) = 0;
-	virtual shared_ptr<Entity> shoot(float delta_time) = 0;
 	virtual list<Vector2f> hitboxPoints() = 0;
 	virtual void collide(shared_ptr<Entity> collider) = 0;
 
