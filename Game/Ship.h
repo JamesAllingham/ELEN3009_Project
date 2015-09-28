@@ -3,10 +3,10 @@
 
 #include "ShootingMovingEntity.h"
 #include "Events.h"
-#include "Character.h"
 #include "Laser.h"
 #include "HomingMissile.h"
 #include "EntityHolder.h"
+#include "EntityID.h"
 
 #include <SFML/System.hpp> // This is only temporary, using SFMLs Vector2f, but later will write a lightweight vector class to use instead
 using sf::Vector2f;

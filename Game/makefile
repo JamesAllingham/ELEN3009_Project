@@ -13,9 +13,9 @@ GameLogic.o: GameLogic.cpp GameLogic.h UserInterface.h Ship.h Events.h EntityID.
 	$(CC) $(CFLAGS) $(IPATH) -o GameLogic.o GameLogic.cpp
 UserInterface.o: UserInterface.cpp UserInterface.h Events.h Character.h EntityID.h ResourceHolder.h
 	$(CC) $(CFLAGS) $(IPATH) -o UserInterface.o UserInterface.cpp
-Ship.o: Ship.cpp Ship.h Events.h Character.h Entity.h Laser.h Flyer.h
+Ship.o: Ship.cpp Ship.h Events.h Laser.h HomingMissile.h ShootingMovingEntity.h 
 	$(CC) $(CFLAGS) $(IPATH) -o Ship.o Ship.cpp
-Flyer.o: Flyer.cpp Flyer.h Character.h Entity.h Ship.h Missile.h
+Flyer.o: Flyer.cpp Flyer.h EntityID.h Missile.h ShootingMovingEntity.h 
 	$(CC) $(CFLAGS) $(IPATH) -o Flyer.o Flyer.cpp
 StopWatch.o: StopWatch.h
 	$(CC) $(CFLAGS) $(IPATH) -o StopWatch.o StopWatch.cpp
@@ -25,13 +25,13 @@ Entity.o: Entity.h Character.h
 	$(CC) $(CFLAGS) $(IPATH) -o Entity.o Entity.cpp
 Collisions.o: Collisions.h Entity.h
 	$(CC) $(CFLAGS) $(IPATH) -o Collisions.o Collisions.cpp
-Laser.o: Laser.h Entity.h
+Laser.o: Laser.h MovingEntity.h
 	$(CC) $(CFLAGS) $(IPATH) -o Laser.o Laser.cpp
-Missile.o: Missile.h Entity.h
+Missile.o: Missile.h MovingEntity.h
 	$(CC) $(CFLAGS) $(IPATH) -o Missile.o Missile.cpp
-HomingMissile.o: HomingMissile.h Entity.h Flyer.h Character.h
+HomingMissile.o: HomingMissile.h MovingEntity.h Flyer.h 
 	$(CC) $(CFLAGS) $(IPATH) -o HomingMissile.o HomingMissile.cpp
-Powerup.o: Powerup.h Entity.h Character.h
+Powerup.o: Powerup.h Entity.h 
 	$(CC) $(CFLAGS) $(IPATH) -o Powerup.o Powerup.cpp
 clean:
 	del *.o *.exe
