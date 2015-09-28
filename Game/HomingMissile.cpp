@@ -20,7 +20,7 @@ void HomingMissile::collide(shared_ptr<Entity> collider)
 list<Vector2f> HomingMissile::hitboxPoints()
 {
 	list<Vector2f> hitbox_points;
-	Vector2f top_left_point = character().position;
+	Vector2f top_left_point = position();
 	// Add the points in a clockwise direction
 	hitbox_points.push_back(Vector2f(top_left_point.x, top_left_point.y));
 	hitbox_points.push_back(Vector2f(top_left_point.x + _MISSILE_WIDTH, top_left_point.y));
@@ -38,7 +38,7 @@ void HomingMissile::move(float delta_time)
 	}
 	else 
 	{
-		Vector2f velocity_unit(_nearest_target->character().position - character().position);
+		Vector2f velocity_unit(_nearest_target->position() - position());
 		velocity_unit /= sqrtf(velocity_unit.x*velocity_unit.x + velocity_unit.y*velocity_unit.y);
 		movePosition(velocity().x*delta_time*velocity_unit.x, velocity().y*delta_time*velocity_unit.y);
 	}

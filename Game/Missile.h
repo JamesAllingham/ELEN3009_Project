@@ -23,7 +23,7 @@ public:
 	/**
     * Constructor.
     * @param position is a vector of floats containing the initial position of the Missile.
-    * @param velocity is a vector of floats containing the velocity unit direction of the Missile.
+    * @param velocity_unit is a vector of floats containing the velocity unit direction of the Missile.
     */
 	Missile(const Vector2f& position, const Vector2f& velocity_unit);
 	/**

@@ -1,7 +1,7 @@
 var searchData=
 [
   ['changeinposition',['changeInPosition',['../classShip.html#a870e61d12ed2ae851ed0061df501dfed',1,'Ship']]],
-  ['character',['Character',['../classCharacter.html',1,'Character'],['../classEntity.html#a3eba78fb7d8910843adb604cd8898e79',1,'Entity::character()'],['../classCharacter.html#a4fddabe53f45dae75c1cbe5e4e2e3060',1,'Character::Character()']]],
+  ['character',['Character',['../classCharacter.html',1,'Character'],['../classEntity.html#a3eba78fb7d8910843adb604cd8898e79',1,'Entity::character()'],['../classCharacter.html#a6606d2072b1b9011c97a1dff93b21309',1,'Character::Character()']]],
   ['character_2eh',['Character.h',['../Character_8h.html',1,'']]],
   ['characters',['characters',['../classEntityHolder.html#a2c8c528bf9c6a1bb6ca6a20904e43070',1,'EntityHolder']]],
   ['closewindow',['closeWindow',['../classUserInterface.html#a0ebdc6cf083f044e3d3da3b6226ad004',1,'UserInterface']]],

@@ -23,7 +23,7 @@ public:
 	/**
     * Constructor.
     * @param position is a vector of floats containing the initial position of the Laser.
-    * @param velocity is a vector of floats containing the velocity unit direction of the Laser.
+    * @param velocity_unit is a vector of floats containing the velocity unit direction of the Laser.
     */
 	Laser(const Vector2f& position, const Vector2f& velocity_unit);
 	

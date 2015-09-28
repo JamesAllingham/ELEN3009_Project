@@ -1,0 +1,25 @@
+digraph "Entity::destroy"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="Entity::destroy",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node1 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="Flyer::collide",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classFlyer.html#adae5051f664596a0a8a77321095a695b",tooltip="collide() function inherited from MovingEntity. "];
+  Node1 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="HomingMissile::collide",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classHomingMissile.html#acd24359204f640a31f2cd7117ff3ff53",tooltip="collide() function inherited from MovingEntity. "];
+  Node1 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="HomingMissile::move",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classHomingMissile.html#a57e02e9000ec8baf370e30423a3c930b",tooltip="move() function inherited from MovingEntity. "];
+  Node1 -> Node5 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node5 [label="Laser::collide",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classLaser.html#a74b25d710aebfcac37e8bfd3eb99b7b2",tooltip="collide() function inherited from MovingEntity. "];
+  Node1 -> Node6 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node6 [label="Laser::move",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classLaser.html#adf3238de39f8538f90e193517d94353b",tooltip="move() function inherited from MovingEntity. "];
+  Node1 -> Node7 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node7 [label="Missile::collide",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classMissile.html#abc98cc90990f5d8ac07c9445bcfe59c9",tooltip="collide() function inherited from MovingEntity. "];
+  Node1 -> Node8 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node8 [label="Missile::move",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classMissile.html#ac5463127eba97dd0a171c1427b3f4b83",tooltip="move() function inherited from MovingEntity. "];
+  Node1 -> Node9 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node9 [label="Powerup::collide",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classPowerup.html#a755e96622bd2aa3d7bf5cc5c2b0808aa"];
+  Node1 -> Node10 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node10 [label="Ship::collide",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classShip.html#acdb685a7172d8640721b52b5851d7073",tooltip="collide() function inherited from MovingEntity. "];
+}

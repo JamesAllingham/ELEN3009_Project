@@ -1,0 +1,11 @@
+digraph "UserInterface::UserInterface"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="UserInterface::UserInterface",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="ResourceHolder::load",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classResourceHolder.html#ad15d54a722804d1f4ffca6fcaa468a36"];
+  Node1 -> Node3 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="ResourceHolder::get",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classResourceHolder.html#a236988b27b59d66e39e38e556de2a064"];
+}

@@ -116,35 +116,35 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#include &lt;SFML/System.hpp&gt;</span> <span class="comment">// This is only temporary, using SFMLs Vector2f, but later will write a lightweight vector class to use instead</span></div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="keyword">using</span> sf::Vector2f;</div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;</div>
-<div class="line"><a name="l00028"></a><span class="lineno"><a class="line" href="classGameLogic.html">   28</a></span>&#160;<span class="keyword">class </span><a class="code" href="classGameLogic.html">GameLogic</a> {</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <span class="comment">//Constructor needs to go to main screen, main screen leads to run game</span></div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <a class="code" href="classGameLogic.html#a996cd781691c36922e7ce792fcb21640">GameLogic</a> ();</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <span class="keywordtype">void</span> runGame();</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <span class="keywordtype">void</span> update(<span class="keywordtype">float</span> delta_time);</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="keywordtype">void</span> createEntities ();</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="keywordtype">void</span> handleCollisions ();</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <span class="keywordtype">void</span> handleUserInput();</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="keywordtype">void</span> followPlayer();</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="keywordtype">void</span> endGame();</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    </div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <a class="code" href="classUserInterface.html">UserInterface</a> _user_interface;</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <a class="code" href="classEntityHolder.html">EntityHolder</a> _entities;</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    list&lt;shared_ptr&lt;MovingEntity&gt;&gt; _moving_entities;</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    list&lt;shared_ptr&lt;ShootingMovingEntity&gt;&gt; _shooting_entities;</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    shared_ptr&lt;Ship&gt; _player_ptr;</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <span class="keywordtype">bool</span> _game_running = <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <span class="keyword">static</span> constexpr <span class="keyword">const</span> <span class="keyword">auto</span> _NUMBER_OF_FLYERS_TO_KILL = 5;</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <span class="keyword">static</span> constexpr <span class="keyword">const</span> <span class="keyword">auto</span> _MAX_X = 4800.f;</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <span class="keyword">static</span> constexpr <span class="keyword">const</span> <span class="keyword">auto</span> _MAX_Y = 600.f; </div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <span class="keyword">static</span> constexpr <span class="keyword">const</span> <span class="keyword">auto</span> _MAX_ON_SCREEN_DISTANCE_FROM_PLAYER = 400.f;</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="keyword">static</span> constexpr <span class="keyword">const</span> <span class="keyword">auto</span> _FPS_LIMIT = 120.f; </div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;};</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno"><a class="line" href="classGameLogic.html">   33</a></span>&#160;<span class="keyword">class </span><a class="code" href="classGameLogic.html">GameLogic</a> {</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <a class="code" href="classGameLogic.html#a996cd781691c36922e7ce792fcb21640">GameLogic</a> ();</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    </div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="keywordtype">void</span> runGame();</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="keywordtype">void</span> update(<span class="keywordtype">float</span> delta_time);</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <span class="keywordtype">void</span> createEntities ();</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <span class="keywordtype">void</span> handleCollisions ();</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <span class="keywordtype">void</span> handleUserInput();</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <span class="keywordtype">void</span> followPlayer();</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <span class="keywordtype">void</span> endGame();</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    </div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <a class="code" href="classUserInterface.html">UserInterface</a> _user_interface;</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <a class="code" href="classEntityHolder.html">EntityHolder</a> _entities;</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    list&lt;shared_ptr&lt;MovingEntity&gt;&gt; _moving_entities;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    list&lt;shared_ptr&lt;ShootingMovingEntity&gt;&gt; _shooting_entities;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    shared_ptr&lt;Ship&gt; _player_ptr;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <span class="keywordtype">bool</span> _game_running = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <span class="keyword">static</span> constexpr <span class="keyword">const</span> <span class="keyword">auto</span> _NUMBER_OF_FLYERS_TO_KILL = 5;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <span class="keyword">static</span> constexpr <span class="keyword">const</span> <span class="keyword">auto</span> _MAX_X = 4800.f;</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <span class="keyword">static</span> constexpr <span class="keyword">const</span> <span class="keyword">auto</span> _MAX_Y = 600.f; </div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <span class="keyword">static</span> constexpr <span class="keyword">const</span> <span class="keyword">auto</span> _MAX_ON_SCREEN_DISTANCE_FROM_PLAYER = 400.f;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <span class="keyword">static</span> constexpr <span class="keyword">const</span> <span class="keyword">auto</span> _FPS_LIMIT = 120.f; </div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;};</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="ttc" id="Flyer_8h_html"><div class="ttname"><a href="Flyer_8h.html">Flyer.h</a></div></div>
-<div class="ttc" id="classUserInterface_html"><div class="ttname"><a href="classUserInterface.html">UserInterface</a></div><div class="ttdef"><b>Definition:</b> UserInterface.h:31</div></div>
+<div class="ttc" id="classUserInterface_html"><div class="ttname"><a href="classUserInterface.html">UserInterface</a></div><div class="ttdoc">UserInterface class. </div><div class="ttdef"><b>Definition:</b> UserInterface.h:37</div></div>
 <div class="ttc" id="Collisions_8h_html"><div class="ttname"><a href="Collisions_8h.html">Collisions.h</a></div></div>
 <div class="ttc" id="Powerup_8h_html"><div class="ttname"><a href="Powerup_8h.html">Powerup.h</a></div></div>
 <div class="ttc" id="Events_8h_html"><div class="ttname"><a href="Events_8h.html">Events.h</a></div></div>
@@ -153,8 +153,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="ttc" id="UserInterface_8h_html"><div class="ttname"><a href="UserInterface_8h.html">UserInterface.h</a></div></div>
 <div class="ttc" id="EntityHolder_8h_html"><div class="ttname"><a href="EntityHolder_8h.html">EntityHolder.h</a></div></div>
 <div class="ttc" id="Ship_8h_html"><div class="ttname"><a href="Ship_8h.html">Ship.h</a></div></div>
-<div class="ttc" id="classGameLogic_html"><div class="ttname"><a href="classGameLogic.html">GameLogic</a></div><div class="ttdef"><b>Definition:</b> GameLogic.h:28</div></div>
-<div class="ttc" id="classGameLogic_html_a996cd781691c36922e7ce792fcb21640"><div class="ttname"><a href="classGameLogic.html#a996cd781691c36922e7ce792fcb21640">GameLogic::GameLogic</a></div><div class="ttdeci">GameLogic()</div><div class="ttdef"><b>Definition:</b> GameLogic.cpp:3</div></div>
+<div class="ttc" id="classGameLogic_html"><div class="ttname"><a href="classGameLogic.html">GameLogic</a></div><div class="ttdoc">GameLogic class. </div><div class="ttdef"><b>Definition:</b> GameLogic.h:33</div></div>
+<div class="ttc" id="classGameLogic_html_a996cd781691c36922e7ce792fcb21640"><div class="ttname"><a href="classGameLogic.html#a996cd781691c36922e7ce792fcb21640">GameLogic::GameLogic</a></div><div class="ttdeci">GameLogic()</div><div class="ttdoc">Constructor. </div><div class="ttdef"><b>Definition:</b> GameLogic.cpp:3</div></div>
 <div class="ttc" id="classEntityHolder_html"><div class="ttname"><a href="classEntityHolder.html">EntityHolder</a></div><div class="ttdef"><b>Definition:</b> EntityHolder.h:18</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->

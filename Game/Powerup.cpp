@@ -1,6 +1,6 @@
 #include "Powerup.h"
 
-Powerup::Powerup() : Entity{EntityID::Power_Up, Vector2f(Entity::randomPosition(mapLimits().x), Entity::randomPosition(mapLimits().y)), Vector2f(0.f,0.f)}
+Powerup::Powerup() : Entity{EntityID::Power_Up, Vector2f(Entity::randomPosition(mapLimits().x), Entity::randomPosition(mapLimits().y))}
 {
 	_powerup_on_the_map = true;
 };
@@ -27,7 +27,7 @@ void Powerup::collide(shared_ptr<Entity> collider)
 list<Vector2f> Powerup::hitboxPoints()
 {
 	list<Vector2f> hitbox_points;
-	Vector2f top_left_point = character().position;
+	Vector2f top_left_point = position();
 	// Add the points in a clockwise direction
 	hitbox_points.push_back(Vector2f(top_left_point.x, top_left_point.y));
 	hitbox_points.push_back(Vector2f(top_left_point.x + _width, top_left_point.y));
