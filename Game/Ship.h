@@ -3,11 +3,11 @@
 
 #include "ShootingMovingEntity.h"
 #include "Events.h"
-#include "Character.h"
 #include "Laser.h"
 #include "HomingMissile.h"
 #include "EntityHolder.h"
 #include "SmartBomb.h"
+#include "EntityID.h"
 
 #include "Vector2f.h"
 

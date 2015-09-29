@@ -17,7 +17,7 @@ class MovingEntity: public Entity, public IMover
 		* @param position is a vector of floats containing the initial position of the MovingEntity.
 		* @param velocity is a vector of floats containing the velocity of the MovingEntity.
 		*/
-		MovingEntity(EntityID entity_ID, Vector2f position, Vector2f velocity): Entity{entity_ID, position, velocity} {};
+		MovingEntity(EntityID entity_ID, Vector2f position, Vector2f velocity): Entity{entity_ID, position}, _velocity(velocity) {};
 		
 		/**
 		* move() function inherited from IMover.
@@ -36,7 +36,13 @@ class MovingEntity: public Entity, public IMover
 		* The MovingEntity will be destroyed if it collides with Entities described by the derived class. 
 		* @param collider is a pointer to the Entity which the MovingEntity is colliding with.
 		*/
-		virtual void collide(shared_ptr<Entity> collider) override = 0;	
+		virtual void collide(shared_ptr<Entity> collider) override = 0;			
+		
+		Vector2f velocity() {return _velocity;};
+		
+	private:
+		
+		Vector2f _velocity; 
 };
 
 #endif

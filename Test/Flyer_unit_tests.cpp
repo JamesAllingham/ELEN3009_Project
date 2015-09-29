@@ -6,9 +6,6 @@ using std::make_shared;
 
 #include <iostream> // For testing purposes
 
-#include "Character.h"
-#include "Entity.h"
-#include "Missile.h"
 #include "Flyer.h"
 
 #include "gtest/gtest.h"

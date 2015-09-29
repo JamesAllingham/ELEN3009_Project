@@ -12,15 +12,19 @@ using std::list;
 using std::shared_ptr;
 #include <ctime>
 
+/**
+* Entity class. 
+* This class represents any in game Entity. Anything that can be interacted with in some way for example the PowerUp or Laser classes. 
+* Entity objects have a position and id. They can be destroyed and collide with other Entity objects.
+*/
 class Entity {
 
 public:
 	//Set the position and texture of the ship
-	Entity(EntityID id, Vector2f position, Vector2f velocity): _id(id), _position(position), _velocity(velocity) {};
+	Entity(EntityID id, Vector2f position): _id(id), _position(position) {};
 	Character character() {return Character(_id, _position);};
 	static void setMapLimits (const Vector2f& max_position);
 	static Vector2f mapLimits() {return _max_position;};
-	Vector2f velocity() {return _velocity;};
 	Vector2f position() {return _position;};
 	EntityID id() {return _id;};
 	bool destroyed() {return _destroyed;};
@@ -35,10 +39,8 @@ protected:
 	float randomPosition (float max_position);
 	
 private:
-	//Character _character;
 	EntityID _id;
 	Vector2f _position;
-	Vector2f _velocity; 
 	bool _destroyed = false;
 	static bool _srand_called;	
 	static Vector2f _max_position;

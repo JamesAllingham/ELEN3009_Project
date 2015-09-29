@@ -21,7 +21,7 @@ void SmartBomb::collide(shared_ptr<Entity> collider)
 list<Vector2f> SmartBomb::hitboxPoints()
 {
 	list<Vector2f> hitbox_points;
-	Vector2f top_left_point = character().position;
+	Vector2f top_left_point = character().position();
 	// Add the points in a clockwise direction
 	hitbox_points.push_back(Vector2f(top_left_point.x, top_left_point.y));
 	hitbox_points.push_back(Vector2f(top_left_point.x + _SMART_BOMB_WIDTH, top_left_point.y));

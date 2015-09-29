@@ -18,14 +18,31 @@ using std::numeric_limits;
 
 #include <cmath>
 
+/**
+* Collision class. 
+* This class is responsible for collision detection using the separating axis theorem. 
+*/
 class Collision{
 	
-	public:		
+	public:	
+	    /**
+        * Constructor. creates the Collision object. 
+	    * @param begin_entity_itr is an EntityholderIterator for the start of the container of Entity objects to be checked for collisions. 
+		* @param end_entity_itr is an EntityholderIterator for the end of the container of Entity objects to be checked for collisions. 
+        */
 		Collision(const	EntityholderIterator& begin_entity_itr, const EntityholderIterator& end_entity_itr): _begin_entity_itr(begin_entity_itr), _end_entity_itr(end_entity_itr) {};	
-
+		
+		/**
+		* manageCollisions() function which causes the collision algorithm to be run.		
+		*/
 		void manageCollisions();		
 		
 	private:
+		/**
+		* collision() function which implements the separating axis theorem for two Entity objects.
+		* @param entity1_ptr is a pointer to the first Entity in the collision check.
+		* @param entity2_ptr is a pointer to the second Entity in the collision check.
+		*/
 		bool collision(shared_ptr<Entity> entity1_ptr, shared_ptr<Entity> entity2_ptr) const;
 		list<Vector2f> normals(const list<Vector2f>& polygon_points) const;
 		float maximumProjection(const list<Vector2f>& polygon_points, const Vector2f& polygon_normal) const;

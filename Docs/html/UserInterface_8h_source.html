@@ -119,47 +119,43 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="keyword">using</span> std::runtime_error;</div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="keyword">using</span> std::cerr;</div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;</div>
-<div class="line"><a name="l00031"></a><span class="lineno"><a class="line" href="classUserInterface.html">   31</a></span>&#160;<span class="keyword">class </span><a class="code" href="classUserInterface.html">UserInterface</a> {</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <a class="code" href="classUserInterface.html#ae6fb70370701b3bd6120e923df9705b0">UserInterface</a>(); </div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="comment">//Render the game to the screen</span></div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classUserInterface.html#ab1f9446d2d95d4365e4ea8e2f6c34255">render</a>(list&lt;Character&gt;&amp; characters);</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <span class="comment">//Convert polled events to non-SFML format</span></div>
-<div class="line"><a name="l00039"></a><span class="lineno"><a class="line" href="classUserInterface.html#a4eeae55b94d175c82ba5b2e3d64aab3a">   39</a></span>&#160;    list&lt;Events&gt; <a class="code" href="classUserInterface.html#a4eeae55b94d175c82ba5b2e3d64aab3a">convertedEvents</a>() {<span class="keywordflow">return</span> _events;};</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="comment">//Close window</span></div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classUserInterface.html#a0ebdc6cf083f044e3d3da3b6226ad004">closeWindow</a>();</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classUserInterface.html#a03d6255135d4892c35be8e0c3a5d405f">moveWindow</a>(<span class="keywordtype">float</span> delta_x); </div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="comment">//Handle all user input</span></div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classUserInterface.html#a91b1fd577ac201614a4fa462c0571dc4">processEvents</a>();</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    </div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00037"></a><span class="lineno"><a class="line" href="classUserInterface.html">   37</a></span>&#160;<span class="keyword">class </span><a class="code" href="classUserInterface.html">UserInterface</a> {</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <a class="code" href="classUserInterface.html#ae6fb70370701b3bd6120e923df9705b0">UserInterface</a>();    </div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    </div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <span class="keywordtype">void</span> processTextures(list&lt;Character&gt;&amp; characters);</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <span class="keywordtype">void</span> drawSprite(<span class="keyword">const</span> Sprite&amp; texture);</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    </div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    list&lt;Events&gt; _events;</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    RenderWindow _game_window;</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    View _camera;</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    View _mini_map;</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <a class="code" href="classResourceHolder.html">ResourceHolder&lt;Texture,EntityID&gt;</a> _textures;</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    Sprite _background;</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    RectangleShape _focusWindow;</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;};</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classUserInterface.html#ab1f9446d2d95d4365e4ea8e2f6c34255">render</a>(list&lt;Character&gt;&amp; characters);   </div>
+<div class="line"><a name="l00059"></a><span class="lineno"><a class="line" href="classUserInterface.html#a4eeae55b94d175c82ba5b2e3d64aab3a">   59</a></span>&#160;    list&lt;Events&gt; <a class="code" href="classUserInterface.html#a4eeae55b94d175c82ba5b2e3d64aab3a">convertedEvents</a>() {<span class="keywordflow">return</span> _events;};   </div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classUserInterface.html#a0ebdc6cf083f044e3d3da3b6226ad004">closeWindow</a>();</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classUserInterface.html#a03d6255135d4892c35be8e0c3a5d405f">moveWindow</a>(<span class="keywordtype">float</span> delta_x); </div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classUserInterface.html#a91b1fd577ac201614a4fa462c0571dc4">processEvents</a>();</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    </div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    </div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    <span class="keywordtype">void</span> processTextures(list&lt;Character&gt;&amp; characters);</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    <span class="keywordtype">void</span> drawSprite(<span class="keyword">const</span> Sprite&amp; texture);</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    </div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    list&lt;Events&gt; _events;</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    RenderWindow _game_window;</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    View _camera;</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    View _mini_map;</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    <a class="code" href="classResourceHolder.html">ResourceHolder&lt;Texture,EntityID&gt;</a> _textures;</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    Sprite _background;</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    RectangleShape _focusWindow;</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;};</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="ttc" id="classResourceHolder_html"><div class="ttname"><a href="classResourceHolder.html">ResourceHolder&lt; Texture, EntityID &gt;</a></div></div>
-<div class="ttc" id="classUserInterface_html"><div class="ttname"><a href="classUserInterface.html">UserInterface</a></div><div class="ttdef"><b>Definition:</b> UserInterface.h:31</div></div>
-<div class="ttc" id="classUserInterface_html_a0ebdc6cf083f044e3d3da3b6226ad004"><div class="ttname"><a href="classUserInterface.html#a0ebdc6cf083f044e3d3da3b6226ad004">UserInterface::closeWindow</a></div><div class="ttdeci">void closeWindow()</div><div class="ttdef"><b>Definition:</b> UserInterface.cpp:109</div></div>
+<div class="ttc" id="classUserInterface_html"><div class="ttname"><a href="classUserInterface.html">UserInterface</a></div><div class="ttdoc">UserInterface class. </div><div class="ttdef"><b>Definition:</b> UserInterface.h:37</div></div>
+<div class="ttc" id="classUserInterface_html_a0ebdc6cf083f044e3d3da3b6226ad004"><div class="ttname"><a href="classUserInterface.html#a0ebdc6cf083f044e3d3da3b6226ad004">UserInterface::closeWindow</a></div><div class="ttdeci">void closeWindow()</div><div class="ttdoc">closeWindow() function closes the game window. </div><div class="ttdef"><b>Definition:</b> UserInterface.cpp:111</div></div>
 <div class="ttc" id="Events_8h_html"><div class="ttname"><a href="Events_8h.html">Events.h</a></div></div>
 <div class="ttc" id="Character_8h_html"><div class="ttname"><a href="Character_8h.html">Character.h</a></div></div>
-<div class="ttc" id="classUserInterface_html_a91b1fd577ac201614a4fa462c0571dc4"><div class="ttname"><a href="classUserInterface.html#a91b1fd577ac201614a4fa462c0571dc4">UserInterface::processEvents</a></div><div class="ttdeci">void processEvents()</div><div class="ttdef"><b>Definition:</b> UserInterface.cpp:42</div></div>
+<div class="ttc" id="classUserInterface_html_a91b1fd577ac201614a4fa462c0571dc4"><div class="ttname"><a href="classUserInterface.html#a91b1fd577ac201614a4fa462c0571dc4">UserInterface::processEvents</a></div><div class="ttdeci">void processEvents()</div><div class="ttdoc">processEvents() function handles all user input by polling for the events that have taken place since...</div><div class="ttdef"><b>Definition:</b> UserInterface.cpp:40</div></div>
 <div class="ttc" id="EntityID_8h_html"><div class="ttname"><a href="EntityID_8h.html">EntityID.h</a></div></div>
-<div class="ttc" id="classUserInterface_html_a4eeae55b94d175c82ba5b2e3d64aab3a"><div class="ttname"><a href="classUserInterface.html#a4eeae55b94d175c82ba5b2e3d64aab3a">UserInterface::convertedEvents</a></div><div class="ttdeci">list&lt; Events &gt; convertedEvents()</div><div class="ttdef"><b>Definition:</b> UserInterface.h:39</div></div>
-<div class="ttc" id="classUserInterface_html_ab1f9446d2d95d4365e4ea8e2f6c34255"><div class="ttname"><a href="classUserInterface.html#ab1f9446d2d95d4365e4ea8e2f6c34255">UserInterface::render</a></div><div class="ttdeci">void render(list&lt; Character &gt; &amp;characters)</div><div class="ttdef"><b>Definition:</b> UserInterface.cpp:114</div></div>
+<div class="ttc" id="classUserInterface_html_a4eeae55b94d175c82ba5b2e3d64aab3a"><div class="ttname"><a href="classUserInterface.html#a4eeae55b94d175c82ba5b2e3d64aab3a">UserInterface::convertedEvents</a></div><div class="ttdeci">list&lt; Events &gt; convertedEvents()</div><div class="ttdoc">convertedEvents() function converts polled events to non-SFML format. </div><div class="ttdef"><b>Definition:</b> UserInterface.h:59</div></div>
+<div class="ttc" id="classUserInterface_html_ab1f9446d2d95d4365e4ea8e2f6c34255"><div class="ttname"><a href="classUserInterface.html#ab1f9446d2d95d4365e4ea8e2f6c34255">UserInterface::render</a></div><div class="ttdeci">void render(list&lt; Character &gt; &amp;characters)</div><div class="ttdoc">render() function renders the game to the Window. </div><div class="ttdef"><b>Definition:</b> UserInterface.cpp:116</div></div>
 <div class="ttc" id="ResourceHolder_8h_html"><div class="ttname"><a href="ResourceHolder_8h.html">ResourceHolder.h</a></div></div>
-<div class="ttc" id="classUserInterface_html_a03d6255135d4892c35be8e0c3a5d405f"><div class="ttname"><a href="classUserInterface.html#a03d6255135d4892c35be8e0c3a5d405f">UserInterface::moveWindow</a></div><div class="ttdeci">void moveWindow(float delta_x)</div><div class="ttdef"><b>Definition:</b> UserInterface.cpp:144</div></div>
-<div class="ttc" id="classUserInterface_html_ae6fb70370701b3bd6120e923df9705b0"><div class="ttname"><a href="classUserInterface.html#ae6fb70370701b3bd6120e923df9705b0">UserInterface::UserInterface</a></div><div class="ttdeci">UserInterface()</div><div class="ttdef"><b>Definition:</b> UserInterface.cpp:3</div></div>
+<div class="ttc" id="classUserInterface_html_a03d6255135d4892c35be8e0c3a5d405f"><div class="ttname"><a href="classUserInterface.html#a03d6255135d4892c35be8e0c3a5d405f">UserInterface::moveWindow</a></div><div class="ttdeci">void moveWindow(float delta_x)</div><div class="ttdoc">moveWindow() function moves the game window along the map along the x-axis allowing the map to be scr...</div><div class="ttdef"><b>Definition:</b> UserInterface.cpp:147</div></div>
+<div class="ttc" id="classUserInterface_html_ae6fb70370701b3bd6120e923df9705b0"><div class="ttname"><a href="classUserInterface.html#ae6fb70370701b3bd6120e923df9705b0">UserInterface::UserInterface</a></div><div class="ttdeci">UserInterface()</div><div class="ttdoc">Constructor. </div><div class="ttdef"><b>Definition:</b> UserInterface.cpp:3</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

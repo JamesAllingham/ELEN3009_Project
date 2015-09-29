@@ -19,8 +19,8 @@ void GameLogic::runGame()
 	auto time_since_last_update = 0.f;
 	auto time_per_frame = 1.0f/_FPS_LIMIT;
 	
-	while (_game_running)
-	{
+	while (_game_running)	{
+		
 		time_since_last_update += clock.stop();
 		clock.restart();
 		

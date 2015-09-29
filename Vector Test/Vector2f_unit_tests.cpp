@@ -162,16 +162,3 @@ TEST(Vector2f, CrossProductFunctionWorksCorrectly)
 	EXPECT_TRUE(Vector2f(-7.f,7.f) == Test3);
 	
 }
-
-
-
-// TEST(Vector2f, MultiplyEqualOverloadWorksCorrectly)
-// {
-	// Vector2f Test(2.f, 5.f);
-	// Vector2f Test2(3.f,4.f);
-	// Test *= Test2;
-	// std::cout <<"Test.x = " << Test.x << std::endl;
-	// std::cout <<"Test2.x = " << Test2.x << std::endl;
-	// EXPECT_TRUE(Vector2f(6.f,20.f) == Test);
-	
-// }

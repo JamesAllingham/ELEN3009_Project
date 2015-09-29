@@ -23,22 +23,22 @@ inline bool operator==(Vector2f lhs, Vector2f rhs)
 
 // PLUS operators
 
-inline Vector2f& operator+( Vector2f& lhs, Vector2f rhs)
-{
-	lhs = Vector2f(lhs.x + rhs.x, lhs.y + rhs.y);
-	return lhs;
-}
+// inline Vector2f& operator+( Vector2f& lhs, Vector2f rhs)
+// {
+	// lhs = Vector2f(lhs.x + rhs.x, lhs.y + rhs.y);
+	// return lhs;
+// }
 
 inline Vector2f operator+( Vector2f lhs, Vector2f rhs)
 {
 	return Vector2f(lhs.x + rhs.x, lhs.y + rhs.y);
 }
 
-inline Vector2f& operator+( Vector2f& lhs, float scalar)
-{
-	lhs = Vector2f(lhs.x + scalar, lhs.y + scalar);
-	return lhs;
-}
+// inline Vector2f& operator+( Vector2f& lhs, float scalar)
+// {
+	// lhs = Vector2f(lhs.x + scalar, lhs.y + scalar);
+	// return lhs;
+// }
 
 inline Vector2f operator+( Vector2f lhs, float scalar)
 {
@@ -59,22 +59,22 @@ inline Vector2f& operator+= ( Vector2f& lhs, float scalar)
 
 // MINUS operators
 
-inline Vector2f& operator-( Vector2f& lhs, Vector2f rhs)
-{
-	lhs = Vector2f(lhs.x - rhs.x, lhs.y - rhs.y);
-	return lhs;
-}
+// inline Vector2f& operator-( Vector2f& lhs, Vector2f rhs)
+// {
+	// lhs = Vector2f(lhs.x - rhs.x, lhs.y - rhs.y);
+	// return lhs;
+// }
 
 inline Vector2f operator-( Vector2f lhs, Vector2f rhs)
 {
 	return Vector2f(lhs.x - rhs.x, lhs.y - rhs.y);
 }
 
-inline Vector2f& operator-( Vector2f& lhs, float scalar)
-{
-	lhs = Vector2f(lhs.x - scalar, lhs.y - scalar);
-	return lhs;
-}
+// inline Vector2f& operator-( Vector2f& lhs, float scalar)
+// {
+	// lhs = Vector2f(lhs.x - scalar, lhs.y - scalar);
+	// return lhs;
+// }
 
 inline Vector2f operator-( Vector2f lhs, float scalar)
 {
@@ -95,33 +95,33 @@ inline Vector2f& operator-= ( Vector2f& lhs, float scalar)
 
 // MULTIPLY operators (dot product)
 
-inline Vector2f& operator*( Vector2f& lhs, Vector2f rhs)
-{
-	lhs = Vector2f(lhs.x * rhs.x, lhs.y * rhs.y);
-	return lhs;
-}
+// inline Vector2f& operator*( Vector2f& lhs, Vector2f rhs)
+// {
+	// lhs = Vector2f(lhs.x * rhs.x, lhs.y * rhs.y);
+	// return lhs;
+// }
 
 inline Vector2f operator*( Vector2f lhs, Vector2f rhs)
 {
 	return Vector2f(lhs.x * rhs.x, lhs.y * rhs.y);
 }
 
-inline Vector2f& operator* ( Vector2f& lhs, float scalar)
-{
-	lhs = Vector2f(lhs.x * scalar , lhs.y * scalar);
-	return lhs;
-}
+// inline Vector2f& operator* ( Vector2f& lhs, float scalar)
+// {
+	// lhs = Vector2f(lhs.x * scalar , lhs.y * scalar);
+	// return lhs;
+// }
 
 inline Vector2f operator* ( Vector2f lhs, float scalar)
 {
 	return Vector2f(lhs.x * scalar , lhs.y * scalar);
 }
 
-inline Vector2f& operator* ( float scalar, Vector2f& lhs)
-{
-	lhs = Vector2f(lhs.x * scalar , lhs.y * scalar);
-	return lhs;
-}
+// inline Vector2f& operator* ( float scalar, Vector2f& lhs)
+// {
+	// lhs = Vector2f(lhs.x * scalar , lhs.y * scalar);
+	// return lhs;
+// }
 
 inline Vector2f operator* ( float scalar, Vector2f lhs)
 {

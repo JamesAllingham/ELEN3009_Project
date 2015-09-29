@@ -35,12 +35,12 @@ shared_ptr<MovingEntity> Ship::shoot(float delta_time)
 		if (facingRight()) 
 		{
 			velocity_unit = Vector2f(1,0);
-			return shared_ptr<MovingEntity> (new Laser(character().position + Vector2f(75.f, (37.f - 7.f)/2), velocity_unit));
+			return shared_ptr<MovingEntity> (new Laser(position() + Vector2f(75.f, (37.f - 7.f)/2), velocity_unit));
 		}
 		else 
 		{
 			velocity_unit = Vector2f(-1,0);
-			return shared_ptr<MovingEntity> (new Laser(character().position + Vector2f(-25.f, (37.f - 7.f)/2), velocity_unit));
+			return shared_ptr<MovingEntity> (new Laser(position()  + Vector2f(-25.f, (37.f - 7.f)/2), velocity_unit));
 		}
 	}
 	
@@ -62,7 +62,7 @@ shared_ptr<MovingEntity> Ship::shoot(float delta_time)
 		if (_number_of_homing_missiles > 0)
 		{
 			--_number_of_homing_missiles;
-			return shared_ptr<MovingEntity> (new HomingMissile(character().position + Vector2f(75.f, (37.f - 23.f)/2), _nearest_target));
+			return shared_ptr<MovingEntity> (new HomingMissile(position()  + Vector2f(75.f, (37.f - 23.f)/2), _nearest_target));
 		}		
 	}
 	
@@ -73,7 +73,7 @@ shared_ptr<MovingEntity> Ship::shoot(float delta_time)
 		{
 			std::cout<<"shooting smart bomb" << std::endl;
 			--_number_of_smart_bombs;
-			return shared_ptr<MovingEntity> (new SmartBomb(Vector2f(character().position.x - 400.f, 0.f)));
+			return shared_ptr<MovingEntity> (new SmartBomb(Vector2f(character().position().x - 400.f, 0.f)));
 		}
 		else return shared_ptr<MovingEntity> (nullptr);
 	}
@@ -134,13 +134,13 @@ void Ship::controlMovement(Events event)
 
 void Ship::move(float delta_time) 
 {
-	Vector2f old_position = position();
+	Vector2f old_position = position() ;
 	auto distance = delta_time * velocity();
 	if (_moving_up) movePosition(0, -distance.y);
 	if (_moving_down) movePosition(0, distance.y);
 	if (_moving_left) movePosition(-distance.x,0);
 	if (_moving_right) movePosition(distance.x,0);
-	_delta_position =  position() - old_position;
+	_delta_position =  position()  - old_position;
 	
 	if ( (_moving_left && !_moving_right && facingRight()) || (!_moving_left && _moving_right && !facingRight()) )
 	{		
@@ -152,7 +152,7 @@ void Ship::move(float delta_time)
 list<Vector2f> Ship::hitboxPoints()
 {
 	list<Vector2f> hitbox_points;
-	Vector2f top_left_point = character().position;
+	Vector2f top_left_point = position() ;
 	// Add the points in a clockwise direction
 	hitbox_points.push_back(Vector2f(top_left_point.x, top_left_point.y));
 	hitbox_points.push_back(Vector2f(top_left_point.x + _width, top_left_point.y));
@@ -174,10 +174,10 @@ void Ship::setNearestTarget(EntityHolder& targets)
 	auto minimum = numeric_limits<float>::max();
 	for ( auto target : targets)
 	{
-		if (target->character().Entity_ID == EntityID::Flyer)
+		if (target->id() == EntityID::Flyer)
 		{
-			auto diff_in_x = target->character().position.x - character().position.x;
-			auto diff_in_y = target->character().position.y - character().position.y;
+			auto diff_in_x = target->position().x - position() .x;
+			auto diff_in_y = target->position().y - position() .y;
 			auto distance = sqrtf(diff_in_x*diff_in_x + diff_in_y*diff_in_y);
 			if ( distance < minimum)
 			{

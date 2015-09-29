@@ -10,7 +10,6 @@ using std::make_shared;
 #include <iostream> // For testing purposes
 
 #include "ShootingMovingEntity.h"
-#include "Character.h"
 #include "Missile.h"
 #include "EntityId.h"
 

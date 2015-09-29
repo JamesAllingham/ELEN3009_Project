@@ -1,0 +1,13 @@
+digraph "Ship::shoot"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="Ship::shoot",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="Ship::facingRight",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classShip.html#a0a5cf5eabc808563bffc6089380c8ff0"];
+  Node1 -> Node3 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="Entity::character",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classEntity.html#a3eba78fb7d8910843adb604cd8898e79"];
+  Node1 -> Node4 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="Entity::position",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classEntity.html#a46560a758a9dfda4d34ce09f67d41aad"];
+}

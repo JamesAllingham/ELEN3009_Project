@@ -31,12 +31,12 @@ shared_ptr<MovingEntity> Flyer::shoot(float delta_time)
 	_time_since_last_shot += delta_time;
 	if (_time_since_last_shot > 10.f) 
 	{
-		if (abs(character().position.x - _target->character().position.x) <= 400.f) 
+		if (abs(position().x - _target->position().x) <= 400.f) 
 		{
-			Vector2f velocity_unit(_target->character().position - character().position);
+			Vector2f velocity_unit(_target->position() - position());
 			velocity_unit /= sqrtf(velocity_unit.x*velocity_unit.x + velocity_unit.y*velocity_unit.y); // should check for 0's
 			_time_since_last_shot = 0.f;
-			return shared_ptr<MovingEntity> (new Missile(character().position, velocity_unit));
+			return shared_ptr<MovingEntity> (new Missile(position(), velocity_unit));
 		}
 	}
 	
@@ -47,7 +47,7 @@ void Flyer::move(float delta_time){
 	_time_since_last_movement += delta_time;
 	if (_time_since_last_movement >= 1.0f) 
 	{
-		_unit_current_velocity = Vector2f(randomPosition(mapLimits().x) - character().position.x, randomPosition(mapLimits().y) - character().position.y);
+		_unit_current_velocity = Vector2f(randomPosition(mapLimits().x) - position().x, randomPosition(mapLimits().y) - position().y);
 		_unit_current_velocity /= sqrtf(_unit_current_velocity.x*_unit_current_velocity.x + _unit_current_velocity.y*_unit_current_velocity.y);
 		_time_since_last_movement =0;
 	}
@@ -59,7 +59,7 @@ void Flyer::move(float delta_time){
 list<Vector2f> Flyer::hitboxPoints()
 {
 	list<Vector2f> hitbox_points;
-	Vector2f top_left_point = character().position;
+	Vector2f top_left_point = position();
 	// Add the points in a clockwise direction
 	hitbox_points.push_back(Vector2f(top_left_point.x, top_left_point.y));
 	hitbox_points.push_back(Vector2f(top_left_point.x + _width, top_left_point.y));

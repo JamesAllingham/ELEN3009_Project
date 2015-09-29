@@ -5,7 +5,7 @@ IPATH=-I..\gtest\include -I..\Game -I..\sfml\include
 CC=g++ -std=c++14
 ATTACKERPATH:=..\Game
 MAKE=mingw32-make
-OBJS=main.o ResourceHolder_unit_tests.o Flyer_unit_tests.o EntityHolder_unit_tests.o Vector2f_unit_tests.o $(ATTACKERPATH)\Flyer.o $(ATTACKERPATH)\Ship.o $(ATTACKERPATH)\Entity.o $(ATTACKERPATH)\Missile.o $(ATTACKERPATH)\Laser.o $(ATTACKERPATH)\HomingMissile.o $(ATTACKERPATH)\EntityHolder.o $(ATTACKERPATH)\SmartBomb.o $(ATTACKERPATH)\Vector2f.o
+OBJS=main.o ResourceHolder_unit_tests.o Flyer_unit_tests.o EntityHolder_unit_tests.o Vector2f_unit_tests.o $(ATTACKERPATH)\Flyer.o $(ATTACKERPATH)\Ship.o $(ATTACKERPATH)\Entity.o $(ATTACKERPATH)\Missile.o $(ATTACKERPATH)\Laser.o $(ATTACKERPATH)\HomingMissile.o $(ATTACKERPATH)\EntityHolder.o $(ATTACKERPATH)\SmartBomb.o
 all: test.exe
 test.exe: $(OBJS) 
 	$(CC) $(OBJS) $(LFLAGS) $(LPATH) -o test.exe
@@ -13,8 +13,10 @@ main.o: main.cpp
 	$(CC) $(CFLAGS) $(IPATH) main.cpp -o main.o
 ResourceHolder_unit_tests.o: ResourceHolder_unit_tests.cpp $(ATTACKERPATH)\ResourceHolder.h
 	$(CC) $(CFLAGS) $(IPATH) ResourceHolder_unit_tests.cpp -o ResourceHolder_unit_tests.o
-Flyer_unit_tests.o: Flyer_unit_tests.cpp $(ATTACKERPATH)\Character.h $(ATTACKERPATH)\Entity.h $(ATTACKERPATH)\Missile.h
+Flyer_unit_tests.o: Flyer_unit_tests.cpp $(ATTACKERPATH)\Character.h $(ATTACKERPATH)\Entity.h $(ATTACKERPATH)\Missile.h $(ATTACKERPATH)\Vector2f.h
 	$(CC) $(CFLAGS) $(IPATH) Flyer_unit_tests.cpp -o Flyer_unit_tests.o
+Collisions_unit_tests.o: Collisions_unit_tests.cpp $(ATTACKERPATH)\Collisions.h $(ATTACKERPATH)\Ship.h $(ATTACKERPATH)\Flyer.h
+	$(CC) $(CFLAGS) $(IPATH) Collisions_unit_tests.cpp -o Collisions_unit_tests.o
 EntityHolder_unit_tests.o: EntityHolder_unit_tests.cpp $(ATTACKERPATH)\EntityHolder.h $(ATTACKERPATH)\Flyer.h $(ATTACKERPATH)\Ship.h
 	$(CC) $(CFLAGS) $(IPATH) EntityHolder_unit_tests.cpp -o EntityHolder_unit_tests.o
 Vector2f_unit_tests.o: Vector2f_unit_tests.cpp $(ATTACKERPATH)\Vector2f.h
@@ -41,7 +43,3 @@ clean:
 	del *.o *.exe
 clean_Attacker:
 	del $(ATTACKERPATH)\*.o $(ATTACKERPATH)\*.exe
-	
-#$(ATTACKERPATH)\Collisions.o
-#Collisions_unit_tests.o: Collisions_unit_tests.cpp $(ATTACKERPATH)\Collisions.h $(ATTACKERPATH)\Ship.h $(ATTACKERPATH)\Flyer.h
-	#$(CC) $(CFLAGS) $(IPATH) Collisions_unit_tests.cpp -o Collisions_unit_tests.o
