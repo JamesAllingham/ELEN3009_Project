@@ -10,7 +10,8 @@ void Missile::collide(shared_ptr<Entity> collider)
 	switch (collider->id())
 	{		
 		case EntityID::Ship:
-		case EntityID::Laser:			
+		case EntityID::Laser:
+		case EntityID::Smart_Bomb:
 			destroy();
 			break;
 		default:

@@ -3,14 +3,14 @@
 
 #include "Character.h"
 #include "EntityID.h"
-#include <SFML/System.hpp> // This is only temporary, using SFMLs Vector2f, but later will write a lightweight vector class to use instead
-using sf::Vector2f;
+#include "Vector2f.h"
 
 #include <iostream> // For debugging
 #include <list>
 using std::list;
 #include <memory>
 using std::shared_ptr;
+#include <ctime>
 
 class Entity {
 

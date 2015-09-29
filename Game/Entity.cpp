@@ -43,7 +43,10 @@ void Entity::movePosition(Vector2f position) // Needs to consider width and heig
 		}		
 		
 	}
-	else _position += position;
+	else
+	{
+		_position += position;
+	}
 }
 
 float Entity::randomPosition (float max_positon) {

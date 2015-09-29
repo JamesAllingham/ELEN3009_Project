@@ -65,6 +65,18 @@ shared_ptr<MovingEntity> Ship::shoot(float delta_time)
 			return shared_ptr<MovingEntity> (new HomingMissile(character().position + Vector2f(75.f, (37.f - 23.f)/2), _nearest_target));
 		}		
 	}
+	
+	if (_shoot_smart_bomb)
+	{
+		_shoot_smart_bomb = false;
+		if (_number_of_smart_bombs > 0)
+		{
+			std::cout<<"shooting smart bomb" << std::endl;
+			--_number_of_smart_bombs;
+			return shared_ptr<MovingEntity> (new SmartBomb(Vector2f(character().position.x - 400.f, 0.f)));
+		}
+		else return shared_ptr<MovingEntity> (nullptr);
+	}
 
 	return shared_ptr<MovingEntity> (nullptr);
 	
@@ -78,6 +90,10 @@ void Ship::controlShooting(Events event)
 			break;
 		case Events::E_Pressed:
 			_shoot_homing_missile = true;
+			break;
+		case Events::Q_Pressed:
+			_shoot_smart_bomb = true;
+			break;
 		default:
 			break;
 	}
@@ -172,5 +188,3 @@ void Ship::setNearestTarget(EntityHolder& targets)
 		}
 	}
 }
-
-int Ship::_number_of_lives = 3;

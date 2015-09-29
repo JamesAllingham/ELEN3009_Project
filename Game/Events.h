@@ -16,7 +16,9 @@ enum class Events
 	Space_Pressed, // If the player presses space a laser should be shot in the direction of movement
 	Space_Released,
 	E_Pressed, // If the player presses the E key, a Homing Missile should be fired targeting the closest (or maybe random) flyer
-	E_Released		  
+	E_Released,
+	Q_Pressed, // If the player presses the Q key, a Smart Bomb should be fired destroying all targets on the screen
+	Q_Released
 };
 
 #endif

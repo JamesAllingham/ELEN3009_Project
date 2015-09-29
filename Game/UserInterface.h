@@ -24,6 +24,7 @@ using std::list;
 #include "Events.h"
 #include "Character.h"
 #include "EntityID.h"
+#include "Vector2f.h"
 
 using std::runtime_error;
 using std::cerr;
@@ -42,6 +43,7 @@ public:
 	void moveWindow(float delta_x);	
 	//Handle all user input
 	void processEvents();
+	sf::Vector2f ConvertToSFMLVector (Vector2f vector_in) { return sf::Vector2f(vector_in.x, vector_in.y); };
 	
 private:
 	

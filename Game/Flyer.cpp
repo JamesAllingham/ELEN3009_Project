@@ -17,7 +17,8 @@ void Flyer::collide(shared_ptr<Entity> collider)
 	{
 		case EntityID::Ship:
 		case EntityID::Laser:
-		case EntityID::Homing_Missile:		
+		case EntityID::Homing_Missile:
+		case EntityID::Smart_Bomb:
 			destroy();
 			break;
 		default:

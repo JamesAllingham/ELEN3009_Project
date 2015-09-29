@@ -1,14 +1,21 @@
 #include "SmartBomb.h"
 
-SmartBomb::SmartBomb(const Vector2f& position, const list<shared_ptr<Entity>>& targets) : Entity{TextureID::Smart_Bomb, Vector2f(Entity::randomPosition(mapLimits().x), Entity::randomPosition(mapLimits().y)), Vector2f(0.f,0.f)}, _targets(targets)
+SmartBomb::SmartBomb(const Vector2f& position) : MovingEntity{EntityID::Smart_Bomb, position, Vector2f(_SMART_BOMB_SPEED,_SMART_BOMB_SPEED)}
 {
-	//std::cout << "Create SmartBomb" << std::endl;
-	//std::cout << "Velocity x " << velocity_unit.x << " y " << velocity_unit.y  << std::endl;
+	
 };
 
-SmartBomb::~SmartBomb()
+void SmartBomb::collide(shared_ptr<Entity> collider) 
 {
-	//std::cout << "SmartBomb destructor" << std::endl;
+	switch (collider->id())
+	{		
+		case EntityID::Flyer:
+		case EntityID::Missile:
+			destroy();
+			break;
+		default:
+			break;
+	}	
 }
 
 list<Vector2f> SmartBomb::hitboxPoints()
@@ -17,14 +24,8 @@ list<Vector2f> SmartBomb::hitboxPoints()
 	Vector2f top_left_point = character().position;
 	// Add the points in a clockwise direction
 	hitbox_points.push_back(Vector2f(top_left_point.x, top_left_point.y));
-	hitbox_points.push_back(Vector2f(top_left_point.x + _width, top_left_point.y));
-	hitbox_points.push_back(Vector2f(top_left_point.x + _width, top_left_point.y - _height));
-	hitbox_points.push_back(Vector2f(top_left_point.x, top_left_point.y - _height));
+	hitbox_points.push_back(Vector2f(top_left_point.x + _SMART_BOMB_WIDTH, top_left_point.y));
+	hitbox_points.push_back(Vector2f(top_left_point.x + _SMART_BOMB_WIDTH, top_left_point.y - _SMART_BOMB_HEIGHT));
+	hitbox_points.push_back(Vector2f(top_left_point.x, top_left_point.y - _SMART_BOMB_HEIGHT));
 	return hitbox_points;
-}
-
-virtual shared_ptr<Entity> shoot(float delta_time) 
-{
-	
-	return shared_ptr<Entity> (nullptr);
 }

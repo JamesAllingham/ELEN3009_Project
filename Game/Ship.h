@@ -7,16 +7,16 @@
 #include "Laser.h"
 #include "HomingMissile.h"
 #include "EntityHolder.h"
+#include "SmartBomb.h"
 
-#include <SFML/System.hpp> // This is only temporary, using SFMLs Vector2f, but later will write a lightweight vector class to use instead
-using sf::Vector2f;
+#include "Vector2f.h"
 
 #include <iostream> // For debugging
 #include <list>
 using std::list;
 #include <memory>
 using std::shared_ptr;
-
+#include <limits>
 using std::numeric_limits;
 
 class Ship : public ShootingMovingEntity
@@ -49,13 +49,15 @@ private:
 	
 	bool _shooting = false;
 	bool _shoot_homing_missile = false;
+	bool _shoot_smart_bomb = false;
 	
 	float _width = 75;
 	float _height = 25;
 	
 	shared_ptr<Entity> _nearest_target;
 	int _number_of_homing_missiles = 0;
-	static int _number_of_lives;
+	int _number_of_lives = 3;
+	int _number_of_smart_bombs = 2;
 	
 	Vector2f _delta_position;
 	

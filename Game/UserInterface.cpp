@@ -1,6 +1,6 @@
 #include "UserInterface.h"
 
-UserInterface::UserInterface() : _game_window(VideoMode(800, 720), "Attacker"), _camera(), _mini_map(), _textures(), _background(), _focusWindow(Vector2f(800, 600)) 
+UserInterface::UserInterface() : _game_window(VideoMode(800, 720), "Attacker"), _camera(), _mini_map(), _textures(), _background(), _focusWindow(sf::Vector2f(800, 600)) 
 {
 	//std::cout << "User interface constructor" << std::endl;
 	
@@ -13,6 +13,7 @@ UserInterface::UserInterface() : _game_window(VideoMode(800, 720), "Attacker"), 
 		_textures.load(EntityID::Power_Up,"resources/power_up.png");
 		_textures.load(EntityID::Missile,"resources/missile.png");
 		_textures.load(EntityID::Homing_Missile,"resources/homing_missile.png");
+		_textures.load(EntityID::Smart_Bomb,"resources/smart_bomb.png");
 	}
 	catch (const runtime_error& error)
 	{
@@ -69,6 +70,9 @@ void UserInterface::processEvents()
 					case Keyboard::Space:
 						_events.push_back(Events::Space_Pressed);
 						break;
+					case Keyboard::Q:
+						_events.push_back(Events::Q_Pressed);
+						break;
 					default:
 						break;
 				}
@@ -92,6 +96,9 @@ void UserInterface::processEvents()
 						break;
 					case Keyboard::Space:
 						_events.push_back(Events::Space_Released);
+						break;
+					case Keyboard::Q:
+						_events.push_back(Events::Q_Released);
 						break;
 					default:
 						break;
@@ -135,7 +142,7 @@ void UserInterface::processTextures(list<Character>& characters)
 	for (auto character : characters){
 		Sprite character_sprite;
 		character_sprite.setTexture(_textures.get(character.Entity_ID));
-		character_sprite.setPosition(character.position);				
+		character_sprite.setPosition(ConvertToSFMLVector(character.position));				
 		drawSprite(character_sprite);
 	}
 	

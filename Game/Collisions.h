@@ -4,8 +4,8 @@
 #include "Entity.h"
 #include "EntityHolder.h"
 
-#include <SFML/System.hpp>
-using sf::Vector2f;
+#include "Vector2f.h"
+
 #include <Memory>
 using std::shared_ptr;
 #include <list>
@@ -13,7 +13,7 @@ using std::list;
 using std::begin;
 using std::end;
 using std::next;
-
+#include <limits>
 using std::numeric_limits;
 
 #include <cmath>

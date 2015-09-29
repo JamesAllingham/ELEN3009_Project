@@ -35,7 +35,7 @@ void GameLogic::runGame()
 }
 
 void GameLogic::update(float delta_time) 
-{	
+{
 	// Event management
 	handleUserInput();
 	
@@ -45,7 +45,7 @@ void GameLogic::update(float delta_time)
 	// Move all entites based on their rules
 	for (auto moving_entity_ptr: _moving_entities)
 	{
-		moving_entity_ptr->move(delta_time);		
+		moving_entity_ptr->move(delta_time);	
 	}	
 	
 	if (!Powerup::PowerupOnTheMap() ) _entities.addEntity(make_shared<Powerup> ());
@@ -69,7 +69,7 @@ void GameLogic::update(float delta_time)
 		{
 			_entities.addEntity(moving_entity_ptr);
 			_moving_entities.push_back(moving_entity_ptr);
-		}		
+		}
 	}
 	
 	// re-center the view on the ship in the x-direction
@@ -77,6 +77,7 @@ void GameLogic::update(float delta_time)
 	
 	// End the game if the player has been destroyed
 	if (_player_ptr->destroyed()) endGame();
+	//std::cout << "x = " << _player_ptr->character().position.x << std::endl;
 }
 
 void GameLogic::followPlayer()
@@ -105,6 +106,8 @@ void GameLogic::handleUserInput()
 			case Events::E_Released:			
 			case Events::Space_Pressed:
 			case Events::Space_Released:
+			case Events::Q_Pressed:
+			case Events::Q_Released:
 				_player_ptr->controlShooting(event);
 				break;
 			case Events::Window_Close:

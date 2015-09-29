@@ -22,8 +22,7 @@ using std::make_shared;
 #include "Collisions.h"
 #include "Powerup.h"
 
-#include <SFML/System.hpp> // This is only temporary, using SFMLs Vector2f, but later will write a lightweight vector class to use instead
-using sf::Vector2f;
+#include "Vector2f.h"
 
 class GameLogic {
 
