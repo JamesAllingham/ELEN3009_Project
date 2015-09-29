@@ -7,15 +7,7 @@ SmartBomb::SmartBomb(const Vector2f& position) : MovingEntity{EntityID::Smart_Bo
 
 void SmartBomb::collide(shared_ptr<Entity> collider) 
 {
-	switch (collider->id())
-	{		
-		case EntityID::Flyer:
-		case EntityID::Missile:
-			destroy();
-			break;
-		default:
-			break;
-	}	
+	destroy();
 }
 
 list<Vector2f> SmartBomb::hitboxPoints()

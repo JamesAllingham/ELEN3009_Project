@@ -13,6 +13,7 @@ using std::list;
 using std::begin;
 using std::end;
 using std::next;
+using std::prev;
 #include <limits>
 using std::numeric_limits;
 

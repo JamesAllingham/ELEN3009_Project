@@ -73,7 +73,7 @@ shared_ptr<MovingEntity> Ship::shoot(float delta_time)
 		{
 			std::cout<<"shooting smart bomb" << std::endl;
 			--_number_of_smart_bombs;
-			return shared_ptr<MovingEntity> (new SmartBomb(Vector2f(character().position().x - 400.f, 0.f)));
+			return shared_ptr<MovingEntity> (new SmartBomb(Vector2f(position().x - 400.f, 600.f)));
 		}
 		else return shared_ptr<MovingEntity> (nullptr);
 	}

@@ -34,7 +34,7 @@ UserInterface::UserInterface() : _game_window(VideoMode(800, 720), "Attacker"), 
 	_focusWindow.setOutlineColor(Color(250, 150, 100));
 	_focusWindow.setPosition(2000.f,0.f);
 	
-	_game_window.setKeyRepeatEnabled(false);
+	//_game_window.setKeyRepeatEnabled(false);
 	
 }
 
