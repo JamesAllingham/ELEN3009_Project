@@ -9,6 +9,8 @@ GameLogic::GameLogic () : _user_interface(), _entities(), _player_ptr(new Ship)
 	_shooting_entities.push_back(_player_ptr);
 	_moving_entities.push_back(_player_ptr);
 	
+	srand(time(0));
+	
 	runGame();
 }
 

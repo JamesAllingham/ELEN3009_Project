@@ -5,7 +5,7 @@ class Vector2f
 {
 public:
 	Vector2f () {};
-	Vector2f (const float x_in, const float y_in) : x(x_in), y(y_in) {};
+	Vector2f (float x_in, float y_in) : x(x_in), y(y_in) {};
 	
 	Vector2f CrossProduct ( Vector2f lhs, Vector2f rhs) {return Vector2f( lhs.x * rhs.y - lhs.y * rhs.x , lhs.y * rhs.x - lhs.x * rhs.y);};
 	

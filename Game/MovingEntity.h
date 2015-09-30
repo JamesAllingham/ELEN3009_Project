@@ -3,6 +3,11 @@
 
 #include "IMover.h"
 #include "Entity.h"
+#include "Vector2f.h"
+#include "EntityID.h"
+
+#include <list>
+using std::list;
 
 /**
 * MovingEntity class. 
@@ -14,8 +19,8 @@ class MovingEntity: public Entity, public IMover
 		/**
 		* Constructor. Calls the Entity constructor explicitly and the IMover constructor implicitly. 
 		* @param entity_ID is a EntityID containing the type of Entity being created.
-		* @param position is a vector of floats containing the initial position of the MovingEntity.
-		* @param velocity is a vector of floats containing the velocity of the MovingEntity.
+		* @param position is a Vector2f containing the initial position of the MovingEntity.
+		* @param velocity is a Vector2f containing the velocity of the MovingEntity.
 		*/
 		MovingEntity(EntityID entity_ID, Vector2f position, Vector2f velocity): Entity{entity_ID, position}, _velocity(velocity) {};
 		
@@ -28,7 +33,7 @@ class MovingEntity: public Entity, public IMover
 		/**
         * hitboxPoints() function inherited from Entity.
 		* The hit box points describe hit box of the MovingEntity.
-		* @return the list of co-ordinates for the hit box of the MovingEntity as described by the derived class.
+		* @return the list of Vector2f co-ordinates for the hit box of the MovingEntity as described by the derived class.
 		*/
 		virtual list<Vector2f> hitboxPoints() override = 0;
 		/**

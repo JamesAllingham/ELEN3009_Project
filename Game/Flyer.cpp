@@ -11,6 +11,15 @@ Flyer::~Flyer()
 	_number_of_flyers_killed++;
 }
 
+float Flyer::randomPosition (float max_positon) {
+	// This function needs to take into account the size of the flyer so that they don't spawn half off of the screen
+	// Need to fix this static call to seed the random function
+	int rand_num;
+	int tmp = static_cast<int>(max_positon);
+	rand_num = rand()%tmp;
+	return static_cast<float>(rand_num);
+}
+
 void Flyer::collide(shared_ptr<Entity> collider) 
 {
 	switch (collider->id())

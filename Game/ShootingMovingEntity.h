@@ -3,6 +3,11 @@
 
 #include "IShooter.h"
 #include "MovingEntity.h"
+#include "Vector2f.h"
+#include "EntityID.h"
+
+#include <list>
+using std::list;
 
 /**
 * ShootingMovingEntity class. 

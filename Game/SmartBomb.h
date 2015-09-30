@@ -15,8 +15,8 @@ class SmartBomb : public MovingEntity //Using MovingEntity because the shooting 
 
 public:
 	/**
-    * Constructor.
-    * @param position is a vector of floats containing the initial position of the SmartBomb.
+    * Constructor. Calls the MovingEntity constructor explicitly.
+    * @param position is a Vector2f containing the initial position of the SmartBomb.
     * @param nearest_target is a shared pointer which is the nearest enemy to the SmartBomb, which the SmartBomb will lock onto.
     */
 	SmartBomb(const Vector2f& position);	
@@ -24,7 +24,7 @@ public:
 	/**
     * hitboxPoints() function inherited from MovingEntity.
 	* The hit box points describe square around the SmartBomb.
-    * @return the list of co-ordinates for the hit box of the SmartBomb.
+    * @return the list of Vector2f co-ordinates for the hit box of the SmartBomb.
     */
 	virtual list<Vector2f> hitboxPoints() override;
 	/**
