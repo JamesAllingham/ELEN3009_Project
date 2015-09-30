@@ -9,17 +9,19 @@
 
 #include <memory>
 using std::shared_ptr;
-
+/**
+* SmartBomb class - represents the projectile fired by the player's ship.
+* Inherits from the MovingEntity class.
+*/
 class SmartBomb : public MovingEntity //Using MovingEntity because the shooting function in Ship returns a moving entity
 {
 
 public:
 	/**
     * Constructor. Calls the MovingEntity constructor explicitly.
-    * @param position is a Vector2f containing the initial position of the SmartBomb.
-    * @param nearest_target is a shared pointer which is the nearest enemy to the SmartBomb, which the SmartBomb will lock onto.
+    * @param x_position is a float containing the initial x position of the SmartBomb.
     */
-	SmartBomb(const Vector2f& position);	
+	SmartBomb(float x_position);	
 	
 	/**
     * hitboxPoints() function inherited from MovingEntity.

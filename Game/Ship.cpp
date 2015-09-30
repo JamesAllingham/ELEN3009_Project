@@ -1,7 +1,7 @@
 #include "Ship.h"
 
 
-Ship::Ship() : ShootingMovingEntity{EntityID::Ship, Vector2f(mapLimits().x/2, mapLimits().y/2), Vector2f(250.f,250.f)}, _delta_position(0,0) 
+Ship::Ship() : ShootingMovingEntity{EntityID::Ship, Vector2f(mapLimits().x/2, mapLimits().y/2), Vector2f(_SHIP_SPEED,_SHIP_SPEED)}, _delta_position(0,0) 
 {
 	
 };
@@ -28,20 +28,19 @@ void Ship::collide(shared_ptr<Entity> collider)
 
 shared_ptr<MovingEntity> Ship::shoot(float delta_time)
 {
-	if (_shooting) 
+	if (_shoot_laser) 
 	{
-		_shooting = false;
+		_shoot_laser = false;
 		Vector2f velocity_unit;
 		if (facingRight()) 
 		{
-			velocity_unit = Vector2f(1,0);
-			return shared_ptr<MovingEntity> (new Laser(position() + Vector2f(75.f, (37.f - 7.f)/2), velocity_unit));
+			velocity_unit = Vector2f(1,0);			
 		}
 		else 
 		{
 			velocity_unit = Vector2f(-1,0);
-			return shared_ptr<MovingEntity> (new Laser(position()  + Vector2f(-25.f, (37.f - 7.f)/2), velocity_unit));
 		}
+		return shared_ptr<MovingEntity> (new Laser(position() + Vector2f(_LASER_X_OFFSET,_LASER_Y_OFFSET), velocity_unit));
 	}
 	
 	if (_nearest_target.unique())
@@ -62,7 +61,7 @@ shared_ptr<MovingEntity> Ship::shoot(float delta_time)
 		if (_number_of_homing_missiles > 0)
 		{
 			--_number_of_homing_missiles;
-			return shared_ptr<MovingEntity> (new HomingMissile(position()  + Vector2f(75.f, (37.f - 23.f)/2), _nearest_target));
+			return shared_ptr<MovingEntity> (new HomingMissile(position()  + Vector2f(_HOMING_MISSILE_X_OFFSET,_HOMING_MISSILE_Y_OFFSET), _nearest_target));
 		}		
 	}
 	
@@ -73,7 +72,7 @@ shared_ptr<MovingEntity> Ship::shoot(float delta_time)
 		{
 			std::cout<<"shooting smart bomb" << std::endl;
 			--_number_of_smart_bombs;
-			return shared_ptr<MovingEntity> (new SmartBomb(Vector2f(position().x - 400.f, 600.f)));
+			return shared_ptr<MovingEntity> (new SmartBomb(position().x + _SMART_BOMB_X_OFFSET));
 		}
 		else return shared_ptr<MovingEntity> (nullptr);
 	}
@@ -86,7 +85,7 @@ void Ship::controlShooting(Events event)
 {
 	switch (event){
 		case Events::Space_Pressed:
-			_shooting = true;
+			_shoot_laser = true;
 			break;
 		case Events::E_Pressed:
 			_shoot_homing_missile = true;
@@ -137,9 +136,9 @@ void Ship::move(float delta_time)
 	Vector2f old_position = position() ;
 	auto distance = delta_time * velocity();
 	if (_moving_up) movePosition(0, -distance.y);
-	if (_moving_down) movePosition(0, distance.y);
+	if (_moving_down) !(position().y + distance.y + _SHIP_HEIGHT> mapLimits().y) ? movePosition(0, distance.y) : movePosition(0, mapLimits().y - _SHIP_HEIGHT - position().y);
 	if (_moving_left) movePosition(-distance.x,0);
-	if (_moving_right) movePosition(distance.x,0);
+	if (_moving_right) !(position().x + distance.x + _SHIP_WIDTH> mapLimits().x) ? movePosition(distance.x,0) : movePosition(mapLimits().x - _SHIP_WIDTH - position().x,0);;
 	_delta_position =  position()  - old_position;
 	
 	if ( (_moving_left && !_moving_right && facingRight()) || (!_moving_left && _moving_right && !facingRight()) )
@@ -148,16 +147,15 @@ void Ship::move(float delta_time)
 	}
 }
 
-// The reason that I have made this a vitual function is that in future we might want to make the flyer and ship have differently shaped hit boxes
 list<Vector2f> Ship::hitboxPoints()
 {
 	list<Vector2f> hitbox_points;
 	Vector2f top_left_point = position() ;
 	// Add the points in a clockwise direction
 	hitbox_points.push_back(Vector2f(top_left_point.x, top_left_point.y));
-	hitbox_points.push_back(Vector2f(top_left_point.x + _width, top_left_point.y));
-	hitbox_points.push_back(Vector2f(top_left_point.x + _width, top_left_point.y - _height));
-	hitbox_points.push_back(Vector2f(top_left_point.x, top_left_point.y - _height));
+	hitbox_points.push_back(Vector2f(top_left_point.x + _SHIP_WIDTH, top_left_point.y));
+	hitbox_points.push_back(Vector2f(top_left_point.x + _SHIP_WIDTH, top_left_point.y - _SHIP_HEIGHT));
+	hitbox_points.push_back(Vector2f(top_left_point.x, top_left_point.y - _SHIP_HEIGHT));
 	return hitbox_points;
 }
 

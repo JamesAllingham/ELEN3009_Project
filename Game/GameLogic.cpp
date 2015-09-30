@@ -24,7 +24,7 @@ void GameLogic::runGame()
 	while (_game_running)	{
 		
 		time_since_last_update += clock.stop();
-		clock.restart();
+		clock.start();
 		
 		while (time_since_last_update > time_per_frame) 
 		{

@@ -11,8 +11,7 @@
 using std::shared_ptr;
 
 /**
-* Laser class. 
-* This class represents the projectile fired by the player's ship.
+* Laser class - represents the projectile fired by the player's ship.
 * Inherits from the MovingEntity class.
 */
 class Laser : public MovingEntity

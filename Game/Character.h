@@ -6,8 +6,7 @@
 #include "Vector2f.h"
 
 /**
-* Character class. 
-* This class is the drawable representation of an Entity. 
+* Character class - the drawable representation of an Entity. 
 * It is used to decouple the UserInterface from the GameLogic by only giving the UserInterface the information it needs to draw each entity i.e. the texture to use and it's position.
 */
 class Character

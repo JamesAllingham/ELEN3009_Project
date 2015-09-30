@@ -11,11 +11,9 @@ Powerup::~Powerup()
 }
 
 float Powerup::randomPosition (float max_positon) {
-	// This function needs to take into account the size of the flyer so that they don't spawn half off of the screen
-	// Need to fix this static call to seed the random function
-	int rand_num;
-	int tmp = static_cast<int>(max_positon);
-	rand_num = rand()%tmp;
+	int largest_dimension = static_cast<int>((_POWER_UP_WIDTH>_POWER_UP_HEIGHT)?_POWER_UP_WIDTH:_POWER_UP_HEIGHT);
+	int tmp = static_cast<int>(max_positon - largest_dimension);
+	int rand_num = rand()%tmp;
 	return static_cast<float>(rand_num);
 }
 

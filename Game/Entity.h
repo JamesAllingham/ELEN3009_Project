@@ -12,8 +12,7 @@ using std::list;
 using std::shared_ptr;
 
 /**
-* Entity class. 
-* This class represents any in game Entity. Anything that can be interacted with in some way for example the PowerUp or Laser classes. 
+* Entity class - represents any in game Entity. Anything that can be interacted with in some way for example the PowerUp or Laser classes. 
 * Entity objects have a position and id. They can be destroyed and collide with other Entity objects.
 */
 class Entity {
@@ -32,7 +31,7 @@ public:
 	Character character() {return Character(_id, _position);};
 	/**
     * setMapLimits() static function which sets the bounds of the map in which the Entity is allowed to spawn or move.
-    * @param a Vector2f containing the maximum x and y positions allowed for an entity. 
+    * @param max_position a Vector2f containing the maximum x and y positions allowed for an entity. 
     */
 	static void setMapLimits (const Vector2f& max_position);
 	/**

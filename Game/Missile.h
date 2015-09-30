@@ -11,8 +11,7 @@
 using std::shared_ptr;
 
 /**
-* Missile class. 
-* This class represents the projectile fired by the player's ship.
+* Missile class - represents the projectile fired by an enemy Flyer.
 * Inherits from the MovingEntity class.
 */
 class Missile : public MovingEntity

@@ -11,6 +11,10 @@
 #include <memory>
 using std::shared_ptr;
 
+/**
+* HomingMissile class - represents the homing projectile fired by the player's Ship when a Powerup is active.
+* Inherits from the MovingEntity class.
+*/
 class HomingMissile : public MovingEntity
 {
 
