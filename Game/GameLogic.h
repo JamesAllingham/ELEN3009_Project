@@ -9,6 +9,7 @@ using std::next;
 #include <memory>
 using std::shared_ptr;
 using std::make_shared;
+#include <ctime>
 
 #include <iostream> // For testing purposes
 
@@ -25,8 +26,7 @@ using std::make_shared;
 #include "Vector2f.h"
 
 /**
-* GameLogic class. 
-* This class contains all of the functionality for running the game.
+* GameLogic class - contains all of the functionality for running the game.
 * To play the game only this class and the SFML DLLs are needed.
 */
 class GameLogic {

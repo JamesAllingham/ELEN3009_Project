@@ -32,8 +32,7 @@ using std::runtime_error;
 using std::cerr;
 
 /**
-* UserInterface class. 
-* This class contains all of the functionality for interacting with the player of the game.
+* UserInterface class - contains all of the functionality for interacting with the player of the game.
 * This includes both getting user input in the form of events and displaying the game (drawing the sprites).
 * This is the only class which uses SFML.
 */
@@ -88,9 +87,21 @@ private:
 	Sprite _background;
 	RectangleShape _focusWindow;
 	
-	Font _text_font;
-	Text _lives_text;
-	Text _bomb_text;
-	Text _homing_missiles_text;
+	static constexpr const float _CAMERA_X_OFFSET = 2000.f;
+	static constexpr const float _CAMERA_Y_OFFSET = 0.f;
+	static constexpr const float _CAMERA_WIDTH = 800.f;
+	static constexpr const float _CAMERA_HEIGHT = 600.f;
+	static constexpr const float _CAMERA_X_POS_RATIO = 0.f;
+	static constexpr const float _CAMERA_Y_POS_RATIO = 0.2f;
+	static constexpr const float _CAMERA_WIDTH_RATIO = 1.f;
+	static constexpr const float _CAMERA_HEIGHT_RATIO = 0.8f;
+	static constexpr const float _MAP_X_OFFSET = 0.f;
+	static constexpr const float _MAP_Y_OFFSET = 0.f;
+	static constexpr const float _MAP_WIDTH = 4800.f;
+	static constexpr const float _MAP_HEIGHT = 600.f;
+	static constexpr const float _MINI_MAP_X_POS_RATIO = 0.1f;
+	static constexpr const float _MINI_MAP_Y_POS_RATIO = 0.f;
+	static constexpr const float _MINI_MAP_WIDTH_RATIO = 0.8f;
+	static constexpr const float _MINI_MAP_HEIGHT_RATIO = 0.175f;
 };
 #endif

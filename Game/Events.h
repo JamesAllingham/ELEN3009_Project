@@ -1,7 +1,9 @@
 #ifndef EVENTS
 #define EVENTS
-
-// Define some strongly typed enumerations which will act as the keys for the event logic
+/**
+* Events strongly typed enumeration class - used to enumerate the different events that SFML can generate from user input.
+* This decouples SFML from the GameLogic.
+*/
 enum class Events
 {
     Window_Close,

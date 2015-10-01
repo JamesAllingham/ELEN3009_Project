@@ -7,9 +7,28 @@ bool Collision::collision(shared_ptr<Entity> entity1_ptr, shared_ptr<Entity> ent
 	list<Vector2f> polygon1_normals = normals(polygon1_points);
 	list<Vector2f> polygon2_normals = normals(polygon2_points);
 	
+	// if ((entity1_ptr->id() == EntityID::Smart_Bomb && entity2_ptr->id() == EntityID::Ship) || (entity2_ptr->id() == EntityID::Smart_Bomb && entity1_ptr->id() == EntityID::Ship))
+	// {
+		// for (auto vector : polygon1_points)
+		// {
+			// std::cout << "(" << vector.x << "," << vector.y << ")" << std::endl;
+		// }
+		// for (auto vector : polygon2_points)
+		// {
+			// std::cout << "(" << vector.x << "," << vector.y << ")" << std::endl;
+		// }
+		// for (auto vector : polygon1_normals)
+		// {
+			// std::cout << "(" << vector.x << "," << vector.y << ")" << std::endl;
+		// }
+		// for (auto vector : polygon2_normals)
+		// {
+			// std::cout << "(" << vector.x << "," << vector.y << ")" << std::endl;
+		// }
+	// }
+	
 	//test for collision using polygon1's normals
-	for (auto normal : polygon1_normals)
-	{
+	for (auto normal : polygon1_normals){			
 		auto separated = maximumProjection(polygon1_points,normal) < minimumProjection(polygon2_points,normal) || maximumProjection(polygon2_points,normal) < minimumProjection(polygon1_points,normal);
 		if (separated) return false;
 	}
@@ -28,15 +47,14 @@ bool Collision::collision(shared_ptr<Entity> entity1_ptr, shared_ptr<Entity> ent
 list<Vector2f> Collision::normals(const list<Vector2f>& polygon_points) const
 {
 	list<Vector2f> normals;
-	for (auto iter = begin(polygon_points); iter != end(polygon_points); iter++)
-	{		
+	//std::cout << "normals" << std::endl;
+	for (auto iter = begin(polygon_points); iter != prev(end(polygon_points)); iter++)
+	{	
 		Vector2f temp_normal(-next(iter)->y + iter->y,next(iter)->x - iter->x);
-		temp_normal = temp_normal/sqrtf(temp_normal.x*temp_normal.x + temp_normal.y*temp_normal.y);
 		normals.push_back(temp_normal);
 	}
 	
-	Vector2f temp_normal(-begin(polygon_points)->y + end(polygon_points)->y,begin(polygon_points)->x - end(polygon_points)->x);
-	temp_normal = temp_normal/sqrtf(temp_normal.x*temp_normal.x + temp_normal.y*temp_normal.y);
+	Vector2f temp_normal(-(begin(polygon_points))->y  + (prev(end(polygon_points)))->y,(begin(polygon_points))->x - (prev(end(polygon_points)))->x);
 	normals.push_back(temp_normal);
 	
 	return normals;
@@ -45,9 +63,9 @@ list<Vector2f> Collision::normals(const list<Vector2f>& polygon_points) const
 // Calculate the maximum projection of any of the vectors to the points of the polygon onto the given normal vector
 float Collision::maximumProjection(const list<Vector2f>& polygon_points, const Vector2f& polygon_normal) const
 {
-	auto maximum = 0.f;
+	auto maximum = 0.f;	
 	for (const auto& point : polygon_points)
-	{
+	{		
 		auto temp_maximum = dotProduct(point,polygon_normal);
 		if (temp_maximum > maximum) maximum = temp_maximum;
 	}
@@ -68,13 +86,13 @@ float Collision::minimumProjection(const list<Vector2f>& polygon_points, const V
 
 // Return the dotProduct of two vectors - will probably get removed or moved to vector class
 float Collision::dotProduct(const Vector2f& vector1, const Vector2f& vector2) const
-{
+{	
 	return vector1.x*vector2.x + vector1.y*vector2.y;
 }
 
 void Collision::manageCollisions()
 {
-	// set entites to be delted
+	// set entities to be deleted
 	for (auto entity_itr1 = _begin_entity_itr; entity_itr1 != prev(_end_entity_itr); entity_itr1++)
 	{	
 		for (auto entity_itr2 = next(entity_itr1); entity_itr2 != _end_entity_itr; entity_itr2++)

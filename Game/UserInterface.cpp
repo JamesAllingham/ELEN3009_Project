@@ -1,6 +1,6 @@
 #include "UserInterface.h"
 
-UserInterface::UserInterface() : _game_window(VideoMode(800, 720), "Attacker"), _camera(), _mini_map(), _textures(), _background(), _focusWindow(sf::Vector2f(800, 600)) 
+UserInterface::UserInterface() : _game_window(VideoMode(_CAMERA_WIDTH, _CAMERA_HEIGHT/_CAMERA_HEIGHT_RATIO), "Attacker"), _camera(), _mini_map(), _textures(), _background(), _focusWindow(sf::Vector2f(800, 600)) 
 {
 	try 
 	{
@@ -26,20 +26,18 @@ UserInterface::UserInterface() : _game_window(VideoMode(800, 720), "Attacker"), 
 	
 	// The camera object will allow the implementation of scrolling
 	_game_window.setView(_camera);	
-	_camera.reset(FloatRect(2000.f,0.f,800.f,600.f)); 	
-	_camera.setViewport(FloatRect(0.f,0.2f,1.f,0.833f));
-	_mini_map.reset(FloatRect(0.f,0.f,4800.f,600.f));
-	_mini_map.setViewport(FloatRect(0.1f,0.0f,0.8f,0.167f));
+	_camera.reset(FloatRect(_CAMERA_X_OFFSET,_CAMERA_Y_OFFSET,_CAMERA_WIDTH,_CAMERA_HEIGHT)); 	
+	_camera.setViewport(FloatRect(_CAMERA_X_POS_RATIO,_CAMERA_Y_POS_RATIO,_CAMERA_WIDTH_RATIO,_CAMERA_HEIGHT_RATIO));
+	_mini_map.reset(FloatRect(_MAP_X_OFFSET,_MAP_Y_OFFSET,_MAP_WIDTH,_MAP_HEIGHT));
+	_mini_map.setViewport(FloatRect(_MINI_MAP_X_POS_RATIO,_MINI_MAP_Y_POS_RATIO,_MINI_MAP_WIDTH_RATIO,_MINI_MAP_HEIGHT_RATIO));
 	_textures.get(EntityID::Landscape).setRepeated(true);
 	_background.setTexture(_textures.get(EntityID::Landscape));
-	_background.setTextureRect(IntRect(0,0,4800,600));
+	_background.setTextureRect(IntRect(_MAP_X_OFFSET,_MAP_Y_OFFSET,_MAP_WIDTH,_MAP_HEIGHT));
 	
 	_focusWindow.setFillColor(Color(255, 255, 255, 0));
 	_focusWindow.setOutlineThickness(-25);
 	_focusWindow.setOutlineColor(Color(250, 150, 100));
-	_focusWindow.setPosition(2000.f,0.f);
-	
-	_game_window.setKeyRepeatEnabled(false);
+	_focusWindow.setPosition(_CAMERA_X_OFFSET,_CAMERA_Y_OFFSET);	
 	
 }
 
@@ -49,8 +47,7 @@ void UserInterface::processEvents()
 	_events.clear();
 	Event event;
 	while (_game_window.pollEvent(event)) 
-	{
-		
+	{		
 		//poll all event types
 		//convert from SFML
 		switch (event.type) 
@@ -99,7 +96,7 @@ void UserInterface::processEvents()
 						_events.push_back(Events::D_Released);
 						break;
 					case Keyboard::E:
-						_events.push_back(Events::D_Released);
+						_events.push_back(Events::E_Released);
 						break;
 					case Keyboard::Space:
 						_events.push_back(Events::Space_Released);

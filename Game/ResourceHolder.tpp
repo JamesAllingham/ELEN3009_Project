@@ -28,7 +28,7 @@ template <typename Resource, typename Identifier>
 Resource& ResourceHolder<Resource, Identifier>::get(Identifier id)
 {
 	auto found_ptr = _resources.find(id);	
-	assert(found_ptr != _resources.end());
+	if (found_ptr == _resources.end()) throw logic_error("ResourceHolder::get - could not find resource corresponding to given id");
 	
 	return *found_ptr->second;
 }
@@ -37,7 +37,7 @@ template <typename Resource, typename Identifier>
 const Resource& ResourceHolder<Resource, Identifier>::get(Identifier id) const
 {	
 	auto found_ptr = _resources.find(id);	
-	assert(found_ptr != _resources.end());
+	if (found_ptr == _resources.end()) throw logic_error("ResourceHolder::get - could not find resource corresponding to given id");
 	
 	return *found_ptr->second;
 }
@@ -46,6 +46,6 @@ template <typename Resource, typename Identifier>
 void ResourceHolder<Resource, Identifier>::addResource(Identifier id, unique_ptr<Resource>& resource_ptr)
 {		
 	auto inserted = _resources.insert(make_pair(id, move(resource_ptr)));
-	// An assertion is used for debugging purposes only it will be removed by using #define NDEBUG. This should always pass and any causes for this not passing must be found during development
-	assert(inserted.second);
+	
+	if(!(inserted.second)) throw logic_error("ResourceHolder::addResource - resource with given id already added");
 }

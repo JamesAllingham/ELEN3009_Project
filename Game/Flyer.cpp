@@ -11,6 +11,13 @@ Flyer::~Flyer()
 	_number_of_flyers_killed++;
 }
 
+float Flyer::randomPosition (float max_positon) {
+	int largest_dimension = static_cast<int>((_FLYER_WIDTH>_FLYER_HEIGHT)?_FLYER_WIDTH:_FLYER_HEIGHT);
+	int tmp = static_cast<int>(max_positon - largest_dimension);
+	int rand_num = rand()%tmp;
+	return static_cast<float>(rand_num);
+}
+
 void Flyer::collide(shared_ptr<Entity> collider) 
 {
 	switch (collider->id())
@@ -29,9 +36,9 @@ void Flyer::collide(shared_ptr<Entity> collider)
 shared_ptr<MovingEntity> Flyer::shoot(float delta_time)
 {	
 	_time_since_last_shot += delta_time;
-	if (_time_since_last_shot > 10.f) 
+	if (_time_since_last_shot > _TIME_BETWEEN_SHOTS) 
 	{
-		if (abs(position().x - _target->position().x) <= 400.f) 
+		if (abs(position().x - _target->position().x) <= _FLYER_TARGETING_RANGE) 
 		{
 			Vector2f velocity_unit(_target->position() - position());
 			velocity_unit /= sqrtf(velocity_unit.x*velocity_unit.x + velocity_unit.y*velocity_unit.y); // should check for 0's
@@ -62,9 +69,9 @@ list<Vector2f> Flyer::hitboxPoints()
 	Vector2f top_left_point = position();
 	// Add the points in a clockwise direction
 	hitbox_points.push_back(Vector2f(top_left_point.x, top_left_point.y));
-	hitbox_points.push_back(Vector2f(top_left_point.x + _width, top_left_point.y));
-	hitbox_points.push_back(Vector2f(top_left_point.x + _width, top_left_point.y - _height));
-	hitbox_points.push_back(Vector2f(top_left_point.x, top_left_point.y - _height));
+	hitbox_points.push_back(Vector2f(top_left_point.x + _FLYER_WIDTH, top_left_point.y));
+	hitbox_points.push_back(Vector2f(top_left_point.x + _FLYER_WIDTH, top_left_point.y - _FLYER_HEIGHT));
+	hitbox_points.push_back(Vector2f(top_left_point.x, top_left_point.y - _FLYER_HEIGHT));
 	return hitbox_points;
 }
 

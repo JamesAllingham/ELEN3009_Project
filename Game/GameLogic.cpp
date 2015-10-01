@@ -9,6 +9,8 @@ GameLogic::GameLogic () : _user_interface(), _entities(), _player_ptr(new Ship)
 	_shooting_entities.push_back(_player_ptr);
 	_moving_entities.push_back(_player_ptr);
 	
+	srand(time(0));
+	
 	runGame();
 }
 
@@ -22,7 +24,7 @@ void GameLogic::runGame()
 	while (_game_running)	{
 		
 		time_since_last_update += clock.stop();
-		clock.restart();
+		clock.start();
 		
 		while (time_since_last_update > time_per_frame) 
 		{

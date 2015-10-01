@@ -3,31 +3,54 @@
 
 #include "Character.h"
 #include "Entity.h"
-
 #include "Vector2f.h"
-
-#include <iostream> // For debugging
 
 #include <memory>
 using std::shared_ptr;
+#include <ctime>
 
+#include <iostream> // For debugging
+/**
+* Powerup class - represents the powerups that the player can pick up to get HomingMissile shots.
+* Inherits from the Entity class.
+*/
 class Powerup : public Entity
 {
 
 public:
+	/**
+    * Constructor. Calls the Entity constructor explicitly.
+	* Prevents more Powerup objects from spawning.
+    */
 	Powerup();
-	~Powerup();
-	
-	//virtual void move(float delta_time) override {};
+	/**
+    * Destructor. Allows a Powerup object to spawn again.
+    */
+	~Powerup();	
+	/**
+    * hitboxPoints() function inherited from Entity.
+	* The hit box points describe square around the Powerup.
+    * @return the list of Vector2f co-ordinates for the hit box of the Powerup.
+    */
 	virtual list<Vector2f> hitboxPoints() override;
-	//virtual shared_ptr<Entity> shoot(float delta_time) {return shared_ptr<Entity> (nullptr);};
+	/**
+    * collide() function inherited from Entity.
+	* The Powerup will be destroyed if it collides with a Ship. 
+    * @param collider is a pointer to the Entity which the Powerup is colliding with.
+    */
 	virtual void collide(shared_ptr<Entity> collider) override;	
-	
+	/**
+    * PowerupOnTheMap() static function.
+    * @return a bool containing the current state of a Powerup being on the map.
+    */
 	static bool PowerupOnTheMap ();
 	
+protected:    	
+	float randomPosition (float max_position);
+	
 private:		
-	float _width = 42;
-	float _height = 48;
+	static const constexpr float _POWER_UP_WIDTH = 26;
+	static const constexpr float _POWER_UP_HEIGHT = 30;
 	static bool _powerup_on_the_map;
 };	
 #endif
