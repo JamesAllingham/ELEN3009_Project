@@ -17,7 +17,12 @@ UserInterface::UserInterface() : _game_window(VideoMode(800, 720), "Attacker"), 
 	{
 		cerr << error.what();
 		// maybe quit the application
-	}	
+	}
+	
+	if (!_text_font.loadFromFile(resources/impact.ttf)
+	{
+		//error
+	}
 	
 	// The camera object will allow the implementation of scrolling
 	_game_window.setView(_camera);	

@@ -15,6 +15,8 @@ using sf::FloatRect;
 using sf::IntRect;
 using sf::RectangleShape;
 using sf::Color;
+using sf::Font;
+using sf::Text;
 #include <SFML/Audio.hpp>
 
 #include <list>
@@ -85,5 +87,10 @@ private:
 	ResourceHolder<Texture,EntityID> _textures;
 	Sprite _background;
 	RectangleShape _focusWindow;
+	
+	Font _text_font;
+	Text _lives_text;
+	Text _bomb_text;
+	Text _homing_missiles_text;
 };
 #endif
