@@ -22,17 +22,28 @@ void GameLogic::runGame()
 	auto time_per_frame = 1.0f/_FPS_LIMIT;
 	
 	while (_game_running)	{
-		
-		time_since_last_update += clock.stop();
-		clock.start();
-		
-		while (time_since_last_update > time_per_frame) 
+		if (_game_paused)
 		{
-			update(time_per_frame);
-			time_since_last_update -= time_per_frame;
+			clock.stop();
+			handleUserInput();
+			renderCurrentState();
+			//std::cout <<  << std::endl;
+			//_user_interface.drawText("Game Paused", _PAUSE_GAME_TEXT_SIZE, _player_ptr->character().position() + Vector2f(-300,-50));
+			clock.start();
 		}
-		list<Character> characters = _entities.characters();
-		_user_interface.render(characters, _player_ptr->status());
+		else 
+		{
+			time_since_last_update += clock.stop();
+			clock.start();
+		
+			while (time_since_last_update > time_per_frame && !_game_paused) 
+			{
+				update(time_per_frame);
+				time_since_last_update -= time_per_frame;
+			}
+			renderCurrentState();
+		}
+
 	}
 }
 
@@ -82,6 +93,12 @@ void GameLogic::update(float delta_time)
 	//std::cout << "x = " << _player_ptr->character().position.x << std::endl;
 }
 
+void GameLogic::renderCurrentState ()
+{
+	list<Character> characters = _entities.characters();
+	_user_interface.render(characters, _player_ptr->status());
+}
+
 void GameLogic::followPlayer()
 {
 	// This function needs to prevent flying off of the map
@@ -111,6 +128,10 @@ void GameLogic::handleUserInput()
 			case Events::Q_Pressed:
 			case Events::Q_Released:
 				_player_ptr->controlShooting(event);
+				break;
+			case Events::P_Pressed:
+				pauseGame();
+				_user_interface.pauseGame();
 				break;
 			case Events::Window_Close:
 				endGame();

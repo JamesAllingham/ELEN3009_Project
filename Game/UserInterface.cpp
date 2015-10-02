@@ -33,6 +33,8 @@ UserInterface::UserInterface() : _game_window(VideoMode(_CAMERA_WIDTH, _CAMERA_H
 	_mini_map.setViewport(FloatRect(_MINI_MAP_X_POS_RATIO,_MINI_MAP_Y_POS_RATIO,_MINI_MAP_WIDTH_RATIO,_MINI_MAP_HEIGHT_RATIO));
 	_ship_status_map.setViewport(FloatRect(_MAP_X_OFFSET,_MAP_Y_OFFSET,_MINI_MAP_X_POS_RATIO, _CAMERA_Y_POS_RATIO));
 	_ship_status_map.reset(FloatRect(_MAP_X_OFFSET,_MAP_Y_OFFSET,75.f,100.f));
+	//_pause_game_window.setViewport(FloatRect(0.9f, 0.0f, 0.1f, 0.2f));
+	//_pause_game_window.reset(FloatRect(_MAP_X_OFFSET,_MAP_Y_OFFSET,75.f,100.f));
 	
 	_textures.get(EntityID::Landscape).setRepeated(true);
 	_background.setTexture(_textures.get(EntityID::Landscape));
@@ -61,15 +63,19 @@ void UserInterface::processEvents()
 			case Event::KeyPressed:
 				switch (event.key.code)
 				{
+					case Keyboard::Up:
 					case Keyboard::W:
 						_events.push_back(Events::W_Pressed);
 						break;
+					case Keyboard::Down:
 					case Keyboard::S:
 						_events.push_back(Events::S_Pressed);
 						break;
+					case Keyboard::Left:
 					case Keyboard::A:
 						_events.push_back(Events::A_Pressed);
 						break;
+					case Keyboard::Right:
 					case Keyboard::D:
 						_events.push_back(Events::D_Pressed);
 						break;
@@ -82,6 +88,9 @@ void UserInterface::processEvents()
 					case Keyboard::Q:
 						_events.push_back(Events::Q_Pressed);
 						break;
+					case Keyboard::P:
+						_events.push_back(Events::P_Pressed);
+						break;
 					default:
 						break;
 				}
@@ -89,15 +98,19 @@ void UserInterface::processEvents()
 			case Event::KeyReleased:
 				switch (event.key.code)
 				{
+					case Keyboard::Up:
 					case Keyboard::W:
 						_events.push_back(Events::W_Released);
 						break;
+					case Keyboard::Down:
 					case Keyboard::S:
 						_events.push_back(Events::S_Released);
 						break;
+					case Keyboard::Left:
 					case Keyboard::A:
 						_events.push_back(Events::A_Released);
 						break;
+					case Keyboard::Right:
 					case Keyboard::D:
 						_events.push_back(Events::D_Released);
 						break;
@@ -109,7 +122,7 @@ void UserInterface::processEvents()
 						break;
 					case Keyboard::Q:
 						_events.push_back(Events::Q_Released);
-						break;
+						break;						
 					default:
 						break;
 				}
@@ -133,9 +146,14 @@ void UserInterface::render(list<Character>& characters, list<int>& status)
 
 	_game_window.clear();	
 	
+	//setPauseWindowState();
 	_game_window.setView(_camera);
 	_background.setColor(sf::Color(255, 255, 255, 255));
 	_game_window.draw(_background);
+	if (_game_paused)
+	{	
+		drawText("Game Paused", _PAUSE_GAME_TEXT_SIZE, Vector2f(_focusWindow.getPosition().x + _PAUSE_TEXT_X_OFFSET, _focusWindow.getPosition().y + _PAUSE_TEXT_Y_OFFSET));
+	}
 	_game_window.setView(_mini_map);
 	_background.setColor(sf::Color(255, 255, 255, 50));
 	_game_window.draw(_background);
@@ -155,7 +173,7 @@ void UserInterface::processTextures(list<Character>& characters)
 	{
 		Sprite character_sprite;
 		character_sprite.setTexture(_textures.get(character.entityID()));
-		character_sprite.setPosition(ConvertToSFMLVector(character.position()));
+		character_sprite.setPosition(convertToSFMLVector(character.position()));
 		drawSprite(character_sprite);
 	}
 	
@@ -163,21 +181,20 @@ void UserInterface::processTextures(list<Character>& characters)
 
 void UserInterface::processStatusMap(list<int>& status)
 {
-	sf::Vector2f text_position(_STATUS_MAP_TEXT_X_OFFSET, _STATUS_MAP_TEXT_Y_OFFSET);
-	sf::Vector2f sprite_position(_STATUS_MAP_SPRITES_X_OFFSET, _STATUS_MAP_SPRITES_Y_OFFSET);
+	Vector2f text_position(_STATUS_MAP_TEXT_X_OFFSET, _STATUS_MAP_TEXT_Y_OFFSET);
+	Vector2f sprite_position(_STATUS_MAP_SPRITES_X_OFFSET, _STATUS_MAP_SPRITES_Y_OFFSET);
 	
 	for (auto current_text_status : status)
 	{
-		Text status_text;
-		drawText(status_text, current_text_status, text_position);
-		text_position += sf::Vector2f(_STATUS_MAP_STATES_X_OFFSET, _STATUS_MAP_STATES_Y_OFFSET);
+		drawText(" x " + to_string(current_text_status), _STATUS_MAP_TEXT_SIZE, text_position);
+		text_position += Vector2f(_STATUS_MAP_STATES_X_OFFSET, _STATUS_MAP_STATES_Y_OFFSET);
 	}
 	for (auto _status_map_ID : _status_map_states)
 	{
 		Sprite status_sprite;
 		status_sprite.setTexture(_textures.get(_status_map_ID));
-		status_sprite.setPosition(sprite_position);
-		sprite_position += sf::Vector2f(_STATUS_MAP_STATES_X_OFFSET, _STATUS_MAP_STATES_Y_OFFSET);
+		status_sprite.setPosition(convertToSFMLVector(sprite_position));
+		sprite_position += Vector2f(_STATUS_MAP_STATES_X_OFFSET, _STATUS_MAP_STATES_Y_OFFSET);
 		_game_window.draw(status_sprite);
 	}
 }
@@ -197,13 +214,26 @@ void UserInterface::drawSprite(const Sprite& texture)
 	_game_window.draw(texture);
 }
 
-void UserInterface::drawText(Text& text, int text_to_display, const sf::Vector2f& text_position)
+void UserInterface::drawText(string text_to_display, float text_size, const Vector2f& text_position)
 {
+	Text text;
 	text.setFont(_text_font);
-	text.setString(" x " + to_string(text_to_display));
-	text.setCharacterSize(_TEXT_SIZE);
+	text.setString(text_to_display);
+	text.setCharacterSize(text_size);
 	text.setColor(Color::White);
 	text.setStyle(Text::Bold);
-	text.setPosition(text_position);
+	text.setPosition(convertToSFMLVector(text_position));
 	_game_window.draw(text);
 }
+
+// void UserInterface::setPauseWindowState ()
+// {
+	// if (_game_paused)
+	// {
+		// _pause_game_state.setFillColor(Color(0, 255, 0, 0));
+	// }
+	// else 
+	// {
+		// _pause_game_state.setFillColor(Color(255, 255, 255, 0));
+	// }
+// }

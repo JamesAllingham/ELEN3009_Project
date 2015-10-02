@@ -43,11 +43,13 @@ public:
 private:
 	void runGame();
 	void update(float delta_time);
+	void renderCurrentState ();
 	void createEntities ();
 	void handleCollisions ();
 	void handleUserInput();
 	void followPlayer();
 	void endGame();
+	void pauseGame () {_game_paused = !_game_paused;};
 	
 	UserInterface _user_interface;
 	EntityHolder _entities;
@@ -55,10 +57,12 @@ private:
 	list<shared_ptr<ShootingMovingEntity>> _shooting_entities;
 	shared_ptr<Ship> _player_ptr;
 	bool _game_running = true;
+	bool _game_paused = false;
 	static constexpr const auto _NUMBER_OF_FLYERS_TO_KILL = 5;
 	static constexpr const auto _MAX_X = 4800.f;
 	static constexpr const auto _MAX_Y = 600.f;	
 	static constexpr const auto _MAX_ON_SCREEN_DISTANCE_FROM_PLAYER = 400.f;
-	static constexpr const auto _FPS_LIMIT = 120.f; 
+	static constexpr const auto _FPS_LIMIT = 120.f;
+
 };
 #endif

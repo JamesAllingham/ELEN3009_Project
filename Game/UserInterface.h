@@ -31,6 +31,7 @@ using std::list;
 using std::runtime_error;
 using std::cerr;
 
+using std::string;
 using std::to_string;
 
 /**
@@ -74,26 +75,38 @@ public:
     * processEvents() function handles all user input by polling for the events that have taken place since the last call.
     */
 	void processEvents();
-	sf::Vector2f ConvertToSFMLVector (Vector2f vector_in) { return sf::Vector2f(vector_in.x, vector_in.y); };
+	sf::Vector2f convertToSFMLVector (Vector2f vector_in) { return sf::Vector2f(vector_in.x, vector_in.y); };
+	/**
+    * handles all text displaying.
+    */
+	void drawText(string text_to_display, float text_size, const Vector2f& text_position);
+	/**
+    * processEvents() function handles all user input by polling for the events that have taken place since the last call.
+    */
+	void pauseGame() {_game_paused = !_game_paused;};
 	
 private:
 	
 	void processTextures(list<Character>& characters);
 	void drawSprite(const Sprite& texture);
-	void drawText(Text& text, int text_to_display, const sf::Vector2f& text_position);
 	void processStatusMap(list<int>& status);
+	void setPauseWindowState();
 	
 	list<Events> _events;
 	RenderWindow _game_window;
 	View _camera;
 	View _mini_map;
 	View _ship_status_map;
+	//View _pause_game_window;
 	ResourceHolder<Texture,EntityID> _textures;
 	Sprite _background;
 	RectangleShape _focusWindow;
+	//RectangleShape _pause_game_state;
 	
 	list<EntityID> _status_map_states;
 	Font _text_font;
+	
+	bool _game_paused = false;
 	
 	static constexpr const float _CAMERA_X_OFFSET = 2000.f;
 	static constexpr const float _CAMERA_Y_OFFSET = 0.f;
@@ -117,6 +130,9 @@ private:
 	static constexpr const float _STATUS_MAP_TEXT_Y_OFFSET = 5.f;
 	static constexpr const float _STATUS_MAP_STATES_X_OFFSET = 0.f;
 	static constexpr const float _STATUS_MAP_STATES_Y_OFFSET = 30.f;
-	static constexpr const float _TEXT_SIZE = 20.f;
+	static constexpr const float _STATUS_MAP_TEXT_SIZE = 20.f;
+	static constexpr const float _PAUSE_TEXT_X_OFFSET = 150.f;
+	static constexpr const float _PAUSE_TEXT_Y_OFFSET = 100.f;
+	static constexpr const float _PAUSE_GAME_TEXT_SIZE = 100.f;
 };
 #endif

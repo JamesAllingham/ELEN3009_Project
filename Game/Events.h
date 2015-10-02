@@ -20,7 +20,8 @@ enum class Events
 	E_Pressed, // If the player presses the E key, a Homing Missile should be fired targeting the closest (or maybe random) flyer
 	E_Released,
 	Q_Pressed, // If the player presses the Q key, a Smart Bomb should be fired destroying all targets on the screen
-	Q_Released
+	Q_Released,
+	P_Pressed, // If the player presses the P key, the game should be paused/unpaused
 };
 
 #endif
