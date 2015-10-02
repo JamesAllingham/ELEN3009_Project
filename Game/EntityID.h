@@ -14,7 +14,8 @@ enum class EntityID
 	Flyer,
 	Laser,
 	Landscape,
-	Power_Up
+	Power_Up,
+	Lives
 };
 
 #endif

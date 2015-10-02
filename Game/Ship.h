@@ -17,6 +17,8 @@ using std::list;
 using std::shared_ptr;
 #include <limits>
 using std::numeric_limits;
+
+using std::string;
 /**
 * Ship class - represents the user controlled player object.
 * Inherits from the ShootingMovingEntity class.
@@ -75,7 +77,7 @@ public:
 	shared_ptr<Entity> nearestTarget() { return _nearest_target;};
 	/**
     * numberOfLivesRemaining() function which is used to keep track of the number of lives remaining for the player.
-    * @return an int contining the number of lives left.
+    * @return an int containing the number of lives left.
     */
 	int numberOfLivesRemaining () {return _number_of_lives;};
 	/**
@@ -104,6 +106,11 @@ public:
     * @param collider is a pointer to the Entity which the Ship is colliding with.
     */
 	virtual void collide(shared_ptr<Entity> collider) override;
+	/**
+    * Used to return the current status of the ship.
+    * @return list of ints containing the number of lives, number of smart bombs, and number of homing missiles respectively the Ship holds.
+    */
+	list<int>& status();
 	
 	
 private:		
@@ -113,13 +120,15 @@ private:
 	bool _moving_right = false;
 	bool _facing_right = true;
 	
+	list<int> _status;
+	
 	bool _shoot_laser = false;
 	bool _shoot_homing_missile = false;
 	bool _shoot_smart_bomb = false;
 	
 	static constexpr const float _SHIP_WIDTH = 75;
 	static constexpr const float _SHIP_HEIGHT = 30;
-	static constexpr const float _SHIP_SPEED = 250.f;
+	static constexpr const float _SHIP_SPEED = 1000.f;
 	static constexpr const float _SMART_BOMB_X_OFFSET = -400.f;
 	static constexpr const float _LASER_X_OFFSET = 25.f;
 	static constexpr const float _LASER_Y_OFFSET = 10.f;

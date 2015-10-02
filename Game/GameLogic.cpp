@@ -32,7 +32,7 @@ void GameLogic::runGame()
 			time_since_last_update -= time_per_frame;
 		}
 		list<Character> characters = _entities.characters();
-		_user_interface.render(characters);
+		_user_interface.render(characters, _player_ptr->status());
 	}
 }
 

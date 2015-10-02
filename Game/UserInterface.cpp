@@ -11,7 +11,8 @@ UserInterface::UserInterface() : _game_window(VideoMode(_CAMERA_WIDTH, _CAMERA_H
 		_textures.load(EntityID::Power_Up,"resources/power_up.png");
 		_textures.load(EntityID::Missile,"resources/missile.png");
 		_textures.load(EntityID::Homing_Missile,"resources/homing_missile.png");
-		_textures.load(EntityID::Smart_Bomb,"resources/smart_bomb.png");
+		_textures.load(EntityID::Smart_Bomb,"resources/smart_bomb.PNG");
+		_textures.load(EntityID::Lives,"resources/lives.png");
 	}
 	catch (const runtime_error& error)
 	{
@@ -19,9 +20,9 @@ UserInterface::UserInterface() : _game_window(VideoMode(_CAMERA_WIDTH, _CAMERA_H
 		// maybe quit the application
 	}
 	
-	if (!_text_font.loadFromFile(resources/impact.ttf)
+	if (!_text_font.loadFromFile("resources/impact.ttf"))
 	{
-		//error
+		std::cout << "didn't load" <<std::endl;
 	}
 	
 	// The camera object will allow the implementation of scrolling
@@ -30,6 +31,9 @@ UserInterface::UserInterface() : _game_window(VideoMode(_CAMERA_WIDTH, _CAMERA_H
 	_camera.setViewport(FloatRect(_CAMERA_X_POS_RATIO,_CAMERA_Y_POS_RATIO,_CAMERA_WIDTH_RATIO,_CAMERA_HEIGHT_RATIO));
 	_mini_map.reset(FloatRect(_MAP_X_OFFSET,_MAP_Y_OFFSET,_MAP_WIDTH,_MAP_HEIGHT));
 	_mini_map.setViewport(FloatRect(_MINI_MAP_X_POS_RATIO,_MINI_MAP_Y_POS_RATIO,_MINI_MAP_WIDTH_RATIO,_MINI_MAP_HEIGHT_RATIO));
+	_ship_status_map.setViewport(FloatRect(_MAP_X_OFFSET,_MAP_Y_OFFSET,_MINI_MAP_X_POS_RATIO, _CAMERA_Y_POS_RATIO));
+	_ship_status_map.reset(FloatRect(_MAP_X_OFFSET,_MAP_Y_OFFSET,75.f,100.f));
+	
 	_textures.get(EntityID::Landscape).setRepeated(true);
 	_background.setTexture(_textures.get(EntityID::Landscape));
 	_background.setTextureRect(IntRect(_MAP_X_OFFSET,_MAP_Y_OFFSET,_MAP_WIDTH,_MAP_HEIGHT));
@@ -37,7 +41,9 @@ UserInterface::UserInterface() : _game_window(VideoMode(_CAMERA_WIDTH, _CAMERA_H
 	_focusWindow.setFillColor(Color(255, 255, 255, 0));
 	_focusWindow.setOutlineThickness(-25);
 	_focusWindow.setOutlineColor(Color(250, 150, 100));
-	_focusWindow.setPosition(_CAMERA_X_OFFSET,_CAMERA_Y_OFFSET);	
+	_focusWindow.setPosition(_CAMERA_X_OFFSET,_CAMERA_Y_OFFSET);
+	
+	_status_map_states = {EntityID::Lives, EntityID::Smart_Bomb, EntityID::Homing_Missile};
 	
 }
 
@@ -122,7 +128,7 @@ void UserInterface::closeWindow()
 	_game_window.close();
 }
 
-void UserInterface::render(list<Character>& characters) 
+void UserInterface::render(list<Character>& characters, list<int>& status) 
 {
 
 	_game_window.clear();	
@@ -135,6 +141,8 @@ void UserInterface::render(list<Character>& characters)
 	_game_window.draw(_background);
 	_game_window.draw(_focusWindow);
 	processTextures(characters);
+	_game_window.setView(_ship_status_map);
+	processStatusMap(status);
 	
 	_game_window.display();
 
@@ -153,6 +161,27 @@ void UserInterface::processTextures(list<Character>& characters)
 	
 }
 
+void UserInterface::processStatusMap(list<int>& status)
+{
+	sf::Vector2f text_position(_STATUS_MAP_TEXT_X_OFFSET, _STATUS_MAP_TEXT_Y_OFFSET);
+	sf::Vector2f sprite_position(_STATUS_MAP_SPRITES_X_OFFSET, _STATUS_MAP_SPRITES_Y_OFFSET);
+	
+	for (auto current_text_status : status)
+	{
+		Text status_text;
+		drawText(status_text, current_text_status, text_position);
+		text_position += sf::Vector2f(_STATUS_MAP_STATES_X_OFFSET, _STATUS_MAP_STATES_Y_OFFSET);
+	}
+	for (auto _status_map_ID : _status_map_states)
+	{
+		Sprite status_sprite;
+		status_sprite.setTexture(_textures.get(_status_map_ID));
+		status_sprite.setPosition(sprite_position);
+		sprite_position += sf::Vector2f(_STATUS_MAP_STATES_X_OFFSET, _STATUS_MAP_STATES_Y_OFFSET);
+		_game_window.draw(status_sprite);
+	}
+}
+
 void UserInterface::moveWindow(float delta_x)
 {
 	_camera.move(delta_x,0.f);
@@ -166,4 +195,15 @@ void UserInterface::drawSprite(const Sprite& texture)
 	_game_window.draw(texture);
 	_game_window.setView(_camera);
 	_game_window.draw(texture);
+}
+
+void UserInterface::drawText(Text& text, int text_to_display, const sf::Vector2f& text_position)
+{
+	text.setFont(_text_font);
+	text.setString(" x " + to_string(text_to_display));
+	text.setCharacterSize(_TEXT_SIZE);
+	text.setColor(Color::White);
+	text.setStyle(Text::Bold);
+	text.setPosition(text_position);
+	_game_window.draw(text);
 }
