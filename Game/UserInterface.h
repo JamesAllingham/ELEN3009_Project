@@ -111,17 +111,10 @@ private:
 	View _camera;
 	View _mini_map;
 	View _ship_status_map;
-	//View _pause_game_window;
 	ResourceHolder<Texture,EntityID> _textures;
 	Sprite _background;
-<<<<<<< HEAD
 	RectangleShape _focusWindow;
-	//RectangleShape _pause_game_state;
-	
-=======
-	RectangleShape _focusWindow;	
 
->>>>>>> origin/master
 	list<EntityID> _status_map_states;
 	Font _text_font;
 	
