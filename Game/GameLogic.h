@@ -41,14 +41,50 @@ public:
 	GameLogic ();
 	
 private:
+	/**
+	* Runs the game loop.
+	* No arguments or return value.
+	*/
 	void runGame();
+	/**
+	* Updates the state of the game based on how much time has passed.
+	* @param delta_time a float containing the amount of time since the last function call.
+	*/
 	void update(float delta_time);
+	/**
+	* Tells the graphic interface to render the current state of the game.
+	* No arguments or return value.
+	*/
 	void renderCurrentState ();
-	void createEntities ();
-	void handleCollisions ();
+	/**
+	* Makes sure there are enough Flyer and Powerup objects on the map.
+	* No arguments or return value.
+	*/
+	void createEntities();
+	/**
+	* Checks for collisions and then cleans up after the collisions take place.
+	* No arguments or return value.
+	*/
+	void handleCollisions();
+	/**
+	* Polls for user input and converts it from sf::Event to Events.
+	* No arguments or return value.
+	*/
 	void handleUserInput();
+	/**
+	* Refocuses the camera on the Ship.
+	* No arguments or return value.
+	*/
 	void followPlayer();
+	/**
+	* Closes the game window and ends the game.
+	* No arguments or return value.
+	*/
 	void endGame();
+	/**
+	* Pauses the game.
+	* No arguments or return value.
+	*/
 	void pauseGame () {_game_paused = !_game_paused;};
 	
 	UserInterface _user_interface;
@@ -58,7 +94,8 @@ private:
 	shared_ptr<Ship> _player_ptr;
 	bool _game_running = true;
 	bool _game_paused = false;
-	static constexpr const auto _NUMBER_OF_FLYERS_TO_KILL = 5;
+	
+	static constexpr const auto _NUMBER_OF_FLYERS_TO_KILL = 15;
 	static constexpr const auto _MAX_X = 4800.f;
 	static constexpr const auto _MAX_Y = 600.f;	
 	static constexpr const auto _MAX_ON_SCREEN_DISTANCE_FROM_PLAYER = 400.f;

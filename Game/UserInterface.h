@@ -64,6 +64,7 @@ public:
 	list<Events> convertedEvents() {return _events;};	
 	/**
     * closeWindow() function closes the game window. 
+	* No arguments or return value.
     */
 	void closeWindow();
 	/**
@@ -73,8 +74,14 @@ public:
 	void moveWindow(float delta_x);	
 	/**
     * processEvents() function handles all user input by polling for the events that have taken place since the last call.
+	* No arguments or return value.
     */
 	void processEvents();
+	/**
+    * ConvertToSFMLVector() function converts Vector2f to sf::Vector2f for use with SFML functions.
+	* @param vector_in Vector2f to be converted to sf::Vector2f.
+	* @return a sf::Vector2f version of vector_in.
+    */
 	sf::Vector2f convertToSFMLVector (Vector2f vector_in) { return sf::Vector2f(vector_in.x, vector_in.y); };
 	/**
     * handles all text displaying.
@@ -86,8 +93,15 @@ public:
 	void pauseGame() {_game_paused = !_game_paused;};
 	
 private:
-	
+	/**
+    * Create and draw a sf::Sprite for each of the characters that must be rendered.
+	* @param characters a list of Character objects to be drawn.
+    */
 	void processTextures(list<Character>& characters);
+	/**
+    * Draw a sprite on both the map and mini-map.
+	* @param texture a Sprite to draw.
+    */
 	void drawSprite(const Sprite& texture);
 	void processStatusMap(list<int>& status);
 	void setPauseWindowState();
@@ -100,9 +114,14 @@ private:
 	//View _pause_game_window;
 	ResourceHolder<Texture,EntityID> _textures;
 	Sprite _background;
+<<<<<<< HEAD
 	RectangleShape _focusWindow;
 	//RectangleShape _pause_game_state;
 	
+=======
+	RectangleShape _focusWindow;	
+
+>>>>>>> origin/master
 	list<EntityID> _status_map_states;
 	Font _text_font;
 	

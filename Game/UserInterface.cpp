@@ -46,12 +46,10 @@ UserInterface::UserInterface() : _game_window(VideoMode(_CAMERA_WIDTH, _CAMERA_H
 	_focusWindow.setPosition(_CAMERA_X_OFFSET,_CAMERA_Y_OFFSET);
 	
 	_status_map_states = {EntityID::Lives, EntityID::Smart_Bomb, EntityID::Homing_Missile};
-	
 }
 
 void UserInterface::processEvents() 
 {
-
 	_events.clear();
 	Event event;
 	while (_game_window.pollEvent(event)) 

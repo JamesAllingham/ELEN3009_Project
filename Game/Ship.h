@@ -31,76 +31,76 @@ public:
     */
 	Ship();
 	/**
-    * controlMovement() function which changes the state of the Ship so that when the move() function is called a specific action will take place based on the user's input in the form of an event.
+    * Changes the state of the Ship so that when the move() function is called a specific action will take place based on the user's input in the form of an event.
     * @param event is an Events object which represents a command given by the user and relayed via the UserInterface object.
     */
 	void controlMovement(Events event);
 	/**
-    * controlShooting() function which changes the state of the Ship so that when the shoot() function is called a specific action will take place based on the user's input in the form of an event.
+    * Changes the state of the Ship so that when the shoot() function is called a specific action will take place based on the user's input in the form of an event.
     * @param event is an Events object which represents a command given by the user and relayed via the UserInterface object.
     */
 	void controlShooting(Events event);
 	/**
-    * changeInPosition() function which allows the movement of the Ship to be tracked in turn allowing for the camera to be centred around the player.
+    * Allows the movement of the Ship to be tracked in turn allowing for the camera to be centred around the player.
     * @return a Vector2f containing the change in position of the Ship since the last call of changeInPosition().
     */
 	Vector2f changeInPosition();
 	/**
-    * numberOfHomingMissiles() function which is used to keep track of the number of missiles available to the player.
+    * Returns the number of missiles available to the player.
     * @return an int containing the number of homing missiles the Ship has remaining.
     */	
 	int numberOfHomingMissiles() { return _number_of_homing_missiles;};	
 	/**
-    * addHomingMissiles() function which is used add homing missiles to the Ship when a Powerup is picked up.
+    * Adds homing missiles to the Ship when a Powerup is picked up.
     * No parameters or return value.
     */	
 	void addHomingMissiles() {_number_of_homing_missiles+=3;};
 	/**
-    * switchDirection() function used to change the direction which the Ship is facing.
+    * Change the direction which the Ship is facing.
     * No parameters or return value.
     */	
 	void switchDirection () {_facing_right = !_facing_right;};
 	/**
-    * facingRight() function which is used to keep track of the direction the Ship.
+    * Returns the direction of the Ship.
     * @return an bool containing whether or not the Ship is facing right.
     */
 	bool facingRight () {return _facing_right;};
 	/**
-    * setNearestTarget() function which is used to find the closest target to the Ship for firing a HomingMissile.
+    * Find the closest target to the Ship for firing a HomingMissile.
     * @param targets a list of possible targets for the Ship.
     */
 	void setNearestTarget(EntityHolder& targets);
 	/**
-    * nearestTarget() function which is used to keep track of the current nearest target of the ship.
+    * Returns the current nearest target of the ship.
     * @return a shared pointer to the Flyer which is nearest to the Ship.
     */
 	shared_ptr<Entity> nearestTarget() { return _nearest_target;};
 	/**
-    * numberOfLivesRemaining() function which is used to keep track of the number of lives remaining for the player.
-    * @return an int containing the number of lives left.
+    * Returns the number of lives remaining for the player.
+    * @return an int contining the number of lives left.
     */
 	int numberOfLivesRemaining () {return _number_of_lives;};
 	/**
-    * move() function inherited from ShootingMovingEntity.
+    * Inherited from ShootingMovingEntity.
 	* Moves the Ship in the direction set by the controlMovement() function.
     * @param delta_time is a float containing the time since the last move() was issued.
     */
 	virtual void move(float delta_time) override;
 	/**
-    * hitboxPoints() function inherited from ShootingMovingEntity.
+    * Inherited from ShootingMovingEntity.
 	* The hit box points describe square around the Ship.
     * @return the list of Vector2f co-ordinates for the hit box of the Ship.
     */
 	virtual list<Vector2f> hitboxPoints() override;
 	/**
-    * shoot() function inherited from ShootingMovingEntity.
+    * Inherited from ShootingMovingEntity.
 	* The Ship shoots a Laser, HomingMissile or SmartBomb depending on the state set by the controlShooting() function.
     * @param delta_time is a float containing the time since the last shoot() was issued.
 	* @return a shared pointer to the Laser, HomingMissile or SmartBomb that has been shot.
     */
 	virtual shared_ptr<MovingEntity> shoot(float delta_time) override;	
 	/**
-    * collide() function inherited from ShootingMovingEntity.
+    * Inherited from ShootingMovingEntity.
 	* The Ship will loose a life if it collides with a Missile or Flyer.
 	* The Ship will gain 3x HomingMsile if it collides with a Powerup.	
     * @param collider is a pointer to the Entity which the Ship is colliding with.

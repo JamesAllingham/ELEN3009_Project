@@ -11,15 +11,15 @@ void Entity::movePosition(float x, float y)
 	movePosition(temporary_position_change);
 }
 
-void Entity::movePosition(Vector2f position) // Needs to consider width and height
+void Entity::movePosition(Vector2f delta_position) // Needs to consider width and height
 {
 	//Needs to check when in the corner (calling both x and y maxes)
-	if (_position.x + position.x > _max_position.x || _position.x + position.x < 0.f || _position.y + position.y > _max_position.y || _position.y + position.y < 0.f) 
+	if (_position.x + delta_position.x > _max_position.x || _position.x + delta_position.x < 0.f || _position.y + delta_position.y > _max_position.y || _position.y + delta_position.y < 0.f) 
 	{		
-		if (_position.x + position.x > _max_position.x || _position.x + position.x < 0.f)
+		if (_position.x + delta_position.x > _max_position.x || _position.x + delta_position.x < 0.f)
 		{
-			_position.y += position.y;
-			if (_position.x + position.x >= _max_position.x) 
+			_position.y += delta_position.y;
+			if (_position.x + delta_position.x >= _max_position.x) 
 			{					
 				_position.x += _max_position.x - _position.x;
 			}
@@ -28,10 +28,10 @@ void Entity::movePosition(Vector2f position) // Needs to consider width and heig
 				_position.x += 0.f - _position.x;
 			}
 		}
-		if (_position.y + position.y > _max_position.y || _position.y + position.y < 0.f)
+		if (_position.y + delta_position.y > _max_position.y || _position.y + delta_position.y < 0.f)
 		{
-			_position.x += position.x;
-			if (_position.y + position.y >= _max_position.y) 
+			_position.x += delta_position.x;
+			if (_position.y + delta_position.y >= _max_position.y) 
 			{					
 				_position.y += _max_position.y - _position.y;
 			}
@@ -44,7 +44,7 @@ void Entity::movePosition(Vector2f position) // Needs to consider width and heig
 	}
 	else
 	{
-		_position += position;
+		_position += delta_position;
 	}
 }
 

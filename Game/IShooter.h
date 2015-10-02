@@ -10,7 +10,7 @@ class IShooter
 {
 public:
 	/**
-	* shoot() function to be used by all Entities capable of shooting.
+	* To be used by all Entities capable of shooting.
 	* No implementation, used for role modelling. 
 	* Each class which inherits from IShooter will implement this function.
 	* @param delta_time is a float containing the time since the last shoot() was issued.

@@ -59,14 +59,12 @@ void GameLogic::update(float delta_time)
 	for (auto moving_entity_ptr: _moving_entities)
 	{
 		moving_entity_ptr->move(delta_time);	
-	}	
-	
-	if (!Powerup::PowerupOnTheMap() ) _entities.addEntity(make_shared<Powerup> ());
-	
-	_player_ptr->setNearestTarget(_entities);
+	}		
 	
 	// Collision detection
 	handleCollisions();
+	
+	_player_ptr->setNearestTarget(_entities);
 	
 	if (Flyer::numberOfFlyersKilled() == _NUMBER_OF_FLYERS_TO_KILL) 
 	{
@@ -74,7 +72,7 @@ void GameLogic::update(float delta_time)
 		std::cout << "Won the Game :)" << std::endl;
 	}
 	
-	// Shoot with all entities that can shooting
+	// Shoot with all entities that can shoot
 	for (auto shooting_entity_ptr: _shooting_entities)
 	{
 		shared_ptr<MovingEntity> moving_entity_ptr = shooting_entity_ptr->shoot(delta_time);
@@ -194,7 +192,9 @@ void GameLogic::createEntities ()
 		_entities.addEntity(flyer_ptr);
 		_shooting_entities.push_back(flyer_ptr);
 		_moving_entities.push_back(flyer_ptr);
-	}
+	}	
+	
+	if (!Powerup::PowerupOnTheMap() ) _entities.addEntity(make_shared<Powerup> ());
 }
 
 void GameLogic::endGame() 

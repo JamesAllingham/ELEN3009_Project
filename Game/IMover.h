@@ -8,7 +8,7 @@ class IMover
 {
 public:
 	/**
-	* move() function to be used by all Entities capable of movement.
+	* To be used by all Entities capable of movement.
 	* No implementation, used for role modelling. 
 	* Each class which inherits from IMover will implement this function.
 	* @param delta_time is a float containing the time since the last move() was issued.
