@@ -24,24 +24,27 @@ public:
 	MovingEntity(EntityID entity_ID, Vector2f position, Vector2f velocity): Entity{entity_ID, position}, _velocity(velocity) {};
 	
 	/**
-	* move() function inherited from IMover.
+	* Inherited from IMover. Pure virtual function.
 	* Moves the MovingEntity as defined by the derived classes.
 	* @param delta_time is a float containing the time since the last move() was issued.
 	*/
 	virtual void move(float delta_time) override = 0;
 	/**
-	* hitboxPoints() function inherited from Entity.
+	* Inherited from Entity. Pure virtual function.
 	* The hit box points describe hit box of the MovingEntity.
 	* @return the list of Vector2f co-ordinates for the hit box of the MovingEntity as described by the derived class.
 	*/
 	virtual list<Vector2f> hitboxPoints() override = 0;
 	/**
-	* collide() function inherited from Entity.
+	* Inherited from Entity. Pure virtual function.
 	* The MovingEntity will be destroyed if it collides with Entities described by the derived class. 
 	* @param collider is a pointer to the Entity which the MovingEntity is colliding with.
 	*/
 	virtual void collide(shared_ptr<Entity> collider) override = 0;			
-	
+	/**
+	* Returns the velocity of the MovingEntity.
+	* @return a Vector2f containing the velocity of the MovingEntity. Can be negative, positive or 0.
+	*/
 	Vector2f velocity() {return _velocity;};
 	
 private:

@@ -27,19 +27,19 @@ public:
 	HomingMissile(const Vector2f& position, const shared_ptr<Entity>& nearest_target);	
 	
 	/**
-    * move() function inherited from MovingEntity.
+    * Inherited from MovingEntity.
 	* Moves the HomingMissile in a trajectory starting at position with direction given calculated by taking the difference between the target's position and the HomingMissile's current position
     * @param delta_time is a float containing the time since the last move() was issued.
     */
 	virtual void move(float delta_time) override;
 	/**
-    * hitboxPoints() function inherited from MovingEntity.
+    * Inherited from MovingEntity.
 	* The hit box points describe square around the HomingMissile.
     * @return the list of co-ordinates for the hit box of the HomingMissile.
     */
 	virtual list<Vector2f> hitboxPoints() override;
 	/**
-    * collide() function inherited from MovingEntity.
+    * Inherited from MovingEntity.
 	* The HomingMissile will be destroyed if it collides with a Flyer. 
     * @param collider is a pointer to the Entity which the HomingMissile is colliding with.
     */

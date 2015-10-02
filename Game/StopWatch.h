@@ -14,17 +14,21 @@ public:
     */
 	StopWatch() {};
 	/**
-    * start() function which begins the timer.
+    * Begins the timer.
 	* No parameters or return value.
     */
 	void start();
 	/**
-    * stop() function which ends the timer.
-	* @return the value of the timer when it was stopped. 
+    * Ends the timer.
+	* @return a float value of the timer when it was stopped. 
     */
 	float stop();	
 	
 private:	
+	/**
+    * Converts c_time to a float
+	* @return the float value c_time from a clock(). 
+    */
 	float getProcessTime();
 	// the start time for a stop watch
 	float _start_time = 0.f;

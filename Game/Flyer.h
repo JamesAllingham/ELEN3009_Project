@@ -30,48 +30,53 @@ public:
     */
 	~Flyer();	
 	/**
-    * numberOfFlyers() static function which returns the number of Flyer objects.
+    * Static function. Returns the number of Flyer objects.
     * @return an int containing the number of Flyer objects in the game.  
     */
 	static int numberOfFlyers() { return _number_of_flyers;};
 	/**
-    * numberOfFlyersKilled() static function which returns the number of Flyer objects.
+    * Static function. Returns the number of Flyer objects that have been destroyed.
     * @return an int containing the number of Flyer that have been killed.  
     */
 	static int numberOfFlyersKilled() { return _number_of_flyers_killed;};
 	/**
-    * setTarget() static function sets the target which all of the Flyer objects will shoot at when in range.
+    * Static function.  Sets the target which all of the Flyer objects will shoot at when in range.
     * @return an int containing the number of Flyer that have been killed.  
     */
 	static void setTarget(const shared_ptr<Entity>& target) { _target = target;};
 	
 	/**
-    * move() function inherited from ShootingMovingEntity.
+    * Inherited from ShootingMovingEntity.
 	* Moves the Flyer in a random direction every second.
     * @param delta_time is a float containing the time since the last move() was issued.
     */
 	virtual void move (float delta_time)  override;
 	/**
-    * hitboxPoints() function inherited from ShootingMovingEntity.
+    * Inherited from ShootingMovingEntity.
 	* The hit box points describe square around the Flyer.
     * @return the list of Vector2f co-ordinates for the hit box of the Flyer.
     */
 	virtual list<Vector2f> hitboxPoints() override;	
 	/**
-    * shoot() function inherited from ShootingMovingEntity.
+    * Inherited from ShootingMovingEntity.
 	* The Flyer shoots a missile at the target if it is in range and enough time has passed since the last shoot() call was issued. 
     * @param delta_time is a float containing the time since the last shoot() was issued.
 	* @return a shared pointer to the Missile that has been shot.
     */
 	virtual shared_ptr<MovingEntity> shoot(float delta_time) override;
 	/**
-    * collide() function inherited from ShootingMovingEntity.
+    * Inherited from ShootingMovingEntity.
 	* The Flyer will be destroyed if it collides with a Laser, SmartBomb, HomingMissile or Ship. 
     * @param collider is a pointer to the Entity which the Flyer is colliding with.
     */
 	virtual void collide(shared_ptr<Entity> collider) override;	
 
-protected:    	
+protected:    
+	/**
+	* Generates a random float which can be used to create a valid position on the map. Used when spawning the Flyer and when moving it.
+    * @param max_position is a float containing the maximum value which can be generated.
+	* @return a randomly generated float less than or equal to max_position and greater than or equal to 0.
+    */
 	float randomPosition (float max_position);
 
 private:

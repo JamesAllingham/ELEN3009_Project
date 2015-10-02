@@ -24,19 +24,19 @@ public:
 	SmartBomb(float x_position);	
 	
 	/**
-    * hitboxPoints() function inherited from MovingEntity.
+    * Inherited from MovingEntity.
 	* The hit box points describe square around the SmartBomb.
     * @return the list of Vector2f co-ordinates for the hit box of the SmartBomb.
     */
 	virtual list<Vector2f> hitboxPoints() override;
 	/**
-    * move() function inherited from MovingEntity.
+    * Inherited from MovingEntity.
 	* Moves the SmartBomb in a trajectory starting at position with direction given calculated by taking the difference between the target's position and the SmartBomb's current position
     * @param delta_time is a float containing the time since the last move() was issued.
     */
 	virtual void move(float delta_time) override {};
 	/**
-    * collide() function inherited from MovingEntity.
+    * Inherited from MovingEntity.
 	* The SmartBomb will be destroyed if it collides with a Flyer. 
     * @param collider is a pointer to the Entity which the SmartBomb is colliding with.
     */

@@ -27,13 +27,13 @@ class ResourceHolder
 {
 public:
 	/**
-    * load() function which gets the Resource from storage. 
+    * Loads the Resource from storage. 
     * @param id is the key which will be used to lookup the Resource at a later stage.
 	* @param file_path_and_name is a string containing the the file path and the name of the resource to load.
     */
 	void load(Identifier id, const string& file_path_and_name);	
 	/**
-    * load() function which gets the Resource from storage. Overloaded to deal with two special cases - the case where the Resource is an sf::Shader and the shader type must be specified and the case where we don't want to use the default second argument of the sf::Texture version of the load function to specify a portion of the texture to load
+    * Loads the Resource from storage. Overloaded to deal with two special cases - the case where the Resource is an sf::Shader and the shader type must be specified and the case where we don't want to use the default second argument of the sf::Texture version of the load function to specify a portion of the texture to load
     * @param id is the key which will be used to lookup the Resource at a later stage.
 	* @param file_path_and_name is a string containing the the file path and the name of the Resource to load.
 	* @param second_parameter is templated so that it can act in either of the special cases mentioned above.
@@ -41,13 +41,13 @@ public:
 	template<typename Parameter>
 	void load(Identifier id, const string& file_path_and_name, const Parameter& second_parameter);
 	/**
-    * get() function which is used to retrieve a Resource from the ResourceHolder based on an ID. 
+    * Retrieves a Resource from the ResourceHolder based on an ID. 
     * @param id is the identifier which is used to find and then return the appropriate Resource.
 	* @return is a reference to the Resource matching the id supplied.
     */	
 	Resource& get(Identifier id); 
 	/**
-    * get() function overloaded to retrieve a const Resource from the ResourceHolder based on an ID. 
+    * Retrieves a const Resource from the ResourceHolder based on an ID. 
     * @param id is the identifier which is used to find and then return the appropriate Resource.
 	* @return is a constant reference to the Resource matching the id supplied.
     */	

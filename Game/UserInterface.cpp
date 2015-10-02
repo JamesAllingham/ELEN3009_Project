@@ -19,9 +19,9 @@ UserInterface::UserInterface() : _game_window(VideoMode(_CAMERA_WIDTH, _CAMERA_H
 		// maybe quit the application
 	}
 	
-	if (!_text_font.loadFromFile(resources/impact.ttf)
+	if (!_text_font.loadFromFile("resources/impact.ttf"))
 	{
-		//error
+		
 	}
 	
 	// The camera object will allow the implementation of scrolling
@@ -38,12 +38,10 @@ UserInterface::UserInterface() : _game_window(VideoMode(_CAMERA_WIDTH, _CAMERA_H
 	_focusWindow.setOutlineThickness(-25);
 	_focusWindow.setOutlineColor(Color(250, 150, 100));
 	_focusWindow.setPosition(_CAMERA_X_OFFSET,_CAMERA_Y_OFFSET);	
-	
 }
 
 void UserInterface::processEvents() 
 {
-
 	_events.clear();
 	Event event;
 	while (_game_window.pollEvent(event)) 

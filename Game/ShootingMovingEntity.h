@@ -24,26 +24,26 @@ public:
 	ShootingMovingEntity(EntityID entity_ID, Vector2f position, Vector2f velocity): MovingEntity{entity_ID, position, velocity} {};
 	
 	/**
-	* shoot() function inherited from IShooter.
+	* Inherited from IShooter. Pure virtual function.
 	* Shoots a MovingEntity as defined by the derived class.
 	* @param delta_time is a float containing the time since the last shoot() was issued.
 	* @return a shared pointer to the MovingEntity which represents the projectile being shot.
 	*/
 	virtual shared_ptr<MovingEntity> shoot(float delta_time) override = 0;
 	/**
-	* move() function inherited from MovingEntity
+	* Inherited from MovingEntity. Pure virtual function.
 	* Moves the ShootingMovingEntity as defined by the derived classes.
 	* @param delta_time is a float containing the time since the last move() was issued.
 	*/
 	virtual void move(float delta_time) override = 0;
 	/**
-	* hitboxPoints() function inherited from MovingEntity.
+	* Inherited from MovingEntity. Pure virtual function.
 	* The hit box points describe hit box of the ShootingMovingEntity.
 	* @return the list of co-ordinates for the hit box of the ShootingMovingEntity as described by the derived class.
 	*/
 	virtual list<Vector2f> hitboxPoints() override  = 0;
 	/**
-	* collide() function inherited from MovingEntity.
+	* Inherited from MovingEntity. Pure virtual function.
 	* The ShootingMovingEntity will be destroyed if it collides with Entities described by the derived class. 
 	* @param collider is a pointer to the Entity which the ShootingMovingEntity is colliding with.
 	*/
