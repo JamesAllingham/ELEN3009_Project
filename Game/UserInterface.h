@@ -31,6 +31,8 @@ using std::list;
 using std::runtime_error;
 using std::cerr;
 
+using std::to_string;
+
 /**
 * UserInterface class - contains all of the functionality for interacting with the player of the game.
 * This includes both getting user input in the form of events and displaying the game (drawing the sprites).
@@ -52,7 +54,7 @@ public:
 	* The background and all of the sprites are drawn onto both the main map and mini map.
     * @param characters is a list of Character objects which need to be drawn. This includes the position and texture Entity.
     */
-	void render(list<Character>& characters);	
+	void render(list<Character>& characters, list<int>& status);	
 	/**
     * convertedEvents() function converts polled events to non-SFML format. 
 	* This function facilitates decoupling of GamleLogic from SFML by converting a SFML::Event object to an Events object. 
@@ -92,19 +94,20 @@ private:
 	* @param texture a Sprite to draw.
     */
 	void drawSprite(const Sprite& texture);
+	void drawText(Text& text, int text_to_display, const sf::Vector2f& text_position);
+	void processStatusMap(list<int>& status);
 	
 	list<Events> _events;
 	RenderWindow _game_window;
 	View _camera;
 	View _mini_map;
+	View _ship_status_map;
 	ResourceHolder<Texture,EntityID> _textures;
 	Sprite _background;
-	RectangleShape _focusWindow;
-	
+	RectangleShape _focusWindow;	
+
+	list<EntityID> _status_map_states;
 	Font _text_font;
-	Text _lives_text;
-	Text _bomb_text;
-	Text _homing_missiles_text;
 	
 	static constexpr const float _CAMERA_X_OFFSET = 2000.f;
 	static constexpr const float _CAMERA_Y_OFFSET = 0.f;
@@ -122,5 +125,12 @@ private:
 	static constexpr const float _MINI_MAP_Y_POS_RATIO = 0.f;
 	static constexpr const float _MINI_MAP_WIDTH_RATIO = 0.8f;
 	static constexpr const float _MINI_MAP_HEIGHT_RATIO = 0.175f;
+	static constexpr const float _STATUS_MAP_SPRITES_X_OFFSET = 15.f;
+	static constexpr const float _STATUS_MAP_SPRITES_Y_OFFSET = 5.f;
+	static constexpr const float _STATUS_MAP_TEXT_X_OFFSET = 40.f;
+	static constexpr const float _STATUS_MAP_TEXT_Y_OFFSET = 5.f;
+	static constexpr const float _STATUS_MAP_STATES_X_OFFSET = 0.f;
+	static constexpr const float _STATUS_MAP_STATES_Y_OFFSET = 30.f;
+	static constexpr const float _TEXT_SIZE = 20.f;
 };
 #endif

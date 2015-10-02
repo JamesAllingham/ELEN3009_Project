@@ -26,6 +26,13 @@ void Ship::collide(shared_ptr<Entity> collider)
 	}	
 }	
 
+list<int>& Ship::status() 
+{
+	_status.clear();
+	_status = {_number_of_lives, _number_of_smart_bombs, _number_of_homing_missiles};
+	return _status;
+}
+
 shared_ptr<MovingEntity> Ship::shoot(float delta_time)
 {
 	if (_shoot_laser) 
