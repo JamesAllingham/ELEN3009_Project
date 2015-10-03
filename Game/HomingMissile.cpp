@@ -5,7 +5,7 @@ HomingMissile::HomingMissile(const Vector2f& position, const shared_ptr<Entity>&
 	
 };
 
-void HomingMissile::collide(shared_ptr<Entity> collider) 
+void HomingMissile::collide(const shared_ptr<Entity>& collider) 
 {
 	switch (collider->id())
 	{		

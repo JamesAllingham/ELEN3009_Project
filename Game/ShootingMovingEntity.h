@@ -47,7 +47,7 @@ public:
 	* The ShootingMovingEntity will be destroyed if it collides with Entities described by the derived class. 
 	* @param collider is a pointer to the Entity which the ShootingMovingEntity is colliding with.
 	*/
-	virtual void collide(shared_ptr<Entity> collider) override = 0;
+	virtual void collide(const shared_ptr<Entity>& collider) override = 0;
 };
 
 #endif

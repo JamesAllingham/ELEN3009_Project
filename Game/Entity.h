@@ -4,8 +4,6 @@
 #include "Character.h"
 #include "EntityID.h"
 #include "Vector2f.h"
-
-#include <iostream> // For debugging
 #include <list>
 using std::list;
 #include <memory>
@@ -28,7 +26,7 @@ public:
     * Returns the character information for rendering an Entity.
     * @return a Character object which contains the EntityID and position. 
     */
-	Character character() {return Character(_id, _position);};
+	Character character() const {return Character(_id, _position);};
 	/**
     * Static function. Sets the bounds of the map in which the Entity is allowed to spawn or move.
     * @param max_position a Vector2f containing the maximum x and y positions allowed for an entity. The x an y positions supplied must be greater than or equal to 0. 
@@ -43,17 +41,17 @@ public:
     * Returns the current position.
     * @return a Vector2f containing the current x and y positions for an entity. The x an y positions supplied must be greater than or equal to 0. 
     */
-	Vector2f position() {return _position;};
+	Vector2f position() const {return _position;};
 	/**
     * Returns a strongly typed enumeration containing the ID of the entity. 
     * @return the EntityID.
     */
-	EntityID id() {return _id;};
+	EntityID id() const {return _id;};
 	/**
     * Returns the status of an Entity.
     * @return a bool indicating whether or not the Entity has been destroyed and needs to be deleted.
     */
-	bool destroyed() {return _destroyed;};
+	bool destroyed() const {return _destroyed;};
 	/**
     * Sets the status of the Entity to destroyed.
     * No arguments or return value.
@@ -70,14 +68,14 @@ public:
 	* This will allow role based action to take place for a collision.
     * @param collider a shared pointer to the Entity which has been collided with. 
     */
-	virtual void collide(shared_ptr<Entity> collider) = 0;
+	virtual void collide(const shared_ptr<Entity>& collider) = 0;
 
 protected:  	
 	/**
     * Moves the entity. 
     * @param delta_position is a Vector2f containing the amount to move in both the x and y directions. Can be positive, negative or 0. 
     */
-    void movePosition(Vector2f delta_position);
+    void movePosition(const Vector2f& delta_position);
 	/**
     * Moves the entity. Overload of movePosition() allowing individual float values to be used instead of a vector.
     * @param x a float containing the amount the move the entity in the x direction. Can be positive, negative or 0.

@@ -1,7 +1,7 @@
 #include "Flyer.h"
 
 
-Flyer::Flyer() : ShootingMovingEntity{EntityID::Flyer, Vector2f(randomPosition(mapLimits().x), randomPosition(mapLimits().y)), Vector2f(75.f,75.f)} {
+Flyer::Flyer() : ShootingMovingEntity{EntityID::Flyer, Vector2f(randomPosition(mapLimits().x), randomPosition(mapLimits().y)), Vector2f(_FLYER_SPEED,_FLYER_SPEED)} {
 	_number_of_flyers++;
 }
 
@@ -11,14 +11,14 @@ Flyer::~Flyer()
 	_number_of_flyers_killed++;
 }
 
-float Flyer::randomPosition (float max_positon) {
+float Flyer::randomPosition (float max_positon) const {
 	int largest_dimension = static_cast<int>((_FLYER_WIDTH>_FLYER_HEIGHT)?_FLYER_WIDTH:_FLYER_HEIGHT);
 	int tmp = static_cast<int>(max_positon - largest_dimension);
 	int rand_num = rand()%tmp;
 	return static_cast<float>(rand_num);
 }
 
-void Flyer::collide(shared_ptr<Entity> collider) 
+void Flyer::collide(const shared_ptr<Entity>& collider) 
 {
 	switch (collider->id())
 	{
@@ -41,9 +41,9 @@ shared_ptr<MovingEntity> Flyer::shoot(float delta_time)
 		if (abs(position().x - _target->position().x) <= _FLYER_TARGETING_RANGE) 
 		{
 			Vector2f velocity_unit(_target->position() - position());
-			velocity_unit /= sqrtf(velocity_unit.x*velocity_unit.x + velocity_unit.y*velocity_unit.y); // should check for 0's
+			velocity_unit /= sqrtf(velocity_unit.x*velocity_unit.x + velocity_unit.y*velocity_unit.y);
 			_time_since_last_shot = 0.f;
-			return shared_ptr<MovingEntity> (new Missile(position(), velocity_unit));
+			return make_shared<Missile> (position(), velocity_unit);
 		}
 	}
 	
@@ -62,7 +62,6 @@ void Flyer::move(float delta_time){
 	
 }
 
-// The reason that I have made this a vitual function is that in future we might want to make the flyer and ship have differently shaped hit boxes
 list<Vector2f> Flyer::hitboxPoints()
 {
 	list<Vector2f> hitbox_points;
@@ -75,7 +74,6 @@ list<Vector2f> Flyer::hitboxPoints()
 	return hitbox_points;
 }
 
-//Need to initialise this in the .cpp file
 int Flyer::_number_of_flyers = 0;
 int Flyer::_number_of_flyers_killed = 0;
 shared_ptr<Entity> Flyer::_target;

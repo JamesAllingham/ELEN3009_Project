@@ -1,6 +1,6 @@
 #include "GameLogic.h"
 
-GameLogic::GameLogic () : _user_interface(), _entities(), _player_ptr(new Ship)
+GameLogic::GameLogic () : _user_interface(), _entities(), _player_ptr(make_shared<Ship>())
 {
 	Entity::setMapLimits(Vector2f(_MAX_X,_MAX_Y));
 	Flyer::setTarget(_player_ptr);
@@ -27,8 +27,6 @@ void GameLogic::runGame()
 			clock.stop();
 			handleUserInput();
 			renderCurrentState();
-			//std::cout <<  << std::endl;
-			//_user_interface.drawText("Game Paused", _PAUSE_GAME_TEXT_SIZE, _player_ptr->character().position() + Vector2f(-300,-50));
 			clock.start();
 		}
 		else 
@@ -52,10 +50,10 @@ void GameLogic::update(float delta_time)
 	// Event management
 	handleUserInput();
 	
-	// Create any fliers needed so that there are always 16 on screen
+	// Create any flyers and powerups needed
 	createEntities();
 	
-	// Move all entites based on their rules
+	// Move all entities based on their rules
 	for (auto moving_entity_ptr: _moving_entities)
 	{
 		moving_entity_ptr->move(delta_time);	
@@ -65,12 +63,6 @@ void GameLogic::update(float delta_time)
 	handleCollisions();
 	
 	_player_ptr->setNearestTarget(_entities);
-	
-	if (Flyer::numberOfFlyersKilled() == _NUMBER_OF_FLYERS_TO_KILL) 
-	{
-		endGame();
-		std::cout << "Won the Game :)" << std::endl;
-	}
 	
 	// Shoot with all entities that can shoot
 	for (auto shooting_entity_ptr: _shooting_entities)
@@ -83,12 +75,11 @@ void GameLogic::update(float delta_time)
 		}
 	}
 	
-	// re-center the view on the ship in the x-direction
 	followPlayer();
 	
 	// End the game if the player has been destroyed
-	if (_player_ptr->destroyed()) endGame();
-	//std::cout << "x = " << _player_ptr->character().position.x << std::endl;
+	if (_player_ptr->destroyed()) loseGame();
+	else if (Flyer::numberOfFlyersKilled() == _NUMBER_OF_FLYERS_TO_KILL) winGame();
 }
 
 void GameLogic::renderCurrentState ()
@@ -99,7 +90,6 @@ void GameLogic::renderCurrentState ()
 
 void GameLogic::followPlayer()
 {
-	// This function needs to prevent flying off of the map
 	_user_interface.moveWindow(_player_ptr->changeInPosition().x);
 }
 
@@ -129,8 +119,9 @@ void GameLogic::handleUserInput()
 				break;
 			case Events::P_Pressed:
 				pauseGame();
-				_user_interface.pauseGame();
+				_user_interface.pausedGame();
 				break;
+			case Events::ESC_Pressed:
 			case Events::Window_Close:
 				endGame();
 				break;
@@ -146,7 +137,7 @@ void GameLogic::handleCollisions()
 	
 	collision.manageCollisions();
 	
-	// Delete entites
+	// Delete entities
 	for (auto entity_itr = begin(_entities); entity_itr != end(_entities); )
 	{
 		if ((*entity_itr)->destroyed())
@@ -186,7 +177,7 @@ void GameLogic::handleCollisions()
 
 void GameLogic::createEntities () 
 {
-	while (Flyer::numberOfFlyers() + Flyer::numberOfFlyersKilled() < _NUMBER_OF_FLYERS_TO_KILL) 
+	while (Flyer::numberOfFlyers() + Flyer::numberOfFlyersKilled() < _NUMBER_OF_FLYERS_TO_KILL && Flyer::numberOfFlyers() < _MAX_NUMBER_OF_FLYERS_ON_MAP) 
 	{		
 		shared_ptr<Flyer> flyer_ptr = make_shared<Flyer> ();
 		_entities.addEntity(flyer_ptr);
@@ -195,6 +186,18 @@ void GameLogic::createEntities ()
 	}	
 	
 	if (!Powerup::PowerupOnTheMap() ) _entities.addEntity(make_shared<Powerup> ());
+}
+
+void GameLogic::winGame()
+{
+	_user_interface.wonGame();
+	pauseGame();
+}
+
+void GameLogic::loseGame()
+{
+	_user_interface.lostGame();
+	pauseGame();
 }
 
 void GameLogic::endGame() 

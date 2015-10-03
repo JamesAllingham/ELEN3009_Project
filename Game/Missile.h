@@ -5,8 +5,6 @@
 
 #include "Vector2f.h"
 
-#include <iostream> // For debugging
-
 #include <memory>
 using std::shared_ptr;
 
@@ -41,7 +39,7 @@ public:
 	* The Missile will be destroyed if it collides with a Laser or Ship. 
     * @param collider is a pointer to the Entity which the Missile is colliding with.
     */
-	virtual void collide(shared_ptr<Entity> collider) override;	
+	virtual void collide(const shared_ptr<Entity>& collider) override;	
 	
 private:		
 	static constexpr const float _MISSILE_WIDTH = 25.f;

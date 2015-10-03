@@ -10,7 +10,6 @@
 #include "EntityID.h"
 #include "Vector2f.h"
 
-#include <iostream> // For debugging
 #include <list>
 using std::list;
 #include <memory>
@@ -49,12 +48,12 @@ public:
     * Returns the number of missiles available to the player.
     * @return an int containing the number of homing missiles the Ship has remaining.
     */	
-	int numberOfHomingMissiles() { return _number_of_homing_missiles;};	
+	int numberOfHomingMissiles() const { return _number_of_homing_missiles;};	
 	/**
     * Adds homing missiles to the Ship when a Powerup is picked up.
     * No parameters or return value.
     */	
-	void addHomingMissiles() {_number_of_homing_missiles+=3;};
+	void addHomingMissiles() {_number_of_homing_missiles+=_NUMBER_OF_HOMING_MISSILES_TO_ADD;};
 	/**
     * Change the direction which the Ship is facing.
     * No parameters or return value.
@@ -64,7 +63,7 @@ public:
     * Returns the direction of the Ship.
     * @return an bool containing whether or not the Ship is facing right.
     */
-	bool facingRight () {return _facing_right;};
+	bool facingRight () const {return _facing_right;};
 	/**
     * Find the closest target to the Ship for firing a HomingMissile.
     * @param targets a list of possible targets for the Ship.
@@ -105,7 +104,7 @@ public:
 	* The Ship will gain 3x HomingMsile if it collides with a Powerup.	
     * @param collider is a pointer to the Entity which the Ship is colliding with.
     */
-	virtual void collide(shared_ptr<Entity> collider) override;
+	virtual void collide(const shared_ptr<Entity>& collider) override;
 	/**
     * Used to return the current status of the ship.
     * @return list of ints containing the number of lives, number of smart bombs, and number of homing missiles respectively the Ship holds.
@@ -126,14 +125,15 @@ private:
 	bool _shoot_homing_missile = false;
 	bool _shoot_smart_bomb = false;
 	
-	static constexpr const float _SHIP_WIDTH = 75;
-	static constexpr const float _SHIP_HEIGHT = 30;
-	static constexpr const float _SHIP_SPEED = 1000.f;
-	static constexpr const float _SMART_BOMB_X_OFFSET = -400.f;
-	static constexpr const float _LASER_X_OFFSET = 25.f;
-	static constexpr const float _LASER_Y_OFFSET = 10.f;
-	static constexpr const float _HOMING_MISSILE_X_OFFSET = 35.f;
-	static constexpr const float _HOMING_MISSILE_Y_OFFSET = 10.f;
+	static constexpr const auto _SHIP_WIDTH = 75;
+	static constexpr const auto _SHIP_HEIGHT = 30;
+	static constexpr const auto _SHIP_SPEED = 300.f;
+	static constexpr const auto _SMART_BOMB_X_OFFSET = -400.f;
+	static constexpr const auto _LASER_X_OFFSET = 25.f;
+	static constexpr const auto _LASER_Y_OFFSET = 10.f;
+	static constexpr const auto _NUMBER_OF_HOMING_MISSILES_TO_ADD = 3.f;
+	static constexpr const auto _HOMING_MISSILE_X_OFFSET = 35.f;
+	static constexpr const auto _HOMING_MISSILE_Y_OFFSET = 10.f;
 	
 	shared_ptr<Entity> _nearest_target;
 	int _number_of_homing_missiles = 0;

@@ -70,13 +70,4 @@ private:
 	EntityholderIterator _end_entity_itr;
 	
 };
-
-// Will add this when there is time, will make the collisions more efficient
-// class QuadTree {
-	
-	// public:
-	
-	// private:
-	
-// };
 #endif

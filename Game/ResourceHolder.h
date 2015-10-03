@@ -5,8 +5,7 @@
 #ifndef RESOURCE_HOLDER
 #define RESOURCE_HOLDER
 
-#include <iostream> // For testing purposes
-
+#include <iostream>
 using std::string;
 using std::runtime_error;
 using std::logic_error;

@@ -22,12 +22,12 @@ public:
 	* Return the ID of the character.
 	* @return an EntityID for the character.
 	*/
-	EntityID entityID() { return _Entity_ID; };
+	EntityID entityID() const { return _Entity_ID; };
 	/**
 	* Return the position of the character.
 	* @return a Vector2f containing the position. Must be greater than or equal to 0.
 	*/
-	Vector2f position() { return _position; };
+	Vector2f position() const { return _position; };
 
 private:	
 	EntityID _Entity_ID;

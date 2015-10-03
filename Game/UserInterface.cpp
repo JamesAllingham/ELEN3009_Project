@@ -1,6 +1,6 @@
 #include "UserInterface.h"
 
-UserInterface::UserInterface() : _game_window(VideoMode(_CAMERA_WIDTH, _CAMERA_HEIGHT/_CAMERA_HEIGHT_RATIO), "Attacker"), _camera(), _mini_map(), _textures(), _background(), _focusWindow(sf::Vector2f(800, 600)) 
+UserInterface::UserInterface() : _game_window(VideoMode(_CAMERA_WIDTH, _CAMERA_HEIGHT/_CAMERA_HEIGHT_RATIO), "Attacker"), _camera(), _mini_map(), _textures(), _background(), _focusWindow(sf::Vector2f(_FOCUS_WINDOW_WIDTH, _FOCUS_WINDOW_HEIGHT)) 
 {
 	try 
 	{
@@ -13,35 +13,33 @@ UserInterface::UserInterface() : _game_window(VideoMode(_CAMERA_WIDTH, _CAMERA_H
 		_textures.load(EntityID::Homing_Missile,"resources/homing_missile.png");
 		_textures.load(EntityID::Smart_Bomb,"resources/smart_bomb.PNG");
 		_textures.load(EntityID::Lives,"resources/lives.png");
+		if (!_text_font.loadFromFile("resources/impact.ttf"))
+		{
+			throw std::runtime_error("Couldn't Load Fonts");
+		}
 	}
 	catch (const runtime_error& error)
 	{
 		cerr << error.what();
-		// maybe quit the application
 	}
 	
-	if (!_text_font.loadFromFile("resources/impact.ttf"))
-	{
-		std::cout << "didn't load" <<std::endl;
-	}
-	
-	// The camera object will allow the implementation of scrolling
 	_game_window.setView(_camera);	
+	
 	_camera.reset(FloatRect(_CAMERA_X_OFFSET,_CAMERA_Y_OFFSET,_CAMERA_WIDTH,_CAMERA_HEIGHT)); 	
 	_camera.setViewport(FloatRect(_CAMERA_X_POS_RATIO,_CAMERA_Y_POS_RATIO,_CAMERA_WIDTH_RATIO,_CAMERA_HEIGHT_RATIO));
+	
 	_mini_map.reset(FloatRect(_MAP_X_OFFSET,_MAP_Y_OFFSET,_MAP_WIDTH,_MAP_HEIGHT));
 	_mini_map.setViewport(FloatRect(_MINI_MAP_X_POS_RATIO,_MINI_MAP_Y_POS_RATIO,_MINI_MAP_WIDTH_RATIO,_MINI_MAP_HEIGHT_RATIO));
+	
 	_ship_status_map.setViewport(FloatRect(_MAP_X_OFFSET,_MAP_Y_OFFSET,_MINI_MAP_X_POS_RATIO, _CAMERA_Y_POS_RATIO));
-	_ship_status_map.reset(FloatRect(_MAP_X_OFFSET,_MAP_Y_OFFSET,75.f,100.f));
-	//_pause_game_window.setViewport(FloatRect(0.9f, 0.0f, 0.1f, 0.2f));
-	//_pause_game_window.reset(FloatRect(_MAP_X_OFFSET,_MAP_Y_OFFSET,75.f,100.f));
+	_ship_status_map.reset(FloatRect(_MAP_X_OFFSET,_MAP_Y_OFFSET,_STATUS_MAP_WIDTH_RATIO,_STATUS_MAP_HEIGHT_RATIO));
 	
 	_textures.get(EntityID::Landscape).setRepeated(true);
 	_background.setTexture(_textures.get(EntityID::Landscape));
 	_background.setTextureRect(IntRect(_MAP_X_OFFSET,_MAP_Y_OFFSET,_MAP_WIDTH,_MAP_HEIGHT));
 	
 	_focusWindow.setFillColor(Color(255, 255, 255, 0));
-	_focusWindow.setOutlineThickness(-25);
+	_focusWindow.setOutlineThickness(_FOCUS_WINDOW_OUTLINE_THICKNESS);
 	_focusWindow.setOutlineColor(Color(250, 150, 100));
 	_focusWindow.setPosition(_CAMERA_X_OFFSET,_CAMERA_Y_OFFSET);
 	
@@ -55,7 +53,6 @@ void UserInterface::processEvents()
 	while (_game_window.pollEvent(event)) 
 	{		
 		//poll all event types
-		//convert from SFML
 		switch (event.type) 
 		{
 			case Event::KeyPressed:
@@ -88,6 +85,9 @@ void UserInterface::processEvents()
 						break;
 					case Keyboard::P:
 						_events.push_back(Events::P_Pressed);
+						break;
+					case Keyboard::Escape:
+						_events.push_back(Events::ESC_Pressed);
 						break;
 					default:
 						break;
@@ -144,14 +144,9 @@ void UserInterface::render(list<Character>& characters, list<int>& status)
 
 	_game_window.clear();	
 	
-	//setPauseWindowState();
 	_game_window.setView(_camera);
 	_background.setColor(sf::Color(255, 255, 255, 255));
 	_game_window.draw(_background);
-	if (_game_paused)
-	{	
-		drawText("Game Paused", _PAUSE_GAME_TEXT_SIZE, Vector2f(_focusWindow.getPosition().x + _PAUSE_TEXT_X_OFFSET, _focusWindow.getPosition().y + _PAUSE_TEXT_Y_OFFSET));
-	}
 	_game_window.setView(_mini_map);
 	_background.setColor(sf::Color(255, 255, 255, 50));
 	_game_window.draw(_background);
@@ -159,6 +154,21 @@ void UserInterface::render(list<Character>& characters, list<int>& status)
 	processTextures(characters);
 	_game_window.setView(_ship_status_map);
 	processStatusMap(status);
+	_game_window.setView(_camera);
+	if (_game_paused)
+	{	
+		drawText("Game Paused", _PAUSE_GAME_TEXT_SIZE, Vector2f(_focusWindow.getPosition().x + _PAUSE_TEXT_X_OFFSET, _focusWindow.getPosition().y + _PAUSE_TEXT_Y_OFFSET));
+	}
+	if (_game_won)
+	{	
+		drawText("The Flyers\n Have Been\n Defeated!", _PAUSE_GAME_TEXT_SIZE, Vector2f(_focusWindow.getPosition().x + _END_GAME_TEXT_X_OFFSET, _focusWindow.getPosition().y + _END_GAME_TEXT_Y_OFFSET));
+		drawText("Press Esc to Exit", _INFORMATION_TEXT_SIZE, Vector2f(_focusWindow.getPosition().x + _INFORMATION_TEXT_X_OFFSET, _focusWindow.getPosition().y + _INFORMATION_TEXT_Y_OFFSET));
+	}
+	if (_game_lost)
+	{	
+		drawText("The Flyers\n Have\n Destroyed You", _PAUSE_GAME_TEXT_SIZE, Vector2f(_focusWindow.getPosition().x + _END_GAME_TEXT_X_OFFSET, _focusWindow.getPosition().y + _END_GAME_TEXT_Y_OFFSET));
+		drawText("Press Esc to Exit", _INFORMATION_TEXT_SIZE, Vector2f(_focusWindow.getPosition().x + _INFORMATION_TEXT_X_OFFSET, _focusWindow.getPosition().y + _INFORMATION_TEXT_Y_OFFSET));
+	}
 	
 	_game_window.display();
 
@@ -223,15 +233,3 @@ void UserInterface::drawText(string text_to_display, float text_size, const Vect
 	text.setPosition(convertToSFMLVector(text_position));
 	_game_window.draw(text);
 }
-
-// void UserInterface::setPauseWindowState ()
-// {
-	// if (_game_paused)
-	// {
-		// _pause_game_state.setFillColor(Color(0, 255, 0, 0));
-	// }
-	// else 
-	// {
-		// _pause_game_state.setFillColor(Color(255, 255, 255, 0));
-	// }
-// }
