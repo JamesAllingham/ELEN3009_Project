@@ -17,7 +17,7 @@ using std::make_shared;
 using std::prev;
 
 TEST (Entity, CharacterFunctionCorrectlyReturnsId)
-{
+{	
 	Ship TestShip;
 	EXPECT_EQ(EntityID::Ship, TestShip.character().entityID());
 }
@@ -30,12 +30,14 @@ TEST (Entity, IdFunctionCorrectlyReturnsId)
 
 TEST (Entity, CharacterFunctionCorrectlyReturnsPosition)
 {
+	Entity::setMapLimits(Vector2f(4800.f,600.f));
 	Ship TestShip;
 	EXPECT_EQ(Vector2f(2400,300), TestShip.character().position());
 }
 
 TEST (Entity, PositionFunctionCorrectlyReturnsPosition)
 {
+	Entity::setMapLimits(Vector2f(4800.f,600.f));
 	Ship TestShip;
 	EXPECT_EQ(Vector2f(2400,300), TestShip.position());
 }
