@@ -31,7 +31,9 @@ TEST(Vector2f, EqualSignWorksWithoutBeingOverloaded)
 	EXPECT_EQ(5.f, Test2.y);
 }
 
-TEST(Vector2f, EquivalenceOperatorReturnsTrueForTwoEquvalentVectors)
+// ==
+
+TEST(Vector2f, EquivalenceOperatorReturnsTrueForTwoEquivalentVectors)
 {
 	Vector2f Test(2.f, 5.f);
 	Vector2f Test2 = Test;
@@ -39,7 +41,9 @@ TEST(Vector2f, EquivalenceOperatorReturnsTrueForTwoEquvalentVectors)
 	EXPECT_TRUE(Test == Test2);
 }
 
-TEST(Vector2f, PlusOperatorVectorLvalueHasBeenOverloadedCorrectly)
+// +
+
+TEST(Vector2f, PlusOperatorOnTwoVectorsWorksCorrectly)
 {
 	Vector2f Test(2.f, 5.f);
 	Vector2f Test2 = Test;
@@ -47,14 +51,14 @@ TEST(Vector2f, PlusOperatorVectorLvalueHasBeenOverloadedCorrectly)
 	EXPECT_TRUE(Vector2f(4.f,10.f) == Test3);
 }
 
-TEST(Vector2f, PlusOperatorScalarHasBeenOverloadedCorrectly)
+TEST(Vector2f, PlusOperatorOnVectorPlusScalarWorksCorrectly)
 {
 	Vector2f Test(2.f, 5.f);
 	Vector2f Test2 = Test + 5.f;
 	EXPECT_TRUE(Vector2f(7.f,10.f) == Test2);
 }
 
-TEST(Vector2f, PlusEqualVectorOverloadWorksCorrectly)
+TEST(Vector2f, PlusEqualOperatorOnTwoVectorsWorksCorrectly)
 {
 	Vector2f Test(2.f, 5.f);
 	Vector2f Test2(3.f,4.f);
@@ -63,7 +67,7 @@ TEST(Vector2f, PlusEqualVectorOverloadWorksCorrectly)
 	
 }
 
-TEST(Vector2f, PlusEqualScalarOverloadWorksCorrectly)
+TEST(Vector2f, PlusEqualVectorPlusScalarWorksCorrectly)
 {
 	Vector2f Test(2.f, 5.f);
 	Test += 5;
@@ -71,7 +75,9 @@ TEST(Vector2f, PlusEqualScalarOverloadWorksCorrectly)
 	
 }
 
-TEST(Vector2f, MinusOperatorVectorHasBeenOverloadedCorrectly)
+// -
+
+TEST(Vector2f, MinusOperatorVectorMinusVectorHasBeenOverloadedCorrectly)
 {
 	Vector2f Test(2.f, 5.f);
 	Vector2f Test2(3.f,4.f);
@@ -79,7 +85,7 @@ TEST(Vector2f, MinusOperatorVectorHasBeenOverloadedCorrectly)
 	EXPECT_TRUE(Vector2f(-1.f,1.f) == Test3);
 }
 
-TEST(Vector2f, MinusOperatorScalarHasBeenOverloadedCorrectly)
+TEST(Vector2f, MinusOperatorVectorMinusScalarHasBeenOverloadedCorrectly)
 {
 	Vector2f Test(2.f, 5.f);
 	float scalar = 5.f;
@@ -87,7 +93,7 @@ TEST(Vector2f, MinusOperatorScalarHasBeenOverloadedCorrectly)
 	EXPECT_TRUE(Vector2f(-3.f,0.f) == Test2);
 }
 
-TEST(Vector2f, MinusEqualVectorOverloadWorksCorrectly)
+TEST(Vector2f, MinusEqualVectorMinusVectorHasBeenOverloadedCorrectly)
 {
 	Vector2f Test(2.f, 5.f);
 	Vector2f Test2(2.f, 4.f);
@@ -96,7 +102,7 @@ TEST(Vector2f, MinusEqualVectorOverloadWorksCorrectly)
 	
 }
 
-TEST(Vector2f, MinusEqualScalarOverloadWorksCorrectly)
+TEST(Vector2f, MinusEqualVectorMinusScalarHasBeenOverloadedCorrectly)
 {
 	Vector2f Test(2.f, 5.f);
 	Test -= 5;
@@ -104,7 +110,9 @@ TEST(Vector2f, MinusEqualScalarOverloadWorksCorrectly)
 	
 }
 
-TEST(Vector2f, DotProductOperatorHasBeenOverloadedCorrectly)
+// *
+
+TEST(Vector2f, DotProductBetweenTwoVectorsOperatorHasBeenOverloadedCorrectly)
 {
 	Vector2f Test(2.f, 5.f);
 	Vector2f Test2(3.f,4.f);
@@ -112,10 +120,17 @@ TEST(Vector2f, DotProductOperatorHasBeenOverloadedCorrectly)
 	EXPECT_TRUE(26.f == Test3);
 }
 
-TEST(Vector2f, VectorScalarMultiplicationOperatorWorksCorrectly)
+TEST(Vector2f, VectorScalarMultiplicationOperatorHasBeenOverloadedCorrectly)
 {
 	Vector2f Test(2.f,5.f);
 	Vector2f Test2 = Test * 5.f;
+	EXPECT_TRUE(Vector2f(10.f,25.f) == Test2);
+}
+
+TEST(Vector2f, ScalarVectorMultiplicationOperatorHasBeenOverloadedCorrectly)
+{
+	Vector2f Test(2.f,5.f);
+	Vector2f Test2 = 5.f * Test;
 	EXPECT_TRUE(Vector2f(10.f,25.f) == Test2);
 }
 
@@ -127,21 +142,23 @@ TEST(Vector2f, DotProductEqualOperatorHasBeenOverloadedCorrectly)
 	EXPECT_TRUE(Vector2f(6.f,20.f) == Test);
 }
 
-TEST(Vector2f, VectorScalarMultiplicationEqualOperatorWorksCorrectly)
+TEST(Vector2f, VectorScalarMultiplicationEqualOperatorHasBeenOverloadedCorrectly)
 {
 	Vector2f Test(2.f,5.f);
 	Test *= 5.f;
 	EXPECT_TRUE(Vector2f(10.f,25.f) == Test);
 }
 
-TEST(Vector2f, VectorScalarDivisionOperatorWorksCorrectly)
+// /
+
+TEST(Vector2f, VectorScalarDivisionOperatorHasBeenOverloadedCorrectly)
 {
 	Vector2f Test(2.f,5.f);
 	Vector2f Test2 = Test / 2.f;
 	EXPECT_TRUE(Vector2f(1.f,2.5f) == Test2);
 }
 
-TEST(Vector2f, VectorScalarDivisionEqualOperatorWorksCorrectly)
+TEST(Vector2f, VectorScalarDivisionEqualOperatorHasBeenOverloadedCorrectly)
 {
 	Vector2f Test(2.f,5.f);
 	Test /= 2.f;

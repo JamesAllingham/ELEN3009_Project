@@ -1,5 +1,5 @@
 #ifndef SMART_BOMB
-#define SAMRT_BOMB
+#define SMART_BOMB
 
 #include "MovingEntity.h"
 

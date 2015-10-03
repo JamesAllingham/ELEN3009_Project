@@ -50,11 +50,6 @@ public:
     */	
 	int numberOfHomingMissiles() const { return _number_of_homing_missiles;};	
 	/**
-    * Adds homing missiles to the Ship when a Powerup is picked up.
-    * No parameters or return value.
-    */	
-	void addHomingMissiles() {_number_of_homing_missiles+=_NUMBER_OF_HOMING_MISSILES_TO_ADD;};
-	/**
     * Change the direction which the Ship is facing.
     * No parameters or return value.
     */	
@@ -112,7 +107,13 @@ public:
 	list<int>& status();
 	
 	
-private:		
+private:	
+	/**
+    * Adds homing missiles to the Ship when a Powerup is picked up.
+    * No parameters or return value.
+    */	
+	void addHomingMissiles() {_number_of_homing_missiles+=_NUMBER_OF_HOMING_MISSILES_TO_ADD;};
+
 	bool _moving_up = false;
 	bool _moving_down = false;
 	bool _moving_left = false;
