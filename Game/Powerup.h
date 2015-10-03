@@ -9,7 +9,6 @@
 using std::shared_ptr;
 #include <ctime>
 
-#include <iostream> // For debugging
 /**
 * Powerup class - represents the powerups that the player can pick up to get HomingMissile shots.
 * Inherits from the Entity class.
@@ -38,12 +37,12 @@ public:
 	* The Powerup will be destroyed if it collides with a Ship. 
     * @param collider is a pointer to the Entity which the Powerup is colliding with.
     */
-	virtual void collide(shared_ptr<Entity> collider) override;	
+	virtual void collide(const shared_ptr<Entity>& collider) override;	
 	/**
     * Static function.
     * @return a bool containing the current state of a Powerup being on the map.
     */
-	static bool PowerupOnTheMap ();
+	static bool PowerupOnTheMap() {return _powerup_on_the_map;};
 	
 protected:   
 	/**
@@ -54,8 +53,8 @@ protected:
 	float randomPosition (float max_position);
 	
 private:		
-	static const constexpr float _POWER_UP_WIDTH = 26;
-	static const constexpr float _POWER_UP_HEIGHT = 30;
+	static const constexpr auto _POWER_UP_WIDTH = 26;
+	static const constexpr auto _POWER_UP_HEIGHT = 30;
 	static bool _powerup_on_the_map;
 };	
 #endif

@@ -5,7 +5,7 @@ Missile::Missile(const Vector2f& position, const Vector2f& velocity_unit) : Movi
 
 };
 
-void Missile::collide(shared_ptr<Entity> collider) 
+void Missile::collide(const shared_ptr<Entity>& collider) 
 {
 	switch (collider->id())
 	{		

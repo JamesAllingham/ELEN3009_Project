@@ -40,12 +40,12 @@ public:
 	* The MovingEntity will be destroyed if it collides with Entities described by the derived class. 
 	* @param collider is a pointer to the Entity which the MovingEntity is colliding with.
 	*/
-	virtual void collide(shared_ptr<Entity> collider) override = 0;			
+	virtual void collide(const shared_ptr<Entity>& collider) override = 0;			
 	/**
 	* Returns the velocity of the MovingEntity.
 	* @return a Vector2f containing the velocity of the MovingEntity. Can be negative, positive or 0.
 	*/
-	Vector2f velocity() {return _velocity;};
+	Vector2f velocity() const {return _velocity;};
 	
 private:
 	

@@ -11,7 +11,7 @@ using std::shared_ptr;
 using std::make_shared;
 #include <ctime>
 
-#include <iostream> // For testing purposes
+#include <iostream>
 
 #include "UserInterface.h"
 #include "Ship.h"
@@ -77,15 +77,25 @@ private:
 	*/
 	void followPlayer();
 	/**
+	* Begins the pausing game sequence.
+	* No arguments or return value.
+	*/
+	void pauseGame() {_game_paused = !_game_paused;};
+	/**
+	* Begins the winning game sequence.
+	* No arguments or return value.
+	*/
+	void winGame();
+	/**
+	* Begins the losing the game sequence.
+	* No arguments or return value.
+	*/
+	void loseGame();
+	/**
 	* Closes the game window and ends the game.
 	* No arguments or return value.
 	*/
 	void endGame();
-	/**
-	* Pauses the game.
-	* No arguments or return value.
-	*/
-	void pauseGame () {_game_paused = !_game_paused;};
 	
 	UserInterface _user_interface;
 	EntityHolder _entities;
@@ -96,6 +106,7 @@ private:
 	bool _game_paused = false;
 	
 	static constexpr const auto _NUMBER_OF_FLYERS_TO_KILL = 15;
+	static constexpr const auto _MAX_NUMBER_OF_FLYERS_ON_MAP = 10;
 	static constexpr const auto _MAX_X = 4800.f;
 	static constexpr const auto _MAX_Y = 600.f;	
 	static constexpr const auto _MAX_ON_SCREEN_DISTANCE_FROM_PLAYER = 400.f;

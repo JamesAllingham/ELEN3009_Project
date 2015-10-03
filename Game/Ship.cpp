@@ -6,7 +6,7 @@ Ship::Ship() : ShootingMovingEntity{EntityID::Ship, Vector2f(mapLimits().x/2, ma
 	
 };
 
-void Ship::collide(shared_ptr<Entity> collider) 
+void Ship::collide(const shared_ptr<Entity>& collider) 
 {
 	switch (collider->id())
 	{
@@ -24,68 +24,6 @@ void Ship::collide(shared_ptr<Entity> collider)
 		default:
 			break;
 	}	
-}	
-
-list<int>& Ship::status() 
-{
-	_status.clear();
-	_status = {_number_of_lives, _number_of_smart_bombs, _number_of_homing_missiles};
-	return _status;
-}
-
-shared_ptr<MovingEntity> Ship::shoot(float delta_time)
-{
-	if (_shoot_laser) 
-	{
-		_shoot_laser = false;
-		Vector2f velocity_unit;
-		if (facingRight()) 
-		{
-			velocity_unit = Vector2f(1,0);			
-		}
-		else 
-		{
-			velocity_unit = Vector2f(-1,0);
-		}
-		return shared_ptr<MovingEntity> (new Laser(position() + Vector2f(_LASER_X_OFFSET,_LASER_Y_OFFSET), velocity_unit));
-	}
-	
-	if (_nearest_target.unique())
-	{
-		_nearest_target.reset();
-		return shared_ptr<MovingEntity> (nullptr);
-	}
-	
-	if (_shoot_homing_missile)
-	{
-		// check that the missile has a valid target
-		if (_nearest_target.unique())
-		{
-			_nearest_target.reset();
-			return shared_ptr<MovingEntity> (nullptr);
-		}
-		_shoot_homing_missile = false;
-		if (_number_of_homing_missiles > 0)
-		{
-			--_number_of_homing_missiles;
-			return shared_ptr<MovingEntity> (new HomingMissile(position()  + Vector2f(_HOMING_MISSILE_X_OFFSET,_HOMING_MISSILE_Y_OFFSET), _nearest_target));
-		}		
-	}
-	
-	if (_shoot_smart_bomb)
-	{
-		_shoot_smart_bomb = false;
-		if (_number_of_smart_bombs > 0)
-		{
-			std::cout<<"shooting smart bomb" << std::endl;
-			--_number_of_smart_bombs;
-			return shared_ptr<MovingEntity> (new SmartBomb(position().x + _SMART_BOMB_X_OFFSET));
-		}
-		else return shared_ptr<MovingEntity> (nullptr);
-	}
-
-	return shared_ptr<MovingEntity> (nullptr);
-	
 }
 
 void Ship::controlShooting(Events event)
@@ -103,6 +41,59 @@ void Ship::controlShooting(Events event)
 		default:
 			break;
 	}
+}
+
+shared_ptr<MovingEntity> Ship::shoot(float delta_time)
+{
+	if (_shoot_laser) 
+	{
+		_shoot_laser = false;
+		Vector2f velocity_unit;
+		if (facingRight()) 
+		{
+			velocity_unit = Vector2f(1,0);			
+		}
+		else 
+		{
+			velocity_unit = Vector2f(-1,0);
+		}
+		return make_shared<Laser> (position() + Vector2f(_LASER_X_OFFSET,_LASER_Y_OFFSET), velocity_unit);
+	}
+	
+	if (_nearest_target.unique())
+	{
+		_nearest_target.reset();
+		return shared_ptr<MovingEntity> (nullptr);
+	}
+	
+	if (_shoot_homing_missile)
+	{
+		if (_nearest_target.unique())
+		{
+			_nearest_target.reset();
+			return shared_ptr<MovingEntity> (nullptr);
+		}
+		_shoot_homing_missile = false;
+		if (_number_of_homing_missiles > 0)
+		{
+			--_number_of_homing_missiles;
+			return make_shared<HomingMissile> (position()  + Vector2f(_HOMING_MISSILE_X_OFFSET,_HOMING_MISSILE_Y_OFFSET), _nearest_target);
+		}		
+	}
+	
+	if (_shoot_smart_bomb)
+	{
+		_shoot_smart_bomb = false;
+		if (_number_of_smart_bombs > 0)
+		{
+			--_number_of_smart_bombs;
+			return make_shared<SmartBomb> (position().x + _SMART_BOMB_X_OFFSET);
+		}
+		else return shared_ptr<MovingEntity> (nullptr);
+	}
+
+	return shared_ptr<MovingEntity> (nullptr);
+	
 }
 
 void Ship::controlMovement(Events event)
@@ -192,4 +183,11 @@ void Ship::setNearestTarget(EntityHolder& targets)
 			
 		}
 	}
+}
+
+list<int>& Ship::status() 
+{
+	_status.clear();
+	_status = {_number_of_lives, _number_of_smart_bombs, _number_of_homing_missiles};
+	return _status;
 }

@@ -5,12 +5,14 @@ IPATH=-I..\gtest\include -I..\Game -I..\sfml\include
 CC=g++ -std=c++14
 ATTACKERPATH:=..\Game
 MAKE=mingw32-make
-OBJS=main.o ResourceHolder_unit_tests.o Flyer_unit_tests.o EntityHolder_unit_tests.o Vector2f_unit_tests.o $(ATTACKERPATH)\Flyer.o $(ATTACKERPATH)\Ship.o $(ATTACKERPATH)\Entity.o $(ATTACKERPATH)\Missile.o $(ATTACKERPATH)\Laser.o $(ATTACKERPATH)\HomingMissile.o $(ATTACKERPATH)\EntityHolder.o $(ATTACKERPATH)\SmartBomb.o
+OBJS=main.o ResourceHolder_unit_tests.o Flyer_unit_tests.o EntityHolder_unit_tests.o Vector2f_unit_tests.o Ship_unit_tests.o $(ATTACKERPATH)\Flyer.o $(ATTACKERPATH)\Ship.o $(ATTACKERPATH)\Entity.o $(ATTACKERPATH)\Missile.o $(ATTACKERPATH)\Laser.o $(ATTACKERPATH)\HomingMissile.o $(ATTACKERPATH)\EntityHolder.o $(ATTACKERPATH)\SmartBomb.o
 all: test.exe
 test.exe: $(OBJS) 
 	$(CC) $(OBJS) $(LFLAGS) $(LPATH) -o test.exe
 main.o: main.cpp
 	$(CC) $(CFLAGS) $(IPATH) main.cpp -o main.o
+Ship_unit_tests.o: Ship_unit_tests.cpp $(ATTACKERPATH)\ShootingMovingEntity.h $(ATTACKERPATH)\Events.h $(ATTACKERPATH)\Laser.h $(ATTACKERPATH)\HomingMissile.h $(ATTACKERPATH)\EntityHolder.h $(ATTACKERPATH)\SmartBomb.h $(ATTACKERPATH)\EntityID.h $(ATTACKERPATH)\Vector2f.h $(ATTACKERPATH)\Events.h
+	$(CC) $(CFLAGS) $(IPATH) Ship_unit_tests.cpp -o Ship_unit_tests.o
 ResourceHolder_unit_tests.o: ResourceHolder_unit_tests.cpp $(ATTACKERPATH)\ResourceHolder.h
 	$(CC) $(CFLAGS) $(IPATH) ResourceHolder_unit_tests.cpp -o ResourceHolder_unit_tests.o
 Flyer_unit_tests.o: Flyer_unit_tests.cpp $(ATTACKERPATH)\Character.h $(ATTACKERPATH)\Entity.h $(ATTACKERPATH)\Missile.h $(ATTACKERPATH)\Vector2f.h
@@ -21,6 +23,7 @@ EntityHolder_unit_tests.o: EntityHolder_unit_tests.cpp $(ATTACKERPATH)\EntityHol
 	$(CC) $(CFLAGS) $(IPATH) EntityHolder_unit_tests.cpp -o EntityHolder_unit_tests.o
 Vector2f_unit_tests.o: Vector2f_unit_tests.cpp $(ATTACKERPATH)\Vector2f.h
 	$(CC) $(CFLAGS) $(IPATH) Vector2f_unit_tests.cpp -o Vector2f_unit_tests.o
+	
 $(ATTACKERPATH)\Flyer.o:
 	$(MAKE) -C $(ATTACKERPATH)
 $(ATTACKERPATH)\Ship.o:

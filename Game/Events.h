@@ -22,6 +22,7 @@ enum class Events
 	Q_Pressed, // If the player presses the Q key, a Smart Bomb should be fired destroying all targets on the screen
 	Q_Released,
 	P_Pressed, // If the player presses the P key, the game should be paused/unpaused
+	ESC_Pressed // If the Player presses ESCAPE, quit the game
 };
 
 #endif

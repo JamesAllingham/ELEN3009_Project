@@ -7,8 +7,6 @@
 using std::shared_ptr;
 using std::make_shared;
 
-#include <iostream> // For testing purposes
-
 #include "ShootingMovingEntity.h"
 #include "Missile.h"
 #include "EntityId.h"
@@ -69,7 +67,7 @@ public:
 	* The Flyer will be destroyed if it collides with a Laser, SmartBomb, HomingMissile or Ship. 
     * @param collider is a pointer to the Entity which the Flyer is colliding with.
     */
-	virtual void collide(shared_ptr<Entity> collider) override;	
+	virtual void collide(const shared_ptr<Entity>& collider) override;	
 
 protected:    
 	/**
@@ -77,7 +75,7 @@ protected:
     * @param max_position is a float containing the maximum value which can be generated.
 	* @return a randomly generated float less than or equal to max_position and greater than or equal to 0.
     */
-	float randomPosition (float max_position);
+	float randomPosition (float max_position) const;
 
 private:
 
@@ -87,10 +85,11 @@ private:
 	
 	static constexpr const float _FLYER_WIDTH = 75.f;
 	static constexpr const float _FLYER_HEIGHT = 37.f;
+	static constexpr const float _FLYER_SPEED = 75.f;
 	static constexpr const float _FLYER_TARGETING_RANGE = 400.f;
-	static constexpr const float _TIME_BETWEEN_SHOTS = 10.f;
+	static constexpr const float _TIME_BETWEEN_SHOTS = 5.f;
 	
-	float _time_since_last_shot = 9.f;
+	float _time_since_last_shot = 4.f;
 	float _time_since_last_movement = 1.0f;
 	Vector2f _unit_current_velocity;	
 	

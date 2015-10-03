@@ -6,8 +6,6 @@ using std::list;
 #include <memory>
 using std::shared_ptr;
 
-#include <iostream> // For testing purposes
-
 #include "Entity.h"
 #include "Character.h"
 
@@ -46,7 +44,7 @@ public:
     * Keeps track of the number of Entity objects in the game. 
 	* @return an int containing the number of elements in the collection.
     */
-	int numberOfEntities () {return _entities.size();};
+	int numberOfEntities() const {return _entities.size();};
 	/**
     * Converts the collection of Entity pointers to a list of Character objects to be rendered by the user interface.
     * @return a list of Character objects corresponding to the Entity objects.

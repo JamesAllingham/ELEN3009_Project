@@ -5,7 +5,7 @@ SmartBomb::SmartBomb(float x_position) : MovingEntity{EntityID::Smart_Bomb, Vect
 	
 };
 
-void SmartBomb::collide(shared_ptr<Entity> collider) 
+void SmartBomb::collide(const shared_ptr<Entity>& collider) 
 {
 	destroy();
 }

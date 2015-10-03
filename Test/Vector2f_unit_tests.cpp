@@ -2,9 +2,11 @@
 
 #include "Vector2f.h"
 
+#include <cmath>
+
 #include "gtest/gtest.h"
 
-TEST(Vector2f, AutomaticInitialisingReturnsCorrectValues)
+TEST(Vector2f, DefaultConstructorReturnsCorrectInitialisationOfMemberData)
 {
 	Vector2f Test;
 	
@@ -106,8 +108,8 @@ TEST(Vector2f, DotProductOperatorHasBeenOverloadedCorrectly)
 {
 	Vector2f Test(2.f, 5.f);
 	Vector2f Test2(3.f,4.f);
-	Vector2f Test3 = Test * Test2;
-	EXPECT_TRUE(Vector2f(6.f,20.f) == Test3);
+	float Test3 = Test * Test2;
+	EXPECT_TRUE(26.f == Test3);
 }
 
 TEST(Vector2f, VectorScalarMultiplicationOperatorWorksCorrectly)
@@ -152,7 +154,14 @@ TEST(Vector2f, CrossProductFunctionWorksCorrectly)
 {
 	Vector2f Test(2.f, 5.f);
 	Vector2f Test2(3.f,4.f);
-	Vector2f Test3 = Test3.CrossProduct(Test, Test2);
+	Vector2f Test3 = Test3.crossProduct(Test, Test2);
 	EXPECT_TRUE(Vector2f(-7.f,7.f) == Test3);
 	
+}
+
+TEST(Vector2f, CanCreateAUnitVectorUsingTheUnitVectorFunction)
+{
+	Vector2f Test(2.f, 5.f);
+	Test = Test.unitVector();
+	EXPECT_EQ(Vector2f(2.f / (sqrtf(2.f*2.f+5.f*5.f)), 5.f / (sqrtf(2.f*2.f+5.f*5.f))), Test);
 }

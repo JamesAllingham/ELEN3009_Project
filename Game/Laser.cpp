@@ -5,7 +5,7 @@ Laser::Laser(const Vector2f& position, const Vector2f& velocity_unit) : MovingEn
 	
 };
 
-void Laser::collide(shared_ptr<Entity> collider) 
+void Laser::collide(const shared_ptr<Entity>& collider)
 {
 	switch (collider->id())
 	{		

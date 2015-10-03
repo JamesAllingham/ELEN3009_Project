@@ -17,7 +17,7 @@ float Powerup::randomPosition (float max_positon) {
 	return static_cast<float>(rand_num);
 }
 
-void Powerup::collide(shared_ptr<Entity> collider) 
+void Powerup::collide(const shared_ptr<Entity>& collider) 
 {	
 	switch (collider->id())
 	{		
@@ -39,11 +39,6 @@ list<Vector2f> Powerup::hitboxPoints()
 	hitbox_points.push_back(Vector2f(top_left_point.x + _POWER_UP_WIDTH, top_left_point.y - _POWER_UP_HEIGHT));
 	hitbox_points.push_back(Vector2f(top_left_point.x, top_left_point.y - _POWER_UP_HEIGHT));
 	return hitbox_points;
-}
-
-bool Powerup::PowerupOnTheMap()
-{
-	return _powerup_on_the_map;
 }
 
 bool Powerup::_powerup_on_the_map = false;

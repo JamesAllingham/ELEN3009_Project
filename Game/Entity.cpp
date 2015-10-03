@@ -11,9 +11,9 @@ void Entity::movePosition(float x, float y)
 	movePosition(temporary_position_change);
 }
 
-void Entity::movePosition(Vector2f delta_position) // Needs to consider width and height
+void Entity::movePosition(const Vector2f& delta_position)
 {
-	//Needs to check when in the corner (calling both x and y maxes)
+
 	if (_position.x + delta_position.x > _max_position.x || _position.x + delta_position.x < 0.f || _position.y + delta_position.y > _max_position.y || _position.y + delta_position.y < 0.f) 
 	{		
 		if (_position.x + delta_position.x > _max_position.x || _position.x + delta_position.x < 0.f)
