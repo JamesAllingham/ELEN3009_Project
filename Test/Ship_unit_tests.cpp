@@ -54,7 +54,7 @@ TEST (Ship, ShipCanMoveTheDesiredDistance)
 	EXPECT_EQ(Vector2f(2400 - 75/2 + 30 - 30, 300 - 30/2 - 30 + 30), ship.position());
 }
 
-TEST (Ship, ShipCannotOutOfTheMapLimits)
+TEST (Ship, ShipCannotMoveOutOfTheMapLimits)
 {
 	Ship ship;
 	ship.setMapLimits(Vector2f(4800,600));
@@ -119,7 +119,7 @@ TEST (Ship, ShipCanShootALaser)
 	ship.setMapLimits(Vector2f(4800,600));
 	ship.controlShooting(Events::Space_Pressed);
 	shared_ptr<Entity> shooting_ptr = ship.shoot(0.03f );
-	EXPECT_FALSE(shooting_ptr == nullptr);
+	EXPECT_TRUE(shooting_ptr->id() == EntityID::Laser);
 }
 
 TEST (Ship, ShipCanAddMoreHomingMissilesWhenPowerUpIsPickedUp)
@@ -267,12 +267,8 @@ TEST (Ship, ShipCanDetectNearestTarget)
 	entity_holder.addEntity(flyer_ptr2);
 	ship.setNearestTarget(entity_holder);
 	//check which is the nearest target
-	float flyer1_x_distance_to_ship = flyer_ptr1->position().x - ship.position().x;
-	float flyer1_y_distance_to_ship = flyer_ptr1->position().y - ship.position().y;
-	float flyer1_distance_to_ship = sqrtf(flyer1_x_distance_to_ship*flyer1_x_distance_to_ship + flyer1_y_distance_to_ship * flyer1_y_distance_to_ship);
-	float flyer2_x_distance_to_ship = flyer_ptr2->position().x - ship.position().x;
-	float flyer2_y_distance_to_ship = flyer_ptr2->position().y - ship.position().y;
-	float flyer2_distance_to_ship = sqrtf(flyer2_x_distance_to_ship*flyer2_x_distance_to_ship + flyer2_y_distance_to_ship * flyer2_y_distance_to_ship);
+	auto flyer1_distance_to_ship = ship.position().distanceBetweenVectors(ship.position(), flyer_ptr1->position());
+	auto flyer2_distance_to_ship = ship.position().distanceBetweenVectors(ship.position(), flyer_ptr2->position());
 	
 	if (flyer1_distance_to_ship < flyer2_distance_to_ship) EXPECT_TRUE(ship.nearestTarget() == flyer_ptr1);
 	else if (flyer2_distance_to_ship < flyer1_distance_to_ship) EXPECT_TRUE(ship.nearestTarget() == flyer_ptr2);
