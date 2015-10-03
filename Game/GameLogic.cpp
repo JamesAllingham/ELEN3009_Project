@@ -185,7 +185,7 @@ void GameLogic::createEntities ()
 		_moving_entities.push_back(flyer_ptr);
 	}	
 	
-	if (!Powerup::PowerupOnTheMap() ) _entities.addEntity(make_shared<Powerup> ());
+	if (!Powerup::powerupOnTheMap() ) _entities.addEntity(make_shared<Powerup> ());
 }
 
 void GameLogic::winGame()

@@ -38,8 +38,7 @@ void HomingMissile::move(float delta_time)
 	}
 	else 
 	{
-		Vector2f velocity_unit(_target->position() - position());
-		velocity_unit /= sqrtf(velocity_unit.x*velocity_unit.x + velocity_unit.y*velocity_unit.y);
+		Vector2f velocity_unit = Vector2f(_target->position() - position()).unitVector();
 		movePosition(velocity().x*delta_time*velocity_unit.x, velocity().y*delta_time*velocity_unit.y);
 	}
 }

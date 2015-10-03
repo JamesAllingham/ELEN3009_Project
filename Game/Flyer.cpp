@@ -40,8 +40,7 @@ shared_ptr<MovingEntity> Flyer::shoot(float delta_time)
 	{
 		if (abs(position().x - _target->position().x) <= _FLYER_TARGETING_RANGE) 
 		{
-			Vector2f velocity_unit(_target->position() - position());
-			velocity_unit /= sqrtf(velocity_unit.x*velocity_unit.x + velocity_unit.y*velocity_unit.y);
+			Vector2f velocity_unit = Vector2f(_target->position() - position()).unitVector();
 			_time_since_last_shot = 0.f;
 			return make_shared<Missile> (position(), velocity_unit);
 		}
@@ -54,8 +53,7 @@ void Flyer::move(float delta_time){
 	_time_since_last_movement += delta_time;
 	if (_time_since_last_movement >= 1.0f) 
 	{
-		_unit_current_velocity = Vector2f(randomPosition(mapLimits().x) - position().x, randomPosition(mapLimits().y) - position().y);
-		_unit_current_velocity /= sqrtf(_unit_current_velocity.x*_unit_current_velocity.x + _unit_current_velocity.y*_unit_current_velocity.y);
+		_unit_current_velocity = Vector2f(randomPosition(mapLimits().x) - position().x, randomPosition(mapLimits().y) - position().y).unitVector();
 		_time_since_last_movement =0;
 	}
 	movePosition(velocity().x*delta_time*_unit_current_velocity.x, velocity().y*delta_time*_unit_current_velocity.y);	
