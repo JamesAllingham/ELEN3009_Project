@@ -108,7 +108,7 @@ TEST (Flyer, FlyerHitboxIsTheCorrectShape)
 	EXPECT_TRUE(left_length == right_length);
 }
 
-TEST (Flyer, ShipHitboxIsAlwaysTheSameAreaRegardlessOfPositionOnMap)
+TEST (Flyer, FlyerHitboxIsAlwaysTheSameAreaRegardlessOfPositionOnMap)
 {
 	//test dependent on random position generation for the flyers
 	Flyer TestFlyer1;

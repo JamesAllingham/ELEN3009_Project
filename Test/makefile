@@ -5,7 +5,7 @@ IPATH=-I..\gtest\include -I..\Game -I..\sfml\include
 CC=g++ -std=c++14
 ATTACKERPATH:=..\Game
 MAKE=mingw32-make
-OBJS=main.o ResourceHolder_unit_tests.o Flyer_unit_tests.o EntityHolder_unit_tests.o Vector2f_unit_tests.o Ship_unit_tests.o Entity_unit_tests.o $(ATTACKERPATH)\Flyer.o $(ATTACKERPATH)\Ship.o $(ATTACKERPATH)\Entity.o $(ATTACKERPATH)\Missile.o $(ATTACKERPATH)\Laser.o $(ATTACKERPATH)\HomingMissile.o $(ATTACKERPATH)\EntityHolder.o $(ATTACKERPATH)\SmartBomb.o $(ATTACKERPATH)\Powerup.o
+OBJS=main.o ResourceHolder_unit_tests.o Flyer_unit_tests.o EntityHolder_unit_tests.o Vector2f_unit_tests.o Ship_unit_tests.o Entity_unit_tests.o HomingMissile_unit_tests.o StopWatch_unit_tests.o Missile_unit_tests.o $(ATTACKERPATH)\Flyer.o $(ATTACKERPATH)\Ship.o $(ATTACKERPATH)\Entity.o $(ATTACKERPATH)\Missile.o $(ATTACKERPATH)\Laser.o $(ATTACKERPATH)\HomingMissile.o $(ATTACKERPATH)\EntityHolder.o $(ATTACKERPATH)\SmartBomb.o $(ATTACKERPATH)\Powerup.o $(ATTACKERPATH)\StopWatch.o
 all: test.exe
 test.exe: $(OBJS) 
 	$(CC) $(OBJS) $(LFLAGS) $(LPATH) -o test.exe
@@ -25,6 +25,12 @@ Vector2f_unit_tests.o: Vector2f_unit_tests.cpp $(ATTACKERPATH)\Vector2f.h
 	$(CC) $(CFLAGS) $(IPATH) Vector2f_unit_tests.cpp -o Vector2f_unit_tests.o
 Entity_unit_tests.o: Entity_unit_tests.cpp $(ATTACKERPATH)\Vector2f.h $(ATTACKERPATH)\Character.h $(ATTACKERPATH)\EntityID.h
 	$(CC) $(CFLAGS) $(IPATH) Entity_unit_tests.cpp -o Entity_unit_tests.o
+HomingMissile_unit_tests.o: HomingMissile_unit_tests.cpp $(ATTACKERPATH)\HomingMissile.h $(ATTACKERPATH)\Vector2f.h $(ATTACKERPATH)\MovingEntity.h $(ATTACKERPATH)\Flyer.h
+	$(CC) $(CFLAGS) $(IPATH) HomingMissile_unit_tests.cpp -o HomingMissile_unit_tests.o
+StopWatch_unit_tests.o: StopWatch_unit_tests.cpp
+	$(CC) $(CFLAGS) $(IPATH) StopWatch_unit_tests.cpp -o StopWatch_unit_tests.o
+Missile_unit_tests.o: Missile_unit_tests.cpp $(ATTACKERPATH)\Missile.h $(ATTACKERPATH)\Vector2f.h $(ATTACKERPATH)\MovingEntity.h $(ATTACKERPATH)\Laser.h $(ATTACKERPATH)\Ship.h $(ATTACKERPATH)\SmartBomb.h
+	$(CC) $(CFLAGS) $(IPATH) Missile_unit_tests.cpp -o Missile_unit_tests.o
 	
 $(ATTACKERPATH)\Flyer.o:
 	$(MAKE) -C $(ATTACKERPATH)
@@ -45,6 +51,8 @@ $(ATTACKERPATH)\EntityHolder.o:
 $(ATTACKERPATH)\SmartBomb.o:
 	$(MAKE) -C $(ATTACKERPATH)
 $(ATTACKERPATH)\Powerup.o:
+	$(MAKE) -C $(ATTACKERPATH)
+$(ATTACKERPATH)\StopWatch.o:
 	$(MAKE) -C $(ATTACKERPATH)
 clean:
 	del *.o *.exe
