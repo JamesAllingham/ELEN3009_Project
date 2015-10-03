@@ -83,11 +83,11 @@ private:
 	static int _number_of_flyers_killed;
 	static shared_ptr<Entity> _target;
 	
-	static constexpr const float _FLYER_WIDTH = 75.f;
-	static constexpr const float _FLYER_HEIGHT = 37.f;
-	static constexpr const float _FLYER_SPEED = 75.f;
-	static constexpr const float _FLYER_TARGETING_RANGE = 400.f;
-	static constexpr const float _TIME_BETWEEN_SHOTS = 5.f;
+	static constexpr const auto _FLYER_WIDTH = 75.f;
+	static constexpr const auto _FLYER_HEIGHT = 37.f;
+	static constexpr const auto _FLYER_SPEED = 75.f;
+	static constexpr const auto _FLYER_TARGETING_RANGE = 400.f;
+	static constexpr const auto _TIME_BETWEEN_SHOTS = 5.f;
 	
 	float _time_since_last_shot = 4.f;
 	float _time_since_last_movement = 1.0f;

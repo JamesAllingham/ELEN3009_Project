@@ -22,7 +22,7 @@ TEST (Laser, constructorCorectlyPlacesLaserWithCorrectVelocityDirection)
 	EXPECT_TRUE(Vector2f(-1.f,0.f) == test_laser2.velocity().unitVector());
 }
 
-TEST (Laser, LaserGetsDestryedWhenCollidingWithFlyer)
+TEST (Laser, LaserGetsDestroyedWhenCollidingWithFlyer)
 {
 	Laser test_laser(Vector2f(1.f,1.f),Vector2f(0.f,1.f));
 	shared_ptr<Flyer> test_flyer_ptr = make_shared<Flyer>();
@@ -31,13 +31,23 @@ TEST (Laser, LaserGetsDestryedWhenCollidingWithFlyer)
 	EXPECT_TRUE(test_laser.destroyed());
 }
 
-TEST (Laser, LaserGetsDestryedWhenCollidingWithMissile)
+TEST (Laser, LaserGetsDestroyedWhenCollidingWithMissile)
 {
 	Laser test_laser1(Vector2f(1.f,1.f),Vector2f(0.f,1.f));
 	shared_ptr<Missile> test_missile_ptr = make_shared<Missile>(Vector2f(100.f,0.f),Vector2f(0.f,1.f));
 	
 	test_laser1.collide(test_missile_ptr);
 	EXPECT_TRUE(test_laser1.destroyed());
+}
+
+TEST (Laser, LaserGetsDestroyedWhenReachingEdgeOfTheMap)
+{
+	Laser test_laser1(Vector2f(4795.f,1.f),Vector2f(0.f,1.f));
+	test_laser1.move(100.f);
+	EXPECT_TRUE(test_laser1.destroyed());
+	Laser test_laser2(Vector2f(1.f,1.f),Vector2f(0.f,-1.f));
+	test_laser2.move(100.f);
+	EXPECT_TRUE(test_laser2.destroyed());
 }
 
 TEST (Laser, LaserHitboxIsTheCorrectShape)

@@ -3,7 +3,7 @@
 
 #include "gtest/gtest.h"
 
-TEST (StopWatch, StopWatchReturnsATimeWithinOneMillisecondOfActualTimer)
+TEST (StopWatch, StopWatchReturnsATimeWithinTenMillisecondOfActualTimer)
 {
 	//Make the Stopwatch return a value within 0.001s 
 	StopWatch stop_watch;
@@ -17,5 +17,5 @@ TEST (StopWatch, StopWatchReturnsATimeWithinOneMillisecondOfActualTimer)
 		++i;
 	}
 	auto stop_watch_time = stop_watch.stop();
-	EXPECT_TRUE(stop_watch_time > 0.099f && stop_watch_time < 0.101f);
+	EXPECT_TRUE(stop_watch_time > 0.09f && stop_watch_time < 0.11f);
 }

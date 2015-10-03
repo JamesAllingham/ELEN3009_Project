@@ -12,9 +12,9 @@ Flyer::~Flyer()
 }
 
 float Flyer::randomPosition (float max_positon) const {
-	int largest_dimension = static_cast<int>((_FLYER_WIDTH>_FLYER_HEIGHT)?_FLYER_WIDTH:_FLYER_HEIGHT);
-	int tmp = static_cast<int>(max_positon - largest_dimension);
-	int rand_num = rand()%tmp;
+	auto largest_dimension = static_cast<int>((_FLYER_WIDTH>_FLYER_HEIGHT)?_FLYER_WIDTH:_FLYER_HEIGHT);
+	auto tmp = static_cast<int>(max_positon - largest_dimension);
+	auto rand_num = rand()%tmp;
 	return static_cast<float>(rand_num);
 }
 

@@ -1,7 +1,7 @@
 #include "Ship.h"
 
 
-Ship::Ship() : ShootingMovingEntity{EntityID::Ship, Vector2f(mapLimits().x/2, mapLimits().y/2), Vector2f(_SHIP_SPEED,_SHIP_SPEED)}, _delta_position(0,0) 
+Ship::Ship() : ShootingMovingEntity{EntityID::Ship, Vector2f(mapLimits().x/2 - _SHIP_WIDTH/2, mapLimits().y/2 - _SHIP_HEIGHT/2), Vector2f(_SHIP_SPEED,_SHIP_SPEED)}, _delta_position(0,0) 
 {
 	
 };
@@ -172,9 +172,7 @@ void Ship::setNearestTarget(EntityHolder& targets)
 	{
 		if (target->id() == EntityID::Flyer)
 		{
-			auto diff_in_x = target->position().x - position() .x;
-			auto diff_in_y = target->position().y - position() .y;
-			auto distance = sqrtf(diff_in_x*diff_in_x + diff_in_y*diff_in_y);
+			auto distance = position().distanceBetweenVectors(target->position(), position());
 			if ( distance < minimum)
 			{
 				_nearest_target = target;

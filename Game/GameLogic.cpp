@@ -98,7 +98,8 @@ void GameLogic::handleUserInput()
 	_user_interface.processEvents();
 	list<Events> events_since_last_poll = _user_interface.convertedEvents();
 	for (auto event : events_since_last_poll ) {
-		switch (event) {
+		switch (event) 
+		{
 			case Events::W_Pressed:
 			case Events::W_Released:
 			case Events::S_Pressed:

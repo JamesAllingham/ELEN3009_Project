@@ -13,6 +13,6 @@ void StopWatch::start(){
 }
 
 float StopWatch::stop(){
-	float _elapsed_time = getProcessTime() - _start_time;
+	auto _elapsed_time = getProcessTime() - _start_time;
 	return _elapsed_time;
 }

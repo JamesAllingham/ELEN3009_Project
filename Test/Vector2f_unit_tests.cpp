@@ -8,92 +8,92 @@
 
 TEST(Vector2f, DefaultConstructorReturnsCorrectInitialisationOfMemberData)
 {
-	Vector2f Test;
+	Vector2f test;
 	
-	EXPECT_EQ(0.f, Test.x);
-	EXPECT_EQ(0.f, Test.y);
+	EXPECT_EQ(0.f, test.x);
+	EXPECT_EQ(0.f, test.y);
 }
 
 TEST(Vector2f, CanCorrectlyInitializeDataMembersUsingRelevantConstructor)
 {
-	Vector2f Test(2.f, 5.f);
+	Vector2f test(2.f, 5.f);
 	
-	EXPECT_EQ(2.f, Test.x);
-	EXPECT_EQ(5.f, Test.y);
+	EXPECT_EQ(2.f, test.x);
+	EXPECT_EQ(5.f, test.y);
 }
 
-TEST(Vector2f, EqualSignWorksWithoutBeingOverloaded)
+TEST(Vector2f, AssignmentWorksWithoutBeingOverloaded)
 {
-	Vector2f Test(2.f, 5.f);
-	Vector2f Test2 = Test;
+	Vector2f test(2.f, 5.f);
+	Vector2f test2 = test;
 	
-	EXPECT_EQ(2.f, Test2.x);
-	EXPECT_EQ(5.f, Test2.y);
+	EXPECT_EQ(2.f, test2.x);
+	EXPECT_EQ(5.f, test2.y);
 }
 
 // ==
 
 TEST(Vector2f, EquivalenceOperatorReturnsTrueForTwoEquivalentVectors)
 {
-	Vector2f Test(2.f, 5.f);
-	Vector2f Test2 = Test;
+	Vector2f test(2.f, 5.f);
+	Vector2f test2 = test;
 	
-	EXPECT_TRUE(Test == Test2);
+	EXPECT_TRUE(test == test2);
 }
 
 TEST(Vector2f, EquivalenceOperatorReturnsFalseForTwoInequvalentVectors)
 {
-	Vector2f Test(2.f, 5.f);
-	Vector2f Test2(2.f, 3.f);
+	Vector2f test(2.f, 5.f);
+	Vector2f test2(2.f, 3.f);
 	
-	EXPECT_FALSE(Test == Test2);
+	EXPECT_FALSE(test == test2);
 }
 
 TEST(Vector2f, InEquivalenceOperatorReturnsFalseForTwoEquvalentVectors)
 {
-	Vector2f Test(2.f, 5.f);
-	Vector2f Test2 = Test;
+	Vector2f test(2.f, 5.f);
+	Vector2f test2 = test;
 	
-	EXPECT_FALSE(Test != Test2);
+	EXPECT_FALSE(test != test2);
 }
 
 TEST(Vector2f, InEquivalenceOperatorReturnsTrueForTwoInequvalentVectors)
 {
-	Vector2f Test(2.f, 5.f);
-	Vector2f Test2(2.f, 3.f);
+	Vector2f test(2.f, 5.f);
+	Vector2f test2(2.f, 3.f);
 	
-	EXPECT_TRUE(Test != Test2);
+	EXPECT_TRUE(test != test2);
 }
 
 TEST(Vector2f, PlusOperatorOnTwoVectorsWorksCorrectly)
 {
-	Vector2f Test(2.f, 5.f);
-	Vector2f Test2 = Test;
-	Vector2f Test3 = Test + Test2;
-	EXPECT_TRUE(Vector2f(4.f,10.f) == Test3);
+	Vector2f test(2.f, 5.f);
+	Vector2f test2 = test;
+	Vector2f test3 = test + test2;
+	EXPECT_TRUE(Vector2f(4.f,10.f) == test3);
 }
 
 TEST(Vector2f, PlusOperatorOnVectorPlusScalarWorksCorrectly)
 {
-	Vector2f Test(2.f, 5.f);
-	Vector2f Test2 = Test + 5.f;
-	EXPECT_TRUE(Vector2f(7.f,10.f) == Test2);
+	Vector2f test(2.f, 5.f);
+	Vector2f test2 = test + 5.f;
+	EXPECT_TRUE(Vector2f(7.f,10.f) == test2);
 }
 
 TEST(Vector2f, PlusEqualOperatorOnTwoVectorsWorksCorrectly)
 {
-	Vector2f Test(2.f, 5.f);
-	Vector2f Test2(3.f,4.f);
-	Test += Test2;
-	EXPECT_TRUE(Vector2f(5.f,9.f) == Test);
+	Vector2f test(2.f, 5.f);
+	Vector2f test2(3.f,4.f);
+	test += test2;
+	EXPECT_TRUE(Vector2f(5.f,9.f) == test);
 	
 }
 
 TEST(Vector2f, PlusEqualVectorPlusScalarWorksCorrectly)
 {
-	Vector2f Test(2.f, 5.f);
-	Test += 5;
-	EXPECT_TRUE(Vector2f(7.f,10.f) == Test);
+	Vector2f test(2.f, 5.f);
+	test += 5;
+	EXPECT_TRUE(Vector2f(7.f,10.f) == test);
 	
 }
 
@@ -101,34 +101,34 @@ TEST(Vector2f, PlusEqualVectorPlusScalarWorksCorrectly)
 
 TEST(Vector2f, MinusOperatorVectorMinusVectorHasBeenOverloadedCorrectly)
 {
-	Vector2f Test(2.f, 5.f);
-	Vector2f Test2(3.f,4.f);
-	Vector2f Test3 = Test - Test2;
-	EXPECT_TRUE(Vector2f(-1.f,1.f) == Test3);
+	Vector2f test(2.f, 5.f);
+	Vector2f test2(3.f,4.f);
+	Vector2f test3 = test - test2;
+	EXPECT_TRUE(Vector2f(-1.f,1.f) == test3);
 }
 
 TEST(Vector2f, MinusOperatorVectorMinusScalarHasBeenOverloadedCorrectly)
 {
-	Vector2f Test(2.f, 5.f);
+	Vector2f test(2.f, 5.f);
 	float scalar = 5.f;
-	Vector2f Test2 = Test - scalar;
-	EXPECT_TRUE(Vector2f(-3.f,0.f) == Test2);
+	Vector2f test2 = test - scalar;
+	EXPECT_TRUE(Vector2f(-3.f,0.f) == test2);
 }
 
 TEST(Vector2f, MinusEqualVectorMinusVectorHasBeenOverloadedCorrectly)
 {
-	Vector2f Test(2.f, 5.f);
-	Vector2f Test2(2.f, 4.f);
-	Test -= Test2;
-	EXPECT_TRUE(Vector2f(0.f,1.f) == Test);
+	Vector2f test(2.f, 5.f);
+	Vector2f test2(2.f, 4.f);
+	test -= test2;
+	EXPECT_TRUE(Vector2f(0.f,1.f) == test);
 	
 }
 
 TEST(Vector2f, MinusEqualVectorMinusScalarHasBeenOverloadedCorrectly)
 {
-	Vector2f Test(2.f, 5.f);
-	Test -= 5;
-	EXPECT_TRUE(Vector2f(-3.f,0.f) == Test);
+	Vector2f test(2.f, 5.f);
+	test -= 5;
+	EXPECT_TRUE(Vector2f(-3.f,0.f) == test);
 	
 }
 
@@ -136,60 +136,67 @@ TEST(Vector2f, MinusEqualVectorMinusScalarHasBeenOverloadedCorrectly)
 
 TEST(Vector2f, DotProductBetweenTwoVectorsOperatorHasBeenOverloadedCorrectly)
 {
-	Vector2f Test(2.f, 5.f);
-	Vector2f Test2(3.f,4.f);
-	float Test3 = Test * Test2;
-	EXPECT_TRUE(26.f == Test3);
+	Vector2f test(2.f, 5.f);
+	Vector2f test2(3.f,4.f);
+	float test3 = test * test2;
+	EXPECT_TRUE(26.f == test3);
 }
 
 TEST(Vector2f, VectorScalarMultiplicationOperatorHasBeenOverloadedCorrectly)
 {
-	Vector2f Test(2.f,5.f);
-	Vector2f Test2 = Test * 5.f;
-	EXPECT_TRUE(Vector2f(10.f,25.f) == Test2);
+	Vector2f test(2.f,5.f);
+	Vector2f test2 = test * 5.f;
+	EXPECT_TRUE(Vector2f(10.f,25.f) == test2);
 }
 
 TEST(Vector2f, ScalarVectorMultiplicationOperatorHasBeenOverloadedCorrectly)
 {
-	Vector2f Test(2.f,5.f);
-	Vector2f Test2 = 5.f * Test;
-	EXPECT_TRUE(Vector2f(10.f,25.f) == Test2);
+	Vector2f test(2.f,5.f);
+	Vector2f test2 = 5.f * test;
+	EXPECT_TRUE(Vector2f(10.f,25.f) == test2);
 }
 
 TEST(Vector2f, DotProductEqualOperatorHasBeenOverloadedCorrectly)
 {
-	Vector2f Test(2.f, 5.f);
-	Vector2f Test2(3.f,4.f);
-	Test *= Test2;
-	EXPECT_TRUE(Vector2f(6.f,20.f) == Test);
+	Vector2f test(2.f, 5.f);
+	Vector2f test2(3.f,4.f);
+	test *= test2;
+	EXPECT_TRUE(Vector2f(6.f,20.f) == test);
 }
 
 TEST(Vector2f, VectorScalarMultiplicationEqualOperatorHasBeenOverloadedCorrectly)
 {
-	Vector2f Test(2.f,5.f);
-	Test *= 5.f;
-	EXPECT_TRUE(Vector2f(10.f,25.f) == Test);
+	Vector2f test(2.f,5.f);
+	test *= 5.f;
+	EXPECT_TRUE(Vector2f(10.f,25.f) == test);
 }
 
 // /
 
 TEST(Vector2f, VectorScalarDivisionOperatorHasBeenOverloadedCorrectly)
 {
-	Vector2f Test(2.f,5.f);
-	Vector2f Test2 = Test / 2.f;
-	EXPECT_TRUE(Vector2f(1.f,2.5f) == Test2);
+	Vector2f test(2.f,5.f);
+	Vector2f test2 = test / 2.f;
+	EXPECT_TRUE(Vector2f(1.f,2.5f) == test2);
 }
 
 TEST(Vector2f, VectorScalarDivisionEqualOperatorHasBeenOverloadedCorrectly)
 {
-	Vector2f Test(2.f,5.f);
-	Test /= 2.f;
-	EXPECT_TRUE(Vector2f(1.f,2.5f) == Test);
+	Vector2f test(2.f,5.f);
+	test /= 2.f;
+	EXPECT_TRUE(Vector2f(1.f,2.5f) == test);
 }
 
 TEST(Vector2f, CanCreateAUnitVectorUsingTheUnitVectorFunction)
 {
-	Vector2f Test(2.f, 5.f);
-	Test = Test.unitVector();
-	EXPECT_EQ(Vector2f(2.f / (sqrtf(2.f*2.f+5.f*5.f)), 5.f / (sqrtf(2.f*2.f+5.f*5.f))), Test);
+	Vector2f test(2.f, 5.f);
+	test = test.unitVector();
+	EXPECT_EQ(Vector2f(2.f / (sqrtf(2.f*2.f+5.f*5.f)), 5.f / (sqrtf(2.f*2.f+5.f*5.f))), test);
+}
+
+TEST (Vector2f, CanCalculateDistanceBetweenTwoVectorsUsingtheDistanceBetweenVectorsFunction)
+{
+	Vector2f test(2.f, 5.f);
+	Vector2f test2 (4.f, 3.f);
+	EXPECT_FLOAT_EQ(sqrtf(8), test.distanceBetweenVectors(test, test2));
 }

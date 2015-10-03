@@ -26,6 +26,33 @@ TEST (HomingMissile, HomingMissileGetsDestroyedWhenCollidingWithAFlyer)
 	EXPECT_TRUE(homing_missile.destroyed());
 }
 
+TEST (HomingMissile, HomingMissileMovesTowardsNearestTargetUntilTheyAreColliding)
+{
+	Entity::setMapLimits(Vector2f(4800,600));
+	shared_ptr<MovingEntity> target_ptr = make_shared<Flyer>();
+	HomingMissile homing_missile(target_ptr->position()+20.f, target_ptr);
+	auto distance = homing_missile.position().distanceBetweenVectors(homing_missile.position(), target_ptr->position());
+	float prev_distance;
+	while (distance > 1.f) //float distances, will never be precise
+	{
+		prev_distance = distance;
+		target_ptr->move(0.01f);
+		homing_missile.move(0.01f);
+		distance = homing_missile.position().distanceBetweenVectors(homing_missile.position(), target_ptr->position());
+		ASSERT_TRUE(distance < prev_distance);
+	}
+}
+
+TEST (HomingMissile, HomingMissileGetsDestroyedWhenItsTargetIsDestroyed)
+{
+	Entity::setMapLimits(Vector2f(4800,600));
+	shared_ptr<MovingEntity> target_ptr = make_shared<Flyer>();
+	HomingMissile homing_missile(target_ptr->position()+20.f, target_ptr);
+	target_ptr->destroy();
+	homing_missile.move(1.f);
+	EXPECT_TRUE(homing_missile.destroyed());
+}
+
 TEST (HomingMissile, HomingMissileHitboxIsTheCorrectShape)
 {
 	//testing for a box

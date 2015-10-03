@@ -19,9 +19,19 @@ public:
 	*/
 	Vector2f unitVector()
 	{
-		float mag = sqrtf(this->x*this->x + this->y*this->y);
+		auto mag = sqrtf(this->x*this->x + this->y*this->y);
 		return Vector2f (this->x / mag , this->y / mag );
 	};
+	/**
+	* Calculates the distance between two vectors.
+	* @return a float signifying the absolute distance between the two Vector2f vectors.
+	*/
+	float distanceBetweenVectors( Vector2f vector_1, Vector2f vector_2)
+	{
+		auto x_distance = vector_1.x - vector_2.x;
+		auto y_distance = vector_1.y - vector_2.y; 
+		return sqrtf(x_distance*x_distance + y_distance*y_distance);
+	}
 	
 	float x = 0;
 	float y = 0; //public due to the original vector2f class having these as public too

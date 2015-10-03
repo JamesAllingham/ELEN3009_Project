@@ -43,8 +43,8 @@ public:
 	virtual void collide(const shared_ptr<Entity>& collider) override;	
 	
 private:		
-	static constexpr const float _LASER_WIDTH = 35.f;
-	static constexpr const float _LASER_HEIGHT = 25.f;	
-	static constexpr const float _LASER_SPEED = 600.f;	
+	static constexpr const auto _LASER_WIDTH = 35.f;
+	static constexpr const auto _LASER_HEIGHT = 25.f;	
+	static constexpr const auto _LASER_SPEED = 600.f;	
 };	
 #endif

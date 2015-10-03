@@ -17,10 +17,10 @@ TEST (Collision, succesfulyDetectsCollisionBetweenCollidingObjects)
 {
 	EntityHolder test_entity_holder;
 	
-	// Create a Ship and take advantage of the fact that it spawns at the center of the MAP_LIMITS to position it
-	Entity::setMapLimits(Vector2f(100.f,10.f));
+	// Create a Ship and take advantage of the fact that it spawns at the centre of the MAP_LIMITS to position it
+	Entity::setMapLimits(Vector2f(100.f + 75.f,10.f + 30.f));
 	shared_ptr<Ship> ship_ptr = make_shared<Ship>();
-	// Create a Ship and take advantage of the fact that it spawns randomly within the MAP_LIMITS to position it
+	// Create a Flyer and take advantage of the fact that it spawns randomly within the MAP_LIMITS to position it
 	Entity::setMapLimits(Vector2f(50.f,5.f));
 	shared_ptr<Flyer> flyer_ptr = make_shared<Flyer>();
 	

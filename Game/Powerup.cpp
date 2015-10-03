@@ -11,9 +11,9 @@ Powerup::~Powerup()
 }
 
 float Powerup::randomPosition (float max_positon) {
-	int largest_dimension = static_cast<int>((_POWER_UP_WIDTH>_POWER_UP_HEIGHT)?_POWER_UP_WIDTH:_POWER_UP_HEIGHT);
-	int tmp = static_cast<int>(max_positon - largest_dimension);
-	int rand_num = rand()%tmp;
+	auto largest_dimension = static_cast<int>((_POWER_UP_WIDTH>_POWER_UP_HEIGHT)?_POWER_UP_WIDTH:_POWER_UP_HEIGHT);
+	auto tmp = static_cast<int>(max_positon - largest_dimension);
+	auto rand_num = rand()%tmp;
 	return static_cast<float>(rand_num);
 }
 

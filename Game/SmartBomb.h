@@ -41,8 +41,8 @@ public:
 	virtual void collide(const shared_ptr<Entity>& collider) override;	
 	
 private:		
-	static constexpr const float _SMART_BOMB_WIDTH = 800.f;
-	static constexpr const float _SMART_BOMB_HEIGHT = 600.f;	
-	static constexpr const float _SMART_BOMB_SPEED = 0.f;
+	static constexpr const auto _SMART_BOMB_WIDTH = 800.f;
+	static constexpr const auto _SMART_BOMB_HEIGHT = 600.f;	
+	static constexpr const auto _SMART_BOMB_SPEED = 0.f;
 };	
 #endif

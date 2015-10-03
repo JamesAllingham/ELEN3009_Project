@@ -30,7 +30,7 @@ TEST (Ship, ShipInitialisesItsPositionToTheCentreOfTheMap)
 {
 	Ship ship;
 	ship.setMapLimits(Vector2f(4800,600));
-	EXPECT_EQ(Vector2f(Entity::mapLimits().x/2,Entity::mapLimits().y/2), ship.position());
+	EXPECT_EQ(Vector2f(Entity::mapLimits().x/2 -75/2,Entity::mapLimits().y/2 - 30/2), ship.position());
 }
 
 TEST (Ship, ShipCanMoveTheDesiredDistance)
@@ -39,19 +39,65 @@ TEST (Ship, ShipCanMoveTheDesiredDistance)
 	ship.setMapLimits(Vector2f(4800,600));
 	ship.controlMovement(Events::D_Pressed); // move right
 	ship.move( .1f );
-	EXPECT_EQ(Vector2f(2400 + 30, 300), ship.position());
+	EXPECT_EQ(Vector2f(2400 - 75/2 + 30, 300 - 30/2), ship.position());
 	ship.controlMovement(Events::D_Released);
 	ship.controlMovement(Events::A_Pressed);	// move left
 	ship.move( .1f );
-	EXPECT_EQ(Vector2f(2400 + 30 - 30, 300), ship.position());
+	EXPECT_EQ(Vector2f(2400 - 75/2 + 30 - 30, 300 - 30/2), ship.position());
 	ship.controlMovement(Events::A_Released);
 	ship.controlMovement(Events::W_Pressed);	// move up
 	ship.move( .1f );
-	EXPECT_EQ(Vector2f(2400 + 30 - 30, 300 - 30), ship.position());
+	EXPECT_EQ(Vector2f(2400 - 75/2 + 30 - 30, 300 - 30/2 - 30), ship.position());
 	ship.controlMovement(Events::W_Released);
 	ship.controlMovement(Events::S_Pressed);	// move down
 	ship.move( .1f );
-	EXPECT_EQ(Vector2f(2400 + 30 - 30, 300 - 30 + 30), ship.position());
+	EXPECT_EQ(Vector2f(2400 - 75/2 + 30 - 30, 300 - 30/2 - 30 + 30), ship.position());
+}
+
+TEST (Ship, ShipCannotOutOfTheMapLimits)
+{
+	Ship ship;
+	ship.setMapLimits(Vector2f(4800,600));
+	ship.controlMovement(Events::D_Pressed); //move right
+	Vector2f prev_position = ship.position();
+	ship.move(0.1f);
+	while (prev_position != ship.position())
+	{
+		prev_position = ship.position();
+		ship.move(2.f);
+		EXPECT_TRUE (ship.position().x <= ship.mapLimits().x);
+			
+	}
+	ship.controlMovement(Events::D_Released);
+	ship.controlMovement(Events::A_Pressed);	// move left
+	prev_position = ship.position();
+	ship.move(0.1f);
+	while (prev_position != ship.position())
+	{
+		prev_position = ship.position();
+		ship.move(2.f);
+		EXPECT_TRUE (ship.position().x >= 0);
+	}
+	ship.controlMovement(Events::A_Released);
+	ship.controlMovement(Events::W_Pressed);	// move up
+	prev_position = ship.position();
+	ship.move(0.1f);
+	while (prev_position != ship.position())
+	{
+		prev_position = ship.position();
+		ship.move(2.f);
+		EXPECT_TRUE (ship.position().y >= 0.f);
+	}
+	ship.controlMovement(Events::W_Released);
+	ship.controlMovement(Events::S_Pressed);	// move down
+	prev_position = ship.position();
+	ship.move(0.1f);
+	while (prev_position != ship.position())
+	{
+		prev_position = ship.position();
+		ship.move(2.f);
+		EXPECT_TRUE (ship.position().x <= ship.mapLimits().y);
+	}
 }
 
 TEST (Ship, ShipCanSwitchDirectionItsFacing)
