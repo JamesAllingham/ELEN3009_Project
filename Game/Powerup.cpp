@@ -41,7 +41,7 @@ list<Vector2f> Powerup::hitboxPoints()
 	return hitbox_points;
 }
 
-bool Powerup::PowerupOnTheMap()
+bool Powerup::powerupOnTheMap()
 {
 	return _powerup_on_the_map;
 }

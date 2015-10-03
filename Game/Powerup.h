@@ -43,7 +43,7 @@ public:
     * Static function.
     * @return a bool containing the current state of a Powerup being on the map.
     */
-	static bool PowerupOnTheMap ();
+	static bool powerupOnTheMap();
 	
 protected:   
 	/**

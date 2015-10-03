@@ -53,10 +53,16 @@ public:
     */	
 	const Resource& get(Identifier id) const;
 	
-private:		
+private:	
+	/**
+    * Adds a unique_ptr to a resource to the map of resources
+    * @param id is the identifier which is used to find and then return the appropriate Resource.
+	* @param is a constant reference to the Resource matching the id supplied.
+    */	
+	void addResource(Identifier id, unique_ptr<Resource>& resource_ptr);
+	
 	map<Identifier, unique_ptr<Resource>> _resources;
 	
-	void addResource(Identifier, unique_ptr<Resource>&);
 };
 
 // Because this is a templated class, the definitions need to be included in the header file, else there will be linker errors

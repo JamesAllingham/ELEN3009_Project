@@ -46,9 +46,9 @@ public:
 	virtual void collide(shared_ptr<Entity> collider) override;	
 	
 private:		
-	static constexpr const float _MISSILE_WIDTH = 25.f;
-	static constexpr const float _MISSILE_HEIGHT = 25.f;	
-	static constexpr const float _MISSILE_SPEED = 200.f;
-	shared_ptr<Entity> _nearest_target;
+	static constexpr const float _HOMING_MISSILE_WIDTH = 25.f;
+	static constexpr const float _HOMING_MISSILE_HEIGHT = 25.f;	
+	static constexpr const float _HOMING_MISSILE_SPEED = 200.f;
+	shared_ptr<Entity> _target;
 };	
 #endif
