@@ -3,14 +3,20 @@
 
 #include <cmath>
 
+/**
+* Vector2f lightweight class - responsible for vector mathematics.
+* Operators are overloaded for equality, inequality, scalar and vector addition, scalar and vector subtraction, scalar multiplication, the dot product between two vectors and scalar division.
+*/
 class Vector2f
 {
 public:
 	Vector2f () {};
-	Vector2f (float x_in, float y_in) : x(x_in), y(y_in) {};
+	Vector2f (float x_in, float y_in) : x(x_in), y(y_in) {};	
 	
-	Vector2f crossProduct ( Vector2f lhs, Vector2f rhs) {return Vector2f( lhs.x * rhs.y - lhs.y * rhs.x , lhs.y * rhs.x - lhs.x * rhs.y);};
-	
+	/**
+	* Calculates the unit vector of a vector.
+	* @return a Vector2f containing the direction of the original vector but with a magnitude of 1.
+	*/
 	Vector2f unitVector()
 	{
 		float mag = sqrtf(this->x*this->x + this->y*this->y);
@@ -23,10 +29,15 @@ public:
 private:
 
 };
-
+	
 inline bool operator==(const Vector2f& lhs, const Vector2f& rhs)
 {
 	return (lhs.x == rhs.x && lhs.y == rhs.y);
+}
+
+inline bool operator!=(const Vector2f& lhs, const Vector2f& rhs)
+{
+	return !(lhs==rhs);
 }
 
 // PLUS operators

@@ -30,11 +30,11 @@ list<Vector2f> Collision::normals(const list<Vector2f>& polygon_points) const
 	for (auto iter = begin(polygon_points); iter != prev(end(polygon_points)); iter++)
 	{	
 		Vector2f temp_normal(-next(iter)->y + iter->y,next(iter)->x - iter->x);
-		normals.push_back(temp_normal);
+		normals.push_back(temp_normal.unitVector());
 	}
 	
 	Vector2f temp_normal(-(begin(polygon_points))->y  + (prev(end(polygon_points)))->y,(begin(polygon_points))->x - (prev(end(polygon_points)))->x);
-	normals.push_back(temp_normal);
+	normals.push_back(temp_normal.unitVector());
 	
 	return normals;
 }

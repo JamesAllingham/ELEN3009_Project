@@ -4,6 +4,7 @@
 #include "gtest/gtest.h"
 
 using std::next;
+using std::make_shared;
 
 TEST(EntityHolder, doesntAddANullPointer)
 {
@@ -18,11 +19,11 @@ TEST(EntityHolder, succesfullyAddsAValidEntity)
 {
 	EntityHolder testEntityHolder;
 	
-	testEntityHolder.addEntity(shared_ptr<Flyer> (new Flyer));
+	testEntityHolder.addEntity(make_shared<Flyer> ());
 	
 	EXPECT_EQ(testEntityHolder.numberOfEntities(),1);
 	
-	testEntityHolder.addEntity(shared_ptr<Flyer> (new Flyer));
+	testEntityHolder.addEntity(make_shared<Flyer> ());
 	
 	EXPECT_EQ(testEntityHolder.numberOfEntities(),2);
 }
@@ -31,7 +32,7 @@ TEST(EntityHolder, succesfullyEraseAnEntityAtStartOFContainer)
 {
 	EntityHolder testEntityHolder;
 	
-	testEntityHolder.addEntity(shared_ptr<Ship> (new Ship));	
+	testEntityHolder.addEntity(make_shared<Ship> ());	
 	
 	testEntityHolder.eraseEntity(testEntityHolder.begin());
 	
@@ -42,9 +43,9 @@ TEST(EntityHolder, succesfullyEraseAnEntityAtAnAribitraryPositionInContainer)
 {
 	EntityHolder testEntityHolder;
 	
-	testEntityHolder.addEntity(shared_ptr<Flyer> (new Flyer));	
-	testEntityHolder.addEntity(shared_ptr<Flyer> (new Flyer));
-	testEntityHolder.addEntity(shared_ptr<Flyer> (new Flyer));
+	testEntityHolder.addEntity(make_shared<Flyer> ());	
+	testEntityHolder.addEntity(make_shared<Flyer> ());
+	testEntityHolder.addEntity(make_shared<Flyer> ());
 	
 	testEntityHolder.eraseEntity(next(testEntityHolder.begin()));
 	
@@ -55,9 +56,9 @@ TEST(EntityHolder, succesfullyEraseAllEntitesInContainer)
 {
 	EntityHolder testEntityHolder;
 	
-	testEntityHolder.addEntity(shared_ptr<Flyer> (new Flyer));	
-	testEntityHolder.addEntity(shared_ptr<Flyer> (new Flyer));
-	testEntityHolder.addEntity(shared_ptr<Flyer> (new Flyer));
+	testEntityHolder.addEntity(make_shared<Flyer> ());	
+	testEntityHolder.addEntity(make_shared<Flyer> ());
+	testEntityHolder.addEntity(make_shared<Flyer> ());
 	
 	for (auto entity_itr = testEntityHolder.begin(); entity_itr != testEntityHolder.end(); )
 	{

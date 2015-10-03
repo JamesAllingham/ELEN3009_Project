@@ -39,6 +39,30 @@ TEST(Vector2f, EquivalenceOperatorReturnsTrueForTwoEquvalentVectors)
 	EXPECT_TRUE(Test == Test2);
 }
 
+TEST(Vector2f, EquivalenceOperatorReturnsFalseForTwoInequvalentVectors)
+{
+	Vector2f Test(2.f, 5.f);
+	Vector2f Test2(2.f, 3.f);
+	
+	EXPECT_FALSE(Test == Test2);
+}
+
+TEST(Vector2f, InEquivalenceOperatorReturnsFalseForTwoEquvalentVectors)
+{
+	Vector2f Test(2.f, 5.f);
+	Vector2f Test2 = Test;
+	
+	EXPECT_FALSE(Test != Test2);
+}
+
+TEST(Vector2f, InEquivalenceOperatorReturnsTrueForTwoInequvalentVectors)
+{
+	Vector2f Test(2.f, 5.f);
+	Vector2f Test2(2.f, 3.f);
+	
+	EXPECT_TRUE(Test != Test2);
+}
+
 TEST(Vector2f, PlusOperatorVectorLvalueHasBeenOverloadedCorrectly)
 {
 	Vector2f Test(2.f, 5.f);
@@ -146,17 +170,6 @@ TEST(Vector2f, VectorScalarDivisionEqualOperatorWorksCorrectly)
 	Vector2f Test(2.f,5.f);
 	Test /= 2.f;
 	EXPECT_TRUE(Vector2f(1.f,2.5f) == Test);
-}
-
-// | x1 y1 |
-// | x2 y2 | = (x1*y2 - y1*x2, y1*x2 - y2*x1
-TEST(Vector2f, CrossProductFunctionWorksCorrectly)
-{
-	Vector2f Test(2.f, 5.f);
-	Vector2f Test2(3.f,4.f);
-	Vector2f Test3 = Test3.crossProduct(Test, Test2);
-	EXPECT_TRUE(Vector2f(-7.f,7.f) == Test3);
-	
 }
 
 TEST(Vector2f, CanCreateAUnitVectorUsingTheUnitVectorFunction)
