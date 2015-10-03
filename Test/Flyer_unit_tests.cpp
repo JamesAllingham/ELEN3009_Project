@@ -20,42 +20,42 @@ using std::make_shared;
 
 TEST (Flyer, FlyerGetsDestroyedWhenCollidingWithShip)
 {
-	Flyer TestFlyer;
+	Flyer test_flyer;
 	shared_ptr<Entity> ship_ptr = make_shared<Ship>();
-	TestFlyer.collide(ship_ptr);
-	EXPECT_TRUE(TestFlyer.destroyed());
+	test_flyer.collide(ship_ptr);
+	EXPECT_TRUE(test_flyer.destroyed());
 }
 
 TEST (Flyer, FlyerGetsDestroyedWhenCollidingWithLaser)
 {
-	Flyer TestFlyer;
+	Flyer test_flyer;
 	shared_ptr<Entity> Laser_ptr = make_shared<Laser>(Vector2f(0,0), Vector2f(0,0));
-	TestFlyer.collide(Laser_ptr);
-	EXPECT_TRUE(TestFlyer.destroyed());
+	test_flyer.collide(Laser_ptr);
+	EXPECT_TRUE(test_flyer.destroyed());
 }
 
 TEST (Flyer, FlyerGetsDestroyedWhenCollidingWithHomingMissile)
 {
-	Flyer TestFlyer;
+	Flyer test_flyer;
 	shared_ptr<Entity> nearest_target = make_shared<Flyer>();
 	shared_ptr<Entity> Homing_Missile_ptr = make_shared<HomingMissile>(Vector2f(0,0), nearest_target);
-	TestFlyer.collide(Homing_Missile_ptr);
-	EXPECT_TRUE(TestFlyer.destroyed());
+	test_flyer.collide(Homing_Missile_ptr);
+	EXPECT_TRUE(test_flyer.destroyed());
 }
 
 TEST (Flyer, FlyerGetsDestroyedWhenCollidingWithSmartBomb)
 {
-	Flyer TestFlyer;
+	Flyer test_flyer;
 	shared_ptr<Entity> Smart_Bomb_ptr = make_shared<SmartBomb>(200.f);
-	TestFlyer.collide(Smart_Bomb_ptr);
-	EXPECT_TRUE(TestFlyer.destroyed());
+	test_flyer.collide(Smart_Bomb_ptr);
+	EXPECT_TRUE(test_flyer.destroyed());
 }
 
 TEST (Flyer, NumberOfFlyersIncreasesWithNewlyCreatedFlyers)
 {
-	Flyer Flyer1;
-	Flyer Flyer2;
-	Flyer Flyer3;
+	Flyer flyer1;
+	Flyer flyer2;
+	Flyer flyer3;
 	
 	EXPECT_EQ(3, Flyer::numberOfFlyers());
 }
@@ -63,10 +63,10 @@ TEST (Flyer, NumberOfFlyersIncreasesWithNewlyCreatedFlyers)
 TEST (Flyer, NumberOfFlyersDecreasesWithDestroyedFlyer)
 {
 	
-	Flyer Flyer1;
-	Flyer Flyer2;
+	Flyer flyer1;
+	Flyer flyer2;
 	{
-	Flyer Flyer3;
+	Flyer flyer3;
 	
 	EXPECT_EQ(3, Flyer::numberOfFlyers());
 	}
@@ -76,28 +76,28 @@ TEST (Flyer, NumberOfFlyersDecreasesWithDestroyedFlyer)
 
 TEST (Flyer, FlyerCanShootAMissileIfTimeBetweenShotsHasBeenExceeded)
 {
-	Flyer TestFlyer;
-	shared_ptr<Entity> Laser_ptr = make_shared<Laser>(TestFlyer.position(), Vector2f(0,0)); //setting a target to be within range
-	TestFlyer.setTarget(Laser_ptr);
-	shared_ptr<Entity> shooting_ptr = TestFlyer.shoot(30.f );
+	Flyer test_flyer;
+	shared_ptr<Entity> Laser_ptr = make_shared<Laser>(test_flyer.position(), Vector2f(0,0)); //setting a target to be within range
+	test_flyer.setTarget(Laser_ptr);
+	shared_ptr<Entity> shooting_ptr = test_flyer.shoot(30.f );
 	EXPECT_FALSE(shooting_ptr == nullptr);
 	
 }
 
 TEST (Flyer, FlyerCannotShootAMissileIfTimeBetweenShotsHasNotBeenExceeded)
 {
-	Flyer TestFlyer;
-	shared_ptr<Entity> Laser_ptr = make_shared<Laser>(TestFlyer.position(), Vector2f(0,0)); //setting a target to be within range
-	TestFlyer.setTarget(Laser_ptr);
-	shared_ptr<Entity> shooting_ptr = TestFlyer.shoot(0.f );
+	Flyer test_flyer;
+	shared_ptr<Entity> Laser_ptr = make_shared<Laser>(test_flyer.position(), Vector2f(0,0)); //setting a target to be within range
+	test_flyer.setTarget(Laser_ptr);
+	shared_ptr<Entity> shooting_ptr = test_flyer.shoot(0.f );
 	EXPECT_TRUE(shooting_ptr == nullptr);
 }
 
 TEST (Flyer, FlyerHitboxIsTheCorrectShape)
 {
 	//testing for a box
-	Flyer TestFlyer;
-	list<Vector2f> hitbox = TestFlyer.hitboxPoints();
+	Flyer test_flyer;
+	list<Vector2f> hitbox = test_flyer.hitboxPoints();
 	//test top section = bottom section
 	Vector2f top_length = *next(hitbox.begin()) - hitbox.front();
 	Vector2f bottom_length = *prev(hitbox.end(),2) - hitbox.back();
@@ -108,25 +108,25 @@ TEST (Flyer, FlyerHitboxIsTheCorrectShape)
 	EXPECT_TRUE(left_length == right_length);
 }
 
-TEST (Flyer, ShipHitboxIsAlwaysTheSameAreaRegardlessOfPositionOnMap)
+TEST (Flyer, FlyerHitboxIsAlwaysTheSameAreaRegardlessOfPositionOnMap)
 {
 	//test dependent on random position generation for the flyers
-	Flyer TestFlyer1;
-	list<Vector2f> hitbox1 = TestFlyer1.hitboxPoints();
+	Flyer test_flyer1;
+	list<Vector2f> hitbox1 = test_flyer1.hitboxPoints();
 	Vector2f top_length = *next(hitbox1.begin()) - hitbox1.front();
 	Vector2f bottom_length = *prev(hitbox1.end(),2) - hitbox1.back();
 	Vector2f left_length = hitbox1.front() - hitbox1.back();
 	Vector2f right_length = *next(hitbox1.begin()) - *prev(hitbox1.end(),2);
-	float area1 = top_length * left_length;
-	float area1_again = bottom_length*right_length;
-	Flyer TestFlyer2;
-	list<Vector2f> hitbox2 = TestFlyer2.hitboxPoints();
+	auto area1 = top_length * left_length;
+	auto area1_again = bottom_length*right_length;
+	Flyer test_flyer2;
+	list<Vector2f> hitbox2 = test_flyer2.hitboxPoints();
 	Vector2f top_length2 = *next(hitbox2.begin()) - hitbox2.front();
 	Vector2f bottom_length2 = *prev(hitbox2.end(),2) - hitbox2.back();
 	Vector2f left_length2 = hitbox2.front() - hitbox2.back();
 	Vector2f right_length2 = *next(hitbox2.begin()) - *prev(hitbox2.end(),2);
-	float area2 = top_length2*left_length2;
-	float area2_again = bottom_length2*right_length2;
+	auto area2 = top_length2*left_length2;
+	auto area2_again = bottom_length2*right_length2;
 	EXPECT_FLOAT_EQ(area1, area1_again);
 	EXPECT_FLOAT_EQ(area2, area2_again);
 	EXPECT_FLOAT_EQ(area1, area2);

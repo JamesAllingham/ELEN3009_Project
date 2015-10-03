@@ -5,7 +5,7 @@ IPATH=-I..\gtest\include -I..\Game -I..\sfml\include
 CC=g++ -std=c++14
 ATTACKERPATH:=..\Game
 MAKE=mingw32-make
-OBJS=main.o ResourceHolder_unit_tests.o Flyer_unit_tests.o EntityHolder_unit_tests.o Vector2f_unit_tests.o Ship_unit_tests.o Entity_unit_tests.o Collisions_unit_tests.o SmartBomb_unit_tests.o$(ATTACKERPATH)\Flyer.o $(ATTACKERPATH)\Ship.o $(ATTACKERPATH)\Entity.o $(ATTACKERPATH)\Missile.o $(ATTACKERPATH)\Laser.o $(ATTACKERPATH)\HomingMissile.o $(ATTACKERPATH)\EntityHolder.o $(ATTACKERPATH)\SmartBomb.o $(ATTACKERPATH)\Powerup.o $(ATTACKERPATH)\Collisions.o
+OBJS=main.o ResourceHolder_unit_tests.o Flyer_unit_tests.o EntityHolder_unit_tests.o Vector2f_unit_tests.o Ship_unit_tests.o Entity_unit_tests.o Collisions_unit_tests.o SmartBomb_unit_tests.o Laser_unit_tests.o $(ATTACKERPATH)\Flyer.o $(ATTACKERPATH)\Ship.o $(ATTACKERPATH)\Entity.o $(ATTACKERPATH)\Missile.o $(ATTACKERPATH)\Laser.o $(ATTACKERPATH)\HomingMissile.o $(ATTACKERPATH)\EntityHolder.o $(ATTACKERPATH)\SmartBomb.o $(ATTACKERPATH)\Powerup.o $(ATTACKERPATH)\Collisions.o
 all: test.exe
 test.exe: $(OBJS) 
 	$(CC) $(OBJS) $(LFLAGS) $(LPATH) -o test.exe
@@ -27,6 +27,8 @@ SmartBomb_unit_tests.o: SmartBomb_unit_tests.cpp $(ATTACKERPATH)\SmartBomb.h
 	$(CC) $(CFLAGS) $(IPATH) SmartBomb_unit_tests.cpp -o SmartBomb_unit_tests.o	
 Entity_unit_tests.o: Entity_unit_tests.cpp $(ATTACKERPATH)\Vector2f.h $(ATTACKERPATH)\Character.h $(ATTACKERPATH)\EntityID.h
 	$(CC) $(CFLAGS) $(IPATH) Entity_unit_tests.cpp -o Entity_unit_tests.o
+Laser_unit_tests.o: Laser_unit_tests.cpp $(ATTACKERPATH)\Laser.h $(ATTACKERPATH)\Flyer.h $(ATTACKERPATH)\Missile.h
+	$(CC) $(CFLAGS) $(IPATH) Laser_unit_tests.cpp -o Laser_unit_tests.o
 $(ATTACKERPATH)\Flyer.o:
 	$(MAKE) -C $(ATTACKERPATH)
 $(ATTACKERPATH)\Missile.o:
