@@ -1,0 +1,9 @@
+<map id="Entity::mapLimits" name="Entity::mapLimits">
+<area shape="rect" id="node2" href="$class_flyer.html#adaf086c8aeaaeea9b163cf1405b34297" title="Constructor. " alt="" coords="199,5,287,32"/>
+<area shape="rect" id="node3" href="$class_flyer.html#a789e59d09800993cadaff15489780850" title="Inherited from ShootingMovingEntity. " alt="" coords="198,56,287,83"/>
+<area shape="rect" id="node4" href="$class_laser.html#adf3238de39f8538f90e193517d94353b" title="Inherited from MovingEntity. " alt="" coords="197,107,289,133"/>
+<area shape="rect" id="node5" href="$class_missile.html#ac5463127eba97dd0a171c1427b3f4b83" title="Inherited from MovingEntity. " alt="" coords="192,157,293,184"/>
+<area shape="rect" id="node6" href="$class_powerup.html#a20c3efe6b86d6f358a57f8215d157b20" title="Constructor. " alt="" coords="177,208,308,235"/>
+<area shape="rect" id="node7" href="$class_ship.html#ab7608fcfc4d27c678aacaf9bfd68a462" title="Constructor. " alt="" coords="201,259,284,285"/>
+<area shape="rect" id="node8" href="$class_ship.html#acf829e42a8df879a2cfa705d3527cd1a" title="Inherited from ShootingMovingEntity. " alt="" coords="199,309,286,336"/>
+</map>

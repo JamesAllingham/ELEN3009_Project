@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['_7eflyer',['~Flyer',['../classFlyer.html#a00ebe650efb5e1fa91d7d8a485b79b97',1,'Flyer']]],
-  ['_7epowerup',['~Powerup',['../classPowerup.html#a2e1c97859d671527885e6f4eb200ca3f',1,'Powerup']]],
-  ['_7esmartbomb',['~SmartBomb',['../classSmartBomb.html#a146f706e73d8433f0d3371ab73a50eb9',1,'SmartBomb']]]
+  ['vector2f',['Vector2f',['../class_vector2f.html#a3db9a868c58bc809e5e09a88d65a77ec',1,'Vector2f::Vector2f()'],['../class_vector2f.html#a54484c25ce077d9291b52d5b243c7c90',1,'Vector2f::Vector2f(float x_in, float y_in)']]],
+  ['velocity',['velocity',['../class_moving_entity.html#a4d46cd1fe212de0e14881661fc841c51',1,'MovingEntity']]]
 ];

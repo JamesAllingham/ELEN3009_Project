@@ -1,0 +1,12 @@
+<map id="GameLogic::handleCollisions" name="GameLogic::handleCollisions">
+<area shape="rect" id="node2" href="$class_entity_holder.html#a57bbeb45498b9226b59fe82492c3a19a" title="When used with end() allows the Entity objects to be iterated through. " alt="" coords="269,5,401,32"/>
+<area shape="rect" id="node3" href="$class_entity_holder.html#a85c1091f75c540da09e60c25d9a2901f" title="When used with begin() allows the Entity objects to be iterated through. " alt="" coords="273,56,396,83"/>
+<area shape="rect" id="node4" href="$class_collision.html#a110338fc6c50e967ec37569c218694c0" title="Runs the collision detection algorithm. " alt="" coords="244,107,425,133"/>
+<area shape="rect" id="node11" href="$class_entity_holder.html#ada37b5b2dc2aac40e40c49ce0b35bb79" title="Removes the shared pointer of a specific Entity from the collection. " alt="" coords="251,157,418,184"/>
+<area shape="rect" id="node5" href="$class_collision.html#ab21bec978333a88f76edcb7eddde7736" title="Implements the separating axis theorem for two Entity objects. " alt="" coords="473,107,600,133"/>
+<area shape="rect" id="node6" href="$class_collision.html#a781ede95ef88d9f844fb87937cd98f00" title="Generates left normals of the vectors connecting the given points. " alt="" coords="683,56,808,83"/>
+<area shape="rect" id="node9" href="$class_collision.html#a2861c84dd0eaed8b667c172bd3c769ea" title="Calculates the maximum projection of a set of vectors onto a normal vector. " alt="" coords="648,107,843,133"/>
+<area shape="rect" id="node10" href="$class_collision.html#a930fbd1e6de1fdb243ec51972fff0c0a" title="Calculates the minimum projection of a set of vectors onto a normal vector. " alt="" coords="650,157,841,184"/>
+<area shape="rect" id="node7" href="$class_vector2f.html#a01f56b56ad7b33b8f6017fc2c9dba548" title="Calculates the unit vector of a vector. " alt="" coords="891,56,1028,83"/>
+<area shape="rect" id="node8" href="$class_vector2f.html#a3db9a868c58bc809e5e09a88d65a77ec" title="Vector2f::Vector2f" alt="" coords="1076,56,1203,83"/>
+</map>

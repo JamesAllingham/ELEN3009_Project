@@ -1,0 +1,5 @@
+<map id="IShooter" name="IShooter">
+<area shape="rect" id="node2" href="$class_shooting_moving_entity.html" title="ShootingMovingEntity class &#45; an extension of the MovingEntity class which adds the shoot() function..." alt="" coords="153,131,320,267"/>
+<area shape="rect" id="node3" href="$class_flyer.html" title="Flyer class &#45; represents the enemy Flyers. " alt="" coords="5,454,217,810"/>
+<area shape="rect" id="node4" href="$class_ship.html" title="Ship class &#45; represents the user controlled player object. " alt="" coords="241,315,485,949"/>
+</map>

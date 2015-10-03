@@ -1,0 +1,7 @@
+<map id="UserInterface::drawText" name="UserInterface::drawText">
+<area shape="rect" id="node2" href="$class_user_interface.html#a385c0e53148307076638da64883f9dad" title="Renders the game to the Window. " alt="" coords="475,13,617,39"/>
+<area shape="rect" id="node6" href="$class_user_interface.html#a73779601501a7ea4033f1cb7b1fb5451" title="displays the current information regarding the status of the ship. " alt="" coords="212,38,427,65"/>
+<area shape="rect" id="node3" href="$class_game_logic.html#a5758b64661ae5c8c6776f4b3cc50819f" title="Tells the graphic interface to render the current state of the game. " alt="" coords="665,5,840,47"/>
+<area shape="rect" id="node4" href="$class_game_logic.html#a12b2d33409167d96ff6c3feaa320d1c5" title="Runs the game loop. " alt="" coords="888,13,1037,39"/>
+<area shape="rect" id="node5" href="$class_game_logic.html#a996cd781691c36922e7ce792fcb21640" title="Constructor. " alt="" coords="1085,13,1248,39"/>
+</map>

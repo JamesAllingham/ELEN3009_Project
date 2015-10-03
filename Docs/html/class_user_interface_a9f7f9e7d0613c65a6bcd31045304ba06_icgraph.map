@@ -1,0 +1,6 @@
+<map id="UserInterface::lostGame" name="UserInterface::lostGame">
+<area shape="rect" id="node2" href="$class_game_logic.html#ab4151d9cdbc796d72eb6b40f7ab092ae" title="Begins the losing the game sequence. " alt="" coords="216,5,371,32"/>
+<area shape="rect" id="node3" href="$class_game_logic.html#a7614f98110bba657dcea6a004b84a877" title="Updates the state of the game based on how much time has passed. " alt="" coords="419,5,553,32"/>
+<area shape="rect" id="node4" href="$class_game_logic.html#a12b2d33409167d96ff6c3feaa320d1c5" title="Runs the game loop. " alt="" coords="601,5,751,32"/>
+<area shape="rect" id="node5" href="$class_game_logic.html#a996cd781691c36922e7ce792fcb21640" title="Constructor. " alt="" coords="799,5,961,32"/>
+</map>

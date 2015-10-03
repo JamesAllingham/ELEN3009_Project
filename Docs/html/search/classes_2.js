@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['flyer',['Flyer',['../classFlyer.html',1,'']]]
+  ['flyer',['Flyer',['../class_flyer.html',1,'']]]
 ];

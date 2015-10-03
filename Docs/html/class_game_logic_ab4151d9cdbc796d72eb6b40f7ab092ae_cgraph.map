@@ -1,0 +1,4 @@
+<map id="GameLogic::loseGame" name="GameLogic::loseGame">
+<area shape="rect" id="node2" href="$class_user_interface.html#a9f7f9e7d0613c65a6bcd31045304ba06" title="Handles the displaying for whether or not the game is lost. " alt="" coords="210,5,373,32"/>
+<area shape="rect" id="node3" href="$class_game_logic.html#a084f5dcd379c23b221a1914674ae9f5a" title="Begins the pausing game sequence. " alt="" coords="208,56,375,83"/>
+</map>

@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['entity',['Entity',['../classEntity.html',1,'']]],
-  ['entityholder',['EntityHolder',['../classEntityHolder.html',1,'']]]
+  ['entity',['Entity',['../class_entity.html',1,'']]],
+  ['entityholder',['EntityHolder',['../class_entity_holder.html',1,'']]]
 ];

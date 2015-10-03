@@ -1,6 +1,27 @@
 var searchData=
 [
-  ['w_5fpressed',['W_Pressed',['../Events_8h.html#af60e00b78607064c5be6aa9397ea49c1a8bd404e5140322b6cee936ebca3e55be',1,'Events.h']]],
-  ['w_5freleased',['W_Released',['../Events_8h.html#af60e00b78607064c5be6aa9397ea49c1aea99eb6c77e2bb1c87f3713229d2becc',1,'Events.h']]],
-  ['window_5fclose',['Window_Close',['../Events_8h.html#af60e00b78607064c5be6aa9397ea49c1acb02966b66f68f7b403d365955b0b216',1,'Events.h']]]
+  ['s_5fpressed',['S_Pressed',['../_events_8h.html#af60e00b78607064c5be6aa9397ea49c1acfe7d451026b14a0e40725594ee2f14d',1,'Events.h']]],
+  ['s_5freleased',['S_Released',['../_events_8h.html#af60e00b78607064c5be6aa9397ea49c1aca62dae6b6e72d38f1ce28852dc4a47e',1,'Events.h']]],
+  ['setmaplimits',['setMapLimits',['../class_entity.html#a430914346513abcfcbb846b9c5b0bdf5',1,'Entity']]],
+  ['setnearesttarget',['setNearestTarget',['../class_ship.html#a0b68e1ed24a383c52b414b2347e992a6',1,'Ship']]],
+  ['settarget',['setTarget',['../class_flyer.html#a1389a97ce14d1620594a3d7e30bb87c2',1,'Flyer']]],
+  ['ship',['Ship',['../class_ship.html',1,'Ship'],['../class_ship.html#ab7608fcfc4d27c678aacaf9bfd68a462',1,'Ship::Ship()'],['../_entity_i_d_8h.html#a9efda8f37908abe4b1bcbeb9392d34caa0387832795db3eb2e05f4365fba5ddac',1,'Ship():&#160;EntityID.h']]],
+  ['ship_2ecpp',['Ship.cpp',['../_ship_8cpp.html',1,'']]],
+  ['ship_2eh',['Ship.h',['../_ship_8h.html',1,'']]],
+  ['shoot',['shoot',['../class_flyer.html#a8064cd234959a40bad56932f3e5b9c00',1,'Flyer::shoot()'],['../class_i_shooter.html#aa53cb939567e5ec79ab03f0e54723304',1,'IShooter::shoot()'],['../class_ship.html#abac6faf9de085233a06cffeaa56b5499',1,'Ship::shoot()'],['../class_shooting_moving_entity.html#aa818df0c3a0b1d24866f032fe374a864',1,'ShootingMovingEntity::shoot()']]],
+  ['shootingmovingentity',['ShootingMovingEntity',['../class_shooting_moving_entity.html',1,'ShootingMovingEntity'],['../class_shooting_moving_entity.html#a4458ae58d4d595bdf58ef2e5ddaf3c1c',1,'ShootingMovingEntity::ShootingMovingEntity()']]],
+  ['shootingmovingentity_2eh',['ShootingMovingEntity.h',['../_shooting_moving_entity_8h.html',1,'']]],
+  ['smart_5fbomb',['Smart_Bomb',['../_entity_i_d_8h.html#a9efda8f37908abe4b1bcbeb9392d34caa949bb9fff82780d47ffb0dabb25cf34b',1,'EntityID.h']]],
+  ['smartbomb',['SmartBomb',['../class_smart_bomb.html',1,'SmartBomb'],['../class_smart_bomb.html#aad3cd91a33b7afa25d7d7e046977ea58',1,'SmartBomb::SmartBomb()']]],
+  ['smartbomb_2ecpp',['SmartBomb.cpp',['../_smart_bomb_8cpp.html',1,'']]],
+  ['smartbomb_2eh',['SmartBomb.h',['../_smart_bomb_8h.html',1,'']]],
+  ['space_5fpressed',['Space_Pressed',['../_events_8h.html#af60e00b78607064c5be6aa9397ea49c1a284054624bc4f9858c24c1c22a1ee636',1,'Events.h']]],
+  ['space_5freleased',['Space_Released',['../_events_8h.html#af60e00b78607064c5be6aa9397ea49c1a2c218619497dd2015e0f5d44c2c9ef57',1,'Events.h']]],
+  ['start',['start',['../class_stop_watch.html#a09a3c8f9ab03d7b28e4f8b90a833974e',1,'StopWatch']]],
+  ['status',['status',['../class_ship.html#ad3b696e20d51d689f48c8c8b6e818f51',1,'Ship']]],
+  ['stop',['stop',['../class_stop_watch.html#a4dc97c2971015935e24bf5dce280d4d2',1,'StopWatch']]],
+  ['stopwatch',['StopWatch',['../class_stop_watch.html',1,'StopWatch'],['../class_stop_watch.html#ad715945060eeb23baa3c036ad19b1edb',1,'StopWatch::StopWatch()']]],
+  ['stopwatch_2ecpp',['StopWatch.cpp',['../_stop_watch_8cpp.html',1,'']]],
+  ['stopwatch_2eh',['StopWatch.h',['../_stop_watch_8h.html',1,'']]],
+  ['switchdirection',['switchDirection',['../class_ship.html#a85d7d40b6afd85c4ca2d2e08ba093234',1,'Ship']]]
 ];

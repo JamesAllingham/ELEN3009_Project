@@ -1,0 +1,4 @@
+<map id="Ship::collide" name="Ship::collide">
+<area shape="rect" id="node2" href="$class_ship.html#a040a17019b07d00290fc89f220832307" title="Adds homing missiles to the Ship when a Powerup is picked up. " alt="" coords="147,5,316,32"/>
+<area shape="rect" id="node3" href="$class_entity.html#a691dbe5f9ec930c27af2af0b97907a9e" title="Sets the status of the Entity to destroyed. " alt="" coords="178,56,285,83"/>
+</map>

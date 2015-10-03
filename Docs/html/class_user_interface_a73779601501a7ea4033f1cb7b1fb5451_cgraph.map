@@ -1,0 +1,5 @@
+<map id="UserInterface::processStatusMap" name="UserInterface::processStatusMap">
+<area shape="rect" id="node2" href="$class_user_interface.html#a8b2bc0ae3538f5a71b94582cb8096d55" title="handles all text displaying. " alt="" coords="268,5,427,32"/>
+<area shape="rect" id="node3" href="$class_user_interface.html#a18188991d8d59fc54dc39e2d71682afc" title="Converts Vector2f to sf::Vector2f for use with SFML functions. " alt="" coords="475,23,636,65"/>
+<area shape="rect" id="node4" href="$class_resource_holder.html#a236988b27b59d66e39e38e556de2a064" title="Retrieves a Resource from the ResourceHolder based on an ID. " alt="" coords="277,107,417,133"/>
+</map>

@@ -1,0 +1,6 @@
+<map id="UserInterface::processTextures" name="UserInterface::processTextures">
+<area shape="rect" id="node2" href="$class_user_interface.html#a385c0e53148307076638da64883f9dad" title="Renders the game to the Window. " alt="" coords="256,13,399,39"/>
+<area shape="rect" id="node3" href="$class_game_logic.html#a5758b64661ae5c8c6776f4b3cc50819f" title="Tells the graphic interface to render the current state of the game. " alt="" coords="447,5,621,47"/>
+<area shape="rect" id="node4" href="$class_game_logic.html#a12b2d33409167d96ff6c3feaa320d1c5" title="Runs the game loop. " alt="" coords="669,13,819,39"/>
+<area shape="rect" id="node5" href="$class_game_logic.html#a996cd781691c36922e7ce792fcb21640" title="Constructor. " alt="" coords="867,13,1029,39"/>
+</map>

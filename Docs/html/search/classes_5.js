@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['imover',['IMover',['../classIMover.html',1,'']]],
-  ['ishooter',['IShooter',['../classIShooter.html',1,'']]]
+  ['imover',['IMover',['../class_i_mover.html',1,'']]],
+  ['ishooter',['IShooter',['../class_i_shooter.html',1,'']]]
 ];

@@ -1,0 +1,4 @@
+<map id="GameLogic::winGame" name="GameLogic::winGame">
+<area shape="rect" id="node2" href="$class_user_interface.html#aaf42e2cd48bb4ca271ee2614f73a5842" title="Handles the displaying for whether or not the game is won. " alt="" coords="205,5,369,32"/>
+<area shape="rect" id="node3" href="$class_game_logic.html#a084f5dcd379c23b221a1914674ae9f5a" title="Begins the pausing game sequence. " alt="" coords="204,56,371,83"/>
+</map>

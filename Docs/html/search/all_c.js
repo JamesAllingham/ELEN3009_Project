@@ -1,10 +1,10 @@
 var searchData=
 [
-  ['position',['position',['../classCharacter.html#a441066f2d41183b5819216e0405bd600',1,'Character::position()'],['../classEntity.html#a46560a758a9dfda4d34ce09f67d41aad',1,'Entity::position()']]],
-  ['power_5fup',['Power_Up',['../EntityID_8h.html#a9efda8f37908abe4b1bcbeb9392d34caa9ae139f6d9fbc158c2f43038f3ebcf25',1,'EntityID.h']]],
-  ['powerup',['Powerup',['../classPowerup.html',1,'Powerup'],['../classPowerup.html#a20c3efe6b86d6f358a57f8215d157b20',1,'Powerup::Powerup()']]],
-  ['powerup_2ecpp',['Powerup.cpp',['../Powerup_8cpp.html',1,'']]],
-  ['powerup_2eh',['Powerup.h',['../Powerup_8h.html',1,'']]],
-  ['poweruponthemap',['PowerupOnTheMap',['../classPowerup.html#a357bb24f368e266c76b949e225fda1ef',1,'Powerup']]],
-  ['processevents',['processEvents',['../classUserInterface.html#a91b1fd577ac201614a4fa462c0571dc4',1,'UserInterface']]]
+  ['nearesttarget',['nearestTarget',['../class_ship.html#a9e25198c1ed9aa307cbb929b767fe597',1,'Ship']]],
+  ['normals',['normals',['../class_collision.html#a781ede95ef88d9f844fb87937cd98f00',1,'Collision']]],
+  ['numberofentities',['numberOfEntities',['../class_entity_holder.html#a79ce5225b98bd7c36ee55f7253341e4b',1,'EntityHolder']]],
+  ['numberofflyers',['numberOfFlyers',['../class_flyer.html#a7be88ef3c16abea98d9ac6c04fc3427b',1,'Flyer']]],
+  ['numberofflyerskilled',['numberOfFlyersKilled',['../class_flyer.html#a70ea6bfd0fda205bdf304bbe6f81aa01',1,'Flyer']]],
+  ['numberofhomingmissiles',['numberOfHomingMissiles',['../class_ship.html#a7f872e5eb7815a4a2e261b7e8c8d3174',1,'Ship']]],
+  ['numberoflivesremaining',['numberOfLivesRemaining',['../class_ship.html#aa3f3c2d12e7dfb5f2691bfaa913f4dba',1,'Ship']]]
 ];

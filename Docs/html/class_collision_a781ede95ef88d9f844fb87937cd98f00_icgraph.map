@@ -1,0 +1,8 @@
+<map id="Collision::normals" name="Collision::normals">
+<area shape="rect" id="node2" href="$class_collision.html#ab21bec978333a88f76edcb7eddde7736" title="Implements the separating axis theorem for two Entity objects. " alt="" coords="179,5,305,32"/>
+<area shape="rect" id="node3" href="$class_collision.html#a110338fc6c50e967ec37569c218694c0" title="Runs the collision detection algorithm. " alt="" coords="353,5,535,32"/>
+<area shape="rect" id="node4" href="$class_game_logic.html#ad54952f120fae1c2a85d80a063918bce" title="Checks for collisions and then cleans up after the collisions take place. " alt="" coords="583,5,773,32"/>
+<area shape="rect" id="node5" href="$class_game_logic.html#a7614f98110bba657dcea6a004b84a877" title="Updates the state of the game based on how much time has passed. " alt="" coords="821,5,956,32"/>
+<area shape="rect" id="node6" href="$class_game_logic.html#a12b2d33409167d96ff6c3feaa320d1c5" title="Runs the game loop. " alt="" coords="1004,5,1153,32"/>
+<area shape="rect" id="node7" href="$class_game_logic.html#a996cd781691c36922e7ce792fcb21640" title="Constructor. " alt="" coords="1201,5,1364,32"/>
+</map>

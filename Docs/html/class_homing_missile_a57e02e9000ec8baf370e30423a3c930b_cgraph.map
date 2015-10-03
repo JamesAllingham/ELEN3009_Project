@@ -1,0 +1,6 @@
+<map id="HomingMissile::move" name="HomingMissile::move">
+<area shape="rect" id="node2" href="$class_entity.html#a691dbe5f9ec930c27af2af0b97907a9e" title="Sets the status of the Entity to destroyed. " alt="" coords="219,5,325,32"/>
+<area shape="rect" id="node3" href="$class_entity.html#a0618feb79deeaa3d5120c3f003c93a11" title="Returns the current position. " alt="" coords="217,56,327,83"/>
+<area shape="rect" id="node4" href="$class_entity.html#a1615aaed825c43e5ed75a9f465996590" title="Moves the entity. " alt="" coords="201,107,343,133"/>
+<area shape="rect" id="node5" href="$class_moving_entity.html#a4d46cd1fe212de0e14881661fc841c51" title="Returns the velocity of the MovingEntity. " alt="" coords="199,157,345,184"/>
+</map>

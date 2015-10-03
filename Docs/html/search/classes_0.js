@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['character',['Character',['../classCharacter.html',1,'']]],
-  ['collision',['Collision',['../classCollision.html',1,'']]]
+  ['character',['Character',['../class_character.html',1,'']]],
+  ['collision',['Collision',['../class_collision.html',1,'']]]
 ];

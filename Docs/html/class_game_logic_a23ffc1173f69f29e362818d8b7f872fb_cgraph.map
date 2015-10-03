@@ -1,0 +1,8 @@
+<map id="GameLogic::handleUserInput" name="GameLogic::handleUserInput">
+<area shape="rect" id="node2" href="$class_user_interface.html#a91b1fd577ac201614a4fa462c0571dc4" title="Handles all user input by polling for the events that have taken place since the last call..." alt="" coords="243,5,433,32"/>
+<area shape="rect" id="node3" href="$class_user_interface.html#a4eeae55b94d175c82ba5b2e3d64aab3a" title="Converts polled events to non&#45;SFML format. " alt="" coords="257,57,419,98"/>
+<area shape="rect" id="node4" href="$class_game_logic.html#a084f5dcd379c23b221a1914674ae9f5a" title="Begins the pausing game sequence. " alt="" coords="255,123,421,149"/>
+<area shape="rect" id="node5" href="$class_user_interface.html#a8718ddb135663ecb6c0d6dc861c311c6" title="Handles the displaying for whether or not the game is paused. " alt="" coords="247,173,429,200"/>
+<area shape="rect" id="node6" href="$class_game_logic.html#a5e7c0e6c9f7afe84b3f673199f940c99" title="Closes the game window and ends the game. " alt="" coords="262,224,414,251"/>
+<area shape="rect" id="node7" href="$class_user_interface.html#a0ebdc6cf083f044e3d3da3b6226ad004" title="Closes the game window. " alt="" coords="481,224,664,251"/>
+</map>

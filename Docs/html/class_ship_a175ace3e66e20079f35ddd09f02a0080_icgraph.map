@@ -1,0 +1,4 @@
+<map id="Ship::facingRight" name="Ship::facingRight">
+<area shape="rect" id="node2" href="$class_ship.html#abac6faf9de085233a06cffeaa56b5499" title="Inherited from ShootingMovingEntity. " alt="" coords="173,5,261,32"/>
+<area shape="rect" id="node3" href="$class_ship.html#acf829e42a8df879a2cfa705d3527cd1a" title="Inherited from ShootingMovingEntity. " alt="" coords="174,56,261,83"/>
+</map>

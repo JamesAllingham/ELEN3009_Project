@@ -1,18 +1,11 @@
 var searchData=
 [
-  ['e_5fpressed',['E_Pressed',['../Events_8h.html#af60e00b78607064c5be6aa9397ea49c1a47a07d06fa9a3663de6c4b65256e8ca7',1,'Events.h']]],
-  ['e_5freleased',['E_Released',['../Events_8h.html#af60e00b78607064c5be6aa9397ea49c1a0f03b08ad17565d39a44c0fd3deb7d2b',1,'Events.h']]],
-  ['end',['end',['../classEntityHolder.html#a85c1091f75c540da09e60c25d9a2901f',1,'EntityHolder']]],
-  ['entity',['Entity',['../classEntity.html',1,'Entity'],['../classEntity.html#a0dd209300bf269f3f052c124e6612422',1,'Entity::Entity()']]],
-  ['entity_2ecpp',['Entity.cpp',['../Entity_8cpp.html',1,'']]],
-  ['entity_2eh',['Entity.h',['../Entity_8h.html',1,'']]],
-  ['entityholder',['EntityHolder',['../classEntityHolder.html',1,'']]],
-  ['entityholder_2ecpp',['EntityHolder.cpp',['../EntityHolder_8cpp.html',1,'']]],
-  ['entityholder_2eh',['EntityHolder.h',['../EntityHolder_8h.html',1,'']]],
-  ['entityholderiterator',['EntityholderIterator',['../EntityHolder_8h.html#a865f47720deafd79fa7576483ba5b4d5',1,'EntityHolder.h']]],
-  ['entityid',['entityID',['../classCharacter.html#a294e6bf8b374b50d101ac84bff869827',1,'Character::entityID()'],['../EntityID_8h.html#a9efda8f37908abe4b1bcbeb9392d34ca',1,'EntityID():&#160;EntityID.h']]],
-  ['entityid_2eh',['EntityID.h',['../EntityID_8h.html',1,'']]],
-  ['eraseentity',['eraseEntity',['../classEntityHolder.html#ada37b5b2dc2aac40e40c49ce0b35bb79',1,'EntityHolder']]],
-  ['events',['Events',['../Events_8h.html#af60e00b78607064c5be6aa9397ea49c1',1,'Events.h']]],
-  ['events_2eh',['Events.h',['../Events_8h.html',1,'']]]
+  ['d_5fpressed',['D_Pressed',['../_events_8h.html#af60e00b78607064c5be6aa9397ea49c1af66cad81736f60e8c3e4e614e40edc3c',1,'Events.h']]],
+  ['d_5freleased',['D_Released',['../_events_8h.html#af60e00b78607064c5be6aa9397ea49c1a9e6f98b7d4fb818efc0248948fedceba',1,'Events.h']]],
+  ['destroy',['destroy',['../class_entity.html#a691dbe5f9ec930c27af2af0b97907a9e',1,'Entity']]],
+  ['destroyed',['destroyed',['../class_entity.html#a66f3aa83ccee97926a517a3dbd9010b0',1,'Entity']]],
+  ['distancebetweenvectors',['distanceBetweenVectors',['../class_vector2f.html#a28c6ede4227ca967f87619ae0303702c',1,'Vector2f']]],
+  ['dotproduct',['dotProduct',['../class_collision.html#a8a1443ebcbde2cd807901ef42df5b83f',1,'Collision']]],
+  ['drawsprite',['drawSprite',['../class_user_interface.html#ad5586178e2ccfaaee28e152da4774ce8',1,'UserInterface']]],
+  ['drawtext',['drawText',['../class_user_interface.html#a8b2bc0ae3538f5a71b94582cb8096d55',1,'UserInterface']]]
 ];

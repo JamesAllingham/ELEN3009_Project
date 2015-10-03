@@ -1,0 +1,5 @@
+<map id="EntityHolder::characters" name="EntityHolder::characters">
+<area shape="rect" id="node2" href="$class_game_logic.html#a5758b64661ae5c8c6776f4b3cc50819f" title="Tells the graphic interface to render the current state of the game. " alt="" coords="216,5,391,47"/>
+<area shape="rect" id="node3" href="$class_game_logic.html#a12b2d33409167d96ff6c3feaa320d1c5" title="Runs the game loop. " alt="" coords="439,13,588,39"/>
+<area shape="rect" id="node4" href="$class_game_logic.html#a996cd781691c36922e7ce792fcb21640" title="Constructor. " alt="" coords="636,13,799,39"/>
+</map>

@@ -1,0 +1,7 @@
+<map id="Ship" name="Ship">
+<area shape="rect" id="node2" href="$class_shooting_moving_entity.html" title="ShootingMovingEntity class &#45; an extension of the MovingEntity class which adds the shoot() function..." alt="" coords="102,520,269,656"/>
+<area shape="rect" id="node3" href="$class_moving_entity.html" title="MovingEntity class &#45; an extension of the Entity class which adds the move() function. " alt="" coords="67,336,183,472"/>
+<area shape="rect" id="node4" href="$class_entity.html" title="Entity class &#45; represents any in game Entity. " alt="" coords="5,5,125,288"/>
+<area shape="rect" id="node5" href="$class_i_mover.html" title="IMover abstract class &#45; pure interface used to create a contract that allows an entity to move..." alt="" coords="149,108,221,185"/>
+<area shape="rect" id="node6" href="$class_i_shooter.html" title="IShooter abstract class &#45; pure interface used to create a contract that allows an entity to shoot..." alt="" coords="208,365,283,443"/>
+</map>

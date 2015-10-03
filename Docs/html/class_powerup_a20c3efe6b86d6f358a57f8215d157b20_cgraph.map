@@ -1,0 +1,4 @@
+<map id="Powerup::Powerup" name="Powerup::Powerup">
+<area shape="rect" id="node2" href="$class_powerup.html#ada7a4fe8c6483110c308401782a5e91a" title="Generates a random float which can be used to create a valid position on the map. ..." alt="" coords="184,5,355,32"/>
+<area shape="rect" id="node3" href="$class_entity.html#a4162bd22d1575aa696315ecda77ce694" title="Static function. " alt="" coords="207,56,331,83"/>
+</map>

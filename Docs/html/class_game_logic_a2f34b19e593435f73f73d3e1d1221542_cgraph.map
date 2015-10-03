@@ -1,0 +1,6 @@
+<map id="GameLogic::createEntities" name="GameLogic::createEntities">
+<area shape="rect" id="node2" href="$class_flyer.html#a7be88ef3c16abea98d9ac6c04fc3427b" title="Static function. " alt="" coords="249,5,400,32"/>
+<area shape="rect" id="node3" href="$class_flyer.html#a70ea6bfd0fda205bdf304bbe6f81aa01" title="Static function. " alt="" coords="233,56,416,83"/>
+<area shape="rect" id="node4" href="$class_entity_holder.html#ad14e3583fca94a8716e9cf3592cb78a9" title="Adds a shared pointer to an Entity to the collection. " alt="" coords="247,107,403,133"/>
+<area shape="rect" id="node5" href="$class_powerup.html#a9790c22561fd3df74fbec3520b67ebf4" title="Static function. " alt="" coords="229,157,420,184"/>
+</map>
