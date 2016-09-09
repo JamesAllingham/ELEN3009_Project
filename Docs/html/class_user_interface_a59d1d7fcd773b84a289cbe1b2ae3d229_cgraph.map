@@ -1,5 +1,0 @@
-<map id="UserInterface::processTextures" name="UserInterface::processTextures">
-<area shape="rect" id="node2" href="$class_resource_holder.html#a236988b27b59d66e39e38e556de2a064" title="Retrieves a Resource from the ResourceHolder based on an ID. " alt="" coords="269,5,409,32"/>
-<area shape="rect" id="node3" href="$class_user_interface.html#a18188991d8d59fc54dc39e2d71682afc" title="Converts Vector2f to sf::Vector2f for use with SFML functions. " alt="" coords="259,57,420,98"/>
-<area shape="rect" id="node4" href="$class_user_interface.html#ad5586178e2ccfaaee28e152da4774ce8" title="Draw a sprite on both the map and mini&#45;map. " alt="" coords="256,123,423,149"/>
-</map>

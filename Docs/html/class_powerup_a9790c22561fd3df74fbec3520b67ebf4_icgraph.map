@@ -1,6 +1,0 @@
-<map id="Powerup::powerupOnTheMap" name="Powerup::powerupOnTheMap">
-<area shape="rect" id="node2" href="$class_game_logic.html#a2f34b19e593435f73f73d3e1d1221542" title="Makes sure there are enough Flyer and Powerup objects on the map. " alt="" coords="244,5,420,32"/>
-<area shape="rect" id="node3" href="$class_game_logic.html#a7614f98110bba657dcea6a004b84a877" title="Updates the state of the game based on how much time has passed. " alt="" coords="468,5,603,32"/>
-<area shape="rect" id="node4" href="$class_game_logic.html#a12b2d33409167d96ff6c3feaa320d1c5" title="Runs the game loop. " alt="" coords="651,5,800,32"/>
-<area shape="rect" id="node5" href="$class_game_logic.html#a996cd781691c36922e7ce792fcb21640" title="Constructor. " alt="" coords="848,5,1011,32"/>
-</map>

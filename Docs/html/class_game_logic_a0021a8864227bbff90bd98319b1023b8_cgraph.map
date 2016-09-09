@@ -1,3 +1,0 @@
-<map id="GameLogic::followPlayer" name="GameLogic::followPlayer">
-<area shape="rect" id="node2" href="$class_user_interface.html#a03d6255135d4892c35be8e0c3a5d405f" title="Moves the game window along the map along the x&#45;axis allowing the map to be scrollable. " alt="" coords="219,5,401,32"/>
-</map>

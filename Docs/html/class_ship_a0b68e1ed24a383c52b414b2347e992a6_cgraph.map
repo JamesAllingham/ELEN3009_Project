@@ -1,4 +1,0 @@
-<map id="Ship::setNearestTarget" name="Ship::setNearestTarget">
-<area shape="rect" id="node2" href="$class_entity.html#a0618feb79deeaa3d5120c3f003c93a11" title="Returns the current position. " alt="" coords="242,5,351,32"/>
-<area shape="rect" id="node3" href="$class_vector2f.html#a28c6ede4227ca967f87619ae0303702c" title="Calculates the distance between two vectors. " alt="" coords="208,57,385,98"/>
-</map>

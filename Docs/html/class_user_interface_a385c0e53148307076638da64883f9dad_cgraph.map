@@ -1,8 +1,0 @@
-<map id="UserInterface::render" name="UserInterface::render">
-<area shape="rect" id="node2" href="$class_user_interface.html#a59d1d7fcd773b84a289cbe1b2ae3d229" title="Create and draw a sf::Sprite for each of the characters that must be rendered. " alt="" coords="202,59,405,85"/>
-<area shape="rect" id="node6" href="$class_user_interface.html#a73779601501a7ea4033f1cb7b1fb5451" title="displays the current information regarding the status of the ship. " alt="" coords="196,135,411,161"/>
-<area shape="rect" id="node7" href="$class_user_interface.html#a8b2bc0ae3538f5a71b94582cb8096d55" title="handles all text displaying. " alt="" coords="463,185,621,212"/>
-<area shape="rect" id="node3" href="$class_resource_holder.html#a236988b27b59d66e39e38e556de2a064" title="Retrieves a Resource from the ResourceHolder based on an ID. " alt="" coords="472,84,612,111"/>
-<area shape="rect" id="node4" href="$class_user_interface.html#a18188991d8d59fc54dc39e2d71682afc" title="Converts Vector2f to sf::Vector2f for use with SFML functions. " alt="" coords="673,127,835,169"/>
-<area shape="rect" id="node5" href="$class_user_interface.html#ad5586178e2ccfaaee28e152da4774ce8" title="Draw a sprite on both the map and mini&#45;map. " alt="" coords="459,33,625,60"/>
-</map>

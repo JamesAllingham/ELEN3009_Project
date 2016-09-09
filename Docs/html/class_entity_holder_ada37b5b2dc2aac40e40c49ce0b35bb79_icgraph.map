@@ -1,6 +1,0 @@
-<map id="EntityHolder::eraseEntity" name="EntityHolder::eraseEntity">
-<area shape="rect" id="node2" href="$class_game_logic.html#ad54952f120fae1c2a85d80a063918bce" title="Checks for collisions and then cleans up after the collisions take place. " alt="" coords="220,5,411,32"/>
-<area shape="rect" id="node3" href="$class_game_logic.html#a7614f98110bba657dcea6a004b84a877" title="Updates the state of the game based on how much time has passed. " alt="" coords="459,5,593,32"/>
-<area shape="rect" id="node4" href="$class_game_logic.html#a12b2d33409167d96ff6c3feaa320d1c5" title="Runs the game loop. " alt="" coords="641,5,791,32"/>
-<area shape="rect" id="node5" href="$class_game_logic.html#a996cd781691c36922e7ce792fcb21640" title="Constructor. " alt="" coords="839,5,1001,32"/>
-</map>

@@ -1,4 +1,0 @@
-<map id="Ship::shoot" name="Ship::shoot">
-<area shape="rect" id="node2" href="$class_ship.html#a175ace3e66e20079f35ddd09f02a0080" title="Returns the direction of the Ship. " alt="" coords="141,5,261,32"/>
-<area shape="rect" id="node3" href="$class_entity.html#a0618feb79deeaa3d5120c3f003c93a11" title="Returns the current position. " alt="" coords="147,56,256,83"/>
-</map>

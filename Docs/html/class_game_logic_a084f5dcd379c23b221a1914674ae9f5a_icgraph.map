@@ -1,8 +1,0 @@
-<map id="GameLogic::pauseGame" name="GameLogic::pauseGame">
-<area shape="rect" id="node2" href="$class_game_logic.html#a23ffc1173f69f29e362818d8b7f872fb" title="Polls for user input and converts it from sf::Event to Events. " alt="" coords="220,5,409,32"/>
-<area shape="rect" id="node6" href="$class_game_logic.html#a0ca2bfae6aa38da438bcf12a604c9462" title="Begins the winning game sequence. " alt="" coords="239,56,390,83"/>
-<area shape="rect" id="node7" href="$class_game_logic.html#ab4151d9cdbc796d72eb6b40f7ab092ae" title="Begins the losing the game sequence. " alt="" coords="237,107,392,133"/>
-<area shape="rect" id="node3" href="$class_game_logic.html#a12b2d33409167d96ff6c3feaa320d1c5" title="Runs the game loop. " alt="" coords="640,31,789,57"/>
-<area shape="rect" id="node5" href="$class_game_logic.html#a7614f98110bba657dcea6a004b84a877" title="Updates the state of the game based on how much time has passed. " alt="" coords="457,56,592,83"/>
-<area shape="rect" id="node4" href="$class_game_logic.html#a996cd781691c36922e7ce792fcb21640" title="Constructor. " alt="" coords="837,31,1000,57"/>
-</map>

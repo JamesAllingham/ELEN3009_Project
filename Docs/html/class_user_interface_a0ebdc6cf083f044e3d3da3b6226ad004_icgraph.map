@@ -1,7 +1,0 @@
-<map id="UserInterface::closeWindow" name="UserInterface::closeWindow">
-<area shape="rect" id="node2" href="$class_game_logic.html#a5e7c0e6c9f7afe84b3f673199f940c99" title="Closes the game window and ends the game. " alt="" coords="236,5,388,32"/>
-<area shape="rect" id="node3" href="$class_game_logic.html#a23ffc1173f69f29e362818d8b7f872fb" title="Polls for user input and converts it from sf::Event to Events. " alt="" coords="436,5,625,32"/>
-<area shape="rect" id="node4" href="$class_game_logic.html#a12b2d33409167d96ff6c3feaa320d1c5" title="Runs the game loop. " alt="" coords="856,5,1005,32"/>
-<area shape="rect" id="node6" href="$class_game_logic.html#a7614f98110bba657dcea6a004b84a877" title="Updates the state of the game based on how much time has passed. " alt="" coords="673,31,808,57"/>
-<area shape="rect" id="node5" href="$class_game_logic.html#a996cd781691c36922e7ce792fcb21640" title="Constructor. " alt="" coords="1053,5,1216,32"/>
-</map>

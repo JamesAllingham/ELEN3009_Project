@@ -1,4 +1,0 @@
-<map id="Flyer::Flyer" name="Flyer::Flyer">
-<area shape="rect" id="node2" href="$class_flyer.html#a24fee1c79f2015d89ba6245b68de0944" title="Generates a random float which can be used to create a valid position on the map. ..." alt="" coords="141,5,291,32"/>
-<area shape="rect" id="node3" href="$class_entity.html#a4162bd22d1575aa696315ecda77ce694" title="Static function. " alt="" coords="154,56,278,83"/>
-</map>

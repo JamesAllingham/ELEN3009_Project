@@ -1,4 +1,0 @@
-<map id="SmartBomb::hitboxPoints" name="SmartBomb::hitboxPoints">
-<area shape="rect" id="node2" href="$class_entity.html#a9d3f1896284d8c118f1a053fb4188352" title="Returns the character information for rendering an Entity. " alt="" coords="230,5,349,32"/>
-<area shape="rect" id="node3" href="$class_character.html#ab95d1d9e460e4f2aaa88b81708a69fb6" title="Return the position of the character. " alt="" coords="224,56,355,83"/>
-</map>

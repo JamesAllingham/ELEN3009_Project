@@ -1,8 +1,0 @@
-<map id="Ship::move" name="Ship::move">
-<area shape="rect" id="node2" href="$class_entity.html#a0618feb79deeaa3d5120c3f003c93a11" title="Returns the current position. " alt="" coords="159,5,268,32"/>
-<area shape="rect" id="node3" href="$class_moving_entity.html#a4d46cd1fe212de0e14881661fc841c51" title="Returns the velocity of the MovingEntity. " alt="" coords="140,56,287,83"/>
-<area shape="rect" id="node4" href="$class_entity.html#a1615aaed825c43e5ed75a9f465996590" title="Moves the entity. " alt="" coords="143,107,284,133"/>
-<area shape="rect" id="node5" href="$class_entity.html#a4162bd22d1575aa696315ecda77ce694" title="Static function. " alt="" coords="151,157,275,184"/>
-<area shape="rect" id="node6" href="$class_ship.html#a175ace3e66e20079f35ddd09f02a0080" title="Returns the direction of the Ship. " alt="" coords="153,208,273,235"/>
-<area shape="rect" id="node7" href="$class_ship.html#a85d7d40b6afd85c4ca2d2e08ba093234" title="Change the direction which the Ship is facing. " alt="" coords="141,259,285,285"/>
-</map>

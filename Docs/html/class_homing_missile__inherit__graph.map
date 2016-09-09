@@ -1,5 +1,0 @@
-<map id="HomingMissile" name="HomingMissile">
-<area shape="rect" id="node2" href="$class_moving_entity.html" title="MovingEntity class &#45; an extension of the Entity class which adds the move() function. " alt="" coords="67,336,183,472"/>
-<area shape="rect" id="node3" href="$class_entity.html" title="Entity class &#45; represents any in game Entity. " alt="" coords="5,5,125,288"/>
-<area shape="rect" id="node4" href="$class_i_mover.html" title="IMover abstract class &#45; pure interface used to create a contract that allows an entity to move..." alt="" coords="149,108,221,185"/>
-</map>
